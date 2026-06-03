@@ -48,7 +48,7 @@
 ### 1. Install dependencies
 
 ```bash
-git clone <your-repo-url> && cd spark
+git clone https://github.com/aryas1ngh/spark-ranking-iiitd.git && cd spark-ranking-iiitd
 
 # Frontend
 npm install
