@@ -1,0 +1,120 @@
+{
+  "institutions": [
+    {
+      "name": "IIIT Delhi",
+      "short": "IIITD",
+      "country": "India",
+      "website": "https://www.iiitd.ac.in",
+      "faculty": [
+        {
+          "name": "Pankaj Jalote",
+          "dblp_pid": "j/PankajJalote",
+          "role": "Emeritus Professor",
+          "homepage": "https://www.iiitd.ac.in/jalote"
+        },
+        {
+          "name": "Pushpendra Singh",
+          "dblp_pid": "55/1719-1",
+          "role": "Professor",
+          "homepage": "https://www.iiitd.ac.in/pushpendra"
+        },
+        {
+          "name": "Mukesh Mohania",
+          "dblp_pid": "85/6670",
+          "role": "Professor",
+          "homepage": "https://www.iiitd.ac.in/mukesh"
+        },
+        {
+          "name": "Angshul Majumdar",
+          "dblp_pid": "69/4115",
+          "role": "Professor",
+          "homepage": "https://www.iiitd.ac.in/angshul"
+        },
+        {
+          "name": "Rajiv Ratn Shah",
+          "dblp_pid": "134/3502",
+          "role": "Associate Professor",
+          "homepage": "https://www.iiitd.ac.in/rajivratn"
+        },
+        {
+          "name": "Vikram Goyal",
+          "dblp_pid": "70/6404",
+          "role": "Associate Professor",
+          "homepage": "https://www.iiitd.ac.in/vikram"
+        },
+        {
+          "name": "Rajiv Raman",
+          "dblp_pid": "42/6468",
+          "role": "Associate Professor",
+          "homepage": "https://www.iiitd.ac.in/rajivraman"
+        },
+        {
+          "name": "Ojaswa Sharma",
+          "dblp_pid": "08/4556",
+          "role": "Associate Professor",
+          "homepage": "https://www.iiitd.ac.in/ojaswa"
+        },
+        {
+          "name": "Arun Balaji Buduru",
+          "dblp_pid": "128/4273",
+          "role": "Associate Professor",
+          "homepage": "https://www.iiitd.ac.in/arunb"
+        },
+        {
+          "name": "Ashish Kumar Pandey",
+          "dblp_pid": "234/3896",
+          "role": "Associate Professor",
+          "homepage": "https://www.iiitd.ac.in/ashishkp"
+        },
+        {
+          "name": "Md. Shad Akhtar",
+          "dblp_pid": "184/8579",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/shad"
+        },
+        {
+          "name": "Piyus Kedia",
+          "dblp_pid": "201/4871",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/piyus"
+        },
+        {
+          "name": "A V Subramanyam",
+          "dblp_pid": "232/6141",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/subramanyam"
+        },
+        {
+          "name": "Jainendra Shukla",
+          "dblp_pid": "117/9926",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/jainendra"
+        },
+        {
+          "name": "Arani Bhattacharya",
+          "dblp_pid": "139/0489",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/arani"
+        },
+        {
+          "name": "Bapi Chatterjee",
+          "dblp_pid": "117/6988",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/bapic"
+        },
+        {
+          "name": "Diptapriyo Majumdar",
+          "dblp_pid": "171/3758",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/diptapriyo"
+        },
+        {
+          "name": "Rinku Shah",
+          "dblp_pid": "146/0131",
+          "role": "Assistant Professor",
+          "homepage": "https://www.iiitd.ac.in/rinku"
+        }
+      ]
+    }
+  ]
+}

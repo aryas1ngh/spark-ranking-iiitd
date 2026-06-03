@@ -1,0 +1,1539 @@
+{
+  "source": "ICORE2026",
+  "scraped_at": "2026-06-02T11:02:53Z",
+  "total_all_ranks": 987,
+  "total_a_star": 62,
+  "total_a": 108,
+  "conferences": [
+    {
+      "title": "National Conference of the American Association for Artificial Intelligence",
+      "acronym": "AAAI",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "aaai",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/aaai",
+      "for_code": "4602"
+    },
+    {
+      "title": "Association for Computational Linguistics",
+      "acronym": "ACL",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "acl",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/acl",
+      "for_code": "4602"
+    },
+    {
+      "title": "ACM Multimedia",
+      "acronym": "ACMMM",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "mm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/mm",
+      "for_code": "4603"
+    },
+    {
+      "title": "Automated Software Engineering Conference",
+      "acronym": "ASE",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "kbse",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/kbse",
+      "for_code": "4612"
+    },
+    {
+      "title": "Architectural Support for Programming Languages and Operating Systems",
+      "acronym": "ASPLOS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "asplos",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/asplos",
+      "for_code": "4612"
+    },
+    {
+      "title": "Computer Aided Verification",
+      "acronym": "CAV",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "cav",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cav",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM Conference on Computer and Communications Security",
+      "acronym": "CCS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "ccs",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ccs",
+      "for_code": "4604"
+    },
+    {
+      "title": "International Conference on Human Factors in Computing Systems",
+      "acronym": "CHI",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "chi",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/chi",
+      "for_code": "4608"
+    },
+    {
+      "title": "Conference on Learning Theory",
+      "acronym": "COLT",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "colt",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/colt",
+      "for_code": "4611"
+    },
+    {
+      "title": "Advances in Cryptology",
+      "acronym": "CRYPTO",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "crypto",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/crypto",
+      "for_code": "4604"
+    },
+    {
+      "title": "IEEE Conference on Computer Vision and Pattern Recognition",
+      "acronym": "CVPR",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "cvpr",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cvpr",
+      "for_code": "4603"
+    },
+    {
+      "title": "Design Automation Conf",
+      "acronym": "DAC",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "dac",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/dac",
+      "for_code": "CSE"
+    },
+    {
+      "title": "ACM Conference on Economics and Computation",
+      "acronym": "EC",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sigecom",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sigecom",
+      "for_code": "4602"
+    },
+    {
+      "title": "European Conference on Computer Vision",
+      "acronym": "ECCV",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "eccv",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/eccv",
+      "for_code": "4603"
+    },
+    {
+      "title": "Empirical Methods in Natural Language Processing",
+      "acronym": "EMNLP",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "emnlp",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/emnlp",
+      "for_code": "4602"
+    },
+    {
+      "title": "International Conference on the Theory and Application of Cryptographic Techniques",
+      "acronym": "EuroCrypt",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "eurocrypt",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/eurocrypt",
+      "for_code": "4604"
+    },
+    {
+      "title": "IEEE Symposium on Foundations of Computer Science",
+      "acronym": "FOCS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "focs",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/focs",
+      "for_code": "4613"
+    },
+    {
+      "title": "ACM International Conference on the Foundations of Software Engineering (was ESEC/FSE, changed 2024; duplicate previously listed as ESEC, removed from DB)",
+      "acronym": "FSE",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sigsoft",
+      "dblp_url": "https://dblp.org/db/conf/sigsoft",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Symposium on High Performance Computer Architecture",
+      "acronym": "HPCA",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "hpca",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/hpca",
+      "for_code": "CSE"
+    },
+    {
+      "title": "ACM/IEEE International Conference on Human-Robot Interaction",
+      "acronym": "HRI",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "hri",
+      "dblp_url": "https://dblp.org/db/conf/hri/index.html",
+      "for_code": "4608"
+    },
+    {
+      "title": "International Colloquium on Automata Languages and Programming",
+      "acronym": "ICALP",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "icalp",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icalp",
+      "for_code": "4613"
+    },
+    {
+      "title": "International Conference on Automated Planning and Scheduling",
+      "acronym": "ICAPS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "icaps",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icaps",
+      "for_code": "4602"
+    },
+    {
+      "title": "IEEE International Conference on Computer Vision",
+      "acronym": "ICCV",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "iccv",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/iccv",
+      "for_code": "4603"
+    },
+    {
+      "title": "International Conference on Data Engineering",
+      "acronym": "ICDE",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "icde",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icde",
+      "for_code": "4605"
+    },
+    {
+      "title": "IEEE International Conference on Data Mining",
+      "acronym": "ICDM",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "icdm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icdm",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Conference on Learning Representations",
+      "acronym": "ICLR",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "iclr",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/iclr",
+      "for_code": "4611"
+    },
+    {
+      "title": "International Conference on Machine Learning",
+      "acronym": "ICML",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "icml",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icml",
+      "for_code": "4611"
+    },
+    {
+      "title": "IEEE International Conference on Robotics and Automation",
+      "acronym": "ICRA",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "icra",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icra",
+      "for_code": "4602"
+    },
+    {
+      "title": "International Conference on Software Engineering",
+      "acronym": "ICSE",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "icse",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icse",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Joint Conference on Artificial Intelligence",
+      "acronym": "IJCAI",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "ijcai",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ijcai",
+      "for_code": "4602"
+    },
+    {
+      "title": "IEEE International Conference on Computer Communications",
+      "acronym": "INFOCOM",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "infocom",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/infocom",
+      "for_code": "4606"
+    },
+    {
+      "title": "ACM International Symposium on Computer Architecture",
+      "acronym": "ISCA",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "isca",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/isca",
+      "for_code": "CSE"
+    },
+    {
+      "title": "IEEE/ACM International Symposium on Mixed and Augmented Reality",
+      "acronym": "ISMAR",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "ismar",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ismar",
+      "for_code": "4607"
+    },
+    {
+      "title": "ACM International Conference on Knowledge Discovery and Data Mining",
+      "acronym": "KDD",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "kdd",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/kdd",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Conference on the Principles of Knowledge Representation and Reasoning",
+      "acronym": "KR",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "kr",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/kr",
+      "for_code": "4602"
+    },
+    {
+      "title": "IEEE Symposium on Logic in Computer Science",
+      "acronym": "LICS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "lics",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/lics",
+      "for_code": "4613"
+    },
+    {
+      "title": "International Symposium on Microarchitecture",
+      "acronym": "MICRO",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "micro",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/micro/index.html",
+      "for_code": "CSE"
+    },
+    {
+      "title": "ACM International Conference on Mobile Computing and Networking",
+      "acronym": "MOBICOM",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "mobicom",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/mobicom",
+      "for_code": "4606"
+    },
+    {
+      "title": "Usenix Network and Distributed System Security Symposium",
+      "acronym": "NDSS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "ndss",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ndss",
+      "for_code": "4604"
+    },
+    {
+      "title": "Advances in Neural Information Processing Systems (was NIPS)",
+      "acronym": "NeurIPS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "nips",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/nips",
+      "for_code": "4611"
+    },
+    {
+      "title": "Usenix Symposium on Operating Systems Design and Implementation",
+      "acronym": "OSDI",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "osdi",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/osdi",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE International Conference on Pervasive Computing and Communications",
+      "acronym": "PERCOM",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "percom",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/percom",
+      "for_code": "4608"
+    },
+    {
+      "title": "ACM-SIGPLAN Conference on Programming Language Design and Implementation",
+      "acronym": "PLDI",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "pldi",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/pldi",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM Symposium on Principles of Distributed Computing",
+      "acronym": "PODC",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "podc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/podc",
+      "for_code": "4606"
+    },
+    {
+      "title": "ACM SIGMOD-SIGACT-SIGART Conference on Principles of Database Systems",
+      "acronym": "PODS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "pods",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/pods",
+      "for_code": "4605"
+    },
+    {
+      "title": "ACM-SIGACT Symposium on Principles of Programming Languages",
+      "acronym": "POPL",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "popl",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/popl",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
+      "acronym": "SIGCOMM",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sigcomm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sigcomm",
+      "for_code": "4606"
+    },
+    {
+      "title": "ACM SIG International Conference on Computer Graphics and Interactive Techniques",
+      "acronym": "SIGGRAPH",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "siggraph",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/siggraph",
+      "for_code": "4607"
+    },
+    {
+      "title": "SIGGRAPH Asia",
+      "acronym": "SiggraphA",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "siggrapha",
+      "dblp_url": "https://dblp.org/db/conf/siggrapha",
+      "for_code": "4607"
+    },
+    {
+      "title": "ACM International Conference on Research and Development in Information Retrieval",
+      "acronym": "SIGIR",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sigir",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sigir",
+      "for_code": "4605"
+    },
+    {
+      "title": "Measurement and Modeling of Computer Systems",
+      "acronym": "SIGMETRICS",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sigmetrics",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sigmetrics",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM Special Interest Group on Management of Data Conference",
+      "acronym": "SIGMOD",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sigmod",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sigmod",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Symposium on Computational Geometry",
+      "acronym": "SoCG",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "compgeom",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/compgeom",
+      "for_code": "4613"
+    },
+    {
+      "title": "ACM/SIAM Symposium on Discrete Algorithms",
+      "acronym": "SODA",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "soda",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/soda",
+      "for_code": "4613"
+    },
+    {
+      "title": "ACM SIGOPS Symposium on Operating Systems Principles",
+      "acronym": "SOSP",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sosp",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sosp",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE Symposium on Security and Privacy",
+      "acronym": "SP",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "sp",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sp",
+      "for_code": "4604"
+    },
+    {
+      "title": "ACM Symposium on Theory of Computing",
+      "acronym": "STOC",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "stoc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/stoc",
+      "for_code": "4613"
+    },
+    {
+      "title": "ACM Symposium on User Interface Software and Technology",
+      "acronym": "UIST",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "uist",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/uist",
+      "for_code": "4608"
+    },
+    {
+      "title": "Usenix Security Symposium",
+      "acronym": "USENIX-Security",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "uss",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/uss",
+      "for_code": "4604"
+    },
+    {
+      "title": "International Conference on Very Large Databases",
+      "acronym": "VLDB",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "vldb",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/vldb",
+      "for_code": "4605"
+    },
+    {
+      "title": "IEEE Conference on Virtual Reality and 3D User Interfaces",
+      "acronym": "VR",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "vr",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/vr",
+      "for_code": "4607"
+    },
+    {
+      "title": "International World Wide Web Conference",
+      "acronym": "WWW",
+      "rank": "A*",
+      "source": "ICORE2026",
+      "dblp_key": "www",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/www",
+      "for_code": "4606"
+    },
+    {
+      "title": "Parallel Problem Solving from Nature",
+      "acronym": "PPSN",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ppsn",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ppsn",
+      "for_code": "4611"
+    },
+    {
+      "title": "The International Symposium on Research in Attacks, Intrusions and Defenses (was International Symposium on Recent Advances in Intrusion Detection)",
+      "acronym": "RAID",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "raid",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/raid",
+      "for_code": "4604"
+    },
+    {
+      "title": "IEEE International Requirements Engineering Conference",
+      "acronym": "RE",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "re",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/re",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM International Conference on Recommender Systems",
+      "acronym": "RecSys",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "recsys",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/recsys",
+      "for_code": "4605"
+    },
+    {
+      "title": "IEEE Real-Time and Embedded Technology and Applications Symposium",
+      "acronym": "RTAS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "rtas",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/rtas",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE International Conference on Software Analysis, Evolution and Reengineering",
+      "acronym": "SANER",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "saner",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/saner",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Conference on Theory and Applications of Satisfiability Testing",
+      "acronym": "SAT",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "sat",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sat",
+      "for_code": "4602"
+    },
+    {
+      "title": "International Conference for High Performance Computing, Networking, Storage and Analysis (was Supercomputing Conference)",
+      "acronym": "SC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "sc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sc",
+      "for_code": "CSE"
+    },
+    {
+      "title": "SIAM International Conference on Data Mining",
+      "acronym": "SDM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "sdm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sdm",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Symposium on Software Engineering for Adaptive and Self-Managing Systems",
+      "acronym": "SEAMS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "seams",
+      "dblp_url": "https://dblp.org/db/conf/seams",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM Special Interest Group on Computer Science Education Conference",
+      "acronym": "SIGCSE",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "sigcse",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/sigcse",
+      "for_code": "4608"
+    },
+    {
+      "title": "ACM International Conference on Advances in Geographic Information Systems",
+      "acronym": "SIGSPATIAL",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "gis",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/gis",
+      "for_code": "4601"
+    },
+    {
+      "title": "Tools and Algorithms for Construction and Analysis of Systems",
+      "acronym": "TACAS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "tacas",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/tacas",
+      "for_code": "4612"
+    },
+    {
+      "title": "Conference in Uncertainty in Artificial Intelligence",
+      "acronym": "UAI",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "uai",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/uai",
+      "for_code": "4602"
+    },
+    {
+      "title": "Usenix Annual Technical Conference",
+      "acronym": "USENIX",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "usenix",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/usenix",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE Workshop on Applications of Computer Vision",
+      "acronym": "WACV",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "wacv",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/wacv",
+      "for_code": "4603"
+    },
+    {
+      "title": "ACM International Conference on Web Search and Data Mining",
+      "acronym": "WSDM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "wsdm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/wsdm",
+      "for_code": "4605"
+    },
+    {
+      "title": "IEEE International Conference on Multimedia and Expo",
+      "acronym": "ICME",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icmcs",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icmcs",
+      "for_code": "4603"
+    },
+    {
+      "title": "IEEE International Conference on Program Comprehension (previously IWPC, changed in 2006)",
+      "acronym": "ICPC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "iwpc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/iwpc",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM International Conference on Supercomputing",
+      "acronym": "ICS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ics",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ics",
+      "for_code": "CSE"
+    },
+    {
+      "title": "International Conference on Software Architecture (was previously WICSA)",
+      "acronym": "ICSA",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icsa",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icsa",
+      "for_code": "4612"
+    },
+    {
+      "title": "IEEE International Conference on Software Maintenance and Evolution (prior to 2014 was ICSM, IEEE International Conference on Software Maintenance)",
+      "acronym": "ICSME",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icsm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icsm",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Conference on Service Oriented Computing",
+      "acronym": "ICSOC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icsoc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icsoc",
+      "for_code": "4606"
+    },
+    {
+      "title": "International Conference on Software Testing, Verification and Validation",
+      "acronym": "ICST",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icst",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icst",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Conference on Web and Social Media",
+      "acronym": "ICWSM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icwsm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icwsm",
+      "for_code": "4601"
+    },
+    {
+      "title": "International Joint Conference on Automated Reasoning",
+      "acronym": "IJCAR",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ijcar",
+      "dblp_url": "https://dblp.org/db/conf/ijcar",
+      "for_code": "4602"
+    },
+    {
+      "title": "Internet Measurement Conference",
+      "acronym": "IMC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "imc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/imc",
+      "for_code": "4606"
+    },
+    {
+      "title": "Interspeech (combined EuroSpeech and ICSLP in 2000)",
+      "acronym": "Interspeech",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "interspeech",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/interspeech",
+      "for_code": "4602"
+    },
+    {
+      "title": "IEEE International Parallel and Distributed Processing Symposium (was IPPS and SPDP)",
+      "acronym": "IPDPS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ipps",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ipps",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+      "acronym": "IROS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "iros",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/iros",
+      "for_code": "4602"
+    },
+    {
+      "title": "International Symposium on Software Reliability Engineering",
+      "acronym": "ISSRE",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "issre",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/issre",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Symposium on Software Testing and Analysis",
+      "acronym": "ISSTA",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "issta",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/issta",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Semantic Web Conference",
+      "acronym": "ISWC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "semweb",
+      "dblp_url": "https://dblp.org/db/conf/semweb",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Conference on Intelligent User Interfaces",
+      "acronym": "IUI",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "iui",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/iui",
+      "for_code": "4608"
+    },
+    {
+      "title": "International Conference on Learning Analytics and Knowledge",
+      "acronym": "LAK",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "lak",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/lak",
+      "for_code": "4608"
+    },
+    {
+      "title": "Medical Image Computing and Computer-Assisted Intervention",
+      "acronym": "MICCAI",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "miccai",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/miccai",
+      "for_code": "4601"
+    },
+    {
+      "title": "ACM/IFIP/USENIX International Middleware Conference",
+      "acronym": "Middleware",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "middleware",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/middleware",
+      "for_code": "4606"
+    },
+    {
+      "title": "ACM SIGMOBILE International Conference on Mobile Systems, Applications and Services",
+      "acronym": "Mobisys",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "mobisys",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/mobisys",
+      "for_code": "4606"
+    },
+    {
+      "title": "International Conference on Model Driven Engineering Languages and Systems (Previously UML, changed in 2005)",
+      "acronym": "MODELS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "models",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/models",
+      "for_code": "4612"
+    },
+    {
+      "title": "IEEE International Working Conference on Mining Software Repositories",
+      "acronym": "MSR",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "msr",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/msr",
+      "for_code": "4612"
+    },
+    {
+      "title": "ACM/IEEE International Conference on Modelling, Analysis and Simulation of Wireless and Mobile Systems",
+      "acronym": "MSWIM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "mswim",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/mswim",
+      "for_code": "4606"
+    },
+    {
+      "title": "North American Association for Computational Linguistics",
+      "acronym": "NAACL",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "naacl",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/naacl",
+      "for_code": "4602"
+    },
+    {
+      "title": "ACM Conference on Object Oriented Programming Systems Languages and Applications",
+      "acronym": "OOPSLA",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "oopsla",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/oopsla",
+      "for_code": "4612"
+    },
+    {
+      "title": "Privacy Enhancing Technologies Symposium (was International Workshop of Privacy Enhancing Technologies)",
+      "acronym": "PETS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "popets",
+      "dblp_url": "https://dblp.org/db/journals/popets",
+      "for_code": "4604"
+    },
+    {
+      "title": "IEEE Conference on Computational Complexity",
+      "acronym": "CCC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "coco",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/coco",
+      "for_code": "4613"
+    },
+    {
+      "title": "IEEE Computer Security Foundations Symposium (was CSFW)",
+      "acronym": "CSF",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "csfw",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/csfw",
+      "for_code": "4604"
+    },
+    {
+      "title": "IEEE/ACM International Symposium on Low Power Electronics and Design",
+      "acronym": "ISLPED",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "islped",
+      "dblp_url": "https://dblp.org/db/conf/islped/index.html",
+      "for_code": "CSE"
+    },
+    {
+      "title": "International Joint Conference on Autonomous Agents and Multiagent Systems (previously the International Conference on Multiagent Systems, ICMAS, changed in 2000)",
+      "acronym": "AAMAS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ifaamas",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ifaamas",
+      "for_code": "4602"
+    },
+    {
+      "title": "IEEE International Conference on Web Services",
+      "acronym": "ICWS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icws",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icws",
+      "for_code": "4606"
+    },
+    {
+      "title": "Intelligent Systems in Molecular Biology",
+      "acronym": "ISMB",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ismb",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ismb",
+      "for_code": "4601"
+    },
+    {
+      "title": "ACM Multimedia Systems Conference",
+      "acronym": "MMSys",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "mmsys",
+      "dblp_url": "https://dblp.org/db/conf/mmsys/index.html",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE/IFIP International Conference on Dependable Systems and Networks",
+      "acronym": "DSN",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "dsn",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/dsn",
+      "for_code": "4606"
+    },
+    {
+      "title": "Design, Automation and Test in Europe Conference",
+      "acronym": "DATE",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "date",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/date",
+      "for_code": "CSE"
+    },
+    {
+      "title": "Real Time Systems Symposium",
+      "acronym": "RTSS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "rtss",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/rtss",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE International Test Conference",
+      "acronym": "ITC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "itc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/itc/index.html",
+      "for_code": "CSE"
+    },
+    {
+      "title": "IEEE/ACM International Conference on Computer-Aided Design",
+      "acronym": "ICCAD",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "iccad",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/iccad",
+      "for_code": "CSE"
+    },
+    {
+      "title": "European Symposium on Algorithms",
+      "acronym": "ESA",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "esa",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/esa",
+      "for_code": "4613"
+    },
+    {
+      "title": "International Symposium on Theoretical Aspects of Computer Science",
+      "acronym": "STACS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "stacs",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/stacs",
+      "for_code": "4613"
+    },
+    {
+      "title": "Graph Drawing",
+      "acronym": "GD",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "gd",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/gd",
+      "for_code": "4613"
+    },
+    {
+      "title": "International Workshop on Approximation Algorithms for Combinatorial Optimization Problems and International Conference on Randomization and Computation",
+      "acronym": "APPROX/RANDOM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "approx",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/approx",
+      "for_code": "4613"
+    },
+    {
+      "title": "International Conference on User Modelling, Adaptation, and Personalization (was AH and UM)",
+      "acronym": "UMAP",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "um",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/um",
+      "for_code": "4608"
+    },
+    {
+      "title": "ACM Int'l Symposium on Field Programmable Gate Arrays",
+      "acronym": "FPGA",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "fpga",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/fpga/index.html",
+      "for_code": "CSE"
+    },
+    {
+      "title": "IEEE Visualization",
+      "acronym": "IEEE VIS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "visualization",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/visualization",
+      "for_code": "4608"
+    },
+    {
+      "title": "Eurosys Conference",
+      "acronym": "EuroSys",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "eurosys",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/eurosys",
+      "for_code": "4606"
+    },
+    {
+      "title": "Symposium On Usable Privacy and Security",
+      "acronym": "SOUPS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "soups",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/soups",
+      "for_code": "4608"
+    },
+    {
+      "title": "Workshop on Algorithm Engineering and Experiments",
+      "acronym": "ALENEX",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "alenex",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/alenex",
+      "for_code": "4613"
+    },
+    {
+      "title": "Innovations in Theoretical Computer Science",
+      "acronym": "ITCS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "innovations",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/innovations",
+      "for_code": "4613"
+    },
+    {
+      "title": "Annual Computer Security Applications Conference",
+      "acronym": "ACSAC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "acsac",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/acsac",
+      "for_code": "4604"
+    },
+    {
+      "title": "International Conference on Artificial Intelligence in Education",
+      "acronym": "AIED",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "aied",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/aied",
+      "for_code": "4601"
+    },
+    {
+      "title": "International Conference on Artificial Intelligence and Statistics",
+      "acronym": "AISTATS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "aistats",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/aistats",
+      "for_code": "4611"
+    },
+    {
+      "title": "Asia Conference on Information, Computer and Communications Security",
+      "acronym": "AsiaCCS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "asiaccs",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/asiaccs",
+      "for_code": "4604"
+    },
+    {
+      "title": "International Conference on the Theory and Application of Cryptology and Information Security",
+      "acronym": "ASIACRYPT",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "asiacrypt",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/asiacrypt",
+      "for_code": "4604"
+    },
+    {
+      "title": "International ACM SIGACCESS Conference on Computers and Accessibility",
+      "acronym": "ASSETS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "assets",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/assets",
+      "for_code": "4608"
+    },
+    {
+      "title": "British Machine Vision Conference",
+      "acronym": "BMVC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "bmvc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/bmvc",
+      "for_code": "4603"
+    },
+    {
+      "title": "International Conference in Business Process Management",
+      "acronym": "BPM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "bpm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/bpm",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Conference on Automated Deduction",
+      "acronym": "CADE",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "cade",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cade",
+      "for_code": "4602"
+    },
+    {
+      "title": "International Conference on Advanced Information Systems Engineering",
+      "acronym": "CaiSE",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "caise",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/caise",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Symposium on Code Generation and Optimization",
+      "acronym": "CGO",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "cgo",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cgo",
+      "for_code": "4612"
+    },
+    {
+      "title": "Workshop on Cryptographic Hardware and Embedded Systems",
+      "acronym": "CHES",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ches",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ches",
+      "for_code": "4604"
+    },
+    {
+      "title": "Conference on Innovative Data Systems Research",
+      "acronym": "CIDR",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "cidr",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cidr",
+      "for_code": "4605"
+    },
+    {
+      "title": "ACM International Conference on Information and Knowledge Management",
+      "acronym": "CIKM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "cikm",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cikm",
+      "for_code": "4605"
+    },
+    {
+      "title": "ACM International Conference on Emerging Networking Experiments and Technologies",
+      "acronym": "CoNEXT",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "conext",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/conext",
+      "for_code": "4606"
+    },
+    {
+      "title": "International Conference on Principles and Practice of Constraint Programming",
+      "acronym": "CP",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "cp",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cp",
+      "for_code": "4602"
+    },
+    {
+      "title": "ACM Conference on Computer Supported Cooperative Work",
+      "acronym": "CSCW",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "cscw",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/cscw",
+      "for_code": "4608"
+    },
+    {
+      "title": "Designing Interactive Systems",
+      "acronym": "DIS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ACMdis",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ACMdis",
+      "for_code": "4608"
+    },
+    {
+      "title": "International Symposium on Distributed Computing (was WDAG)",
+      "acronym": "DISC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "wdag",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/wdag",
+      "for_code": "4606"
+    },
+    {
+      "title": "European Association for Computational Linguistics",
+      "acronym": "EACL",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "eacl",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/eacl",
+      "for_code": "4602"
+    },
+    {
+      "title": "International Conference on Evaluation and Assessment in Software Engineering",
+      "acronym": "EASE",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ease",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ease",
+      "for_code": "4612"
+    },
+    {
+      "title": "European Conference on Artificial Intelligence",
+      "acronym": "ECAI",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ecai",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ecai",
+      "for_code": "4602"
+    },
+    {
+      "title": "European Conference on Information Retrieval",
+      "acronym": "ECIR",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ecir",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ecir",
+      "for_code": "4605"
+    },
+    {
+      "title": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Database (PKDD and ECML combined from 2008)",
+      "acronym": "ECML PKDD",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "pkdd",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/pkdd",
+      "for_code": "4611"
+    },
+    {
+      "title": "European Conference on Object-Oriented Programming",
+      "acronym": "ECOOP",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "ecoop",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/ecoop",
+      "for_code": "4612"
+    },
+    {
+      "title": "International Conference on Conceptual Modelling",
+      "acronym": "ER",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "er",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/er",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Symposium on Empirical Software Engineering and Measurement",
+      "acronym": "ESEM",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "esem",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/esem",
+      "for_code": "4612"
+    },
+    {
+      "title": "European Symposium on Programming",
+      "acronym": "ESOP",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "esop",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/esop",
+      "for_code": "4612"
+    },
+    {
+      "title": "European Symposium On Research In Computer Security",
+      "acronym": "ESORICS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "esorics",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/esorics",
+      "for_code": "4604"
+    },
+    {
+      "title": "IEEE European Symposium on Security and Privacy",
+      "acronym": "EuroS&P",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "eurosp",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/eurosp",
+      "for_code": "4604"
+    },
+    {
+      "title": "Conference on File and Storage Technologies",
+      "acronym": "FAST",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "fast",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/fast",
+      "for_code": "4605"
+    },
+    {
+      "title": "Financial Cryptography and Data Security Conference",
+      "acronym": "FC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "fc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/fc",
+      "for_code": "4604"
+    },
+    {
+      "title": "Foundations of Genetic Algorithms",
+      "acronym": "FOGA",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "foga",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/foga",
+      "for_code": "4602"
+    },
+    {
+      "title": "Genetic and Evolutionary Computations",
+      "acronym": "GECCO",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "gecco",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/gecco",
+      "for_code": "4602"
+    },
+    {
+      "title": "USENIX Workshop on Hot Topics in Operating Systems",
+      "acronym": "HotOS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "hotos",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/hotos",
+      "for_code": "4606"
+    },
+    {
+      "title": "ACM International Symposium on High Performance Distributed Computing",
+      "acronym": "HPDC",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "hpdc",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/hpdc",
+      "for_code": "4606"
+    },
+    {
+      "title": "IEEE International Conference on Document Analysis and Recognition",
+      "acronym": "ICDAR",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icdar",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icdar",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Conference on Distributed Computing Systems",
+      "acronym": "ICDCS",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icdcs",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icdcs",
+      "for_code": "4606"
+    },
+    {
+      "title": "International Conference on Database Theory",
+      "acronym": "ICDT",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icdt",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icdt",
+      "for_code": "4605"
+    },
+    {
+      "title": "International Computing Education Research Workshop",
+      "acronym": "ICER",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icer",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icer",
+      "for_code": "4608"
+    },
+    {
+      "title": "International Conference on Functional Programming",
+      "acronym": "ICFP",
+      "rank": "A",
+      "source": "ICORE2026",
+      "dblp_key": "icfp",
+      "dblp_url": "https://dblp.uni-trier.de/db/conf/icfp",
+      "for_code": "4612"
+    }
+  ]
+}
