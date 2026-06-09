@@ -25,3 +25,10 @@ __pycache__/
 *.sln
 *.sw?
 TODO
+
+# Django
+backend_venv/
+backend/db.sqlite3
+
+# Data checkpoints
+data/irins_checkpoint.json
