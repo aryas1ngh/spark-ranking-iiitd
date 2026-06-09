@@ -20,6 +20,8 @@ DATA_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "data")
 
 ICORE_FILE = os.path.join(DATA_DIR, "icore_conferences.json")
 FACULTY_FILE = os.path.join(DATA_DIR, "faculty.json")
+IRINS_FILE = os.path.join(DATA_DIR, "irins_publications.json")
+JOURNALS_FILE = os.path.join(DATA_DIR, "ieee_acm_journals.json")
 OUTPUT_FILE = os.path.join(DATA_DIR, "rankings.json")
 
 DBLP_BASE = "https://dblp.org"
@@ -200,6 +202,7 @@ def process_faculty_member(faculty, icore_lookup, session):
         "score": round(total_score, 4),
         "papers_astar": papers_astar,
         "papers_a": papers_a,
+        "papers_journal": 0,
         "total_matched": len(matched_pubs),
         "publications": matched_pubs,
     }
@@ -250,6 +253,115 @@ def compute_area_breakdown(faculty_results, icore_lookup):
     
     return result
 
+
+def load_irins_data():
+    """Load IRINS publication data if available."""
+    if not os.path.exists(IRINS_FILE):
+        return None
+    with open(IRINS_FILE, "r") as f:
+        return json.load(f)
+
+
+def merge_irins_into_faculty(faculty_results, irins_data):
+    """Merge IRINS-sourced publications (journals + extra conferences) into DBLP results.
+    
+    Deduplicates by normalized title. IRINS journal papers are always added since
+    DBLP pipeline only tracks conferences. Conference papers are added if not already
+    present from DBLP.
+    """
+    if not irins_data:
+        return faculty_results
+    
+    def normalize_name(name):
+        return re.sub(r'[^a-z]', '', name.lower())
+        
+    # Build name->irins_faculty lookup
+    irins_lookup = {}
+    for fac in irins_data.get("faculty", []):
+        # Normalize name for matching
+        name_key = normalize_name(fac["name"])
+        irins_lookup[name_key] = fac
+    
+    merged_count = 0
+    journal_count = 0
+    matched_names = set()
+    
+    for fac_result in faculty_results:
+        fac_name_norm = normalize_name(fac_result["name"])
+        irins_fac = irins_lookup.get(fac_name_norm)
+        if not irins_fac:
+            continue
+        
+        matched_names.add(fac_name_norm)
+        
+        def normalize_title(title):
+            return re.sub(r'[^a-z0-9]', '', title.lower())
+            
+        # Build set of existing titles for deduplication
+        existing_titles = set()
+        for pub in fac_result["publications"]:
+            existing_titles.add(normalize_title(pub["title"]))
+        
+        # Add source field to existing DBLP publications
+        for pub in fac_result["publications"]:
+            if "source" not in pub:
+                pub["source"] = "dblp"
+            if "pub_type" not in pub:
+                pub["pub_type"] = "conference"
+        
+        # Merge IRINS publications
+        for irins_pub in irins_fac.get("publications", []):
+            norm_title = normalize_title(irins_pub["title"])
+            if norm_title in existing_titles:
+                continue  # Already have this from DBLP
+            
+            # Add the publication
+            fac_result["publications"].append(irins_pub)
+            fac_result["score"] = round(fac_result["score"] + irins_pub["adjusted_count"], 4)
+            fac_result["total_matched"] += 1
+            existing_titles.add(norm_title)
+            merged_count += 1
+            
+            if irins_pub.get("pub_type") == "journal":
+                fac_result["papers_journal"] = fac_result.get("papers_journal", 0) + 1
+                journal_count += 1
+            elif irins_pub.get("venue_rank") == "A*":
+                fac_result["papers_astar"] += 1
+            elif irins_pub.get("venue_rank") == "A":
+                fac_result["papers_a"] += 1
+        
+        # Re-sort publications
+        def sort_key(p):
+            type_order = {"A*": 0, "A": 1, "Journal": 2}
+            return (type_order.get(p.get("venue_rank", ""), 3), -p.get("year", 0), p.get("venue", ""))
+        fac_result["publications"].sort(key=sort_key)
+    
+    # Add new faculty from IRINS that weren't in faculty.json
+    new_faculty_count = 0
+    for name_key, irins_fac in irins_lookup.items():
+        if name_key not in matched_names and irins_fac.get("total_matched", 0) > 0:
+            fac_result = {
+                "name": irins_fac["name"],
+                "dblp_pid": None,
+                "irins_id": irins_fac.get("irins_id"),
+                "irins_url": irins_fac.get("irins_url"),
+                "role": irins_fac.get("role", ""),
+                "homepage": irins_fac.get("homepage", ""),
+                "score": irins_fac.get("score", 0),
+                "papers_astar": irins_fac.get("papers_astar", 0),
+                "papers_a": irins_fac.get("papers_a", 0),
+                "papers_journal": irins_fac.get("papers_journal", 0),
+                "total_matched": irins_fac.get("total_matched", 0),
+                "publications": irins_fac.get("publications", []),
+            }
+            faculty_results.append(fac_result)
+            new_faculty_count += 1
+    
+    print(f"  Merged {merged_count} IRINS publications ({journal_count} journals) into existing faculty")
+    if new_faculty_count > 0:
+        print(f"  Added {new_faculty_count} newly discovered faculty from IRINS")
+    
+    return faculty_results
 
 def main():
     print("=" * 60)
@@ -325,18 +437,58 @@ def main():
     # Sort institutions by total score
     all_institutions.sort(key=lambda i: -i["total_score"])
     
+    # Try to merge IRINS data
+    print(f"\nChecking for IRINS data at {IRINS_FILE}...")
+    irins_data = load_irins_data()
+    if irins_data:
+        print(f"  Found IRINS data: {irins_data['total_faculty_scraped']} faculty, "
+              f"{irins_data['total_publications_matched']} matched publications")
+        for inst in all_institutions:
+            inst["faculty"] = merge_irins_into_faculty(inst["faculty"], irins_data)
+            # Recompute totals after merge
+            inst["total_score"] = round(sum(f["score"] for f in inst["faculty"]), 4)
+            inst["total_papers_astar"] = sum(f["papers_astar"] for f in inst["faculty"])
+            inst["total_papers_a"] = sum(f["papers_a"] for f in inst["faculty"])
+            inst["total_papers_journal"] = sum(f.get("papers_journal", 0) for f in inst["faculty"])
+            inst["total_papers"] = sum(f["total_matched"] for f in inst["faculty"])
+            inst["faculty_count"] = len(inst["faculty"])
+            # Re-sort faculty
+            inst["faculty"].sort(key=lambda f: -f["score"])
+            # Recompute area breakdown
+            inst["area_breakdown"] = compute_area_breakdown(inst["faculty"], icore_lookup)
+            
+            print(f"\n  Post-merge totals for {inst['name']}:")
+            print(f"    Total score:       {inst['total_score']:.2f}")
+            print(f"    A* papers:         {inst['total_papers_astar']}")
+            print(f"    A papers:          {inst['total_papers_a']}")
+            print(f"    Journal papers:    {inst.get('total_papers_journal', 0)}")
+            print(f"    Total matched:     {inst['total_papers']}")
+    else:
+        print("  No IRINS data found. Run 'python pipeline/scrape_irins.py' first.")
+        print("  Proceeding with DBLP data only.")
+    
     # Build final output
     # Load ICORE data for conference list in output
     with open(ICORE_FILE, "r") as f:
         icore_data = json.load(f)
     
+    # Load journal data if available
+    journal_count = 0
+    if os.path.exists(JOURNALS_FILE):
+        with open(JOURNALS_FILE, "r") as f:
+            journals_data = json.load(f)
+        journal_count = len(journals_data.get("journals", []))
+    
     output = {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "year_range": [YEAR_START, YEAR_END],
         "conference_source": "ICORE2026",
+        "journal_source": "Curated IEEE/ACM" if journal_count else None,
+        "data_sources": ["DBLP"] + (["IRINS"] if irins_data else []),
         "total_conferences_tracked": len(icore_lookup),
         "total_conferences_astar": icore_data["total_a_star"],
         "total_conferences_a": icore_data["total_a"],
+        "total_journals_tracked": journal_count,
         "institutions": all_institutions,
         "conferences": icore_data["conferences"],
     }
