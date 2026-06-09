@@ -18,17 +18,22 @@ class ConferenceSerializer(serializers.ModelSerializer):
 
 class PublicationSerializer(serializers.ModelSerializer):
     conference = ConferenceSerializer(read_only=True)
+    authors = serializers.SerializerMethodField()
     
     class Meta:
         model = Publication
-        fields = '__all__'
+        fields = ('id', 'title', 'year', 'conference', 'authors', 'doi', 'dblp_key')
+
+    def get_authors(self, obj):
+        return [a.faculty_id for a in obj.authorships.all()]
 
 class AuthorshipSerializer(serializers.ModelSerializer):
-    publication = PublicationSerializer(read_only=True)
+    publication_id = serializers.IntegerField(source='publication.id', read_only=True)
+    author_id = serializers.IntegerField(source='faculty.id', read_only=True)
     
     class Meta:
         model = Authorship
-        fields = '__all__'
+        fields = ('id', 'publication_id', 'author_id', 'credit')
 
 class FacultySerializer(serializers.ModelSerializer):
     institution = InstitutionSerializer(read_only=True)
@@ -39,10 +44,13 @@ class FacultySerializer(serializers.ModelSerializer):
         model = Faculty
         fields = '__all__'
 
-# For rankings, we might want a custom serializer that aggregates data
+class FacultyRankingSerializer(serializers.Serializer):
+    id = serializers.IntegerField(source='faculty_id')
+    name = serializers.CharField(source='faculty_name')
+    score = serializers.FloatField(source='faculty_score')
+
 class RankingSerializer(serializers.Serializer):
     rank = serializers.IntegerField()
     institution = InstitutionSerializer()
     score = serializers.FloatField()
-    papers = serializers.IntegerField()
-    faculty_count = serializers.IntegerField()
+    top_faculty = FacultyRankingSerializer(many=True)
