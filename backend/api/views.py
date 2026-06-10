@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from django.db.models import Sum, Count, F, Case, When, Value, FloatField
+from django.db.models.functions import Coalesce
 from django.utils import timezone
 from .models import Institution, Faculty, Conference, Publication, Authorship
 from .serializers import (
@@ -14,7 +15,16 @@ class InstitutionViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = InstitutionSerializer
 
 class FacultyViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Faculty.objects.all()
+    queryset = Faculty.objects.annotate(
+        score=Coalesce(Sum(
+            F('authorships__credit') * Case(
+                When(authorships__publication__conference__core_rank='A*', then=Value(4.0)),
+                When(authorships__publication__conference__core_rank='A', then=Value(2.0)),
+                default=Value(1.0),
+                output_field=FloatField()
+            )
+        ), Value(0.0))
+    ).all()
     serializer_class = FacultySerializer
 
 class ConferenceViewSet(viewsets.ReadOnlyModelViewSet):

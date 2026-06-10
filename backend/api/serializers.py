@@ -39,10 +39,14 @@ class FacultySerializer(serializers.ModelSerializer):
     institution = InstitutionSerializer(read_only=True)
     department = DepartmentSerializer(read_only=True)
     authorships = AuthorshipSerializer(many=True, read_only=True)
+    score = serializers.SerializerMethodField()
     
     class Meta:
         model = Faculty
         fields = '__all__'
+
+    def get_score(self, obj):
+        return round(getattr(obj, 'score', 0.0), 4)
 
 class FacultyRankingSerializer(serializers.Serializer):
     id = serializers.IntegerField(source='faculty_id')

@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/ICORE-2026-f5a623?style=for-the-badge&labelColor=0c1021" alt="ICORE 2026" />
-  <img src="https://img.shields.io/badge/conferences-170%20A%2FA*-6384ff?style=for-the-badge&labelColor=0c1021" alt="170 A/A* Conferences" />
-  <img src="https://img.shields.io/badge/data%20source-DBLP-34d399?style=for-the-badge&labelColor=0c1021" alt="DBLP" />
+  <img src="https://img.shields.io/badge/Django-REST_API-092E20?style=for-the-badge&logo=django" alt="Django" />
+  <img src="https://img.shields.io/badge/data%20source-DBLP_&_IRINS-34d399?style=for-the-badge&labelColor=0c1021" alt="DBLP & IRINS" />
   <img src="https://img.shields.io/badge/license-MIT-a78bfa?style=for-the-badge&labelColor=0c1021" alt="MIT License" />
 </p>
 
@@ -11,7 +11,7 @@
 <p align="center">
   Rank CS departments using <strong>all</strong> ICORE A*/A conferences; not just the hand-picked CSRankings subset.
   <br />
-  Transparent, data-driven, DBLP-sourced. No CSRankings code used.
+  Transparent, data-driven, DBLP & IRINS-sourced. No CSRankings code used.
 </p>
 
 ---
@@ -30,7 +30,7 @@
 | A\* conferences   | ~30               | **62**                       |
 | Coverage          | Select areas only | **All CS subfields**         |
 | Methodology       | Geometric mean    | Adjusted count (per-author credit) |
-| Data source       | DBLP              | DBLP                               |
+| Data source       | DBLP              | **DBLP + IRINS**                               |
 | Transparency      | Open source       | Open source + open data            |
 
 > **Example:** IIIT Delhi faculty publish extensively in conferences like COMAD, ISEC, IndoCrypt, ICDCN, and many ICORE A-ranked venues that CSRankings ignores entirely. SPARK counts them all.
@@ -43,9 +43,9 @@
 
 - **Node.js** ≥ 18
 - **Python** ≥ 3.10
-- Internet connection (for scraping ICORE and querying DBLP)
+- Internet connection (for scraping ICORE, IRINS, and querying DBLP)
 
-### 1. Install dependencies
+### 1. Install Dependencies
 
 ```bash
 git clone https://github.com/aryas1ngh/spark-ranking-iiitd.git && cd spark-ranking-iiitd
@@ -53,197 +53,114 @@ git clone https://github.com/aryas1ngh/spark-ranking-iiitd.git && cd spark-ranki
 # Frontend
 npm install
 
-# Data pipeline
-python3 -m venv pipeline/.venv
-source pipeline/.venv/bin/activate
-pip install -r pipeline/requirements.txt
+# Backend
+python3 -m venv backend_venv
+source backend_venv/bin/activate
+pip install -r backend/requirements.txt
 ```
 
-### 2. Run the data pipeline
+### 2. Run the Data Pipeline
+
+The backend is built on Django. You need to migrate the database and run the data pipeline loaders to populate it.
 
 ```bash
-source pipeline/.venv/bin/activate
+source backend_venv/bin/activate
+cd backend
 
-# Step 1: Scrape ICORE2026 conference rankings (~40 seconds)
-python pipeline/scrape_icore.py
+# Step 1: Migrate database
+python manage.py migrate
 
-# Step 2: Fetch DBLP publications & compute scores (~1-3 minutes)
-python pipeline/fetch_publications.py
+# Step 2: Load Seed Data (Institutions, Departments)
+python manage.py load_seed_data
+
+# Step 3: Load Faculty from IRINS
+python manage.py load_irins
+
+# Step 4: Fetch DBLP publications for all faculty
+python manage.py fetch_dblp
 ```
 
-### 3. Launch the website
+### 3. Launch the Development Servers
 
+**Run the Backend API:**
 ```bash
+# In backend directory, with virtual environment activated:
+python manage.py runserver
+# → API runs at http://localhost:8000/api/
+```
+
+**Run the Frontend App:**
+```bash
+# In root directory:
 npm run dev
 # → Open http://localhost:5173
 ```
-
-That's it. The website loads `data/rankings.json` and renders everything client-side.
 
 ---
 
 ## Architecture
 
+SPARK uses a **Django REST Framework** backend that handles the heavy lifting of dynamic scoring, and a separate client-side frontend.
+
 ```
 spark/
-├── pipeline/                    # Python data collection scripts
-│   ├── scrape_icore.py          # Scrapes ICORE portal for A*/A conferences
-│   ├── fetch_publications.py    # Fetches DBLP pubs, matches venues, scores
-│   ├── requirements.txt         # Python dependencies
-│   └── .venv/                   # Python virtual environment (gitignored)
+├── backend/                     # Django REST Backend
+│   ├── api/                     # DRF Models, Views, Serializers
+│   │   └── management/commands/ # Data Pipeline scripts
+│   │       ├── load_seed_data.py
+│   │       ├── load_irins.py
+│   │       └── fetch_dblp.py
+│   ├── backend/                 # Project Settings, URLs
+│   ├── db.sqlite3               # Auto-generated SQLite Database
+│   └── requirements.txt         # Python dependencies
 │
-├── data/                        # Generated + curated data
-│   ├── faculty.json             # Manually curated faculty list
-│   ├── icore_conferences.json   # Auto-generated: 170 A*/A conferences
-│   └── rankings.json            # Auto-generated: final scores + publications
+├── data/                        # Local data and checkpoints
 │
 ├── src/                         # Frontend source
 │   ├── main.js                  # App logic, rendering, filters
 │   └── index.css                # Design system (dark mode, glassmorphism)
-│
-├── public/data/                 # Symlink to data/ for Vite serving
-├── index.html                   # Entry point
-├── vite.config.js               # Vite configuration
-└── package.json
 ```
 
-### Data flow
+---
 
-```
-ICORE Portal ──scrape──→ icore_conferences.json ──┐
-                                                   ├──→ rankings.json ──→ Frontend
-faculty.json (manual) ──→ DBLP API ──fetch_pubs───┘
-```
+## API Endpoints
 
-No database, no backend server. The pipeline produces static JSON; the frontend is pure client-side JS.
+The backend provides several robust endpoints for the frontend to consume.
+
+### Dynamic Rankings (`GET /api/rankings/`)
+Returns a pre-computed array of institutions and their top faculty based on dynamic parameters.
+- `area` (str): Comma separated list of FoR Area codes (e.g., `4608`).
+- `start_year` (int): Filter publications on or after year.
+- `end_year` (int): Filter publications on or before year.
+- `top_n` (int): Number of top faculty to return per institution (default: 5).
+
+### Raw Data Endpoints
+For detailed drill-downs or client-side aggregations.
+- `GET /api/institutions/`
+- `GET /api/faculty/` (Includes dynamically annotated total `score` for every faculty member)
+- `GET /api/publications/` (Includes `authors` array of Faculty IDs)
+- `GET /api/authorships/`
+- `GET /api/conferences/`
 
 ---
 
 ## Scoring Methodology
 
-SPARK uses **adjusted counts**, the same method CSRankings uses:
+SPARK uses **adjusted counts**, calculating scores on the fly directly in the database.
 
-1. **For each paper** published at an ICORE A\*/A conference:
-
-   - Credit = `1.0 / number_of_coauthors`
-   - This prevents gaming via large author lists
-2. **Faculty score** = sum of adjusted counts across all matched papers
-3. **Institution score** = sum of all faculty scores
-4. **Year range**: 2015–2025 (configurable in `fetch_publications.py`)
-
-### Conference matching
-
-Each ICORE conference entry includes a DBLP venue URL. We extract the DBLP venue key (e.g., `aaai`, `chi`, `mm`) and match it against the venue key in each DBLP publication record. This ensures exact matching — no fuzzy string comparison.
+1. **For each paper** published at an ICORE A\*/A conference, base credit is distributed by: `1.0 / number_of_coauthors`
+2. **Conference Weighting**: The fractional credit is then multiplied by the venue's tier:
+   - **A\*** = 4.0 multiplier
+   - **A** = 2.0 multiplier
+   - **Default** = 1.0 multiplier
+3. **Faculty Score**: Sum of weighted credits across all matched papers.
+4. **Institution Score**: Sum of all its faculty scores.
 
 ---
 
-## Adding Institutions
+## Data Pipeline
 
-SPARK is designed to be easily extensible. To add a new institution:
+SPARK fetches academic data automatically from two primary sources:
 
-### 1. Edit `data/faculty.json`
-
-Add a new entry to the `institutions` array:
-
-```json
-{
-  "name": "IIT Delhi",
-  "short": "IITD",
-  "country": "India",
-  "website": "https://www.cse.iitd.ac.in",
-  "faculty": [
-    {
-      "name": "Faculty Name",
-      "dblp_pid": "123/4567",
-      "role": "Professor",
-      "homepage": "https://..."
-    }
-  ]
-}
-```
-
-### 2. Find DBLP PIDs
-
-Search for a faculty member's DBLP PID:
-
-```
-https://dblp.org/search/author/api?q=Faculty+Name&format=json&h=5
-```
-
-The PID is the path after `https://dblp.org/pid/` — e.g., `85/6670` or `j/PankajJalote`.
-
-> **Common names**: DBLP uses disambiguation suffixes (e.g., `55/1719-1`). Check the affiliation field to pick the right one.
-
-### 3. Re-run the pipeline
-
-```bash
-source pipeline/.venv/bin/activate
-python pipeline/fetch_publications.py
-```
-
-The ICORE scrape only needs to be re-run if the ICORE rankings are updated.
-
-### 4. Refresh the browser
-
-The dev server picks up data changes automatically via the symlink.
-
----
-
-## Frontend Features
-
-| Feature                  | Description                                                    |
-| ------------------------ | -------------------------------------------------------------- |
-| **🏆 Rankings**    | Sortable institution table with expandable faculty drill-down  |
-| **📊 Areas**       | Visual bar chart of publications per FoR research area         |
-| **📚 Conferences** | Browse all 170 A\*/A conferences; highlights those with papers |
-| **📋 Methodology** | Scoring explanation + SPARK vs CSRankings comparison table     |
-| **🔍 Search**      | Filter by faculty name or institution                          |
-| **⚡ Filters**     | Toggle A\* only / A only / both; filter by research area       |
-| **🌙 Dark Mode**   | Premium dark UI with glassmorphism and micro-animations        |
-
----
-
-## Configuration
-
-Key parameters in `pipeline/fetch_publications.py`:
-
-| Variable          | Default  | Description                                 |
-| ----------------- | -------- | ------------------------------------------- |
-| `YEAR_START`    | `2015` | First year to include                       |
-| `YEAR_END`      | `2025` | Last year to include                        |
-| `DELAY_SECONDS` | `3.0`  | Delay between DBLP requests (rate limiting) |
-| `MAX_RETRIES`   | `4`    | Retry count for DBLP 429 errors             |
-
-To switch to a different ICORE source (e.g., CORE2023), change `PARAMS_BASE["source"]` in `scrape_icore.py`.
-
----
-
-## Rate Limiting
-
-Both the ICORE portal and DBLP enforce rate limits:
-
-- **ICORE**: 2-second delay between page fetches (20 pages total)
-- **DBLP**: 3-second delay between author lookups, with exponential backoff on 429 errors
-
-The pipeline is intentionally slow to be a good citizen. First run takes ~2–4 minutes depending on the number of faculty. Subsequent runs with the same ICORE data only need `fetch_publications.py`.
-
----
-
-## Tech Stack
-
-| Layer         | Technology                              |
-| ------------- | --------------------------------------- |
-| Data pipeline | Python 3, requests, BeautifulSoup, lxml |
-| Frontend      | Vanilla JS, Vanilla CSS, Vite           |
-| Data format   | Static JSON (no database)               |
-| Fonts         | Inter, JetBrains Mono (Google Fonts)    |
-| Data sources  | ICORE Portal, DBLP API                  |
-
-
----
-
-<p align="center">
-  <sub>
-    Built for transparent academic ranking · Data from <a href="https://dblp.org">DBLP</a> and <a href="http://portal.core.edu.au/conf-ranks/">ICORE</a>
-  </sub>
-</p>
+1. **IRINS Scraper**: Parses the institutional research information system to automatically discover and import faculty lists for CS/CSE departments.
+2. **DBLP Fetcher**: Retrieves XML dumps of publications from the DBLP API via `dblp_key` match (preventing string-matching fuzzy errors), resolving exact venue and author matches.
