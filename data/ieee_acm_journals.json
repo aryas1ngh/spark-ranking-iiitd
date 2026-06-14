@@ -1,0 +1,412 @@
+{
+  "source": "Curated Top CS Journals",
+  "description": "Top CS journals (IEEE, ACM, and selected others) for publication matching. Name variants help match against IRINS venue text.",
+  "journals": [
+    {
+      "title": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "acronym": "TPAMI",
+      "publisher": "IEEE",
+      "dblp_key": "pami",
+      "name_variants": ["IEEE Trans Pattern Anal Mach Intell", "IEEE TPAMI", "TPAMI"]
+    },
+    {
+      "title": "IEEE Transactions on Knowledge and Data Engineering",
+      "acronym": "TKDE",
+      "publisher": "IEEE",
+      "dblp_key": "tkde",
+      "name_variants": ["IEEE Trans Knowl Data Eng", "IEEE TKDE", "TKDE"]
+    },
+    {
+      "title": "IEEE Transactions on Information Forensics and Security",
+      "acronym": "TIFS",
+      "publisher": "IEEE",
+      "dblp_key": "tifs",
+      "name_variants": ["IEEE Trans Inf Forensics Secur", "IEEE TIFS", "TIFS"]
+    },
+    {
+      "title": "IEEE Transactions on Mobile Computing",
+      "acronym": "TMC",
+      "publisher": "IEEE",
+      "dblp_key": "tmc",
+      "name_variants": ["IEEE Trans Mob Comput", "IEEE TMC", "TMC"]
+    },
+    {
+      "title": "IEEE Transactions on Neural Networks and Learning Systems",
+      "acronym": "TNNLS",
+      "publisher": "IEEE",
+      "dblp_key": "tnn",
+      "name_variants": ["IEEE Trans Neural Netw Learn Syst", "IEEE TNNLS", "TNNLS"]
+    },
+    {
+      "title": "IEEE Transactions on Software Engineering",
+      "acronym": "TSE",
+      "publisher": "IEEE",
+      "dblp_key": "tse",
+      "name_variants": ["IEEE Trans Softw Eng", "IEEE TSE", "TSE"]
+    },
+    {
+      "title": "IEEE Transactions on Image Processing",
+      "acronym": "TIP",
+      "publisher": "IEEE",
+      "dblp_key": "tip",
+      "name_variants": ["IEEE Trans Image Process", "IEEE TIP", "TIP"]
+    },
+    {
+      "title": "IEEE Transactions on Signal Processing",
+      "acronym": "TSP",
+      "publisher": "IEEE",
+      "dblp_key": "tsp",
+      "name_variants": ["IEEE Trans Signal Process", "IEEE TSP", "TSP"]
+    },
+    {
+      "title": "IEEE Transactions on Multimedia",
+      "acronym": "TMM",
+      "publisher": "IEEE",
+      "dblp_key": "tmm",
+      "name_variants": ["IEEE Trans Multimedia", "IEEE TMM", "TMM"]
+    },
+    {
+      "title": "IEEE Transactions on Visualization and Computer Graphics",
+      "acronym": "TVCG",
+      "publisher": "IEEE",
+      "dblp_key": "tvcg",
+      "name_variants": ["IEEE Trans Vis Comput Graph", "IEEE TVCG", "TVCG"]
+    },
+    {
+      "title": "IEEE Transactions on Parallel and Distributed Systems",
+      "acronym": "TPDS",
+      "publisher": "IEEE",
+      "dblp_key": "tpds",
+      "name_variants": ["IEEE Trans Parallel Distrib Syst", "IEEE TPDS", "TPDS"]
+    },
+    {
+      "title": "IEEE Transactions on Computers",
+      "acronym": "TC",
+      "publisher": "IEEE",
+      "dblp_key": "tc",
+      "name_variants": ["IEEE Trans Comput", "IEEE TC"]
+    },
+    {
+      "title": "IEEE Transactions on Dependable and Secure Computing",
+      "acronym": "TDSC",
+      "publisher": "IEEE",
+      "dblp_key": "tdsc",
+      "name_variants": ["IEEE Trans Dependable Secure Comput", "IEEE TDSC", "TDSC"]
+    },
+    {
+      "title": "IEEE Transactions on Circuits and Systems for Video Technology",
+      "acronym": "TCSVT",
+      "publisher": "IEEE",
+      "dblp_key": "tcsvt",
+      "name_variants": ["IEEE Trans Circuits Syst Video Technol", "IEEE TCSVT", "TCSVT"]
+    },
+    {
+      "title": "IEEE Transactions on Vehicular Technology",
+      "acronym": "TVT",
+      "publisher": "IEEE",
+      "dblp_key": "tvt",
+      "name_variants": ["IEEE Trans Veh Technol", "IEEE TVT", "TVT"]
+    },
+    {
+      "title": "IEEE Transactions on Communications",
+      "acronym": "TCOM",
+      "publisher": "IEEE",
+      "dblp_key": "tcom",
+      "name_variants": ["IEEE Trans Commun", "IEEE TCOM", "TCOM"]
+    },
+    {
+      "title": "IEEE Transactions on Wireless Communications",
+      "acronym": "TWC",
+      "publisher": "IEEE",
+      "dblp_key": "twc",
+      "name_variants": ["IEEE Trans Wirel Commun", "IEEE TWC", "TWC"]
+    },
+    {
+      "title": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+      "acronym": "TCAD",
+      "publisher": "IEEE",
+      "dblp_key": "tcad",
+      "name_variants": ["IEEE Trans Comput Aided Des Integr Circuits Syst", "IEEE TCAD", "TCAD"]
+    },
+    {
+      "title": "IEEE Transactions on Very Large Scale Integration Systems",
+      "acronym": "TVLSI",
+      "publisher": "IEEE",
+      "dblp_key": "tvlsi",
+      "name_variants": ["IEEE Trans Very Large Scale Integr VLSI Syst", "IEEE TVLSI", "TVLSI"]
+    },
+    {
+      "title": "IEEE Transactions on Cybernetics",
+      "acronym": "TCYB",
+      "publisher": "IEEE",
+      "dblp_key": "tcyb",
+      "name_variants": ["IEEE Trans Cybern", "IEEE TCYB", "TCYB"]
+    },
+    {
+      "title": "IEEE Transactions on Computational Social Systems",
+      "acronym": "TCSS",
+      "publisher": "IEEE",
+      "dblp_key": "tcss",
+      "name_variants": ["IEEE Trans Comput Soc Syst", "IEEE TCSS"]
+    },
+    {
+      "title": "IEEE Transactions on Emerging Topics in Computing",
+      "acronym": "TETC",
+      "publisher": "IEEE",
+      "dblp_key": "tetc",
+      "name_variants": ["IEEE Trans Emerg Top Comput", "IEEE TETC"]
+    },
+    {
+      "title": "IEEE Transactions on Affective Computing",
+      "acronym": "TAFFC",
+      "publisher": "IEEE",
+      "dblp_key": "taffc",
+      "name_variants": ["IEEE Trans Affect Comput", "IEEE TAFFC", "TAFFC"]
+    },
+    {
+      "title": "IEEE Signal Processing Letters",
+      "acronym": "SPL",
+      "publisher": "IEEE",
+      "dblp_key": "spl",
+      "name_variants": ["IEEE Signal Process Lett", "IEEE SPL"]
+    },
+    {
+      "title": "IEEE Communications Letters",
+      "acronym": "CL",
+      "publisher": "IEEE",
+      "dblp_key": "icl",
+      "name_variants": ["IEEE Commun Lett"]
+    },
+    {
+      "title": "IEEE Journal of Selected Topics in Signal Processing",
+      "acronym": "JSTSP",
+      "publisher": "IEEE",
+      "dblp_key": "jstsp",
+      "name_variants": ["IEEE J Sel Top Signal Process", "JSTSP"]
+    },
+    {
+      "title": "IEEE Internet of Things Journal",
+      "acronym": "IoTJ",
+      "publisher": "IEEE",
+      "dblp_key": "iotj",
+      "name_variants": ["IEEE Internet Things J", "IEEE IoT Journal"]
+    },
+    {
+      "title": "IEEE Transactions on Big Data",
+      "acronym": "TBD",
+      "publisher": "IEEE",
+      "dblp_key": "tbd",
+      "name_variants": ["IEEE Trans Big Data"]
+    },
+    {
+      "title": "IEEE Transactions on Robotics",
+      "acronym": "TRO",
+      "publisher": "IEEE",
+      "dblp_key": "tro",
+      "name_variants": ["IEEE Trans Robot", "IEEE TRO"]
+    },
+    {
+      "title": "IEEE Transactions on Industrial Informatics",
+      "acronym": "TII",
+      "publisher": "IEEE",
+      "dblp_key": "tii",
+      "name_variants": ["IEEE Trans Ind Inform", "IEEE TII"]
+    },
+    {
+      "title": "IEEE Access",
+      "acronym": "Access",
+      "publisher": "IEEE",
+      "dblp_key": "access",
+      "name_variants": ["IEEE Access"]
+    },
+    {
+      "title": "ACM Computing Surveys",
+      "acronym": "CSUR",
+      "publisher": "ACM",
+      "dblp_key": "csur",
+      "name_variants": ["ACM Comput Surv", "ACM CSUR", "CSUR"]
+    },
+    {
+      "title": "ACM Transactions on Computer-Human Interaction",
+      "acronym": "TOCHI",
+      "publisher": "ACM",
+      "dblp_key": "tochi",
+      "name_variants": ["ACM Trans Comput Hum Interact", "ACM TOCHI", "TOCHI"]
+    },
+    {
+      "title": "ACM Transactions on Database Systems",
+      "acronym": "TODS",
+      "publisher": "ACM",
+      "dblp_key": "tods",
+      "name_variants": ["ACM Trans Database Syst", "ACM TODS", "TODS"]
+    },
+    {
+      "title": "ACM Transactions on Software Engineering and Methodology",
+      "acronym": "TOSEM",
+      "publisher": "ACM",
+      "dblp_key": "tosem",
+      "name_variants": ["ACM Trans Softw Eng Methodol", "ACM TOSEM", "TOSEM"]
+    },
+    {
+      "title": "ACM Transactions on Programming Languages and Systems",
+      "acronym": "TOPLAS",
+      "publisher": "ACM",
+      "dblp_key": "toplas",
+      "name_variants": ["ACM Trans Program Lang Syst", "ACM TOPLAS", "TOPLAS"]
+    },
+    {
+      "title": "ACM Transactions on Information Systems",
+      "acronym": "TOIS",
+      "publisher": "ACM",
+      "dblp_key": "tois",
+      "name_variants": ["ACM Trans Inf Syst", "ACM TOIS", "TOIS"]
+    },
+    {
+      "title": "ACM Transactions on Graphics",
+      "acronym": "TOG",
+      "publisher": "ACM",
+      "dblp_key": "tog",
+      "name_variants": ["ACM Trans Graph", "ACM TOG", "TOG"]
+    },
+    {
+      "title": "ACM Transactions on Multimedia Computing, Communications, and Applications",
+      "acronym": "TOMM",
+      "publisher": "ACM",
+      "dblp_key": "tomccap",
+      "name_variants": ["ACM Trans Multimedia Comput Commun Appl", "ACM TOMM", "TOMM", "ACM Transactions on Multimedia Computing Communications and Applications"]
+    },
+    {
+      "title": "ACM Transactions on the Web",
+      "acronym": "TWEB",
+      "publisher": "ACM",
+      "dblp_key": "tweb",
+      "name_variants": ["ACM Trans Web", "ACM TWEB", "TWEB"]
+    },
+    {
+      "title": "ACM Transactions on Knowledge Discovery from Data",
+      "acronym": "TKDD",
+      "publisher": "ACM",
+      "dblp_key": "tkdd",
+      "name_variants": ["ACM Trans Knowl Discov Data", "ACM TKDD", "TKDD"]
+    },
+    {
+      "title": "ACM Transactions on Intelligent Systems and Technology",
+      "acronym": "TIST",
+      "publisher": "ACM",
+      "dblp_key": "tist",
+      "name_variants": ["ACM Trans Intell Syst Technol", "ACM TIST", "TIST"]
+    },
+    {
+      "title": "ACM Transactions on Sensor Networks",
+      "acronym": "TOSN",
+      "publisher": "ACM",
+      "dblp_key": "tosn",
+      "name_variants": ["ACM Trans Sens Netw", "ACM TOSN", "TOSN"]
+    },
+    {
+      "title": "ACM Transactions on Computer Systems",
+      "acronym": "TOCS",
+      "publisher": "ACM",
+      "dblp_key": "tocs",
+      "name_variants": ["ACM Trans Comput Syst", "ACM TOCS", "TOCS"]
+    },
+    {
+      "title": "ACM Transactions on Design Automation of Electronic Systems",
+      "acronym": "TODAES",
+      "publisher": "ACM",
+      "dblp_key": "todaes",
+      "name_variants": ["ACM Trans Des Autom Electron Syst", "ACM TODAES", "TODAES"]
+    },
+    {
+      "title": "ACM Transactions on Privacy and Security",
+      "acronym": "TOPS",
+      "publisher": "ACM",
+      "dblp_key": "tissec",
+      "name_variants": ["ACM Trans Priv Secur", "ACM TOPS", "TOPS"]
+    },
+    {
+      "title": "Journal of the ACM",
+      "acronym": "JACM",
+      "publisher": "ACM",
+      "dblp_key": "jacm",
+      "name_variants": ["J ACM", "JACM"]
+    },
+    {
+      "title": "Communications of the ACM",
+      "acronym": "CACM",
+      "publisher": "ACM",
+      "dblp_key": "cacm",
+      "name_variants": ["Commun ACM", "CACM"]
+    },
+    {
+      "title": "IEEE/ACM Transactions on Networking",
+      "acronym": "TON",
+      "publisher": "IEEE/ACM",
+      "dblp_key": "ton",
+      "name_variants": ["IEEE ACM Trans Netw", "IEEE ACM Transactions on Networking", "TON"]
+    },
+    {
+      "title": "IEEE/ACM Transactions on Computational Biology and Bioinformatics",
+      "acronym": "TCBB",
+      "publisher": "IEEE/ACM",
+      "dblp_key": "tcbb",
+      "name_variants": ["IEEE ACM Trans Comput Biol Bioinform", "IEEE ACM Transactions on Computational Biology and Bioinformatics", "TCBB"]
+    },
+    {
+      "title": "ACM Transactions on Embedded Computing Systems",
+      "acronym": "TECS",
+      "publisher": "ACM",
+      "dblp_key": "tecs",
+      "name_variants": ["ACM Trans Embed Comput Syst", "ACM TECS", "TECS"]
+    },
+    {
+      "title": "IEEE Transactions on Services Computing",
+      "acronym": "TSC",
+      "publisher": "IEEE",
+      "dblp_key": "tsc",
+      "name_variants": ["IEEE Trans Serv Comput", "IEEE TSC"]
+    },
+    {
+      "title": "IEEE Transactions on Cloud Computing",
+      "acronym": "TCC",
+      "publisher": "IEEE",
+      "dblp_key": "tcc",
+      "name_variants": ["IEEE Trans Cloud Comput", "IEEE TCC"]
+    },
+    {
+      "title": "IEEE Transactions on Network Science and Engineering",
+      "acronym": "TNSE",
+      "publisher": "IEEE",
+      "dblp_key": "tnse",
+      "name_variants": ["IEEE Trans Netw Sci Eng", "IEEE TNSE"]
+    },
+    {
+      "title": "Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies",
+      "acronym": "IMWUT",
+      "publisher": "ACM",
+      "dblp_key": "imwut",
+      "name_variants": ["Proc ACM Interact Mob Wearable Ubiquitous Technol", "IMWUT", "Proceedings of the ACM on Interactive Mobile Wearable and Ubiquitous Technologies"]
+    },
+    {
+      "title": "IEEE Transactions on Network and Service Management",
+      "acronym": "TNSM",
+      "publisher": "IEEE",
+      "dblp_key": "tnsm",
+      "name_variants": ["IEEE Trans Netw Serv Manag", "IEEE TNSM", "TNSM"]
+    },
+    {
+      "title": "IEEE Transactions on Cognitive Communications and Networking",
+      "acronym": "TCCN",
+      "publisher": "IEEE",
+      "dblp_key": "tccn",
+      "name_variants": ["IEEE Trans Cogn Commun Netw", "IEEE TCCN", "TCCN"]
+    },
+    {
+      "title": "Computer Communications",
+      "acronym": "ComCom",
+      "publisher": "Elsevier",
+      "dblp_key": "comcom",
+      "name_variants": ["Comput Commun", "Computer Communications"]
+    }
+  ]
+}

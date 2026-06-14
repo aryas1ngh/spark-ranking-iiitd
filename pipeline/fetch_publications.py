@@ -262,66 +262,134 @@ def load_irins_data():
         return json.load(f)
 
 
+def extract_doi(pub):
+    """Extract normalized DOI from a publication (works for both DBLP and IRINS).
+
+    DBLP stores DOI in the url field (e.g., https://doi.org/10.1609/aaai.v34i10.7146).
+    IRINS stores DOI in the doi field (e.g., 10.1609/aaai.v34i10.7146).
+    """
+    doi = pub.get("doi", "")
+    if doi:
+        return doi.lower().rstrip(".")
+    url = pub.get("url", "")
+    if url:
+        m = re.search(r'doi\.org/(.+)', url)
+        if m:
+            return m.group(1).lower().rstrip(".")
+    return None
+
+
+def titles_match_fuzzy(title1, title2, threshold=0.80):
+    """Check if two titles are near-duplicates.
+
+    Uses two signals:
+      - Containment: if one normalized title is a substring of the other
+        (catches DBLP suffixes like 'Student Abstract', 'Demo', etc.)
+      - Jaccard similarity >= threshold on word sets
+    """
+    norm1 = re.sub(r'[^a-z0-9 ]', '', title1.lower()).strip()
+    norm2 = re.sub(r'[^a-z0-9 ]', '', title2.lower()).strip()
+    if not norm1 or not norm2:
+        return False
+
+    # Containment check: one title is a prefix/subset of the other
+    if norm1 in norm2 or norm2 in norm1:
+        return True
+
+    # Jaccard similarity on word sets
+    words1 = set(norm1.split())
+    words2 = set(norm2.split())
+    jaccard = len(words1 & words2) / len(words1 | words2)
+    return jaccard >= threshold
+
+
 def merge_irins_into_faculty(faculty_results, irins_data):
     """Merge IRINS-sourced publications (journals + extra conferences) into DBLP results.
-    
-    Deduplicates by normalized title. IRINS journal papers are always added since
-    DBLP pipeline only tracks conferences. Conference papers are added if not already
-    present from DBLP.
+
+    Uses three-layer deduplication to avoid counting the same paper twice:
+      1. DOI match — exact DOI comparison (highest confidence, ~89% coverage)
+      2. Exact normalized title match
+      3. Fuzzy title match — word-set Jaccard ≥ 0.80 for same-year papers
     """
     if not irins_data:
         return faculty_results
-    
+
     def normalize_name(name):
         return re.sub(r'[^a-z]', '', name.lower())
-        
+
     # Build name->irins_faculty lookup
     irins_lookup = {}
     for fac in irins_data.get("faculty", []):
         # Normalize name for matching
         name_key = normalize_name(fac["name"])
         irins_lookup[name_key] = fac
-    
+
     merged_count = 0
+    deduped_count = 0
     journal_count = 0
     matched_names = set()
-    
+
     for fac_result in faculty_results:
         fac_name_norm = normalize_name(fac_result["name"])
         irins_fac = irins_lookup.get(fac_name_norm)
         if not irins_fac:
             continue
-        
+
         matched_names.add(fac_name_norm)
-        
+
         def normalize_title(title):
             return re.sub(r'[^a-z0-9]', '', title.lower())
-            
-        # Build set of existing titles for deduplication
+
+        # Build dedup sets from existing DBLP publications
         existing_titles = set()
+        existing_dois = set()
         for pub in fac_result["publications"]:
             existing_titles.add(normalize_title(pub["title"]))
-        
+            doi = extract_doi(pub)
+            if doi:
+                existing_dois.add(doi)
+
         # Add source field to existing DBLP publications
         for pub in fac_result["publications"]:
             if "source" not in pub:
                 pub["source"] = "dblp"
             if "pub_type" not in pub:
                 pub["pub_type"] = "conference"
-        
+
         # Merge IRINS publications
         for irins_pub in irins_fac.get("publications", []):
+            # Layer 1: DOI match (highest confidence)
+            irins_doi = extract_doi(irins_pub)
+            if irins_doi and irins_doi in existing_dois:
+                deduped_count += 1
+                continue  # Definite duplicate
+
+            # Layer 2: Exact normalized title match
             norm_title = normalize_title(irins_pub["title"])
             if norm_title in existing_titles:
+                deduped_count += 1
                 continue  # Already have this from DBLP
-            
-            # Add the publication
+
+            # Layer 3: Fuzzy title match (same year only)
+            is_fuzzy_dup = False
+            for existing_pub in fac_result["publications"]:
+                if existing_pub.get("year") == irins_pub.get("year"):
+                    if titles_match_fuzzy(existing_pub["title"], irins_pub["title"]):
+                        is_fuzzy_dup = True
+                        break
+            if is_fuzzy_dup:
+                deduped_count += 1
+                continue
+
+            # Not a duplicate — add the publication
             fac_result["publications"].append(irins_pub)
             fac_result["score"] = round(fac_result["score"] + irins_pub["adjusted_count"], 4)
             fac_result["total_matched"] += 1
             existing_titles.add(norm_title)
+            if irins_doi:
+                existing_dois.add(irins_doi)
             merged_count += 1
-            
+
             if irins_pub.get("pub_type") == "journal":
                 fac_result["papers_journal"] = fac_result.get("papers_journal", 0) + 1
                 journal_count += 1
@@ -329,13 +397,13 @@ def merge_irins_into_faculty(faculty_results, irins_data):
                 fac_result["papers_astar"] += 1
             elif irins_pub.get("venue_rank") == "A":
                 fac_result["papers_a"] += 1
-        
+
         # Re-sort publications
         def sort_key(p):
             type_order = {"A*": 0, "A": 1, "Journal": 2}
             return (type_order.get(p.get("venue_rank", ""), 3), -p.get("year", 0), p.get("venue", ""))
         fac_result["publications"].sort(key=sort_key)
-    
+
     # Add new faculty from IRINS that weren't in faculty.json
     new_faculty_count = 0
     for name_key, irins_fac in irins_lookup.items():
@@ -356,11 +424,12 @@ def merge_irins_into_faculty(faculty_results, irins_data):
             }
             faculty_results.append(fac_result)
             new_faculty_count += 1
-    
+
     print(f"  Merged {merged_count} IRINS publications ({journal_count} journals) into existing faculty")
+    print(f"  Deduped {deduped_count} cross-source duplicates (DOI + title + fuzzy)")
     if new_faculty_count > 0:
         print(f"  Added {new_faculty_count} newly discovered faculty from IRINS")
-    
+
     return faculty_results
 
 def main():

@@ -210,11 +210,12 @@ def match_journal(venue_text, pub_type, journal_variants):
 def fetch_all_publications(session, expert_id):
     """Fetch all publications for a faculty member from IRINS API.
 
-    Returns list of raw publication dicts.
+    Returns list of raw publication dicts (deduplicated).
     """
     url = f"{BASE_URL}/profile/get_publication"
     headers = {**HEADERS, "X-Requested-With": "XMLHttpRequest"}
     all_pubs = []
+    seen_keys = set()
     page = 0
 
     while page < MAX_PAGES:
@@ -238,7 +239,11 @@ def fetch_all_publications(session, expert_id):
             for pub_div in boxes:
                 pub = parse_publication_div(pub_div)
                 if pub:
-                    all_pubs.append(pub)
+                    # Deduplicate: use DOI as primary key, fall back to title+year
+                    dedup_key = pub.get("doi") or f"{pub['title'].lower().strip()}|{pub.get('year', '')}"
+                    if dedup_key not in seen_keys:
+                        seen_keys.add(dedup_key)
+                        all_pubs.append(pub)
 
             page += 1
             time.sleep(DELAY_SECONDS)

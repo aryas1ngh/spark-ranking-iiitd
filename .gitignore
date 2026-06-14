@@ -32,3 +32,6 @@ backend/db.sqlite3
 
 # Data checkpoints
 data/irins_checkpoint.json
+
+# Reference repos
+frontend_ref/

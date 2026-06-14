@@ -2,6 +2,27 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.1.0 - 2026-06-14
+
+### 1. Journal Matching Expansion
+- **New journals**: Added IMWUT, TNSM, TCCN, and Computer Communications to the curated journal list (`ieee_acm_journals.json`).
+- **Name variant fixes**: Fixed IEEE/ACM → IEEE ACM slash mismatch for TON and TCBB, which caused IRINS venue text to fail matching.
+- **Result**: Arani Bhattacharya's journal count went from 3 → 9 (matching IRINS's displayed count).
+
+### 2. Three-Layer Cross-Source Deduplication
+- **DOI matching**: Extract and normalize DOIs from both DBLP (`url` field) and IRINS (`doi` field) for exact-match dedup (~89% coverage).
+- **Exact title matching**: Existing normalized title comparison (strip non-alphanumeric, lowercase).
+- **Fuzzy title matching**: Word-set Jaccard similarity (≥0.80) plus substring containment check for same-year papers. Catches DBLP suffixes like "(Student Abstract)" and minor title differences across sources.
+- **Result**: 173 cross-source duplicates caught; 0 remaining duplicates across all faculty.
+
+### 3. Within-IRINS Deduplication
+- Added DOI-based dedup in `fetch_all_publications()` to prevent IRINS from returning duplicate entries across paginated API responses.
+
+### 4. Frontend Journal Support
+- Added journal paper counts, timeline bars, and venue badges to the faculty detail page.
+- Added IRINS profile links alongside DBLP links.
+- Updated methodology page to document journal and IRINS data sources.
+
 ## v1.0.0 - 2026-06-10
 
 ### 1. IRINS Data Collection & Deduplication

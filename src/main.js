@@ -8,7 +8,7 @@ import './index.css';
 // ── State ──────────────────────────────────────────────────
 let data = null;
 let filters = {
-  rankFilter: 'all', // 'all', 'astar', 'a'
+  rankFilter: 'all', // 'all', 'astar', 'a', 'journal'
   areaFilter: 'all',
   searchQuery: '',
   activeTab: 'rankings',
@@ -82,6 +82,8 @@ function getFilteredPubs(faculty) {
     pubs = pubs.filter(p => p.venue_rank === 'A*');
   } else if (filters.rankFilter === 'a') {
     pubs = pubs.filter(p => p.venue_rank === 'A');
+  } else if (filters.rankFilter === 'journal') {
+    pubs = pubs.filter(p => p.venue_rank === 'Journal' || p.pub_type === 'journal');
   }
   if (filters.areaFilter !== 'all') {
     pubs = pubs.filter(p => p.for_code === filters.areaFilter);
@@ -102,6 +104,7 @@ function getFilteredPaperCounts(faculty) {
   return {
     astar: pubs.filter(p => p.venue_rank === 'A*').length,
     a: pubs.filter(p => p.venue_rank === 'A').length,
+    journal: pubs.filter(p => p.venue_rank === 'Journal' || p.pub_type === 'journal').length,
     total: pubs.length,
   };
 }
@@ -197,20 +200,23 @@ function renderHero() {
   const yearRange = data.year_range || [2015, 2025];
   const totalPapers = data.institutions.reduce((s, i) => s + i.total_papers, 0);
   const totalFaculty = data.institutions.reduce((s, i) => s + i.faculty_count, 0);
+  const totalJournals = data.institutions.reduce((s, i) => s + (i.total_papers_journal || 0), 0);
+  const dataSources = data.data_sources || ['DBLP'];
 
   return `
     <header class="hero">
       <div class="container">
         <div class="hero-badge animate-in">
           <span class="dot"></span>
-          ICORE ${data.conference_source || '2026'} • Live Data
+          ${dataSources.join(' + ')} · ICORE ${data.conference_source || '2026'} · Live Data
         </div>
         <h1 class="animate-in">
           <span class="gradient-text">SPARK</span>
         </h1>
         <p class="hero-description animate-in">
           Scholarly Publication & Academic Ranking Knowledgebase — ranking CS departments using
-          <strong>all ${data.total_conferences_tracked || 170} ICORE A*/A conferences</strong>,
+          <strong>all ${data.total_conferences_tracked || 170} ICORE A*/A conferences</strong>
+          ${data.total_journals_tracked ? `and <strong>${data.total_journals_tracked} IEEE/ACM journals</strong>` : ''},
           not just the CSRankings subset.
         </p>
 
@@ -223,6 +229,12 @@ function renderHero() {
             <div class="stat-value">${data.total_conferences_a || 0}</div>
             <div class="stat-label">A Conferences</div>
           </div>
+          ${data.total_journals_tracked ? `
+          <div class="stat-item">
+            <div class="stat-value" style="color: var(--accent-purple)">${data.total_journals_tracked}</div>
+            <div class="stat-label">IEEE/ACM Journals</div>
+          </div>
+          ` : ''}
           <div class="stat-item">
             <div class="stat-value emerald">${totalPapers}</div>
             <div class="stat-label">Papers Matched</div>
@@ -268,11 +280,13 @@ function renderControls() {
       <span class="controls-label">Rank</span>
       <div class="toggle-group">
         <button class="toggle-btn ${filters.rankFilter === 'all' ? 'active' : ''}"
-                data-rank="all" id="rank-all">A* + A</button>
+                data-rank="all" id="rank-all">All</button>
         <button class="toggle-btn ${filters.rankFilter === 'astar' ? 'active gold-active' : ''}"
                 data-rank="astar" id="rank-astar">A* Only</button>
         <button class="toggle-btn ${filters.rankFilter === 'a' ? 'active' : ''}"
                 data-rank="a" id="rank-a">A Only</button>
+        <button class="toggle-btn ${filters.rankFilter === 'journal' ? 'active' : ''}"
+                data-rank="journal" id="rank-journal" style="${filters.rankFilter === 'journal' ? 'background: var(--accent-purple); box-shadow: 0 2px 8px rgba(167,139,250,0.3);' : ''}">Journals</button>
       </div>
 
       <span class="controls-label">Area</span>
@@ -344,10 +358,12 @@ function renderInstitutionRow(inst, rank, maxScore) {
   // Get filtered paper counts for institution
   let totalAstar = 0;
   let totalA = 0;
+  let totalJournal = 0;
   for (const f of inst.faculty) {
     const counts = getFilteredPaperCounts(f);
     totalAstar += counts.astar;
     totalA += counts.a;
+    totalJournal += counts.journal;
   }
 
   const rankClass = rank <= 3 ? `rank-${rank}` : 'rank-n';
@@ -369,6 +385,7 @@ function renderInstitutionRow(inst, rank, maxScore) {
         <div class="paper-counts-cell">
           <span class="paper-count astar">★ ${totalAstar} A*</span>
           <span class="paper-count a-rank">● ${totalA} A</span>
+          ${totalJournal > 0 ? `<span class="paper-count journal">◆ ${totalJournal} J</span>` : ''}
         </div>
       </td>
       <td class="score-cell">
@@ -421,11 +438,12 @@ function renderFacultyPanel(inst) {
 function renderFacultyCard(faculty, instShort) {
   const counts = getFilteredPaperCounts(faculty);
   const score = getFilteredScore(faculty);
-  const facultyHash = `#/faculty/${encodeURIComponent(instShort)}/${encodeURIComponent(faculty.dblp_pid)}`;
+  const facultyId = faculty.dblp_pid || faculty.irins_id || faculty.name;
+  const facultyHash = `#/faculty/${encodeURIComponent(instShort)}/${encodeURIComponent(facultyId)}`;
 
   return `
     <a class="faculty-card" href="${facultyHash}"
-         id="faculty-${safeId(instShort + '_' + faculty.dblp_pid)}">
+         id="faculty-${safeId(instShort + '_' + facultyId)}">
       <div class="faculty-card-header">
         <div>
           <div class="faculty-name">${escapeHtml(faculty.name)}</div>
@@ -436,6 +454,7 @@ function renderFacultyCard(faculty, instShort) {
       <div class="faculty-stats">
         <span class="paper-count astar">★ ${counts.astar} A*</span>
         <span class="paper-count a-rank">● ${counts.a} A</span>
+        ${counts.journal > 0 ? `<span class="paper-count journal">◆ ${counts.journal} J</span>` : ''}
       </div>
       <div class="faculty-card-arrow">→</div>
     </a>
@@ -443,16 +462,17 @@ function renderFacultyCard(faculty, instShort) {
 }
 
 function renderPubItem(pub) {
-  const rankClass = pub.venue_rank === 'A*' ? 'astar' : 'a-rank';
+  const rankClass = pub.venue_rank === 'A*' ? 'astar' : (pub.venue_rank === 'Journal' || pub.pub_type === 'journal') ? 'journal' : 'a-rank';
   const titleHtml = pub.url
     ? `<a href="${escapeHtml(pub.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${escapeHtml(pub.title)}</a>`
     : escapeHtml(pub.title);
+  const sourceTag = pub.source ? `<span style="font-size:0.65rem;color:var(--text-muted);margin-left:4px;">${pub.source === 'irins' ? 'IRINS' : 'DBLP'}</span>` : '';
 
   return `
     <div class="pub-item">
       <span class="pub-year">${pub.year}</span>
       <span class="pub-venue-badge ${rankClass}">${escapeHtml(pub.venue)}</span>
-      <span class="pub-title">${titleHtml}</span>
+      <span class="pub-title">${titleHtml}${sourceTag}</span>
       <span class="pub-score">${pub.adjusted_count.toFixed(2)}</span>
     </div>
   `;
@@ -466,7 +486,7 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
     app.innerHTML = renderNotFound('Institution not found');
     return;
   }
-  const faculty = inst.faculty.find(f => f.dblp_pid === dblpPid);
+  const faculty = inst.faculty.find(f => (f.dblp_pid === dblpPid) || (f.irins_id === dblpPid) || (f.name === dblpPid));
   if (!faculty) {
     app.innerHTML = renderNotFound('Faculty member not found');
     return;
@@ -476,16 +496,18 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
   const score = allPubs.reduce((s, p) => s + p.adjusted_count, 0);
   const astarPubs = allPubs.filter(p => p.venue_rank === 'A*');
   const aPubs = allPubs.filter(p => p.venue_rank === 'A');
+  const journalPubs = allPubs.filter(p => p.venue_rank === 'Journal' || p.pub_type === 'journal');
 
   // Area breakdown for this faculty member
   const areaMap = {};
   for (const pub of allPubs) {
-    const code = pub.for_code || 'Unknown';
-    if (!areaMap[code]) areaMap[code] = { code, papers: 0, astar: 0, a: 0, score: 0 };
+    const code = pub.for_code || (pub.pub_type === 'journal' ? 'Journal' : 'Unknown');
+    if (!areaMap[code]) areaMap[code] = { code, papers: 0, astar: 0, a: 0, journal: 0, score: 0 };
     areaMap[code].papers++;
     areaMap[code].score += pub.adjusted_count;
     if (pub.venue_rank === 'A*') areaMap[code].astar++;
-    else areaMap[code].a++;
+    else if (pub.venue_rank === 'A') areaMap[code].a++;
+    else if (pub.venue_rank === 'Journal' || pub.pub_type === 'journal') areaMap[code].journal++;
   }
   const areas = Object.values(areaMap).sort((a, b) => b.papers - a.papers);
   const maxAreaPapers = Math.max(...areas.map(a => a.papers), 1);
@@ -521,14 +543,16 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
   // Year-wise publication timeline
   const yearMap = {};
   for (const pub of allPubs) {
-    if (!yearMap[pub.year]) yearMap[pub.year] = { astar: 0, a: 0 };
+    if (!yearMap[pub.year]) yearMap[pub.year] = { astar: 0, a: 0, journal: 0 };
     if (pub.venue_rank === 'A*') yearMap[pub.year].astar++;
-    else yearMap[pub.year].a++;
+    else if (pub.venue_rank === 'A') yearMap[pub.year].a++;
+    else if (pub.venue_rank === 'Journal' || pub.pub_type === 'journal') yearMap[pub.year].journal++;
   }
   const years = Object.keys(yearMap).map(Number).sort();
-  const maxYearPapers = Math.max(...years.map(y => yearMap[y].astar + yearMap[y].a), 1);
+  const maxYearPapers = Math.max(...years.map(y => yearMap[y].astar + yearMap[y].a + yearMap[y].journal), 1);
 
-  const dblpUrl = `https://dblp.org/pid/${dblpPid}`;
+  const dblpUrl = faculty.dblp_pid ? `https://dblp.org/pid/${faculty.dblp_pid}` : null;
+  const irinsUrl = faculty.irins_url || (faculty.irins_id ? `https://iiitd.irins.org/profile/${faculty.irins_id}` : null);
 
   app.innerHTML = `
     <div class="bg-grid"></div>
@@ -558,7 +582,8 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
         </div>
         <div class="fd-links">
           ${faculty.homepage ? `<a href="${escapeHtml(faculty.homepage)}" target="_blank" rel="noopener" class="fd-link">🏠 Homepage</a>` : ''}
-          <a href="${escapeHtml(dblpUrl)}" target="_blank" rel="noopener" class="fd-link">📚 DBLP Profile</a>
+          ${dblpUrl ? `<a href="${escapeHtml(dblpUrl)}" target="_blank" rel="noopener" class="fd-link">📚 DBLP Profile</a>` : ''}
+          ${irinsUrl ? `<a href="${escapeHtml(irinsUrl)}" target="_blank" rel="noopener" class="fd-link">🔬 IRINS Profile</a>` : ''}
         </div>
       </div>
 
@@ -571,6 +596,12 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
           <div class="fd-stat-number blue">${aPubs.length}</div>
           <div class="fd-stat-desc">A Papers</div>
         </div>
+        ${journalPubs.length > 0 ? `
+        <div class="fd-stat-card">
+          <div class="fd-stat-number" style="color: var(--accent-purple)">${journalPubs.length}</div>
+          <div class="fd-stat-desc">Journal Papers</div>
+        </div>
+        ` : ''}
         <div class="fd-stat-card">
           <div class="fd-stat-number emerald">${allPubs.length}</div>
           <div class="fd-stat-desc">Total Papers</div>
@@ -601,6 +632,7 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
                 <span class="fd-timeline-count">
                   ${yearMap[y].astar > 0 ? `<span class="paper-count astar">★${yearMap[y].astar}</span>` : ''}
                   ${yearMap[y].a > 0 ? `<span class="paper-count a-rank">●${yearMap[y].a}</span>` : ''}
+                  ${yearMap[y].journal > 0 ? `<span class="paper-count journal">◆${yearMap[y].journal}</span>` : ''}
                 </span>
               </div>
             `;
@@ -609,6 +641,7 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
         <div class="fd-timeline-legend">
           <span class="paper-count astar">★ A*</span>
           <span class="paper-count a-rank">● A</span>
+          <span class="paper-count journal">◆ Journal</span>
         </div>
       </section>` : ''}
 
@@ -631,6 +664,7 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
                   <span>
                     ${area.astar > 0 ? `<span class="paper-count astar">★${area.astar}</span>` : ''}
                     ${area.a > 0 ? `<span class="paper-count a-rank">●${area.a}</span>` : ''}
+                    ${area.journal > 0 ? `<span class="paper-count journal">◆${area.journal}</span>` : ''}
                   </span>
                 </div>
               </div>
@@ -648,7 +682,7 @@ function renderFacultyDetailPage(app, instShort, dblpPid) {
         </div>
         <div class="fd-venues-grid">
           ${venues.map(v => {
-            const rankClass = v.rank === 'A*' ? 'astar' : 'a-rank';
+            const rankClass = v.rank === 'A*' ? 'astar' : (v.rank === 'Journal') ? 'journal' : 'a-rank';
             return `
               <div class="fd-venue-chip">
                 <span class="pub-venue-badge ${rankClass}">${escapeHtml(v.venue)}</span>
@@ -824,6 +858,10 @@ function renderMethodology() {
   const onlyCSR = csrankingsVenues.filter(a => !icoreAcronyms.has(a)).sort();
   const both = csrankingsVenues.filter(a => icoreAcronyms.has(a)).sort();
 
+  const dataSources = data.data_sources || ['DBLP'];
+  const hasIRINS = dataSources.includes('IRINS');
+  const hasJournals = (data.total_journals_tracked || 0) > 0;
+
   return `
     <section class="section">
       <div class="methodology">
@@ -834,7 +872,8 @@ function renderMethodology() {
 
         <h3>How SPARK Works</h3>
         <p>
-          SPARK ranks CS departments by counting faculty publications in top-tier conferences,
+          SPARK ranks CS departments by counting faculty publications in top-tier conferences
+          ${hasJournals ? 'and IEEE/ACM journals' : ''},
           using the <strong>ICORE ${data.conference_source || '2026'}</strong> ranking system as the
           authoritative source for which conferences are "top-tier."
         </p>
@@ -842,6 +881,7 @@ function renderMethodology() {
         <h3>Scoring</h3>
         <ul>
           <li>We use <strong>all ${data.total_conferences_tracked} ICORE A* and A conferences</strong> (not a hand-picked subset)</li>
+          ${hasJournals ? `<li>We also track <strong>${data.total_journals_tracked} curated IEEE and ACM journals</strong> (Transactions, Letters, etc.)</li>` : ''}
           <li>Each paper is counted as <code>1.0</code> total, split equally among co-authors (adjusted count)</li>
           <li>A faculty member's score = sum of their adjusted counts across all matched papers</li>
           <li>An institution's score = sum of all faculty scores</li>
@@ -851,8 +891,10 @@ function renderMethodology() {
         <h3>Data Sources</h3>
         <ul>
           <li><strong>Conference rankings</strong>: ICORE Portal (portal.core.edu.au) — ${data.total_conferences_astar || 0} A*, ${data.total_conferences_a || 0} A</li>
+          ${hasJournals ? `<li><strong>Journal list</strong>: Curated top IEEE/ACM journals — ${data.total_journals_tracked} journals tracked</li>` : ''}
           <li><strong>Publications</strong>: DBLP (dblp.org) — matched by venue key</li>
-          <li><strong>Faculty list</strong>: Manually curated with DBLP PIDs</li>
+          ${hasIRINS ? `<li><strong>IRINS profiles</strong>: Indian Research Information Network — supplements DBLP with journal papers and additional conference matches</li>` : ''}
+          <li><strong>Faculty list</strong>: ${hasIRINS ? 'Auto-discovered from IRINS sitemap (filtered to CS/CSE department)' : 'Manually curated with DBLP PIDs'}</li>
         </ul>
 
         <h3>SPARK vs CSRankings: Conference Coverage</h3>
@@ -890,7 +932,7 @@ function renderMethodology() {
         </table>
 
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">
-          Generated: ${data.generated_at || 'N/A'} · Data pipeline built with Python, DBLP API, and ICORE Portal.
+          Generated: ${data.generated_at || 'N/A'} · Data pipeline built with Python, DBLP API, IRINS, and ICORE Portal.
           No CSRankings code was used.
         </p>
       </div>
@@ -903,7 +945,8 @@ function renderFooter() {
     <footer class="footer">
       <p>
         SPARK — Scholarly Publication & Academic Ranking Knowledgebase ·
-        Data sourced from <a href="https://dblp.org" target="_blank" rel="noopener">DBLP</a> and
+        Data sourced from <a href="https://dblp.org" target="_blank" rel="noopener">DBLP</a>,
+        <a href="https://iiitd.irins.org" target="_blank" rel="noopener">IRINS</a>, and
         <a href="http://portal.core.edu.au/conf-ranks/" target="_blank" rel="noopener">ICORE</a> ·
         Built for transparent academic ranking
       </p>
