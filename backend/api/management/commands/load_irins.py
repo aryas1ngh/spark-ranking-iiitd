@@ -62,22 +62,32 @@ class Command(BaseCommand):
                 if pub_title_norm in existing_pubs:
                     continue
                 
-                # Match conference/journal
-                venue_name = pub.get('venue_full', '') or pub.get('venue', '')
-                if not venue_name:
-                    continue
+                # Match conference/journal — try multiple strategies
+                venue_acronym = pub.get('venue', '')
+                venue_full = pub.get('venue_full', '')
+                venue_rank = pub.get('venue_rank', '')
                 
-                # In IRINS, we need a fuzzy match to existing conferences/journals,
-                # For this MVP loader, let's look for exact match or just create a stub
-                # We can do an exact match on acronym if available, else by full name
-                conference = Conference.objects.filter(full_name__iexact=venue_name).first()
+                conference = None
+                
+                # Strategy 1: Match by acronym (most reliable)
+                if venue_acronym:
+                    conference = Conference.objects.filter(acronym__iexact=venue_acronym).first()
+                
+                # Strategy 2: Match by full name (exact)
+                if not conference and venue_full:
+                    conference = Conference.objects.filter(full_name__iexact=venue_full).first()
+                
+                # Strategy 3: Match by full name (contains)
+                if not conference and venue_full:
+                    conference = Conference.objects.filter(full_name__icontains=venue_full[:50]).first()
+                
+                # Fallback: create a stub venue
                 if not conference:
-                    # Very simple fallback: create a stub venue if not found 
-                    # (ideally we should use the same fuzzy matcher here as in python script)
+                    rank = 'Journal' if venue_rank == 'Journal' else 'Unknown'
                     conference = Conference.objects.create(
-                        acronym=venue_name[:10],
-                        full_name=venue_name,
-                        core_rank='Unknown'
+                        acronym=venue_acronym or venue_full[:10],
+                        full_name=venue_full or venue_acronym,
+                        core_rank=rank,
                     )
                 
                 publication, created = Publication.objects.get_or_create(

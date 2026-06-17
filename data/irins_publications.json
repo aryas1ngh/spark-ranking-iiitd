@@ -3,7 +3,7 @@
   "institution": "IIIT Delhi",
   "institution_short": "IIITD",
   "base_url": "https://iiitd.irins.org",
-  "generated_at": "2026-06-14T17:35:13Z",
+  "generated_at": "2026-06-17T10:01:47Z",
   "year_range": [
     2015,
     2026
@@ -11,11 +11,11 @@
   "conference_source": "ICORE2026",
   "journal_source": "Curated IEEE/ACM",
   "total_faculty_scraped": 26,
-  "total_publications_scraped": 1096,
-  "total_publications_matched": 319,
-  "total_score": 74.735,
-  "total_papers_astar": 146,
-  "total_papers_a": 123,
+  "total_publications_scraped": 1094,
+  "total_publications_matched": 305,
+  "total_score": 71.9017,
+  "total_papers_astar": 136,
+  "total_papers_a": 119,
   "total_papers_journal": 50,
   "faculty": [
     {
@@ -25,54 +25,13 @@
       "role": "Assistant Professor",
       "department": "Department of Computer Science and Engineering",
       "homepage": "",
-      "score": 19.8099,
-      "papers_astar": 59,
+      "score": 18.6433,
+      "papers_astar": 53,
       "papers_a": 28,
       "papers_journal": 7,
-      "total_matched": 94,
+      "total_matched": 88,
       "total_scraped": 211,
       "publications": [
-        {
-          "title": "BRI-MH: Behavioral Risk Index for Mental Health — An Interpretable Multimodal LLM-Augmented Framework (Student Abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2026,
-          "num_authors": 3,
-          "authors": [
-            "Mann M.",
-            "Anand A.",
-            "Shah R.R."
-          ],
-          "adjusted_count": 0.3333,
-          "doi": "10.1609/aaai.v40i48.42252",
-          "url": "http://dx.doi.org/10.1609/aaai.v40i48.42252",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "IMPACT: Integrated Multimodal Pipeline for Rapid Accident Causality Tracking (Student Abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2026,
-          "num_authors": 6,
-          "authors": [
-            "Chauhan V.",
-            "Anand A.",
-            "Luthra M.",
-            "Dos Santos U.J.L.",
-            "Binnig C.",
-            "Shah R.R."
-          ],
-          "adjusted_count": 0.1667,
-          "doi": "10.1609/aaai.v40i48.42198",
-          "url": "http://dx.doi.org/10.1609/aaai.v40i48.42198",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
         {
           "title": "ALPHA: Action-Based Learning for Pluralistic Human Alignment in Large Language Models",
           "venue": "AAAI",
@@ -93,28 +52,6 @@
           "adjusted_count": 0.125,
           "doi": "10.1609/aaai.v40i44.41056",
           "url": "http://dx.doi.org/10.1609/aaai.v40i44.41056",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "When Equal Isn’t Fair: Mitigating Over-Normalization in Large Language Models (Student Abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2026,
-          "num_authors": 6,
-          "authors": [
-            "Satyadev R.",
-            "Kumar A.G.",
-            "Anand A.",
-            "Shah R.R.",
-            "Wang Z.",
-            "Prasad M."
-          ],
-          "adjusted_count": 0.1667,
-          "doi": "10.1609/aaai.v40i48.42279",
-          "url": "http://dx.doi.org/10.1609/aaai.v40i48.42279",
           "for_code": "4602",
           "source": "irins",
           "pub_type": "conference"
@@ -340,28 +277,6 @@
           "pub_type": "conference"
         },
         {
-          "title": "Contrastive Personalization Approach to Suspect Identification (Student Abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2022,
-          "num_authors": 6,
-          "authors": [
-            "Gupta D.",
-            "Bhasin D.",
-            "Bhagat S.",
-            "Uppal S.",
-            "Kumaraguru P.",
-            "Shah R.R."
-          ],
-          "adjusted_count": 0.1667,
-          "doi": "10.1609/aaai.v36i11.21617",
-          "url": "http://dx.doi.org/10.1609/aaai.v36i11.21617",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
           "title": "Using Sampling to Estimate and Improve Performance of Automated Scoring Systems with Guarantees",
           "venue": "AAAI",
           "venue_full": "National Conference of the American Association for Artificial Intelligence",
@@ -575,28 +490,6 @@
           "pub_type": "conference"
         },
         {
-          "title": "SpotFake+: A multimodal framework for fake news detection via transfer learning (student abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2020,
-          "num_authors": 6,
-          "authors": [
-            "Singhal S.",
-            "Kabra A.",
-            "Sharma M.",
-            "Shah R.R.",
-            "Chakraborty T.",
-            "Kumaraguru P."
-          ],
-          "adjusted_count": 0.1667,
-          "doi": null,
-          "url": null,
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
           "title": "Suicide Risk Assessment via Temporal Psycholinguistic Modeling",
           "venue": "AAAI",
           "venue_full": "National Conference of the American Association for Artificial Intelligence",
@@ -670,28 +563,6 @@
             "Shah R.R."
           ],
           "adjusted_count": 0.2,
-          "doi": null,
-          "url": null,
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Keyphrase generation for scientific articles using GANs (student abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2020,
-          "num_authors": 6,
-          "authors": [
-            "Swaminathan A.",
-            "Gupta R.K.",
-            "Zhang H.",
-            "Mahata D.",
-            "Gosangi R.",
-            "Shah R.R."
-          ],
-          "adjusted_count": 0.1667,
           "doi": null,
           "url": null,
           "for_code": "4602",
@@ -785,17 +656,17 @@
           "pub_type": "conference"
         },
         {
-          "title": "Context-aware sarcasm detection using BERT",
+          "title": "Generating fluent translations from disfluent text without access to fluent references: IIT Bombay@IWSLT2020",
           "venue": "ACL",
           "venue_full": "Association for Computational Linguistics",
           "venue_rank": "A*",
           "year": 2020,
           "num_authors": 4,
           "authors": [
-            "Baruah A.",
-            "Das K.A.",
-            "Barbhuiya F.A.",
-            "Dey K."
+            "Saini N.",
+            "Khatri J.",
+            "Jyothi P.",
+            "Bhattacharyya P."
           ],
           "adjusted_count": 0.25,
           "doi": "10.18653/v1/P17",
@@ -3711,11 +3582,11 @@
       "role": "Professor",
       "department": "Department of Computer Science and Engineering",
       "homepage": "",
-      "score": 4.5869,
-      "papers_astar": 11,
+      "score": 4.3869,
+      "papers_astar": 10,
       "papers_a": 10,
       "papers_journal": 1,
-      "total_matched": 22,
+      "total_matched": 21,
       "total_scraped": 81,
       "publications": [
         {
@@ -3754,27 +3625,6 @@
           "doi": "10.1145/3626772.3657940",
           "url": "http://dx.doi.org/10.1145/3626772.3657940",
           "for_code": "4605",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Solving Visual Analogies Using Neural Algorithmic Reasoning (Student Abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2022,
-          "num_authors": 5,
-          "authors": [
-            "Sonwane A.",
-            "Shroff G.",
-            "Vig L.",
-            "Srinivasan A.",
-            "Dash T."
-          ],
-          "adjusted_count": 0.2,
-          "doi": "10.1609/aaai.v36i11.21664",
-          "url": "http://dx.doi.org/10.1609/aaai.v36i11.21664",
-          "for_code": "4602",
           "source": "irins",
           "pub_type": "conference"
         },
@@ -4982,7 +4832,7 @@
       "papers_a": 4,
       "papers_journal": 4,
       "total_matched": 10,
-      "total_scraped": 143,
+      "total_scraped": 141,
       "publications": [
         {
           "title": "Hindi Chatbot for Supporting Maternal and Child Health Related Queries in Rural India",
@@ -5362,203 +5212,6 @@
       ]
     },
     {
-      "name": "Mukesh Mohania",
-      "irins_id": "163520",
-      "irins_url": "https://iiitd.irins.org/profile/163520",
-      "role": "Professor",
-      "department": "Department of Computer Science and Engineering",
-      "homepage": "",
-      "score": 2.4333,
-      "papers_astar": 1,
-      "papers_a": 5,
-      "papers_journal": 3,
-      "total_matched": 9,
-      "total_scraped": 47,
-      "publications": [
-        {
-          "title": "SymTax: Symbiotic Relationship and Taxonomy Fusion for Effective Citation Recommendation",
-          "venue": "ACL",
-          "venue_full": "Association for Computational Linguistics",
-          "venue_rank": "A*",
-          "year": 2024,
-          "num_authors": 4,
-          "authors": [
-            "Goyal K.",
-            "Goel M.",
-            "Goyal V.",
-            "Mohania M."
-          ],
-          "adjusted_count": 0.25,
-          "doi": "10.18653/v1/2024.findings-acl.533",
-          "url": "http://dx.doi.org/10.18653/v1/2024.findings-acl.533",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "PathLens: Structurally Enhancing Heterophilic Graphs for GNNs",
-          "venue": "CIKM",
-          "venue_full": "ACM International Conference on Information and Knowledge Management",
-          "venue_rank": "A",
-          "year": 2025,
-          "num_authors": 4,
-          "authors": [
-            "Goyal K.",
-            "Samanta S.",
-            "Goyal V.",
-            "Mohania M."
-          ],
-          "adjusted_count": 0.25,
-          "doi": "10.1145/3746252.3761256",
-          "url": "http://dx.doi.org/10.1145/3746252.3761256",
-          "for_code": "4605",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Poster: Secure Data Sharing with Decentralised Data Ring Fencing",
-          "venue": "ICDCS",
-          "venue_full": "International Conference on Distributed Computing Systems",
-          "venue_rank": "A",
-          "year": 2024,
-          "num_authors": 5,
-          "authors": [
-            "Nangia A.",
-            "Bhupal S.",
-            "Mittal K.",
-            "Mohania M.",
-            "Kundu A."
-          ],
-          "adjusted_count": 0.2,
-          "doi": "10.1109/ICDCS60910.2024.00149",
-          "url": "http://dx.doi.org/10.1109/ICDCS60910.2024.00149",
-          "for_code": "4606",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Unsupervised Question Duplicate and Related Questions Detection in e-learning platforms",
-          "venue": "WSDM",
-          "venue_full": "ACM International Conference on Web Search and Data Mining",
-          "venue_rank": "A",
-          "year": 2023,
-          "num_authors": 5,
-          "authors": [
-            "Chowdhary M.",
-            "Goyal S.",
-            "Venktesh V.",
-            "Mohania M.",
-            "Goyal V."
-          ],
-          "adjusted_count": 0.2,
-          "doi": "10.1145/3539597.3573035",
-          "url": "http://dx.doi.org/10.1145/3539597.3573035",
-          "for_code": "4605",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Multi-Relational Graph Transformer for Automatic Short Answer Grading",
-          "venue": "NAACL",
-          "venue_full": "North American Association for Computational Linguistics",
-          "venue_rank": "A",
-          "year": 2022,
-          "num_authors": 5,
-          "authors": [
-            "Agarwal R.",
-            "Khurana V.",
-            "Grover K.",
-            "Mohania M.",
-            "Goyal V."
-          ],
-          "adjusted_count": 0.2,
-          "doi": "10.18653/v1/2022.naacl-main.146",
-          "url": "http://dx.doi.org/10.18653/v1/2022.naacl-main.146",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Labeling educational content with academic learning standards",
-          "venue": "SDM",
-          "venue_full": "SIAM International Conference on Data Mining",
-          "venue_rank": "A",
-          "year": 2015,
-          "num_authors": 6,
-          "authors": [
-            "Contractor D.",
-            "Popat K.",
-            "Ikbal S.",
-            "Negi S.",
-            "Sengupta B.",
-            "Mohania M.K."
-          ],
-          "adjusted_count": 0.1667,
-          "doi": "10.1137/1.9781611974010.16",
-          "url": "http://dx.doi.org/10.1137/1.9781611974010.16",
-          "for_code": "4605",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "TagRec++: Hierarchical Label Aware Attention Network for Question Categorization",
-          "venue": "TKDE",
-          "venue_full": "IEEE Transactions on Knowledge and Data Engineering",
-          "venue_rank": "Journal",
-          "publisher": "IEEE",
-          "year": 2024,
-          "num_authors": 3,
-          "authors": [
-            "Venktesh V.",
-            "Mohania M.",
-            "Goyal V."
-          ],
-          "adjusted_count": 0.3333,
-          "doi": "10.1109/TKDE.2024.3354504",
-          "url": "http://dx.doi.org/10.1109/TKDE.2024.3354504",
-          "source": "irins",
-          "pub_type": "journal"
-        },
-        {
-          "title": "General chairs’ preface",
-          "venue": "CL",
-          "venue_full": "IEEE Communications Letters",
-          "venue_rank": "Journal",
-          "publisher": "IEEE",
-          "year": 2021,
-          "num_authors": 3,
-          "authors": [
-            "Agrawal R.K.",
-            "Krishna Reddy P.",
-            "Srivastava J."
-          ],
-          "adjusted_count": 0.3333,
-          "doi": null,
-          "url": null,
-          "source": "irins",
-          "pub_type": "journal"
-        },
-        {
-          "title": "Special issue of DaWak 2014",
-          "venue": "CL",
-          "venue_full": "IEEE Communications Letters",
-          "venue_rank": "Journal",
-          "publisher": "IEEE",
-          "year": 2016,
-          "num_authors": 2,
-          "authors": [
-            "Bellatreche L.",
-            "Mohania M."
-          ],
-          "adjusted_count": 0.5,
-          "doi": null,
-          "url": null,
-          "source": "irins",
-          "pub_type": "journal"
-        }
-      ]
-    },
-    {
       "name": "Vikram Goyal",
       "irins_id": "184439",
       "irins_url": "https://iiitd.irins.org/profile/184439",
@@ -5781,17 +5434,152 @@
       ]
     },
     {
+      "name": "Mukesh Mohania",
+      "irins_id": "163520",
+      "irins_url": "https://iiitd.irins.org/profile/163520",
+      "role": "Professor",
+      "department": "Department of Computer Science and Engineering",
+      "homepage": "",
+      "score": 1.7833,
+      "papers_astar": 1,
+      "papers_a": 2,
+      "papers_journal": 3,
+      "total_matched": 6,
+      "total_scraped": 47,
+      "publications": [
+        {
+          "title": "Auto-req: Automatic detection of pre-requisite dependencies between academic videos",
+          "venue": "ACL",
+          "venue_full": "Association for Computational Linguistics",
+          "venue_rank": "A*",
+          "year": 2023,
+          "num_authors": 6,
+          "authors": [
+            "Thareja R.",
+            "Garg R.",
+            "Baghel S.",
+            "Dwivedi D.",
+            "Mohania M.",
+            "Kulshrestha R."
+          ],
+          "adjusted_count": 0.1667,
+          "doi": null,
+          "url": null,
+          "for_code": "4602",
+          "source": "irins",
+          "pub_type": "conference"
+        },
+        {
+          "title": "PathLens: Structurally Enhancing Heterophilic Graphs for GNNs",
+          "venue": "CIKM",
+          "venue_full": "ACM International Conference on Information and Knowledge Management",
+          "venue_rank": "A",
+          "year": 2025,
+          "num_authors": 4,
+          "authors": [
+            "Goyal K.",
+            "Samanta S.",
+            "Goyal V.",
+            "Mohania M."
+          ],
+          "adjusted_count": 0.25,
+          "doi": "10.1145/3746252.3761256",
+          "url": "http://dx.doi.org/10.1145/3746252.3761256",
+          "for_code": "4605",
+          "source": "irins",
+          "pub_type": "conference"
+        },
+        {
+          "title": "Unsupervised Question Duplicate and Related Questions Detection in e-learning platforms",
+          "venue": "WSDM",
+          "venue_full": "ACM International Conference on Web Search and Data Mining",
+          "venue_rank": "A",
+          "year": 2023,
+          "num_authors": 5,
+          "authors": [
+            "Chowdhary M.",
+            "Goyal S.",
+            "Venktesh V.",
+            "Mohania M.",
+            "Goyal V."
+          ],
+          "adjusted_count": 0.2,
+          "doi": "10.1145/3539597.3573035",
+          "url": "http://dx.doi.org/10.1145/3539597.3573035",
+          "for_code": "4605",
+          "source": "irins",
+          "pub_type": "conference"
+        },
+        {
+          "title": "TagRec++: Hierarchical Label Aware Attention Network for Question Categorization",
+          "venue": "TKDE",
+          "venue_full": "IEEE Transactions on Knowledge and Data Engineering",
+          "venue_rank": "Journal",
+          "publisher": "IEEE",
+          "year": 2024,
+          "num_authors": 3,
+          "authors": [
+            "Venktesh V.",
+            "Mohania M.",
+            "Goyal V."
+          ],
+          "adjusted_count": 0.3333,
+          "doi": "10.1109/TKDE.2024.3354504",
+          "url": "http://dx.doi.org/10.1109/TKDE.2024.3354504",
+          "source": "irins",
+          "pub_type": "journal"
+        },
+        {
+          "title": "General chairs’ preface",
+          "venue": "CL",
+          "venue_full": "IEEE Communications Letters",
+          "venue_rank": "Journal",
+          "publisher": "IEEE",
+          "year": 2021,
+          "num_authors": 3,
+          "authors": [
+            "Agrawal R.K.",
+            "Krishna Reddy P.",
+            "Srivastava J."
+          ],
+          "adjusted_count": 0.3333,
+          "doi": null,
+          "url": null,
+          "source": "irins",
+          "pub_type": "journal"
+        },
+        {
+          "title": "Special issue of DaWak 2014",
+          "venue": "CL",
+          "venue_full": "IEEE Communications Letters",
+          "venue_rank": "Journal",
+          "publisher": "IEEE",
+          "year": 2016,
+          "num_authors": 2,
+          "authors": [
+            "Bellatreche L.",
+            "Mohania M."
+          ],
+          "adjusted_count": 0.5,
+          "doi": null,
+          "url": null,
+          "source": "irins",
+          "pub_type": "journal"
+        }
+      ]
+    },
+    {
       "name": "Mukulika Maity",
       "irins_id": "105067",
       "irins_url": "https://iiitd.irins.org/profile/105067",
       "role": "Assistant Professor",
       "department": "Department of Computer Science and Engineering",
       "homepage": "",
-      "score": 2.1274,
-      "papers_astar": 3,
+      "score": 1.7274,
+      "papers_astar": 1,
       "papers_a": 3,
       "papers_journal": 5,
-      "total_matched": 11,
+      "total_matched": 9,
       "total_scraped": 35,
       "publications": [
         {
@@ -5815,48 +5603,6 @@
           "doi": "10.1109/PerComWorkshops59983.2024.10502958",
           "url": "http://dx.doi.org/10.1109/PerComWorkshops59983.2024.10502958",
           "for_code": "4608",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Demo: Elixir - Efficient data transfer in WiFi-based IoT nodes",
-          "venue": "MOBICOM",
-          "venue_full": "ACM International Conference on Mobile Computing and Networking",
-          "venue_rank": "A*",
-          "year": 2018,
-          "num_authors": 5,
-          "authors": [
-            "Jaisinghani D.",
-            "Singh G.",
-            "Fulara H.",
-            "Maity M.",
-            "Naik V."
-          ],
-          "adjusted_count": 0.2,
-          "doi": "10.1145/3241539.3267717",
-          "url": "http://dx.doi.org/10.1145/3241539.3267717",
-          "for_code": "4606",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Demo: Witals, AP-centric health diagnosis of WiFi networks",
-          "venue": "MOBICOM",
-          "venue_full": "ACM International Conference on Mobile Computing and Networking",
-          "venue_rank": "A*",
-          "year": 2015,
-          "num_authors": 5,
-          "authors": [
-            "Maity M.",
-            "Chaurasia A.",
-            "Srivastava R.",
-            "Raman B.",
-            "Vutukuru M."
-          ],
-          "adjusted_count": 0.2,
-          "doi": "10.1145/2789168.2789179",
-          "url": "http://dx.doi.org/10.1145/2789168.2789179",
-          "for_code": "4606",
           "source": "irins",
           "pub_type": "conference"
         },
@@ -6034,17 +5780,87 @@
       ]
     },
     {
+      "name": "Tanmoy Kundu",
+      "irins_id": "554589",
+      "irins_url": "https://iiitd.irins.org/profile/554589",
+      "role": "Assistant Professor",
+      "department": "Department of Computer Science and Engineering",
+      "homepage": "",
+      "score": 1.5,
+      "papers_astar": 3,
+      "papers_a": 0,
+      "papers_journal": 0,
+      "total_matched": 3,
+      "total_scraped": 6,
+      "publications": [
+        {
+          "title": "SMT-Based Optimal Deployment of Mobile Rechargers",
+          "venue": "ICRA",
+          "venue_full": "IEEE International Conference on Robotics and Automation",
+          "venue_rank": "A*",
+          "year": 2021,
+          "num_authors": 2,
+          "authors": [
+            "Kundu T.",
+            "Saha I."
+          ],
+          "adjusted_count": 0.5,
+          "doi": "10.1109/ICRA48506.2021.9561061",
+          "url": "http://dx.doi.org/10.1109/ICRA48506.2021.9561061",
+          "for_code": "4602",
+          "source": "irins",
+          "pub_type": "conference"
+        },
+        {
+          "title": "Energy-aware temporal logic motion planning for mobile robots",
+          "venue": "ICRA",
+          "venue_full": "IEEE International Conference on Robotics and Automation",
+          "venue_rank": "A*",
+          "year": 2019,
+          "num_authors": 2,
+          "authors": [
+            "Kundu T.",
+            "Saha I."
+          ],
+          "adjusted_count": 0.5,
+          "doi": "10.1109/ICRA.2019.8794395",
+          "url": "http://dx.doi.org/10.1109/ICRA.2019.8794395",
+          "for_code": "4602",
+          "source": "irins",
+          "pub_type": "conference"
+        },
+        {
+          "title": "Charging station placement for indoor robotic applications",
+          "venue": "ICRA",
+          "venue_full": "IEEE International Conference on Robotics and Automation",
+          "venue_rank": "A*",
+          "year": 2018,
+          "num_authors": 2,
+          "authors": [
+            "Kundu T.",
+            "Saha I."
+          ],
+          "adjusted_count": 0.5,
+          "doi": "10.1109/ICRA.2018.8461006",
+          "url": "http://dx.doi.org/10.1109/ICRA.2018.8461006",
+          "for_code": "4602",
+          "source": "irins",
+          "pub_type": "conference"
+        }
+      ]
+    },
+    {
       "name": "V. Raghava Mutharaju",
       "irins_id": "105091",
       "irins_url": "https://iiitd.irins.org/profile/105091",
       "role": "Assistant Professor",
       "department": "Department of Computer Science and Engineering",
       "homepage": "",
-      "score": 1.7076,
-      "papers_astar": 4,
+      "score": 1.4576,
+      "papers_astar": 3,
       "papers_a": 1,
       "papers_journal": 3,
-      "total_matched": 8,
+      "total_matched": 7,
       "total_scraped": 46,
       "publications": [
         {
@@ -6105,26 +5921,6 @@
           "adjusted_count": 0.25,
           "doi": "10.18653/v1/2024.findings-acl.227",
           "url": "http://dx.doi.org/10.18653/v1/2024.findings-acl.227",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Neuro-Symbolic Techniques for Description Logic Reasoning (Student Abstract)",
-          "venue": "AAAI",
-          "venue_full": "National Conference of the American Association for Artificial Intelligence",
-          "venue_rank": "A*",
-          "year": 2021,
-          "num_authors": 4,
-          "authors": [
-            "Singh G.",
-            "Mondal S.",
-            "Bhatia S.",
-            "Mutharaju R."
-          ],
-          "adjusted_count": 0.25,
-          "doi": "10.1609/aaai.v35i18.17942",
-          "url": "http://dx.doi.org/10.1609/aaai.v35i18.17942",
           "for_code": "4602",
           "source": "irins",
           "pub_type": "conference"
@@ -6217,76 +6013,6 @@
           "url": "http://dx.doi.org/10.1109/ACCESS.2023.3341403",
           "source": "irins",
           "pub_type": "journal"
-        }
-      ]
-    },
-    {
-      "name": "Tanmoy Kundu",
-      "irins_id": "554589",
-      "irins_url": "https://iiitd.irins.org/profile/554589",
-      "role": "Assistant Professor",
-      "department": "Department of Computer Science and Engineering",
-      "homepage": "",
-      "score": 1.5,
-      "papers_astar": 3,
-      "papers_a": 0,
-      "papers_journal": 0,
-      "total_matched": 3,
-      "total_scraped": 6,
-      "publications": [
-        {
-          "title": "SMT-Based Optimal Deployment of Mobile Rechargers",
-          "venue": "ICRA",
-          "venue_full": "IEEE International Conference on Robotics and Automation",
-          "venue_rank": "A*",
-          "year": 2021,
-          "num_authors": 2,
-          "authors": [
-            "Kundu T.",
-            "Saha I."
-          ],
-          "adjusted_count": 0.5,
-          "doi": "10.1109/ICRA48506.2021.9561061",
-          "url": "http://dx.doi.org/10.1109/ICRA48506.2021.9561061",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Energy-aware temporal logic motion planning for mobile robots",
-          "venue": "ICRA",
-          "venue_full": "IEEE International Conference on Robotics and Automation",
-          "venue_rank": "A*",
-          "year": 2019,
-          "num_authors": 2,
-          "authors": [
-            "Kundu T.",
-            "Saha I."
-          ],
-          "adjusted_count": 0.5,
-          "doi": "10.1109/ICRA.2019.8794395",
-          "url": "http://dx.doi.org/10.1109/ICRA.2019.8794395",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Charging station placement for indoor robotic applications",
-          "venue": "ICRA",
-          "venue_full": "IEEE International Conference on Robotics and Automation",
-          "venue_rank": "A*",
-          "year": 2018,
-          "num_authors": 2,
-          "authors": [
-            "Kundu T.",
-            "Saha I."
-          ],
-          "adjusted_count": 0.5,
-          "doi": "10.1109/ICRA.2018.8461006",
-          "url": "http://dx.doi.org/10.1109/ICRA.2018.8461006",
-          "for_code": "4602",
-          "source": "irins",
-          "pub_type": "conference"
         }
       ]
     },
@@ -6767,113 +6493,6 @@
       ]
     },
     {
-      "name": "Rinku Shah",
-      "irins_id": "223128",
-      "irins_url": "https://iiitd.irins.org/profile/223128",
-      "role": "Assistant Professor",
-      "department": "Department of Computer Science and Engineering",
-      "homepage": "https://www.iiitd.ac.in/rinku",
-      "score": 0.6528,
-      "papers_astar": 2,
-      "papers_a": 2,
-      "papers_journal": 0,
-      "total_matched": 4,
-      "total_scraped": 17,
-      "publications": [
-        {
-          "title": "Simulating LLM training workloads for heterogeneous compute and network infrastructure",
-          "venue": "SIGCOMM",
-          "venue_full": "ACM Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
-          "venue_rank": "A*",
-          "year": 2025,
-          "num_authors": 9,
-          "authors": [
-            "Kumar S.",
-            "Temura A.",
-            "Sharma N.",
-            "Singh R.",
-            "Dadhania M.",
-            "Tammana P.",
-            "Burla S.",
-            "Kamaluddin A.M.",
-            "Shah R."
-          ],
-          "adjusted_count": 0.1111,
-          "doi": "10.1145/3748273.3749212",
-          "url": "http://dx.doi.org/10.1145/3748273.3749212",
-          "for_code": "4606",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Implementing ChaCha based crypto primitives on programmable SmartNICs",
-          "venue": "SIGCOMM",
-          "venue_full": "ACM Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
-          "venue_rank": "A*",
-          "year": 2022,
-          "num_authors": 4,
-          "authors": [
-            "Kottur S.Z.",
-            "Kadiyala K.",
-            "Tammana P.",
-            "Shah R."
-          ],
-          "adjusted_count": 0.25,
-          "doi": "10.1145/3528082.3544833",
-          "url": "http://dx.doi.org/10.1145/3528082.3544833",
-          "for_code": "4606",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Securing In-Network Traffic Control Systems with P4Auth",
-          "venue": "DSN",
-          "venue_full": "IEEE/IFIP International Conference on Dependable Systems and Networks",
-          "venue_rank": "A",
-          "year": 2025,
-          "num_authors": 8,
-          "authors": [
-            "Ranjitha K.R.",
-            "Panna M.R.",
-            "Christian S.N.",
-            "Sree K.H.",
-            "Hari Malla S.",
-            "Bheemanath D.",
-            "Shah R.",
-            "Tammana P."
-          ],
-          "adjusted_count": 0.125,
-          "doi": "10.1109/DSN64029.2025.00049",
-          "url": "http://dx.doi.org/10.1109/DSN64029.2025.00049",
-          "for_code": "4606",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Poster: Reducing Data Movement Tax for Serialization in Microservices",
-          "venue": "CoNEXT",
-          "venue_full": "ACM International Conference on Emerging Networking Experiments and Technologies",
-          "venue_rank": "A",
-          "year": 2024,
-          "num_authors": 6,
-          "authors": [
-            "Nayak S.",
-            "Rangwani V.",
-            "Dubey K.",
-            "Mondal R.",
-            "Gupta T.",
-            "Shah R."
-          ],
-          "adjusted_count": 0.1667,
-          "doi": "10.1145/3680121.3699882",
-          "url": "http://dx.doi.org/10.1145/3680121.3699882",
-          "for_code": "4606",
-          "source": "irins",
-          "pub_type": "conference"
-        }
-      ]
-    },
-    {
       "name": "Supratim Shit",
       "irins_id": "404439",
       "irins_url": "https://iiitd.irins.org/profile/404439",
@@ -7062,6 +6681,91 @@
           "doi": "10.1109/PGAS.2015.19",
           "url": "http://dx.doi.org/10.1109/PGAS.2015.19",
           "for_code": "4612",
+          "source": "irins",
+          "pub_type": "conference"
+        }
+      ]
+    },
+    {
+      "name": "Rinku Shah",
+      "irins_id": "223128",
+      "irins_url": "https://iiitd.irins.org/profile/223128",
+      "role": "Assistant Professor",
+      "department": "Department of Computer Science and Engineering",
+      "homepage": "https://www.iiitd.ac.in/rinku",
+      "score": 0.4861,
+      "papers_astar": 2,
+      "papers_a": 1,
+      "papers_journal": 0,
+      "total_matched": 3,
+      "total_scraped": 17,
+      "publications": [
+        {
+          "title": "Simulating LLM training workloads for heterogeneous compute and network infrastructure",
+          "venue": "SIGCOMM",
+          "venue_full": "ACM Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
+          "venue_rank": "A*",
+          "year": 2025,
+          "num_authors": 9,
+          "authors": [
+            "Kumar S.",
+            "Temura A.",
+            "Sharma N.",
+            "Singh R.",
+            "Dadhania M.",
+            "Tammana P.",
+            "Burla S.",
+            "Kamaluddin A.M.",
+            "Shah R."
+          ],
+          "adjusted_count": 0.1111,
+          "doi": "10.1145/3748273.3749212",
+          "url": "http://dx.doi.org/10.1145/3748273.3749212",
+          "for_code": "4606",
+          "source": "irins",
+          "pub_type": "conference"
+        },
+        {
+          "title": "Implementing ChaCha based crypto primitives on programmable SmartNICs",
+          "venue": "SIGCOMM",
+          "venue_full": "ACM Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
+          "venue_rank": "A*",
+          "year": 2022,
+          "num_authors": 4,
+          "authors": [
+            "Kottur S.Z.",
+            "Kadiyala K.",
+            "Tammana P.",
+            "Shah R."
+          ],
+          "adjusted_count": 0.25,
+          "doi": "10.1145/3528082.3544833",
+          "url": "http://dx.doi.org/10.1145/3528082.3544833",
+          "for_code": "4606",
+          "source": "irins",
+          "pub_type": "conference"
+        },
+        {
+          "title": "Securing In-Network Traffic Control Systems with P4Auth",
+          "venue": "DSN",
+          "venue_full": "IEEE/IFIP International Conference on Dependable Systems and Networks",
+          "venue_rank": "A",
+          "year": 2025,
+          "num_authors": 8,
+          "authors": [
+            "Ranjitha K.R.",
+            "Panna M.R.",
+            "Christian S.N.",
+            "Sree K.H.",
+            "Hari Malla S.",
+            "Bheemanath D.",
+            "Shah R.",
+            "Tammana P."
+          ],
+          "adjusted_count": 0.125,
+          "doi": "10.1109/DSN64029.2025.00049",
+          "url": "http://dx.doi.org/10.1109/DSN64029.2025.00049",
+          "for_code": "4606",
           "source": "irins",
           "pub_type": "conference"
         }

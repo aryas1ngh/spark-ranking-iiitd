@@ -44,7 +44,9 @@ class Command(BaseCommand):
                         'title': pub['title'],
                         'year': pub['year'],
                         'doi': pub['url'] if pub['url'] and 'doi.org' in pub['url'] else '',
-                        'conference': conference
+                        'conference': conference,
+                        'page_count': pub['page_count'],
+                        'is_workshop': pub['is_workshop'],
                     }
                 )
                 
@@ -68,14 +70,17 @@ class Command(BaseCommand):
                 resp = session.get(url, timeout=30)
                 resp.raise_for_status()
                 break
-            except requests.exceptions.HTTPError:
+            except requests.exceptions.RequestException as e:
                 if resp is not None and resp.status_code == 404:
                     return []
-                if resp is not None and resp.status_code == 429:
+                if attempt < MAX_RETRIES - 1:
                     time.sleep(RETRY_BASE_DELAY * (2 ** attempt))
                     continue
-                raise
-        else:
+                else:
+                    self.stderr.write(f"Failed to fetch {url} after {MAX_RETRIES} attempts: {e}")
+                    return []
+        
+        if resp is None:
             return []
         
         root = ET.fromstring(resp.content)
@@ -102,6 +107,30 @@ class Command(BaseCommand):
                 url_elem = pub_elem.find("ee")
                 pub_url = url_elem.text if url_elem is not None else None
                 
+                # Parse pages to detect workshop papers (<= 5 pages)
+                pages_elem = pub_elem.find("pages")
+                pages_text = pages_elem.text if pages_elem is not None else ""
+                page_count = None
+                
+                if pages_text:
+                    # Match formats like "123-128" or "12-16"
+                    match = re.search(r'(\d+)\s*-\s*(\d+)', pages_text)
+                    if match:
+                        try:
+                            start_page = int(match.group(1))
+                            end_page = int(match.group(2))
+                            if end_page >= start_page:
+                                page_count = end_page - start_page + 1
+                        except ValueError:
+                            pass
+                    elif pages_text.isdigit():
+                        # Sometimes it's just a single page number or total pages
+                        page_count = 1
+                
+                is_workshop = False
+                if page_count is not None and page_count <= 5:
+                    is_workshop = True
+                
                 publications.append({
                     "title": title,
                     "year": year,
@@ -109,5 +138,7 @@ class Command(BaseCommand):
                     "num_authors": len(authors),
                     "dblp_key": pub_key,
                     "url": pub_url,
+                    "page_count": page_count,
+                    "is_workshop": is_workshop,
                 })
         return publications

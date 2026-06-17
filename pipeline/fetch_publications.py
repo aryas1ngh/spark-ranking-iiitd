@@ -52,6 +52,50 @@ def load_faculty():
         return json.load(f)
 
 
+def get_page_count(pages_str):
+    """Parse DBLP pages string and return the number of pages."""
+    if not pages_str:
+        return None
+    try:
+        # Check for colon-separated ranges like 12:1-12:15
+        if ':' in pages_str:
+            parts = pages_str.split('-')
+            if len(parts) == 2:
+                start = int(parts[0].split(':')[-1])
+                end = int(parts[1].split(':')[-1])
+                return max(1, end - start + 1)
+        
+        # Check for standard ranges like 12-25
+        parts = pages_str.split('-')
+        if len(parts) == 2:
+            start_str = re.sub(r'[^0-9]', '', parts[0])
+            end_str = re.sub(r'[^0-9]', '', parts[1])
+            if start_str and end_str:
+                return max(1, int(end_str) - int(start_str) + 1)
+            
+        # Single page number
+        if pages_str.isdigit():
+            return 1
+    except Exception:
+        pass
+    return None
+
+
+def is_short_or_workshop_paper(title, pages_str):
+    """Check if paper is a short paper, demo, or workshop paper based on title/pages."""
+    # Check title heuristic
+    pattern = r'\b(demo|poster|student abstract|doctoral consortium|extended abstract|tutorial|workshop|companion)\b'
+    if re.search(pattern, title.lower()):
+        return True
+    
+    # Check page count (<= 5 pages)
+    pages = get_page_count(pages_str)
+    if pages is not None and pages <= 5:
+        return True
+        
+    return False
+
+
 def fetch_author_publications(pid, session):
     """Fetch all publications for an author from DBLP using their PID.
     
@@ -65,15 +109,24 @@ def fetch_author_publications(pid, session):
             resp = session.get(url, timeout=30)
             resp.raise_for_status()
             break
-        except requests.exceptions.HTTPError:
-            if resp is not None and resp.status_code == 404:
-                print(f"      ⚠ PID not found: {pid}")
-                return []
-            if resp is not None and resp.status_code == 429:
+        except requests.exceptions.RequestException as e:
+            # Handle specific HTTP errors if response exists
+            if getattr(e, 'response', None) is not None:
+                if e.response.status_code == 404:
+                    print(f"      ⚠ PID not found: {pid}")
+                    return []
+                if e.response.status_code in (429, 503, 502, 500, 504):
+                    wait = RETRY_BASE_DELAY * (2 ** attempt)
+                    print(f"      ⚠ Rate limited/Overloaded ({e.response.status_code}). Waiting {wait}s before retry {attempt + 1}/{MAX_RETRIES}...")
+                    time.sleep(wait)
+                    continue
+            # Handle timeout or connection errors
+            elif isinstance(e, (requests.exceptions.Timeout, requests.exceptions.ConnectionError)):
                 wait = RETRY_BASE_DELAY * (2 ** attempt)
-                print(f"      ⚠ Rate limited (429). Waiting {wait}s before retry {attempt + 1}/{MAX_RETRIES}...")
+                print(f"      ⚠ Connection issue ({type(e).__name__}). Waiting {wait}s before retry {attempt + 1}/{MAX_RETRIES}...")
                 time.sleep(wait)
                 continue
+            # Raise other unexpected exceptions
             raise
     else:
         print(f"      ✗ Failed after {MAX_RETRIES} retries for PID: {pid}")
@@ -126,6 +179,14 @@ def fetch_author_publications(pid, session):
             url_elem = pub_elem.find("ee")
             pub_url = url_elem.text if url_elem is not None else None
             
+            # Extract pages
+            pages_elem = pub_elem.find("pages")
+            pages_str = pages_elem.text if pages_elem is not None else ""
+            
+            # Filter out short/workshop papers
+            if is_short_or_workshop_paper(title, pages_str):
+                continue
+            
             publications.append({
                 "title": title,
                 "year": year,
@@ -135,6 +196,7 @@ def fetch_author_publications(pid, session):
                 "authors": authors,
                 "dblp_key": pub_key,
                 "url": pub_url,
+                "pages": pages_str,
             })
     
     return publications

@@ -42,9 +42,11 @@ class Conference(models.Model):
 class Publication(models.Model):
     title = models.TextField()
     year = models.IntegerField()
-    doi = models.CharField(max_length=255, blank=True, null=True)
-    dblp_key = models.CharField(max_length=255, blank=True, null=True)
     conference = models.ForeignKey(Conference, on_delete=models.CASCADE, related_name='publications')
+    doi = models.CharField(max_length=255, blank=True, null=True)
+    dblp_key = models.CharField(max_length=255, blank=True, null=True, unique=True)
+    page_count = models.IntegerField(null=True, blank=True, help_text="Number of pages in the publication")
+    is_workshop = models.BooleanField(default=False, help_text="True if publication is <= 5 pages")
 
     def __str__(self):
         return self.title

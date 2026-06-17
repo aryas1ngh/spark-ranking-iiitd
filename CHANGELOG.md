@@ -1,8 +1,37 @@
-# ICSRank Update Log
+# SPARK Update Log
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
-## v1.1.0 - 2026-06-14
+## v1.2.0 — 2026-06-17
+
+### 1. API Overhaul — Frontend Spec Compliance
+- **Replaced DRF Router** with 10 explicit `APIView`-based endpoints matching the frontend specification exactly.
+- **New endpoints added**:
+  - `GET /api/stats/` — aggregate institution/faculty/publication counts
+  - `GET /api/areas/` — all FoR research area codes with human-readable names
+  - `GET /api/institutions/{id}/` — institution profile with area breakdown and top faculty
+  - `GET /api/institutions/{id}/trends/` — year-over-year score timeline for Chart.js
+  - `GET /api/institutions/?search=` — typeahead institution search
+  - `GET /api/faculty/{id}/` — full faculty profile with publications, authorships, A\*/A score split
+  - `GET /api/faculty/?search=&area=&start_year=&end_year=` — faculty leaderboard with filtering
+- **Refactored existing endpoints** (`/api/rankings/`, `/api/publications/`, `/api/conferences/`) to return exact response schemas the frontend expects.
+- **Browsable API root** at `/api/` lists all available endpoints.
+
+### 2. Serializer Rewrite
+- Replaced generic `ModelSerializer` with purpose-built serializers for each endpoint.
+- Added nested serializers (`InstitutionMiniSerializer`, `ConferenceMiniSerializer`, `FacultyMiniSerializer`) for consistent embedded objects.
+- Faculty profile now includes `a_star_score`, `a_score`, `dblp_url`, `areas`, and both `publications` and `authorships` arrays.
+- Fixed frontend compatibility by restoring all missing detailed fields (`department`, `authorships`, `designation`, `orcid`, `dblp_pid`, `irins_id`, `homepage`) to the `GET /api/faculty/` leaderboard endpoint without breaking its new filtering/scoring capabilities.
+
+### 3. Data Pipeline Robustness & Workshop Filtering
+- **Workshop Filtering**: Added a rigorous <= 5 page cap heuristic to `fetch_dblp.py` to automatically identify and exclude short abstracts, posters, and workshop papers from all rankings and scores. Added `is_workshop` and `page_count` fields to the `Publication` model.
+- **DBLP Rate-Limit Bypass**: Implemented a new `load_rankings` management command that instantly repopulates the database from the pre-computed `data/rankings.json` file. This safely bypasses DBLP API blocks and avoids hours of throttling.
+- **Duplicate Prevention**: Removed redundant publication arrays from the API payload to prevent duplicate-looking entries on the frontend.
+
+### 4. Branding
+- Renamed project from CAPS to **SPARK** (Scholarly Publication & Academic Ranking Knowledgebase) across all files.
+
+## v1.1.0 — 2026-06-14
 
 ### 1. Journal Matching Expansion
 - **New journals**: Added IMWUT, TNSM, TCCN, and Computer Communications to the curated journal list (`ieee_acm_journals.json`).

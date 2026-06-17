@@ -70,14 +70,16 @@ cd backend
 # Step 1: Migrate database
 python manage.py migrate
 
-# Step 2: Load Seed Data (Institutions, Departments)
+# Step 2: Load Seed Data (Institutions, Departments, Conferences)
 python manage.py load_seed_data
 
-# Step 3: Load Faculty from IRINS
-python manage.py load_irins
+# Step 3: Fast-load Pre-Scraped Publications
+# This safely bypasses DBLP API rate limits by loading the pre-merged JSON data
+python manage.py load_rankings
 
-# Step 4: Fetch DBLP publications for all faculty
-python manage.py fetch_dblp
+# (Optional) If you want to slowly fetch fresh data instead:
+# python manage.py load_irins
+# python manage.py fetch_dblp
 ```
 
 ### 3. Launch the Development Servers
@@ -125,22 +127,29 @@ spark/
 
 ## API Endpoints
 
-The backend provides several robust endpoints for the frontend to consume.
+The backend serves 10 RESTful endpoints. All return JSON and are CORS-enabled. Visit `/api/` for a browsable index.
 
-### Dynamic Rankings (`GET /api/rankings/`)
-Returns a pre-computed array of institutions and their top faculty based on dynamic parameters.
-- `area` (str): Comma separated list of FoR Area codes (e.g., `4608`).
-- `start_year` (int): Filter publications on or after year.
-- `end_year` (int): Filter publications on or before year.
-- `top_n` (int): Number of top faculty to return per institution (default: 5).
+| # | Endpoint | Description |
+|---|---|---|
+| 1 | `GET /api/stats/` | Aggregate counts (institutions, faculty, publications) |
+| 2 | `GET /api/areas/` | All FoR research areas with codes |
+| 3 | `GET /api/rankings/` | Institution rankings with filters |
+| 4 | `GET /api/institutions/{id}/` | Institution profile with area breakdown |
+| 5 | `GET /api/institutions/{id}/trends/` | Year-over-year score timeline |
+| 6 | `GET /api/publications/` | Publications list, filterable by institution |
+| 7 | `GET /api/institutions/?search=` | Institution typeahead search |
+| 8 | `GET /api/faculty/{id}/` | Faculty profile with all publications |
+| 8b | `GET /api/faculty/?search=` | Faculty leaderboard with search & filters |
+| 9 | `GET /api/conferences/` | All tracked ICORE A\*/A conferences |
 
-### Raw Data Endpoints
-For detailed drill-downs or client-side aggregations.
-- `GET /api/institutions/`
-- `GET /api/faculty/` (Includes dynamically annotated total `score` for every faculty member)
-- `GET /api/publications/` (Includes `authors` array of Faculty IDs)
-- `GET /api/authorships/`
-- `GET /api/conferences/`
+### Filter Parameters (Endpoints 3, 8b)
+
+| Param | Type | Example | Description |
+|---|---|---|---|
+| `start_year` | int | `2020` | Include publications from this year onwards |
+| `end_year` | int | `2026` | Include publications up to this year |
+| `area` | string | `4602,4611` | Comma-separated FoR codes |
+| `search` | string | `Arani` | Faculty name filter (endpoint 8b only) |
 
 ---
 

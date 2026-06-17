@@ -394,6 +394,14 @@ def is_cs_faculty(department):
     return any(kw in dept_lower for kw in CS_DEPARTMENT_KEYWORDS)
 
 
+def is_short_or_workshop_paper(title):
+    """Check if paper is a short paper, demo, or workshop paper based on title heuristics."""
+    pattern = r'\b(demo|poster|student abstract|doctoral consortium|extended abstract|tutorial|workshop|companion)\b'
+    if re.search(pattern, title.lower()):
+        return True
+    return False
+
+
 # ──────────────────────────────────────────────────────────────────
 # Main processing
 # ──────────────────────────────────────────────────────────────────
@@ -428,6 +436,10 @@ def process_faculty(entry, session, conf_acr, conf_frags, journal_variants, skip
     journal_count = 0
 
     for pub in raw_pubs:
+        # Check title heuristics to skip short/workshop papers
+        if is_short_or_workshop_paper(pub["title"]):
+            continue
+            
         matched_conf = match_conference(pub["venue_text"], pub["type"], conf_acr, conf_frags)
         matched_journal = match_journal(pub["venue_text"], pub["type"], journal_variants)
 
