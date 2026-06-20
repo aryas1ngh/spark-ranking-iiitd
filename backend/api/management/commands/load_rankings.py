@@ -16,6 +16,10 @@ class Command(BaseCommand):
         pub_count = 0
         auth_count = 0
         
+        # Clear existing publications and authorships to ensure deleted/filtered papers are actually removed
+        Authorship.objects.all().delete()
+        Publication.objects.all().delete()
+        
         for inst_data in data.get('institutions', []):
             inst = Institution.objects.get(name=inst_data['name'])
             

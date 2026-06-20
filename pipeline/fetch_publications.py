@@ -81,11 +81,17 @@ def get_page_count(pages_str):
     return None
 
 
-def is_short_or_workshop_paper(title, pages_str):
-    """Check if paper is a short paper, demo, or workshop paper based on title/pages."""
-    # Check title heuristic
-    pattern = r'\b(demo|poster|student abstract|doctoral consortium|extended abstract|tutorial|workshop|companion)\b'
+def is_short_or_workshop_paper(title, pages_str, booktitle=""):
+    """Check if paper is a short paper, demo, or workshop paper based on title/pages/booktitle."""
+    # Check title and booktitle heuristics
+    pattern = r'\b(demo|poster|student abstract|doctoral consortium|extended abstract|tutorial|workshop|workshops|companion)\b'
     if re.search(pattern, title.lower()):
+        return True
+    
+    # Check proceeding title for "Adjunct" or other workshop patterns
+    if "adjunct" in booktitle.lower():
+        return True
+    if re.search(pattern, booktitle.lower()):
         return True
     
     # Check page count (<= 5 pages)
@@ -135,6 +141,7 @@ def fetch_author_publications(pid, session):
     # Parse XML
     root = ET.fromstring(resp.content)
     publications = []
+    skipped_publications = []
     
     # DBLP XML has <r> elements containing <inproceedings>, <article>, etc.
     for r_elem in root.findall(".//r"):
@@ -183,11 +190,7 @@ def fetch_author_publications(pid, session):
             pages_elem = pub_elem.find("pages")
             pages_str = pages_elem.text if pages_elem is not None else ""
             
-            # Filter out short/workshop papers
-            if is_short_or_workshop_paper(title, pages_str):
-                continue
-            
-            publications.append({
+            pub_data = {
                 "title": title,
                 "year": year,
                 "booktitle": booktitle,
@@ -197,9 +200,16 @@ def fetch_author_publications(pid, session):
                 "dblp_key": pub_key,
                 "url": pub_url,
                 "pages": pages_str,
-            })
+            }
+            
+            # Filter out short/workshop papers
+            if is_short_or_workshop_paper(title, pages_str, booktitle):
+                skipped_publications.append(pub_data)
+                continue
+            
+            publications.append(pub_data)
     
-    return publications
+    return publications, skipped_publications
 
 
 def process_faculty_member(faculty, icore_lookup, session):
@@ -209,8 +219,8 @@ def process_faculty_member(faculty, icore_lookup, session):
     
     print(f"    → Fetching publications for {name} (pid: {pid})...")
     
-    pubs = fetch_author_publications(pid, session)
-    print(f"      Found {len(pubs)} conference papers total")
+    pubs, skipped_pubs = fetch_author_publications(pid, session)
+    print(f"      Found {len(pubs)} conference papers total (skipped {len(skipped_pubs)} short/workshop)")
     
     # Filter by year range
     pubs = [p for p in pubs if YEAR_START <= p["year"] <= YEAR_END]
@@ -267,6 +277,7 @@ def process_faculty_member(faculty, icore_lookup, session):
         "papers_journal": 0,
         "total_matched": len(matched_pubs),
         "publications": matched_pubs,
+        "skipped_publications": skipped_pubs,
     }
 
 
@@ -402,14 +413,23 @@ def merge_irins_into_faculty(faculty_results, irins_data):
         def normalize_title(title):
             return re.sub(r'[^a-z0-9]', '', title.lower())
 
-        # Build dedup sets from existing DBLP publications
+        # Build dedup sets from existing DBLP publications (and skipped ones)
         existing_titles = set()
         existing_dois = set()
+        skipped_titles = set()
+        skipped_dois = set()
+        
         for pub in fac_result["publications"]:
             existing_titles.add(normalize_title(pub["title"]))
             doi = extract_doi(pub)
             if doi:
                 existing_dois.add(doi)
+                
+        for pub in fac_result.get("skipped_publications", []):
+            skipped_titles.add(normalize_title(pub["title"]))
+            doi = extract_doi(pub)
+            if doi:
+                skipped_dois.add(doi)
 
         # Add source field to existing DBLP publications
         for pub in fac_result["publications"]:
@@ -420,25 +440,43 @@ def merge_irins_into_faculty(faculty_results, irins_data):
 
         # Merge IRINS publications
         for irins_pub in irins_fac.get("publications", []):
-            # Layer 1: DOI match (highest confidence)
+            # Block 0: Filter IRINS papers intrinsically
+            if is_short_or_workshop_paper(irins_pub["title"], "", irins_pub.get("venue_full", "")):
+                continue
+                
             irins_doi = extract_doi(irins_pub)
+            norm_title = normalize_title(irins_pub["title"])
+            
+            # Block 1: Check if DBLP actively skipped it (workshop/short)
+            if irins_doi and irins_doi in skipped_dois:
+                deduped_count += 1
+                continue
+            if norm_title in skipped_titles:
+                deduped_count += 1
+                continue
+            
+            # Block 2: Check if DBLP accepted it (already have it)
             if irins_doi and irins_doi in existing_dois:
                 deduped_count += 1
                 continue  # Definite duplicate
-
-            # Layer 2: Exact normalized title match
-            norm_title = normalize_title(irins_pub["title"])
             if norm_title in existing_titles:
                 deduped_count += 1
                 continue  # Already have this from DBLP
 
-            # Layer 3: Fuzzy title match (same year only)
+            # Layer 3: Fuzzy title match (same year only) against accepted
             is_fuzzy_dup = False
             for existing_pub in fac_result["publications"]:
                 if existing_pub.get("year") == irins_pub.get("year"):
                     if titles_match_fuzzy(existing_pub["title"], irins_pub["title"]):
                         is_fuzzy_dup = True
                         break
+            # And against skipped
+            for skipped_pub in fac_result.get("skipped_publications", []):
+                if skipped_pub.get("year") == irins_pub.get("year"):
+                    if titles_match_fuzzy(skipped_pub["title"], irins_pub["title"]):
+                        is_fuzzy_dup = True
+                        break
+                        
             if is_fuzzy_dup:
                 deduped_count += 1
                 continue

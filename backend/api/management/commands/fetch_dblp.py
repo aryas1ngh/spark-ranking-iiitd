@@ -127,8 +127,14 @@ class Command(BaseCommand):
                         # Sometimes it's just a single page number or total pages
                         page_count = 1
                 
+                # Extract booktitle
+                booktitle_elem = pub_elem.find("booktitle")
+                booktitle = booktitle_elem.text if booktitle_elem is not None else ""
+                
                 is_workshop = False
                 if page_count is not None and page_count <= 5:
+                    is_workshop = True
+                if "adjunct" in booktitle.lower():
                     is_workshop = True
                 
                 publications.append({
