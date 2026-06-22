@@ -29,7 +29,7 @@
 | Conference source | ~45 hand-picked   | **170 ICORE A\*/A**          |
 | A\* conferences   | ~30               | **62**                       |
 | Coverage          | Select areas only | **All CS subfields**         |
-| Methodology       | Geometric mean    | Adjusted count (per-author credit) |
+| Methodology       | Geometric mean    | Adjusted count + Geometric Mean    |
 | Data source       | DBLP              | **DBLP + IRINS**                               |
 | Transparency      | Open source       | Open source + open data            |
 
@@ -163,7 +163,7 @@ SPARK uses **adjusted counts**, calculating scores on the fly directly in the da
    - **A** = 2.0 multiplier
    - **Default** = 1.0 multiplier
 3. **Faculty Score**: Sum of weighted credits across all matched papers.
-4. **Institution Score**: Sum of all its faculty scores.
+4. **Institution Score**: Calculated using a **Geometric Mean** of its per-area scores. Publications are grouped by their Field of Research (FoR), weighted scores are summed for each area, and the geometric mean across all areas determines the institution's final ranking. This effectively rewards research breadth and volume.
 
 ---
 
@@ -173,3 +173,4 @@ SPARK fetches academic data automatically from two primary sources:
 
 1. **IRINS Scraper**: Parses the institutional research information system to automatically discover and import faculty lists for CS/CSE departments.
 2. **DBLP Fetcher**: Retrieves XML dumps of publications from the DBLP API via `dblp_key` match (preventing string-matching fuzzy errors), resolving exact venue and author matches.
+3. **Strict Workshop Filtering**: Both pipelines implement rigorous heuristics to filter out non-research papers (<= 5 pages, or with "workshop", "adjunct", "poster" etc. in the title or proceeding venue).

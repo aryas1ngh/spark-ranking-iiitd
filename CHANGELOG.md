@@ -2,6 +2,18 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.3.0 — 2026-06-22
+
+### 1. Geometric Mean Institution Scoring
+- **Scoring Overhaul**: Transitioned institution scoring from a simple sum to a geometric mean of per-area scores. This rewards institutional breadth—universities strong across multiple computer science subfields now rank higher than those dominant in only one.
+- **Area Grouping**: Publications are dynamically grouped by their respective ICORE FoR (Field of Research) areas before computing the weighted score per area.
+- **API Updates**: Updated `/api/rankings/`, `/api/institutions/{id}/`, and `/api/faculty/` to compute and display ranks based on the new geometric mean calculation.
+
+### 2. Bulletproof Workshop & Adjunct Filtering
+- **IRINS Merger Fix**: Addressed a critical data leak where workshop papers discarded by the DBLP pipeline were being incorrectly re-added by the IRINS scraper.
+- **Title Heuristics**: Added strict regex checks for 'workshop', 'adjunct', and other non-research proceeding indicators directly against DBLP `booktitle` and IRINS `venue_full`.
+- **Result**: Successfully pruned 49 false-positive workshop/short papers (like *PerCom Workshops*) from the backend database across all faculty profiles.
+
 ## v1.2.0 — 2026-06-17
 
 ### 1. API Overhaul — Frontend Spec Compliance
