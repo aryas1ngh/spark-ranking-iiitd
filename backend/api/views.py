@@ -1,3 +1,5 @@
+import math
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -74,6 +76,67 @@ def _compute_faculty_score(faculty_id, extra_filters=Q()):
     ).aggregate(total=Coalesce(Sum('weighted'), Value(0.0)))['total']
 
 
+def _geo_mean(values):
+    """Compute geometric mean of a list of positive values.
+    
+    Uses log-sum-exp for numerical stability.
+    Returns 0.0 if no positive values.
+    """
+    positive = [v for v in values if v > 0]
+    if not positive:
+        return 0.0
+    return math.exp(sum(math.log(v) for v in positive) / len(positive))
+
+
+def _compute_institution_geo_mean(authorships_qs):
+    """Compute institution score as geometric mean of per-area weighted scores.
+    
+    Groups publications by their conference's area (FoR code),
+    sums weighted scores per area, then returns the geometric mean
+    across all areas.
+    
+    Also returns area_scores dict for breakdown display.
+    """
+    area_scores = {}  # area_code -> total weighted score
+    for a in authorships_qs:
+        area = a.publication.conference.area or 'other'
+        area_scores[area] = area_scores.get(area, 0.0) + a.weighted
+
+    geo_score = _geo_mean(list(area_scores.values()))
+    return geo_score, area_scores
+
+
+def _compute_all_institution_geo_means():
+    """Compute geo-mean scores for ALL institutions at once.
+    
+    Returns dict: {institution_id: geo_mean_score}
+    Used for computing institution ranks across the system.
+    """
+    auths = Authorship.objects.filter(
+        publication__is_workshop=False
+    ).select_related(
+        'faculty__institution', 'publication__conference'
+    ).annotate(
+        weighted=F('credit') * Case(
+            When(publication__conference__core_rank='A*', then=Value(4.0)),
+            When(publication__conference__core_rank='A', then=Value(2.0)),
+            default=Value(1.0),
+            output_field=FloatField(),
+        )
+    )
+
+    # inst_id -> {area -> score}
+    inst_area_scores = {}
+    for a in auths:
+        iid = a.faculty.institution_id
+        area = a.publication.conference.area or 'other'
+        if iid not in inst_area_scores:
+            inst_area_scores[iid] = {}
+        inst_area_scores[iid][area] = inst_area_scores[iid].get(area, 0.0) + a.weighted
+
+    return {iid: _geo_mean(list(areas.values())) for iid, areas in inst_area_scores.items()}
+
+
 # ── 1. GET /api/stats/ ─────────────────────────────────────
 
 class StatsView(APIView):
@@ -126,23 +189,30 @@ class RankingsView(APIView):
             )
         )
 
-        # Accumulate scores per faculty, grouped by institution
-        inst_map = {}  # inst_id -> { inst, score, faculty: {fac_id -> {id, name, score}} }
+        # Accumulate per-area scores per institution, and per-faculty scores
+        inst_map = {}  # inst_id -> { inst, area_scores, faculty }
         for a in authorships:
             inst = a.faculty.institution
             if inst.id not in inst_map:
                 inst_map[inst.id] = {
                     'institution': {'id': inst.id, 'name': inst.name},
-                    'score': 0.0,
+                    'area_scores': {},
                     'faculty': {},
                 }
             entry = inst_map[inst.id]
-            entry['score'] += a.weighted
+
+            # Accumulate per-area score
+            area = a.publication.conference.area or 'other'
+            entry['area_scores'][area] = entry['area_scores'].get(area, 0.0) + a.weighted
 
             fac = a.faculty
             if fac.id not in entry['faculty']:
                 entry['faculty'][fac.id] = {'id': fac.id, 'name': fac.name, 'score': 0.0}
             entry['faculty'][fac.id]['score'] += a.weighted
+
+        # Compute geometric mean score for each institution
+        for entry in inst_map.values():
+            entry['score'] = _geo_mean(list(entry['area_scores'].values()))
 
         # Sort and rank
         ranked = sorted(inst_map.values(), key=lambda x: x['score'], reverse=True)
@@ -181,15 +251,10 @@ class InstitutionDetailView(APIView):
             )
         )
 
-        total_score = 0.0
-        area_scores = {}
+        geo_score, area_scores = _compute_institution_geo_mean(authorships)
         faculty_scores = {}
 
         for a in authorships:
-            total_score += a.weighted
-            area = a.publication.conference.area or 'other'
-            area_scores[area] = area_scores.get(area, 0.0) + a.weighted
-
             fac = a.faculty
             if fac.id not in faculty_scores:
                 faculty_scores[fac.id] = {'id': fac.id, 'name': fac.name, 'score': 0.0}
@@ -203,20 +268,10 @@ class InstitutionDetailView(APIView):
         for f in top_fac:
             f['score'] = round(f['score'], 2)
 
-        # Compute rank (position among all institutions)
-        all_inst_scores = {}
-        all_auths = Authorship.objects.filter(publication__is_workshop=False).values('faculty__institution_id').annotate(
-            total=Sum(F('credit') * Case(
-                When(publication__conference__core_rank='A*', then=Value(4.0)),
-                When(publication__conference__core_rank='A', then=Value(2.0)),
-                default=Value(1.0),
-                output_field=FloatField(),
-            ))
-        )
-        for row in all_auths:
-            all_inst_scores[row['faculty__institution_id']] = row['total']
+        # Compute rank (position among all institutions) using geo mean
+        all_inst_geo = _compute_all_institution_geo_means()
 
-        sorted_insts = sorted(all_inst_scores.items(), key=lambda x: x[1], reverse=True)
+        sorted_insts = sorted(all_inst_geo.items(), key=lambda x: x[1], reverse=True)
         rank = next((i + 1 for i, (iid, _) in enumerate(sorted_insts) if iid == inst.id), None)
 
         data = {
@@ -225,7 +280,7 @@ class InstitutionDetailView(APIView):
             'website': inst.website,
             'summary': None,
             'rank': rank or 0,
-            'score': round(total_score, 2),
+            'score': round(geo_score, 2),
             'area_breakdown': area_breakdown,
             'top_faculty': top_fac,
         }
@@ -429,13 +484,9 @@ class FacultyListView(APIView):
                 fac_map[fid]['score'] += a.weighted
                 fac_map[fid]['authorships'].append(a.id)
 
-        # Compute institution ranks for context
-        inst_scores = {}
-        for f in fac_map.values():
-            iid = f['institution'].id
-            inst_scores[iid] = inst_scores.get(iid, 0.0) + f['score']
-
-        sorted_insts = sorted(inst_scores.items(), key=lambda x: x[1], reverse=True)
+        # Compute institution ranks using geometric mean of per-area scores
+        all_inst_geo = _compute_all_institution_geo_means()
+        sorted_insts = sorted(all_inst_geo.items(), key=lambda x: x[1], reverse=True)
         inst_rank_map = {iid: idx + 1 for idx, (iid, _) in enumerate(sorted_insts)}
 
         # Build result

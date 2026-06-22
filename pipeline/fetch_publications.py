@@ -6,6 +6,7 @@ Outputs data/rankings.json with scored results.
 """
 
 import json
+import math
 import os
 import re
 import sys
@@ -282,7 +283,11 @@ def process_faculty_member(faculty, icore_lookup, session):
 
 
 def compute_area_breakdown(faculty_results, icore_lookup):
-    """Compute publication counts grouped by research area (FoR code)."""
+    """Compute publication counts grouped by research area (FoR code).
+    
+    Also computes weighted scores per area (A*=4, A=2, Journal=1)
+    and the geometric mean across all areas.
+    """
     # FoR code descriptions (common CS ones)
     for_descriptions = {
         "4601": "Applied Computing",
@@ -301,16 +306,21 @@ def compute_area_breakdown(faculty_results, icore_lookup):
         "CSE": "Computer Science and Engineering",
     }
     
-    area_counts = defaultdict(lambda: {"papers": 0, "score": 0.0, "astar": 0, "a": 0})
+    RANK_WEIGHTS = {"A*": 4.0, "A": 2.0, "Journal": 1.0}
+    
+    area_counts = defaultdict(lambda: {"papers": 0, "score": 0.0, "weighted_score": 0.0, "astar": 0, "a": 0})
     
     for fac in faculty_results:
         for pub in fac["publications"]:
             for_code = pub.get("for_code", "Unknown")
             area_counts[for_code]["papers"] += 1
             area_counts[for_code]["score"] += pub["adjusted_count"]
-            if pub["venue_rank"] == "A*":
+            rank = pub.get("venue_rank", "")
+            weight = RANK_WEIGHTS.get(rank, 1.0)
+            area_counts[for_code]["weighted_score"] += pub["adjusted_count"] * weight
+            if rank == "A*":
                 area_counts[for_code]["astar"] += 1
-            else:
+            elif rank == "A":
                 area_counts[for_code]["a"] += 1
     
     result = []
@@ -322,9 +332,18 @@ def compute_area_breakdown(faculty_results, icore_lookup):
             "papers_astar": counts["astar"],
             "papers_a": counts["a"],
             "score": round(counts["score"], 4),
+            "weighted_score": round(counts["weighted_score"], 4),
         })
     
     return result
+
+
+def compute_geo_mean_score(area_breakdown):
+    """Compute geometric mean of weighted_score across all areas."""
+    weighted_scores = [a["weighted_score"] for a in area_breakdown if a["weighted_score"] > 0]
+    if not weighted_scores:
+        return 0.0
+    return math.exp(sum(math.log(s) for s in weighted_scores) / len(weighted_scores))
 
 
 def load_irins_data():
@@ -580,6 +599,7 @@ def main():
         
         # Compute area breakdown
         area_breakdown = compute_area_breakdown(faculty_results, icore_lookup)
+        geo_mean_score = compute_geo_mean_score(area_breakdown)
         
         inst_result = {
             "name": inst_name,
@@ -587,6 +607,7 @@ def main():
             "country": institution.get("country", ""),
             "website": institution.get("website", ""),
             "total_score": round(total_score, 4),
+            "geo_mean_score": round(geo_mean_score, 4),
             "total_papers": total_papers,
             "total_papers_astar": total_astar,
             "total_papers_a": total_a,
@@ -603,8 +624,8 @@ def main():
         print(f"    A papers:       {total_a}")
         print(f"    Total matched:  {total_papers}")
     
-    # Sort institutions by total score
-    all_institutions.sort(key=lambda i: -i["total_score"])
+    # Sort institutions by geo mean score
+    all_institutions.sort(key=lambda i: -i["geo_mean_score"])
     
     # Try to merge IRINS data
     print(f"\nChecking for IRINS data at {IRINS_FILE}...")
@@ -625,9 +646,11 @@ def main():
             inst["faculty"].sort(key=lambda f: -f["score"])
             # Recompute area breakdown
             inst["area_breakdown"] = compute_area_breakdown(inst["faculty"], icore_lookup)
+            inst["geo_mean_score"] = round(compute_geo_mean_score(inst["area_breakdown"]), 4)
             
             print(f"\n  Post-merge totals for {inst['name']}:")
-            print(f"    Total score:       {inst['total_score']:.2f}")
+            print(f"    Total score (sum):  {inst['total_score']:.2f}")
+            print(f"    Geo-mean score:    {inst['geo_mean_score']:.2f}")
             print(f"    A* papers:         {inst['total_papers_astar']}")
             print(f"    A papers:          {inst['total_papers_a']}")
             print(f"    Journal papers:    {inst.get('total_papers_journal', 0)}")
