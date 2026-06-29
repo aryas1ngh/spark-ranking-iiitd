@@ -203,6 +203,11 @@ def fetch_author_publications(pid, session):
                 "pages": pages_str,
             }
             
+            # Filter out co-located workshop papers (e.g., ARMS-CC@PODC)
+            if "@" in booktitle:
+                skipped_publications.append(pub_data)
+                continue
+            
             # Filter out short/workshop papers
             if is_short_or_workshop_paper(title, pages_str, booktitle):
                 skipped_publications.append(pub_data)
@@ -236,6 +241,13 @@ def process_faculty_member(faculty, icore_lookup, session):
     for pub in pubs:
         venue_key = pub.get("venue_key")
         if not venue_key:
+            continue
+        
+        # Skip co-located workshop papers: DBLP puts workshops like
+        # ARMS-CC@PODC under conf/podc/, but the booktitle contains '@'
+        # to indicate it's not the main conference.
+        booktitle = pub.get("booktitle", "")
+        if "@" in booktitle:
             continue
         
         conf = icore_lookup.get(venue_key.lower())

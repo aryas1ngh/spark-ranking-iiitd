@@ -131,6 +131,12 @@ class Command(BaseCommand):
                 booktitle_elem = pub_elem.find("booktitle")
                 booktitle = booktitle_elem.text if booktitle_elem is not None else ""
                 
+                # Skip co-located workshop papers: DBLP puts workshops like
+                # ARMS-CC@PODC under conf/podc/, but the booktitle contains '@'
+                # to indicate it's not the main conference.
+                if "@" in booktitle:
+                    continue
+                
                 is_workshop = False
                 if page_count is not None and page_count <= 5:
                     is_workshop = True

@@ -3087,11 +3087,11 @@
       "role": "Assistant Professor",
       "department": "Department of Computer Science and Engineering",
       "homepage": "",
-      "score": 5.5012,
-      "papers_astar": 8,
+      "score": 5.0014,
+      "papers_astar": 7,
       "papers_a": 6,
       "papers_journal": 9,
-      "total_matched": 23,
+      "total_matched": 22,
       "total_scraped": 51,
       "publications": [
         {
@@ -3242,24 +3242,6 @@
           "adjusted_count": 0.1667,
           "doi": "10.1145/3278532.3278533",
           "url": "http://dx.doi.org/10.1145/3278532.3278533",
-          "for_code": "4606",
-          "source": "irins",
-          "pub_type": "conference"
-        },
-        {
-          "title": "Computation offloading from mobile devices: Can edge devices perform better than the cloud?",
-          "venue": "PODC",
-          "venue_full": "ACM Symposium on Principles of Distributed Computing",
-          "venue_rank": "A*",
-          "year": 2016,
-          "num_authors": 2,
-          "authors": [
-            "Bhattcharya A.",
-            "De P."
-          ],
-          "adjusted_count": 0.5,
-          "doi": "10.1145/2962564.2962569",
-          "url": "http://dx.doi.org/10.1145/2962564.2962569",
           "for_code": "4606",
           "source": "irins",
           "pub_type": "conference"
