@@ -21,7 +21,10 @@ class Command(BaseCommand):
         Publication.objects.all().delete()
         
         for inst_data in data.get('institutions', []):
-            inst = Institution.objects.get(name=inst_data['name'])
+            inst, _ = Institution.objects.get_or_create(
+                name=inst_data['name'],
+                defaults={'website': inst_data.get('website', '')}
+            )
             
             for fac_data in inst_data.get('faculty', []):
                 # Try to find faculty

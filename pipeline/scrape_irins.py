@@ -2,14 +2,16 @@
 """
 Scrape faculty publications from IRINS profiles.
 Matches against ICORE A*/A conferences and curated IEEE/ACM journals.
-Outputs data/irins_publications.json.
+Outputs per-institution files: data/irins_{short}.json
 
-College-agnostic: change BASE_URL and SITEMAP_FILE to target any IRINS instance.
+Multi-institution: reads config from faculty.json, accepts --institution flag.
 
 Usage:
-    python pipeline/scrape_irins.py                    # Full scrape
-    python pipeline/scrape_irins.py --test-single 61462  # Test single profile
-    python pipeline/scrape_irins.py --resume             # Resume interrupted run
+    python pipeline/scrape_irins.py --institution IIITD     # Scrape IIIT Delhi
+    python pipeline/scrape_irins.py --institution IITB      # Scrape IIT Bombay
+    python pipeline/scrape_irins.py --all                   # Scrape all institutions
+    python pipeline/scrape_irins.py --test-single 61462 --institution IIITD  # Test single
+    python pipeline/scrape_irins.py --institution IITB --resume  # Resume
 """
 
 import argparse
@@ -25,20 +27,14 @@ import requests
 from bs4 import BeautifulSoup
 
 # ──────────────────────────────────────────────────────────────────
-# Configuration — change these to target a different college
+# Configuration
 # ──────────────────────────────────────────────────────────────────
-BASE_URL = "https://iiitd.irins.org"
-INSTITUTION_NAME = "IIIT Delhi"
-INSTITUTION_SHORT = "IIITD"
-
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "data")
 
-SITEMAP_FILE = os.path.join(DATA_DIR, "irins_sitemap.xml")
+FACULTY_FILE = os.path.join(DATA_DIR, "faculty.json")
 ICORE_FILE = os.path.join(DATA_DIR, "icore_conferences.json")
 JOURNALS_FILE = os.path.join(DATA_DIR, "ieee_acm_journals.json")
-OUTPUT_FILE = os.path.join(DATA_DIR, "irins_publications.json")
-CHECKPOINT_FILE = os.path.join(DATA_DIR, "irins_checkpoint.json")
 
 YEAR_START = 2015
 YEAR_END = 2026
@@ -58,10 +54,42 @@ CS_DEPARTMENT_KEYWORDS = [
 ]
 
 
+def get_institution_config(short_name):
+    """Load institution config from faculty.json by short name."""
+    with open(FACULTY_FILE, "r") as f:
+        data = json.load(f)
+    for inst in data["institutions"]:
+        if inst.get("short", "").upper() == short_name.upper():
+            return inst
+    return None
+
+
+def get_all_institutions():
+    """Get all institutions that have irins_url configured."""
+    with open(FACULTY_FILE, "r") as f:
+        data = json.load(f)
+    return [inst for inst in data["institutions"] if inst.get("irins_url")]
+
+
+def get_output_file(short_name):
+    """Per-institution output file path."""
+    return os.path.join(DATA_DIR, f"irins_{short_name.lower()}.json")
+
+
+def get_checkpoint_file(short_name):
+    """Per-institution checkpoint file path."""
+    return os.path.join(DATA_DIR, f"irins_checkpoint_{short_name.lower()}.json")
+
+
+def get_sitemap_file(short_name):
+    """Per-institution sitemap file path (may not exist)."""
+    return os.path.join(DATA_DIR, f"irins_sitemap_{short_name.lower()}.xml")
+
+
 # ──────────────────────────────────────────────────────────────────
 # Sitemap parsing
 # ──────────────────────────────────────────────────────────────────
-def parse_sitemap(sitemap_path):
+def parse_sitemap(sitemap_path, base_url):
     """Parse IRINS sitemap XML → list of {name, profile_id, url}."""
     with open(sitemap_path, "r") as f:
         text = f.read()
@@ -79,9 +107,97 @@ def parse_sitemap(sitemap_path):
             entries.append({
                 "name": name,
                 "profile_id": pid,
-                "url": f"{BASE_URL}/profile/{pid}",
+                "url": f"{base_url}/profile/{pid}",
             })
 
+    return entries
+
+
+def discover_faculty_from_irins(session, base_url, dept_keywords=None):
+    """Discover faculty profiles from IRINS department listing pages.
+
+    This is used for institutions that don't have a sitemap XML file.
+    Scrapes the IRINS homepage to find department links, then scrapes
+    each relevant department page to extract faculty profile links.
+
+    Args:
+        session: requests.Session
+        base_url: e.g. "https://iitb.irins.org"
+        dept_keywords: list of department name substrings to include
+                       (default: CS_DEPARTMENT_KEYWORDS)
+    """
+    if dept_keywords is None:
+        dept_keywords = CS_DEPARTMENT_KEYWORDS
+
+    print(f"  Discovering faculty from {base_url}...")
+    entries = []
+    seen_ids = set()
+
+    try:
+        resp = session.get(base_url, headers=HEADERS, timeout=15)
+        soup = BeautifulSoup(resp.text, "html.parser")
+
+        # Find department links — they look like /faculty/index/Department+of+...
+        dept_links = []
+        for a_tag in soup.find_all("a", href=True):
+            href = a_tag.get("href", "")
+            if "/faculty/index/" in href:
+                dept_name = a_tag.get_text(strip=True)
+                # Check if this is a CS-related department
+                if any(kw in dept_name.lower() for kw in dept_keywords):
+                    dept_links.append((dept_name, href))
+
+        if not dept_links:
+            print("    ⚠ No matching department links found")
+            return entries
+
+        for dept_name, dept_href in dept_links:
+            print(f"    Scanning department: {dept_name}")
+            # Make the URL absolute
+            if dept_href.startswith("/"):
+                dept_url = f"{base_url}{dept_href}"
+            elif not dept_href.startswith("http"):
+                dept_url = f"{base_url}/{dept_href}"
+            else:
+                dept_url = dept_href
+
+            try:
+                resp = session.get(dept_url, headers=HEADERS, timeout=15)
+                dept_soup = BeautifulSoup(resp.text, "html.parser")
+
+                # Faculty profiles are linked as /profile/{id}
+                for a_tag in dept_soup.find_all("a", href=True):
+                    href = a_tag.get("href", "")
+                    match = re.search(r'/profile/(\d+)', href)
+                    if match:
+                        pid = match.group(1)
+                        if pid not in seen_ids:
+                            seen_ids.add(pid)
+                            # Try to get name from the link text or nearby elements
+                            name = a_tag.get_text(strip=True)
+                            if not name or name == "View Profile":
+                                # Try parent's strong tag
+                                parent = a_tag.find_parent("div")
+                                if parent:
+                                    strong = parent.find("strong")
+                                    if strong:
+                                        name = strong.get_text(strip=True)
+                            if not name:
+                                name = f"Profile {pid}"
+                            entries.append({
+                                "name": name,
+                                "profile_id": pid,
+                                "url": f"{base_url}/profile/{pid}",
+                            })
+
+                time.sleep(DELAY_SECONDS)
+            except Exception as e:
+                print(f"    ⚠ Error scanning {dept_name}: {e}")
+
+    except Exception as e:
+        print(f"    ⚠ Error fetching IRINS homepage: {e}")
+
+    print(f"    Found {len(entries)} faculty profiles")
     return entries
 
 
@@ -207,12 +323,12 @@ def match_journal(venue_text, pub_type, journal_variants):
 # ──────────────────────────────────────────────────────────────────
 # IRINS publication scraping
 # ──────────────────────────────────────────────────────────────────
-def fetch_all_publications(session, expert_id):
+def fetch_all_publications(session, expert_id, base_url):
     """Fetch all publications for a faculty member from IRINS API.
 
     Returns list of raw publication dicts (deduplicated).
     """
-    url = f"{BASE_URL}/profile/get_publication"
+    url = f"{base_url}/profile/get_publication"
     headers = {**HEADERS, "X-Requested-With": "XMLHttpRequest"}
     all_pubs = []
     seen_keys = set()
@@ -336,14 +452,14 @@ def save_checkpoint(checkpoint):
 # ──────────────────────────────────────────────────────────────────
 # Faculty profile metadata
 # ──────────────────────────────────────────────────────────────────
-def fetch_profile_metadata(session, profile_id):
+def fetch_profile_metadata(session, profile_id, base_url):
     """Fetch basic profile info (designation, department) from IRINS profile page.
 
     Department is extracted from the experience section, which contains the actual
     department name (e.g. 'Department of Computer Science and Engineering'), unlike
     the sidebar which only shows the institution name.
     """
-    url = f"{BASE_URL}/profile/{profile_id}"
+    url = f"{base_url}/profile/{profile_id}"
     try:
         resp = session.get(url, headers=HEADERS, timeout=15)
         soup = BeautifulSoup(resp.text, "html.parser")
@@ -405,7 +521,7 @@ def is_short_or_workshop_paper(title):
 # ──────────────────────────────────────────────────────────────────
 # Main processing
 # ──────────────────────────────────────────────────────────────────
-def process_faculty(entry, session, conf_acr, conf_frags, journal_variants, skip_metadata=False):
+def process_faculty(entry, session, conf_acr, conf_frags, journal_variants, base_url, skip_metadata=False):
     """Process a single faculty member: fetch pubs, match, score."""
     name = entry["name"]
     pid = entry["profile_id"]
@@ -415,11 +531,11 @@ def process_faculty(entry, session, conf_acr, conf_frags, journal_variants, skip
     # Fetch profile metadata (role, department)
     meta = {"role": "", "department": "", "homepage": ""}
     if not skip_metadata:
-        meta = fetch_profile_metadata(session, pid)
+        meta = fetch_profile_metadata(session, pid, base_url)
         time.sleep(DELAY_SECONDS)
 
     # Fetch all publications
-    raw_pubs = fetch_all_publications(session, pid)
+    raw_pubs = fetch_all_publications(session, pid, base_url)
     print(f"      Found {len(raw_pubs)} publications total")
 
     # Filter by year
@@ -519,66 +635,63 @@ def process_faculty(entry, session, conf_acr, conf_frags, journal_variants, skip
     }
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Scrape IRINS faculty publications")
-    parser.add_argument("--test-single", type=str, help="Test with a single profile ID")
-    parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
-    parser.add_argument("--no-dept-filter", action="store_true",
-                        help="Include ALL departments (default: CS/CSE only)")
-    args = parser.parse_args()
-
-    print("=" * 60)
-    print("SPARK — IRINS Publication Scraper")
-    print("=" * 60)
-
-    # Load matchers
-    print(f"\nLoading ICORE conferences from {ICORE_FILE}...")
-    conf_acr, conf_frags = build_conference_matcher(ICORE_FILE)
-    print(f"  Loaded {len(conf_acr)} conference acronyms")
-
-    print(f"Loading IEEE/ACM journals from {JOURNALS_FILE}...")
-    journal_variants = build_journal_matcher(JOURNALS_FILE)
-    print(f"  Loaded {len(journal_variants)} journal name variants")
-
-    # Session
-    session = requests.Session()
-    session.headers.update(HEADERS)
+def scrape_institution(inst_config, session, conf_acr, conf_frags, journal_variants,
+                       resume=False, no_dept_filter=False, test_single=None):
+    """Scrape a single institution's IRINS data."""
+    base_url = inst_config["irins_url"]
+    inst_name = inst_config["name"]
+    inst_short = inst_config["short"]
+    output_file = get_output_file(inst_short)
+    checkpoint_file = get_checkpoint_file(inst_short)
+    sitemap_file = get_sitemap_file(inst_short)
 
     # Single-profile test mode
-    if args.test_single:
-        pid = args.test_single
+    if test_single:
+        pid = test_single
         print(f"\n{'─' * 60}")
-        print(f"TEST MODE: Profile {pid}")
+        print(f"TEST MODE: {inst_name} — Profile {pid}")
         print(f"{'─' * 60}")
-        entry = {"name": f"Test Profile {pid}", "profile_id": pid, "url": f"{BASE_URL}/profile/{pid}"}
-        result = process_faculty(entry, session, conf_acr, conf_frags, journal_variants)
+        entry = {"name": f"Test Profile {pid}", "profile_id": pid, "url": f"{base_url}/profile/{pid}"}
+        result = process_faculty(entry, session, conf_acr, conf_frags, journal_variants, base_url)
         print(f"\n  Results:")
         print(json.dumps(result, indent=2, ensure_ascii=False)[:3000])
         return
 
-    # Parse sitemap
-    print(f"\nParsing sitemap: {SITEMAP_FILE}...")
-    entries = parse_sitemap(SITEMAP_FILE)
-    print(f"  Found {len(entries)} faculty profiles")
+    # Discover faculty — prefer sitemap, fall back to IRINS department pages
+    if os.path.exists(sitemap_file):
+        print(f"\nParsing sitemap: {sitemap_file}...")
+        entries = parse_sitemap(sitemap_file, base_url)
+        print(f"  Found {len(entries)} faculty profiles")
+    else:
+        print(f"\nNo sitemap found at {sitemap_file}")
+        entries = discover_faculty_from_irins(session, base_url)
+
+    if not entries:
+        print(f"  ⚠ No faculty profiles found for {inst_name}, skipping")
+        return
 
     # Load checkpoint if resuming
     checkpoint = {"completed": [], "results": {}}
-    if args.resume:
-        checkpoint = load_checkpoint()
+    if resume and os.path.exists(checkpoint_file):
+        with open(checkpoint_file, "r") as f:
+            checkpoint = json.load(f)
         print(f"  Resuming: {len(checkpoint['completed'])} already completed")
+
+    def save_cp():
+        with open(checkpoint_file, "w") as f:
+            json.dump(checkpoint, f, indent=2, ensure_ascii=False)
 
     # Process all faculty
     print(f"\n{'─' * 60}")
-    print(f"Processing: {INSTITUTION_NAME}")
+    print(f"Processing: {inst_name}")
     print(f"{'─' * 60}")
 
     all_results = []
-    # Load previously completed results
     for pid in checkpoint["completed"]:
         if pid in checkpoint["results"]:
             all_results.append(checkpoint["results"][pid])
 
-    dept_filter = not args.no_dept_filter
+    dept_filter = not no_dept_filter
     if dept_filter:
         print(f"  Department filter: ON (CS/CSE keywords: {CS_DEPARTMENT_KEYWORDS})")
     else:
@@ -590,7 +703,6 @@ def main():
         pid = entry["profile_id"]
 
         if pid in checkpoint["completed"]:
-            # Reload from checkpoint but apply department filter
             if pid in checkpoint["results"]:
                 cached = checkpoint["results"][pid]
                 if dept_filter and not is_cs_faculty(cached.get("department", "")):
@@ -602,13 +714,11 @@ def main():
 
         print(f"\n  [{i}/{len(entries)}]")
 
-        # Always fetch metadata so we can filter by department
-        meta = fetch_profile_metadata(session, pid)
+        meta = fetch_profile_metadata(session, pid, base_url)
         time.sleep(DELAY_SECONDS)
 
         if dept_filter and not is_cs_faculty(meta.get("department", "")):
             print(f"    → Skipping {entry['name']} (dept: {meta.get('department', 'unknown')})")
-            # Still save to checkpoint so we don't re-fetch on resume
             checkpoint["completed"].append(pid)
             checkpoint["results"][pid] = {
                 "name": entry["name"], "irins_id": pid, "irins_url": entry["url"],
@@ -618,29 +728,25 @@ def main():
                 "total_matched": 0, "total_scraped": 0, "publications": [],
                 "_skipped_dept": True,
             }
-            save_checkpoint(checkpoint)
+            save_cp()
             skipped_dept += 1
             continue
 
-        # Inject pre-fetched metadata into the entry
         entry["_prefetched_meta"] = meta
 
         result = process_faculty(
-            entry, session, conf_acr, conf_frags, journal_variants,
-            skip_metadata=True,  # Already fetched above
+            entry, session, conf_acr, conf_frags, journal_variants, base_url,
+            skip_metadata=True,
         )
-        # Patch in the metadata we already fetched
         result["role"] = meta["role"]
         result["department"] = meta["department"]
         result["homepage"] = meta["homepage"]
         all_results.append(result)
 
-        # Update checkpoint
         checkpoint["completed"].append(pid)
         checkpoint["results"][pid] = result
-        save_checkpoint(checkpoint)
+        save_cp()
 
-        # Rate limiting
         time.sleep(DELAY_SECONDS)
 
     if skipped_checkpoint > 0:
@@ -662,9 +768,9 @@ def main():
     # Build output
     output = {
         "source": "IRINS",
-        "institution": INSTITUTION_NAME,
-        "institution_short": INSTITUTION_SHORT,
-        "base_url": BASE_URL,
+        "institution": inst_name,
+        "institution_short": inst_short,
+        "base_url": base_url,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "year_range": [YEAR_START, YEAR_END],
         "conference_source": "ICORE2026",
@@ -681,17 +787,17 @@ def main():
 
     # Save output
     os.makedirs(DATA_DIR, exist_ok=True)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
     # Clean up checkpoint on successful completion
-    if os.path.exists(CHECKPOINT_FILE):
-        os.remove(CHECKPOINT_FILE)
+    if os.path.exists(checkpoint_file):
+        os.remove(checkpoint_file)
         print("  Cleaned up checkpoint file")
 
     # Summary
     print(f"\n{'=' * 60}")
-    print(f"Summary")
+    print(f"Summary — {inst_name}")
     print(f"{'=' * 60}")
     print(f"  Faculty scraped:       {len(all_results)}")
     print(f"  Total pubs scraped:    {total_scraped}")
@@ -700,7 +806,7 @@ def main():
     print(f"  Matched (IEEE/ACM J):  {total_journal}")
     print(f"  Total matched:         {total_matched}")
     print(f"  Total score:           {total_score:.2f}")
-    print(f"\n  ✓ Saved to {OUTPUT_FILE}")
+    print(f"\n  ✓ Saved to {output_file}")
     print(f"{'=' * 60}")
 
     # Print top 10 faculty
@@ -708,6 +814,63 @@ def main():
     for i, r in enumerate(all_results[:10], 1):
         print(f"    {i:2d}. {r['name']:<30s}  score={r['score']:.2f}  "
               f"A*={r['papers_astar']} A={r['papers_a']} J={r['papers_journal']}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Scrape IRINS faculty publications")
+    parser.add_argument("--institution", type=str,
+                        help="Institution short name (e.g. IIITD, IITB)")
+    parser.add_argument("--all", action="store_true",
+                        help="Scrape all institutions with irins_url in faculty.json")
+    parser.add_argument("--test-single", type=str, help="Test with a single profile ID")
+    parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
+    parser.add_argument("--no-dept-filter", action="store_true",
+                        help="Include ALL departments (default: CS/CSE only)")
+    args = parser.parse_args()
+
+    if not args.institution and not args.all:
+        parser.error("Specify --institution SHORT_NAME or --all")
+
+    print("=" * 60)
+    print("SPARK — IRINS Publication Scraper (Multi-Institution)")
+    print("=" * 60)
+
+    # Load matchers
+    print(f"\nLoading ICORE conferences from {ICORE_FILE}...")
+    conf_acr, conf_frags = build_conference_matcher(ICORE_FILE)
+    print(f"  Loaded {len(conf_acr)} conference acronyms")
+
+    print(f"Loading IEEE/ACM journals from {JOURNALS_FILE}...")
+    journal_variants = build_journal_matcher(JOURNALS_FILE)
+    print(f"  Loaded {len(journal_variants)} journal name variants")
+
+    # Session
+    session = requests.Session()
+    session.headers.update(HEADERS)
+
+    # Determine which institutions to scrape
+    if args.all:
+        institutions = get_all_institutions()
+        if not institutions:
+            print("\n  ⚠ No institutions with irins_url found in faculty.json")
+            return
+        print(f"\nWill scrape {len(institutions)} institutions")
+    else:
+        inst = get_institution_config(args.institution)
+        if not inst:
+            print(f"\n  ⚠ Institution '{args.institution}' not found in faculty.json")
+            sys.exit(1)
+        if not inst.get("irins_url"):
+            print(f"\n  ⚠ No irins_url configured for {inst['name']}")
+            sys.exit(1)
+        institutions = [inst]
+
+    for inst_config in institutions:
+        scrape_institution(
+            inst_config, session, conf_acr, conf_frags, journal_variants,
+            resume=args.resume, no_dept_filter=args.no_dept_filter,
+            test_single=args.test_single,
+        )
 
 
 if __name__ == "__main__":

@@ -21,11 +21,11 @@ DATA_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "data")
 
 ICORE_FILE = os.path.join(DATA_DIR, "icore_conferences.json")
 FACULTY_FILE = os.path.join(DATA_DIR, "faculty.json")
-IRINS_FILE = os.path.join(DATA_DIR, "irins_publications.json")
+IRINS_DIR = DATA_DIR  # Per-institution IRINS files: irins_{short}.json
 JOURNALS_FILE = os.path.join(DATA_DIR, "ieee_acm_journals.json")
 OUTPUT_FILE = os.path.join(DATA_DIR, "rankings.json")
 
-DBLP_BASE = "https://dblp.org"
+DBLP_BASE = "https://dblp.uni-trier.de"
 DELAY_SECONDS = 3.0  # DBLP rate limit compliance - be very polite
 MAX_RETRIES = 4
 RETRY_BASE_DELAY = 5  # seconds, doubles each retry
@@ -121,7 +121,7 @@ def fetch_author_publications(pid, session):
             if getattr(e, 'response', None) is not None:
                 if e.response.status_code == 404:
                     print(f"      ⚠ PID not found: {pid}")
-                    return []
+                    return [], []
                 if e.response.status_code in (429, 503, 502, 500, 504):
                     wait = RETRY_BASE_DELAY * (2 ** attempt)
                     print(f"      ⚠ Rate limited/Overloaded ({e.response.status_code}). Waiting {wait}s before retry {attempt + 1}/{MAX_RETRIES}...")
@@ -358,12 +358,24 @@ def compute_geo_mean_score(area_breakdown):
     return math.exp(sum(math.log(s) for s in weighted_scores) / len(weighted_scores))
 
 
-def load_irins_data():
-    """Load IRINS publication data if available."""
-    if not os.path.exists(IRINS_FILE):
+def load_irins_data(inst_short=None):
+    """Load IRINS publication data for an institution.
+
+    Looks for per-institution file (irins_{short}.json).
+    Falls back to legacy irins_publications.json only when inst_short is not given.
+    """
+    if inst_short:
+        per_inst_file = os.path.join(IRINS_DIR, f"irins_{inst_short.lower()}.json")
+        if os.path.exists(per_inst_file):
+            with open(per_inst_file, "r") as f:
+                return json.load(f)
         return None
-    with open(IRINS_FILE, "r") as f:
-        return json.load(f)
+    # Legacy fallback (no institution specified)
+    legacy_file = os.path.join(IRINS_DIR, "irins_publications.json")
+    if os.path.exists(legacy_file):
+        with open(legacy_file, "r") as f:
+            return json.load(f)
+    return None
 
 
 def extract_doi(pub):
@@ -639,13 +651,14 @@ def main():
     # Sort institutions by geo mean score
     all_institutions.sort(key=lambda i: -i["geo_mean_score"])
     
-    # Try to merge IRINS data
-    print(f"\nChecking for IRINS data at {IRINS_FILE}...")
-    irins_data = load_irins_data()
-    if irins_data:
-        print(f"  Found IRINS data: {irins_data['total_faculty_scraped']} faculty, "
-              f"{irins_data['total_publications_matched']} matched publications")
-        for inst in all_institutions:
+    # Try to merge IRINS data (per-institution)
+    print(f"\nMerging IRINS data...")
+    for inst in all_institutions:
+        inst_short = inst.get("short", "")
+        irins_data = load_irins_data(inst_short)
+        if irins_data:
+            print(f"  Found IRINS data for {inst['name']}: {irins_data['total_faculty_scraped']} faculty, "
+                  f"{irins_data['total_publications_matched']} matched publications")
             inst["faculty"] = merge_irins_into_faculty(inst["faculty"], irins_data)
             # Recompute totals after merge
             inst["total_score"] = round(sum(f["score"] for f in inst["faculty"]), 4)
@@ -659,17 +672,12 @@ def main():
             # Recompute area breakdown
             inst["area_breakdown"] = compute_area_breakdown(inst["faculty"], icore_lookup)
             inst["geo_mean_score"] = round(compute_geo_mean_score(inst["area_breakdown"]), 4)
-            
-            print(f"\n  Post-merge totals for {inst['name']}:")
-            print(f"    Total score (sum):  {inst['total_score']:.2f}")
-            print(f"    Geo-mean score:    {inst['geo_mean_score']:.2f}")
-            print(f"    A* papers:         {inst['total_papers_astar']}")
-            print(f"    A papers:          {inst['total_papers_a']}")
-            print(f"    Journal papers:    {inst.get('total_papers_journal', 0)}")
-            print(f"    Total matched:     {inst['total_papers']}")
-    else:
-        print("  No IRINS data found. Run 'python pipeline/scrape_irins.py' first.")
-        print("  Proceeding with DBLP data only.")
+
+            print(f"    Post-merge: score={inst['total_score']:.2f}  "
+                  f"A*={inst['total_papers_astar']} A={inst['total_papers_a']} "
+                  f"J={inst.get('total_papers_journal', 0)}")
+        else:
+            print(f"  No IRINS data for {inst['name']} (run scrape_irins.py --institution {inst_short})")
     
     # Build final output
     # Load ICORE data for conference list in output

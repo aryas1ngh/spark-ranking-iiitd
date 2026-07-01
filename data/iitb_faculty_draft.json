@@ -1,0 +1,495 @@
+{
+  "institution": "IIT Bombay",
+  "short": "IITB",
+  "source": "CSRankings (github.com/emeryberger/CSrankings)",
+  "faculty": [
+    {
+      "name": "Abhiram Ranade",
+      "homepage": "https://www.cse.iitb.ac.in/~ranade",
+      "scholar_id": "lb5ffQ8AAAAJ",
+      "dblp_pid": "r/AbhiramGRanade",
+      "match_confidence": "partial",
+      "dblp_match_name": "Abhiram G. Ranade"
+    },
+    {
+      "name": "Abir De",
+      "homepage": "https://abir-de.github.io",
+      "scholar_id": "_9ZKKbIAAAAJ",
+      "dblp_match_name": "Abir De",
+      "dblp_pid": "118/7174",
+      "match_confidence": "exact"
+    },
+    {
+      "name": "Aditya Desai",
+      "homepage": "https://apd10.github.io",
+      "scholar_id": "ymdbDZwAAAAJ",
+      "dblp_match_name": "Aditya Desai",
+      "dblp_pid": "18/8339",
+      "match_confidence": "exact"
+    },
+    {
+      "name": "Ajit A. Diwan",
+      "homepage": "https://www.cse.iitb.ac.in/~aad",
+      "scholar_id": "XpPk_GwAAAAJ",
+      "dblp_match_name": "Ajit A. Diwan",
+      "dblp_pid": "22/6375",
+      "match_confidence": "partial"
+    },
+    {
+      "name": "Ajit Rajwade",
+      "homepage": "https://www.cse.iitb.ac.in/~ajitvr",
+      "scholar_id": "CkTW7PwAAAAJ",
+      "dblp_pid": "26/5984-1",
+      "match_confidence": "exact",
+      "dblp_match_name": "Ajit Rajwade 0001"
+    },
+    {
+      "name": "Akash Kumar",
+      "homepage": "https://sites.google.com/view/kumarakash/home",
+      "scholar_id": "L358DvgAAAAJ",
+      "dblp_pid": "424/9273",
+      "match_confidence": "best-guess",
+      "dblp_match_name": "Akash Kumar Agarwal"
+    },
+    {
+      "name": "Arjun Bhagoji",
+      "homepage": "https://arjunbhagoji.github.io",
+      "scholar_id": "N2q6zMcAAAAJ",
+      "dblp_pid": "160/8607",
+      "match_confidence": "exact",
+      "dblp_match_name": "Arjun Bhagoji"
+    },
+    {
+      "name": "Arpit Agarwal",
+      "homepage": "https://agarpit.github.io",
+      "scholar_id": "bjrtXOcAAAAJ",
+      "dblp_pid": "52/9814",
+      "match_confidence": "exact",
+      "dblp_match_name": "Arpit Agarwal"
+    },
+    {
+      "name": "Ashutosh Gupta",
+      "homepage": "https://www.cse.iitb.ac.in/~akg",
+      "scholar_id": "NOSCHOLARPAGE",
+      "dblp_pid": "65/3925-1",
+      "match_confidence": "exact",
+      "dblp_match_name": "Ashutosh Gupta 0001"
+    },
+    {
+      "name": "Ashwin Gumaste",
+      "homepage": "https://www.cse.iitb.ac.in/~gnl/members.html",
+      "scholar_id": "NOSCHOLARPAGE",
+      "dblp_pid": "92/4079",
+      "match_confidence": "exact",
+      "dblp_match_name": "Ashwin Gumaste"
+    },
+    {
+      "name": "Avishek Ghosh",
+      "homepage": "https://sites.google.com/view/avishekghosh/home",
+      "scholar_id": "8y0Dg5cAAAAJ",
+      "dblp_pid": "98/275",
+      "match_confidence": "exact",
+      "dblp_match_name": "Avishek Ghosh"
+    },
+    {
+      "name": "Bernard Menezes",
+      "homepage": "https://www.cse.iitb.ac.in/~bernard",
+      "scholar_id": "NOSCHOLARPAGE",
+      "dblp_pid": "11/7009",
+      "match_confidence": "partial",
+      "dblp_match_name": "Bernard L. Menezes"
+    },
+    {
+      "name": "Bharat Adsul",
+      "homepage": "https://www.cse.iitb.ac.in/~adsul",
+      "scholar_id": "bZhCDxIAAAAJ",
+      "dblp_pid": "20/2653",
+      "match_confidence": "exact",
+      "dblp_match_name": "Bharat Adsul"
+    },
+    {
+      "name": "Bhaskaran Raman",
+      "homepage": "https://www.cse.iitb.ac.in/~br/webpage",
+      "scholar_id": "qj3IRU8AAAAJ",
+      "dblp_pid": "61/601",
+      "match_confidence": "exact",
+      "dblp_match_name": "Bhaskaran Raman"
+    },
+    {
+      "name": "Biplab Banerjee",
+      "homepage": "https://biplab-banerjee.github.io",
+      "scholar_id": "IEcsMPAAAAAJ",
+      "dblp_pid": "87/9571",
+      "match_confidence": "exact",
+      "dblp_match_name": "Biplab Banerjee"
+    },
+    {
+      "name": "Biswabandan Panda",
+      "homepage": "https://www.cse.iitb.ac.in/~biswa",
+      "scholar_id": "ZGZkHzcAAAAJ",
+      "dblp_pid": "118/8964",
+      "match_confidence": "exact",
+      "dblp_match_name": "Biswabandan Panda"
+    },
+    {
+      "name": "Chethan Kamath",
+      "homepage": "https://www.cse.iitb.ac.in/~ckamath",
+      "scholar_id": "NOSCHOLARPAGE",
+      "dblp_pid": "121/9587",
+      "match_confidence": "exact",
+      "dblp_match_name": "Chethan Kamath"
+    },
+    {
+      "name": "Deepak B. Phatak",
+      "homepage": "https://www.cse.iitb.ac.in/~dbp",
+      "scholar_id": "NOSCHOLARPAGE",
+      "dblp_pid": "p/DBPhatak",
+      "match_confidence": "exact",
+      "dblp_match_name": "Deepak B. Phatak"
+    },
+    {
+      "name": "Devashish Gosain",
+      "homepage": "https://www.devashishgosain.com",
+      "scholar_id": "VyhXD2EAAAAJ",
+      "dblp_pid": "207/8090",
+      "match_confidence": "exact",
+      "dblp_match_name": "Devashish Gosain"
+    },
+    {
+      "name": "Dhananjay M. Dhamdhere",
+      "homepage": "https://www.cse.iitb.ac.in/~dmd",
+      "scholar_id": "NOSCHOLARPAGE",
+      "dblp_pid": "d/DMDhamdhere",
+      "match_confidence": "exact",
+      "dblp_match_name": "Dhananjay M. Dhamdhere"
+    },
+    {
+      "name": "G. Sivakumar",
+      "homepage": "https://www.cse.iitb.ac.in/~siva",
+      "scholar_id": "gqHcbCkAAAAJ",
+      "dblp_pid": "89/2818",
+      "match_confidence": "exact",
+      "dblp_match_name": "G. Sivakumar"
+    },
+    {
+      "name": "Ganesh Ramakrishnan",
+      "homepage": "https://www.cse.iitb.ac.in/~ganesh",
+      "scholar_id": "W1ZpREMAAAAJ",
+      "dblp_pid": "r/GaneshRamakrishnan",
+      "match_confidence": "exact",
+      "dblp_match_name": "Ganesh Ramakrishnan"
+    },
+    {
+      "name": "Kameswari Chebrolu",
+      "homepage": "https://www.cse.iitb.ac.in/~chebrolu",
+      "scholar_id": "U-Irc6kAAAAJ",
+      "dblp_pid": "17/792",
+      "match_confidence": "exact",
+      "dblp_match_name": "Kameswari Chebrolu"
+    },
+    {
+      "name": "Kavi Arya",
+      "homepage": "https://www.cse.iitb.ac.in/~kavi",
+      "scholar_id": "Qz7H0U0AAAAJ",
+      "dblp_pid": "29/4933",
+      "match_confidence": "exact",
+      "dblp_match_name": "Kavi Arya"
+    },
+    {
+      "name": "Krithi Ramamritham",
+      "homepage": "http://cuse.iitb.ac.in/people/faculty/krithi-ramamritham",
+      "scholar_id": "LFLG5pcAAAAJ",
+      "dblp_pid": "r/KrithiRamamritham",
+      "match_confidence": "exact",
+      "dblp_match_name": "Krithi Ramamritham"
+    },
+    {
+      "name": "Manas Thakur",
+      "homepage": "https://www.cse.iitb.ac.in/~manas",
+      "scholar_id": "4DCfL7UAAAAJ",
+      "dblp_pid": "235/9670",
+      "match_confidence": "exact",
+      "dblp_match_name": "Manas Thakur"
+    },
+    {
+      "name": "Manoj M. Prabhakaran",
+      "homepage": "https://www.cse.iitb.ac.in/~mp",
+      "scholar_id": "FANRIhwAAAAJ",
+      "dblp_pid": "32/5105",
+      "match_confidence": "partial",
+      "dblp_match_name": "Manoj Prabhakaran 0001"
+    },
+    {
+      "name": "Milind A. Sohoni",
+      "homepage": "https://www.cse.iitb.ac.in/~sohoni",
+      "scholar_id": "QbF6h1AAAAAJ",
+      "dblp_pid": "61/1262",
+      "match_confidence": "exact",
+      "dblp_match_name": "Milind A. Sohoni"
+    },
+    {
+      "name": "Mythili Vutukuru",
+      "homepage": "https://www.cse.iitb.ac.in/~mythili",
+      "scholar_id": "-OpGJpYAAAAJ",
+      "dblp_pid": "51/6299",
+      "match_confidence": "exact",
+      "dblp_match_name": "Mythili Vutukuru"
+    },
+    {
+      "name": "Nandlal L. Sarda",
+      "homepage": "https://www.cse.iitb.ac.in/~nls",
+      "scholar_id": "NOSCHOLARPAGE",
+      "dblp_pid": "s/NandlalLSarda",
+      "match_confidence": "exact",
+      "dblp_match_name": "Nandlal L. Sarda"
+    },
+    {
+      "name": "Om P. Damani",
+      "homepage": "https://www.cse.iitb.ac.in/~damani",
+      "scholar_id": "lcRCUawAAAAJ",
+      "dblp_pid": "85/2671",
+      "match_confidence": "exact",
+      "dblp_match_name": "Om P. Damani"
+    },
+    {
+      "name": "Parag Chaudhuri",
+      "homepage": "https://www.cse.iitb.ac.in/~paragc",
+      "scholar_id": "kOkSgaMAAAAJ",
+      "dblp_pid": "57/5346",
+      "match_confidence": "exact",
+      "dblp_match_name": "Parag Chaudhuri"
+    },
+    {
+      "name": "Parthe Pandit",
+      "homepage": "https://parthe.github.io",
+      "scholar_id": "gp_Gdr8AAAAJ",
+      "dblp_pid": "166/6545",
+      "match_confidence": "exact",
+      "dblp_match_name": "Parthe Pandit"
+    },
+    {
+      "name": "Pranay Sharma",
+      "homepage": "https://sites.google.com/view/pranay-sharma/home",
+      "scholar_id": "QR-VKssAAAAJ",
+      "dblp_pid": "81/9976",
+      "match_confidence": "exact",
+      "dblp_match_name": "Pranay Sharma"
+    },
+    {
+      "name": "Pratik Jawanpuria",
+      "homepage": "https://pratikjawanpuria.com",
+      "scholar_id": "_GUZDtMAAAAJ",
+      "dblp_pid": "32/9841",
+      "match_confidence": "exact",
+      "dblp_match_name": "Pratik Jawanpuria"
+    },
+    {
+      "name": "Preethi Jyothi",
+      "homepage": "https://www.cse.iitb.ac.in/~pjyothi",
+      "scholar_id": "QN_uhu8AAAAJ",
+      "dblp_pid": "01/9014",
+      "match_confidence": "exact",
+      "dblp_match_name": "Preethi Jyothi"
+    },
+    {
+      "name": "Puru Kulkarni",
+      "homepage": "https://www.cse.iitb.ac.in/~puru",
+      "scholar_id": "Gs3HO5kAAAAJ",
+      "dblp_pid": "48/2303",
+      "match_confidence": "partial",
+      "dblp_match_name": "Purushottam Kulkarni"
+    },
+    {
+      "name": "Rohit Gurjar",
+      "homepage": "https://www.cse.iitb.ac.in/~rgurjar",
+      "scholar_id": "dtbKJVUAAAAJ",
+      "dblp_pid": "81/10454",
+      "match_confidence": "exact",
+      "dblp_match_name": "Rohit Gurjar"
+    },
+    {
+      "name": "Rushikesh Joshi",
+      "homepage": "https://www.cse.iitb.ac.in/~rkj",
+      "scholar_id": "zmDfshUAAAAJ",
+      "dblp_pid": "j/RushikeshKJoshi",
+      "match_confidence": "partial",
+      "dblp_match_name": "Rushikesh K. Joshi"
+    },
+    {
+      "name": "S. Akshay",
+      "homepage": "https://www.cse.iitb.ac.in/~akshayss",
+      "scholar_id": "0XXd3J0AAAAJ",
+      "dblp_pid": "28/6534",
+      "match_confidence": "exact",
+      "dblp_match_name": "S. Akshay 0001"
+    },
+    {
+      "name": "S. Krishna",
+      "homepage": "https://www.cse.iitb.ac.in/~krishnas",
+      "scholar_id": "14JlaZsAAAAJ",
+      "dblp_pid": "45/7595",
+      "match_confidence": "best-guess",
+      "dblp_match_name": "Rama Krishna Sai S. Gorthi"
+    },
+    {
+      "name": "S. Sudarshan",
+      "homepage": "https://www.cse.iitb.ac.in/~sudarsha",
+      "scholar_id": "KtP9-zYAAAAJ",
+      "dblp_pid": "162/3179",
+      "match_confidence": "partial",
+      "dblp_match_name": "K. Vidya Sudarshan"
+    },
+    {
+      "name": "Sayandeep Saha",
+      "homepage": "https://sites.google.com/view/sayandeepsaha/home",
+      "scholar_id": "62tsJIQAAAAJ",
+      "dblp_pid": "148/6886",
+      "match_confidence": "exact",
+      "dblp_match_name": "Sayandeep Saha"
+    },
+    {
+      "name": "Sharat Chandran",
+      "homepage": "https://www.cse.iitb.ac.in/~sharat",
+      "scholar_id": "pRDtIYcAAAAJ",
+      "dblp_pid": "70/1026",
+      "match_confidence": "exact",
+      "dblp_match_name": "Sharat Chandran"
+    },
+    {
+      "name": "Shivaram Kalyanakrishnan",
+      "homepage": "https://www.cse.iitb.ac.in/~shivaram",
+      "scholar_id": "YZkeEqAAAAAJ",
+      "dblp_pid": "16/4410",
+      "match_confidence": "exact",
+      "dblp_match_name": "Shivaram Kalyanakrishnan"
+    },
+    {
+      "name": "Soumen Chakrabarti",
+      "homepage": "https://www.cse.iitb.ac.in/~soumen",
+      "scholar_id": "LfF2zfQAAAAJ",
+      "dblp_pid": "c/SChakrabarti",
+      "match_confidence": "exact",
+      "dblp_match_name": "Soumen Chakrabarti"
+    },
+    {
+      "name": "Sridhar Iyer",
+      "homepage": "http://www.it.iitb.ac.in/~sri",
+      "scholar_id": "I7pOhHsAAAAJ",
+      "dblp_pid": "45/4930",
+      "match_confidence": "exact",
+      "dblp_match_name": "Sridhar Iyer"
+    },
+    {
+      "name": "Sruthi Sekar",
+      "homepage": "https://sruthisekar.wordpress.com",
+      "scholar_id": "Oo8c288AAAAJ",
+      "dblp_pid": "208/0806",
+      "match_confidence": "exact",
+      "dblp_match_name": "Sruthi Sekar"
+    },
+    {
+      "name": "Sujoy Bhore",
+      "homepage": "https://sites.google.com/view/homepage-of-sujoy-bhore/home",
+      "scholar_id": "94KJ_A0AAAAJ",
+      "dblp_pid": "157/6058",
+      "match_confidence": "exact",
+      "dblp_match_name": "Sujoy Bhore"
+    },
+    {
+      "name": "Sundar Vishwanathan",
+      "homepage": "https://www.cse.iitb.ac.in/~sundar",
+      "scholar_id": "8CK3IY4AAAAJ",
+      "dblp_pid": "08/5677",
+      "match_confidence": "exact",
+      "dblp_match_name": "Sundar Vishwanathan"
+    },
+    {
+      "name": "Sunita Sarawagi",
+      "homepage": "https://www.cse.iitb.ac.in/~sunita",
+      "scholar_id": "Hg4HmTAAAAAJ",
+      "dblp_pid": "s/SunitaSarawagi",
+      "match_confidence": "exact",
+      "dblp_match_name": "Sunita Sarawagi"
+    },
+    {
+      "name": "Supratik Chakraborty",
+      "homepage": "https://www.cse.iitb.ac.in/~supratik",
+      "scholar_id": "LwG4hd8AAAAJ",
+      "dblp_pid": "34/4525",
+      "match_confidence": "exact",
+      "dblp_match_name": "Supratik Chakraborty"
+    },
+    {
+      "name": "Supratim Biswas",
+      "homepage": "https://www.cse.iitb.ac.in/~sb",
+      "scholar_id": "e4CGuD4AAAAJ",
+      "dblp_pid": "62/4727",
+      "match_confidence": "exact",
+      "dblp_match_name": "Supratim Biswas"
+    },
+    {
+      "name": "Suraj Shetiya",
+      "homepage": "https://www.cse.iitb.ac.in/~surajs",
+      "scholar_id": "8Nrilj4AAAAJ",
+      "dblp_pid": "254/2107",
+      "match_confidence": "exact",
+      "dblp_match_name": "Suraj Shetiya"
+    },
+    {
+      "name": "Suyash P. Awate",
+      "homepage": "https://www.cse.iitb.ac.in/~suyash",
+      "scholar_id": "xVs3dPgAAAAJ",
+      "dblp_pid": "26/3956",
+      "match_confidence": "exact",
+      "dblp_match_name": "Suyash P. Awate"
+    },
+    {
+      "name": "Swaprava Nath",
+      "homepage": "https://www.cse.iitb.ac.in/~swaprava",
+      "scholar_id": "TlpsH9cAAAAJ",
+      "dblp_pid": "70/9376",
+      "match_confidence": "exact",
+      "dblp_match_name": "Swaprava Nath"
+    },
+    {
+      "name": "Uday P. Khedker",
+      "homepage": "https://www.cse.iitb.ac.in/~uday",
+      "scholar_id": "mMX9vxkAAAAJ",
+      "dblp_pid": "k/UdayPKhedker",
+      "match_confidence": "exact",
+      "dblp_match_name": "Uday P. Khedker"
+    },
+    {
+      "name": "Umesh Bellur",
+      "homepage": "https://www.cse.iitb.ac.in/~umesh",
+      "scholar_id": "WnjGMjIAAAAJ",
+      "dblp_pid": "54/4697",
+      "match_confidence": "exact",
+      "dblp_match_name": "Umesh Bellur"
+    },
+    {
+      "name": "Varsha Apte",
+      "homepage": "https://www.cse.iitb.ac.in/~varsha",
+      "scholar_id": "g2oLiH4AAAAJ",
+      "dblp_pid": "99/5513",
+      "match_confidence": "exact",
+      "dblp_match_name": "Varsha Apte"
+    },
+    {
+      "name": "Vinay J. Ribeiro",
+      "homepage": "https://www.cse.iitb.ac.in/~vinayr",
+      "scholar_id": "XxeF6MkAAAAJ",
+      "dblp_pid": "91/44",
+      "match_confidence": "exact",
+      "dblp_match_name": "Vinay J. Ribeiro"
+    },
+    {
+      "name": "Virendra Singh",
+      "homepage": "https://www.cse.iitb.ac.in/~viren",
+      "scholar_id": "cmRwYjAAAAAJ",
+      "dblp_pid": "31/4795",
+      "match_confidence": "exact",
+      "dblp_match_name": "Virendra Singh"
+    }
+  ]
+}

@@ -9,14 +9,23 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
-        irins_file = os.path.join(base_dir, 'data', 'irins_publications.json')
+        data_dir = os.path.join(base_dir, 'data')
         
-        if not os.path.exists(irins_file):
-            self.stdout.write(self.style.ERROR("irins_publications.json not found."))
+        # Find all per-institution IRINS files (irins_*.json, excluding checkpoints)
+        import glob
+        irins_files = [f for f in glob.glob(os.path.join(data_dir, 'irins_*.json'))
+                       if 'checkpoint' not in f and 'sitemap' not in f]
+        
+        if not irins_files:
+            self.stdout.write(self.style.ERROR("No IRINS data files found (irins_*.json)."))
             return
+        
+        # Also check legacy file
+        legacy_file = os.path.join(data_dir, 'irins_publications.json')
+        if legacy_file in irins_files:
+            irins_files.remove(legacy_file)  # Process per-institution files instead
             
-        with open(irins_file, 'r') as f:
-            irins_data = json.load(f)
+        self.stdout.write(f"Found {len(irins_files)} IRINS data files")
             
         def normalize_name(name):
             return re.sub(r'[^a-z]', '', name.lower())
@@ -24,11 +33,28 @@ class Command(BaseCommand):
         def normalize_title(title):
             return re.sub(r'[^a-z0-9]', '', title.lower())
 
-        # Assume all from IIIT Delhi for now, as in the existing implementation
-        iiitd = Institution.objects.get(name="IIIT Delhi")
+        total_new_faculty = 0
+        total_pubs_added = 0
         
-        # Build existing faculty lookup by normalized name
-        existing_faculty = {normalize_name(f.name): f for f in Faculty.objects.filter(institution=iiitd)}
+        for irins_file in irins_files:
+            with open(irins_file, 'r') as f:
+                irins_data = json.load(f)
+            
+            inst_name = irins_data.get('institution', '')
+            if not inst_name:
+                self.stdout.write(self.style.WARNING(f"Skipping {irins_file}: no institution name"))
+                continue
+                
+            # Find or create the institution
+            institution = Institution.objects.filter(name=inst_name).first()
+            if not institution:
+                self.stdout.write(self.style.WARNING(f"Institution '{inst_name}' not in DB, skipping {irins_file}"))
+                continue
+            
+            self.stdout.write(f"\nProcessing IRINS data for {inst_name}...")
+            
+            # Build existing faculty lookup by normalized name
+            existing_faculty = {normalize_name(f.name): f for f in Faculty.objects.filter(institution=institution)}
         
         new_faculty_count = 0
         pubs_added = 0
@@ -45,7 +71,7 @@ class Command(BaseCommand):
                 # Create new faculty
                 faculty = Faculty.objects.create(
                     name=irins_fac['name'],
-                    institution=iiitd,
+                    institution=institution,
                     irins_id=irins_fac['irins_id']
                 )
                 new_faculty_count += 1
@@ -107,4 +133,10 @@ class Command(BaseCommand):
                 )
                 pubs_added += 1
                 
-        self.stdout.write(self.style.SUCCESS(f"Loaded {new_faculty_count} new faculty members and {pubs_added} publications from IRINS data."))
+            total_new_faculty += new_faculty_count
+            total_pubs_added += pubs_added
+            self.stdout.write(f"  {inst_name}: {new_faculty_count} new faculty, {pubs_added} publications")
+                
+        self.stdout.write(self.style.SUCCESS(
+            f"Loaded {total_new_faculty} new faculty members and {total_pubs_added} publications from IRINS data."
+        ))

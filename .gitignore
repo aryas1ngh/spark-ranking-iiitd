@@ -35,3 +35,5 @@ data/irins_checkpoint.json
 
 # Reference repos
 frontend_ref/
+data/iisc_faculty_draft.json
+data/iitm_faculty_draft.json

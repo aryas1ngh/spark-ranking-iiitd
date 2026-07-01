@@ -5,7 +5,7 @@ import requests
 from django.core.management.base import BaseCommand
 from api.models import Faculty, Conference, Publication, Authorship
 
-DBLP_BASE = "https://dblp.org"
+DBLP_BASE = "https://dblp.uni-trier.de"
 MAX_RETRIES = 4
 RETRY_BASE_DELAY = 5
 YEAR_START = 2015
