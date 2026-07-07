@@ -500,12 +500,6 @@
           "dblp_pid": "b/CBhattacharyya"
         },
         {
-          "name": "Chiru Bhattacharyya",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "b/CBhattacharyya"
-        },
-        {
           "name": "D. Sridharan 0002",
           "homepage": "",
           "role": "Faculty",
@@ -528,12 +522,6 @@
           "homepage": "",
           "role": "Faculty",
           "dblp_pid": "171/6736"
-        },
-        {
-          "name": "Devarajan Sridharan",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "72/5848"
         },
         {
           "name": "Dilip P. Patil",
@@ -596,28 +584,10 @@
           "dblp_pid": "16/2803"
         },
         {
-          "name": "Matthew Jacob Thazhuthaveetil",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "16/2803"
-        },
-        {
-          "name": "Matthew Thazhuthaveetil",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "16/2803"
-        },
-        {
           "name": "Murugesan Venkatapathi",
           "homepage": "",
           "role": "Faculty",
           "dblp_pid": "270/2075"
-        },
-        {
-          "name": "Musti Narasimha Murty",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "m/MNarasimhaMurty"
         },
         {
           "name": "N. Balakrishnan 0001",
@@ -630,18 +600,6 @@
           "homepage": "",
           "role": "Faculty",
           "dblp_pid": "136/9791"
-        },
-        {
-          "name": "Narasimha Murty Musti",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "m/MNarasimhaMurty"
-        },
-        {
-          "name": "Narayanas Balakrishnan",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "01/1911-1"
         },
         {
           "name": "P. Vijay Kumar",
@@ -662,12 +620,6 @@
           "dblp_pid": "118/9502"
         },
         {
-          "name": "Pushpak Jagtap",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "170/5167"
-        },
-        {
           "name": "R. Govindarajan",
           "homepage": "",
           "role": "Faculty",
@@ -686,22 +638,10 @@
           "dblp_pid": "40/3318"
         },
         {
-          "name": "Radhakrishnan Venkatesh Babu",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "20/6289"
-        },
-        {
           "name": "Raghavan Komondoor",
           "homepage": "",
           "role": "Faculty",
           "dblp_pid": "97/3731"
-        },
-        {
-          "name": "Ramaswamy Govindarajan",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "45/3592"
         },
         {
           "name": "Ratikanta Behera",
@@ -746,12 +686,6 @@
           "dblp_pid": "v/SathishSVadhiyar"
         },
         {
-          "name": "Sathish Vadhiyar",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "v/SathishSVadhiyar"
-        },
-        {
           "name": "Shalabh Bhatnagar",
           "homepage": "",
           "role": "Faculty",
@@ -764,25 +698,7 @@
           "dblp_pid": "66/6214"
         },
         {
-          "name": "Shirish Krishnaj Shevade",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "66/6214"
-        },
-        {
           "name": "Shishir Kolathaya",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "144/4182"
-        },
-        {
-          "name": "Shishir N. Y. Kolathaya",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "144/4182"
-        },
-        {
-          "name": "Shishir Nadubettu Yadukumar",
           "homepage": "",
           "role": "Faculty",
           "dblp_pid": "144/4182"
@@ -824,18 +740,6 @@
           "dblp_pid": "171/8581"
         },
         {
-          "name": "Venkatesh Babu R.",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "20/6289"
-        },
-        {
-          "name": "Venkatesh Babu Radhakrishnan",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "20/6289"
-        },
-        {
           "name": "Vijay Natarajan",
           "homepage": "",
           "role": "Faculty",
@@ -860,31 +764,269 @@
           "dblp_pid": "n/YNarahari"
         },
         {
-          "name": "Y. Narahari 0001",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "n/YNarahari"
-        },
-        {
-          "name": "Yadati Narahari",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "n/YNarahari"
-        },
-        {
           "name": "Yogesh L. Simmhan",
-          "homepage": "",
-          "role": "Faculty",
-          "dblp_pid": "s/YogeshSimmhan"
-        },
-        {
-          "name": "Yogesh Simmhan",
           "homepage": "",
           "role": "Faculty",
           "dblp_pid": "s/YogeshSimmhan"
         }
       ],
       "irins_url": "https://iiscprofiles.irins.org"
+    },
+    {
+      "name": "IIT Madras",
+      "short": "IITM",
+      "country": "India",
+      "website": "https://www.iitm.ac.in",
+      "state": "Tamil Nadu",
+      "city": "Chennai",
+      "faculty": [
+        {
+          "name": "Aishwarya Thiruvengadam",
+          "homepage": "https://sites.google.com/view/aishwaryat",
+          "role": "Faculty",
+          "dblp_pid": "116/4781"
+        },
+        {
+          "name": "Akanksha Agrawal",
+          "homepage": "https://akanksha-agrawal.weebly.com",
+          "role": "Faculty",
+          "dblp_pid": "144/7801"
+        },
+        {
+          "name": "Anantha Padmanabha",
+          "homepage": "https://padmanabha-anantha.github.io/website",
+          "role": "Faculty",
+          "dblp_pid": "217/2949"
+        },
+        {
+          "name": "Anurag Mittal",
+          "homepage": "http://www.cse.iitm.ac.in/~amittal",
+          "role": "Faculty",
+          "dblp_pid": "59/6614"
+        },
+        {
+          "name": "Arun Rajkumar",
+          "homepage": "https://sites.google.com/view/arun-rajkumar",
+          "role": "Faculty",
+          "dblp_pid": "32/11350"
+        },
+        {
+          "name": "Ashrujit Ghoshal",
+          "homepage": "https://cse.iitm.ac.in/~ashrujit",
+          "role": "Faculty",
+          "dblp_pid": "210/2673"
+        },
+        {
+          "name": "Ayon Chakraborty",
+          "homepage": "https://www.cse.iitm.ac.in/~ayon",
+          "role": "Faculty",
+          "dblp_pid": "47/7850"
+        },
+        {
+          "name": "B. V. Raghavendra Rao",
+          "homepage": "http://www.cse.iitm.ac.in/~bvrr",
+          "role": "Faculty",
+          "dblp_pid": "51/6368"
+        },
+        {
+          "name": "Balaraman Ravindran",
+          "homepage": "http://www.cse.iitm.ac.in/~ravi",
+          "role": "Faculty",
+          "dblp_pid": "69/2281"
+        },
+        {
+          "name": "C. Chandra Sekhar",
+          "homepage": "https://www.iitm.ac.in/info/fac/cchandra",
+          "role": "Faculty",
+          "dblp_pid": ""
+        },
+        {
+          "name": "Chandrashekar Lakshminarayanan",
+          "homepage": "https://sites.google.com/view/chandrashekar-lakshminarayanan",
+          "role": "Faculty",
+          "dblp_pid": "143/7535"
+        },
+        {
+          "name": "Chester Rebeiro",
+          "homepage": "http://www.cse.iitm.ac.in/~chester",
+          "role": "Faculty",
+          "dblp_pid": "37/4129"
+        },
+        {
+          "name": "D. Janakiram",
+          "homepage": "http://dos.iitm.ac.in/djwebsite",
+          "role": "Faculty",
+          "dblp_pid": ""
+        },
+        {
+          "name": "Ganapathy Krishnamurthi",
+          "homepage": "https://dsai.iitm.ac.in/faculty/ganapathy-krishnamurthi",
+          "role": "Faculty",
+          "dblp_pid": "16/847"
+        },
+        {
+          "name": "Gopalakrishnan Srinivasan",
+          "homepage": "https://www.cse.iitm.ac.in/profile.php?arg=MzEyNQ==",
+          "role": "Faculty",
+          "dblp_pid": "05/4913"
+        },
+        {
+          "name": "Harish G. Ramaswamy",
+          "homepage": "https://sites.google.com/site/harishguruprasad",
+          "role": "Faculty",
+          "dblp_pid": "126/1729"
+        },
+        {
+          "name": "Hema A. Murthy",
+          "homepage": "http://www.cse.iitm.ac.in/~hema",
+          "role": "Faculty",
+          "dblp_pid": "38/5502"
+        },
+        {
+          "name": "Jayalal Sarma",
+          "homepage": "http://www.cse.iitm.ac.in/~jayalal",
+          "role": "Faculty",
+          "dblp_pid": "75/2295"
+        },
+        {
+          "name": "John Augustine",
+          "homepage": "https://www.iitm.ac.in/info/fac/augustine",
+          "role": "Faculty",
+          "dblp_pid": "69/2158"
+        },
+        {
+          "name": "K. C. Sivaramakrishnan",
+          "homepage": "https://kcsrk.info",
+          "role": "Faculty",
+          "dblp_pid": "64/7372"
+        },
+        {
+          "name": "Kamakoti Veezhinathan",
+          "homepage": "http://rise.cse.iitm.ac.in/people/faculty/kama/kama.html",
+          "role": "Faculty",
+          "dblp_pid": ""
+        },
+        {
+          "name": "Kartik Nagar",
+          "homepage": "https://kartiknagar.github.io",
+          "role": "Faculty",
+          "dblp_pid": "120/1805"
+        },
+        {
+          "name": "Krishna M. Sivalingam",
+          "homepage": "http://www.cse.iitm.ac.in/~skrishnam",
+          "role": "Faculty",
+          "dblp_pid": "05/1170"
+        },
+        {
+          "name": "Krishna Pillutla",
+          "homepage": "https://krishnap25.github.io",
+          "role": "Faculty",
+          "dblp_pid": "259/3099"
+        },
+        {
+          "name": "Madhu Mutyam",
+          "homepage": "http://www.cse.iitm.ac.in/~madhu",
+          "role": "Faculty",
+          "dblp_pid": "m/MadhuMutyam"
+        },
+        {
+          "name": "Manikandan Narayanan",
+          "homepage": "https://maninarayanan.com/index.html",
+          "role": "Faculty",
+          "dblp_pid": "44/2302"
+        },
+        {
+          "name": "Meghana Nasre",
+          "homepage": "http://www.cse.iitm.ac.in/~meghana",
+          "role": "Faculty",
+          "dblp_pid": "21/4227"
+        },
+        {
+          "name": "Mitesh M. Khapra",
+          "homepage": "http://www.cse.iitm.ac.in/~miteshk",
+          "role": "Faculty",
+          "dblp_pid": "90/7967"
+        },
+        {
+          "name": "N. S. Narayanaswamy",
+          "homepage": "https://www.iitm.ac.in/info/fac/swamy",
+          "role": "Faculty",
+          "dblp_pid": "n/NSNarayanaswamy"
+        },
+        {
+          "name": "Nishad Kothari",
+          "homepage": "https://sites.google.com/view/nishadkothari",
+          "role": "Faculty",
+          "dblp_pid": "20/9888"
+        },
+        {
+          "name": "P. Sreenivasa Kumar",
+          "homepage": "http://www.cse.iitm.ac.in/~psk",
+          "role": "Faculty",
+          "dblp_pid": "72/6835"
+        },
+        {
+          "name": "Prashanth L. A.",
+          "homepage": "http://www.cse.iitm.ac.in/~prashla",
+          "role": "Faculty",
+          "dblp_pid": "90/3161"
+        },
+        {
+          "name": "Rupesh Nasre",
+          "homepage": "http://www.cse.iitm.ac.in/~rupesh",
+          "role": "Faculty",
+          "dblp_pid": "31/5699"
+        },
+        {
+          "name": "Shreyas Pai",
+          "homepage": "https://shreyaspai.com",
+          "role": "Faculty",
+          "dblp_pid": "200/7900"
+        },
+        {
+          "name": "Shweta Agrawal",
+          "homepage": "http://www.cse.iitm.ac.in/~shwetaag",
+          "role": "Faculty",
+          "dblp_pid": "74/6138"
+        },
+        {
+          "name": "Sivaram Ambikasaran",
+          "homepage": "https://sivaramambikasaran.com/CV",
+          "role": "Faculty",
+          "dblp_pid": "136/8234"
+        },
+        {
+          "name": "Sukhendu Das",
+          "homepage": "http://www.cse.iitm.ac.in/~sdas",
+          "role": "Faculty",
+          "dblp_pid": "96/1248"
+        },
+        {
+          "name": "Sutanu Chakraborti",
+          "homepage": "http://www.cse.iitm.ac.in/~sutanuc",
+          "role": "Faculty",
+          "dblp_pid": "03/1876"
+        },
+        {
+          "name": "V. Kamakoti",
+          "homepage": "http://www.cse.iitm.ac.in/profile.php?arg=MTg=",
+          "role": "Faculty",
+          "dblp_pid": "25/3336"
+        },
+        {
+          "name": "V. Krishna Nandivada",
+          "homepage": "http://www.cse.iitm.ac.in/~krishna",
+          "role": "Faculty",
+          "dblp_pid": "20/3315"
+        },
+        {
+          "name": "Yadu Vasudev",
+          "homepage": "https://yaduvasudev.github.io",
+          "role": "Faculty",
+          "dblp_pid": "23/10305"
+        }
+      ]
     }
   ]
 }

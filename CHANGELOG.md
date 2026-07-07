@@ -2,6 +2,22 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.4.0 — 2026-07-07
+
+### 1. New Institutions: IIT Madras & IISc Bangalore
+- **IIT Madras**: Added 41 CSE faculty from CSRankings source data. Auto-resolved 38/41 DBLP PIDs via DBLP search API; 3 faculty remain unresolved (C. Chandra Sekhar, D. Janakiram, Kamakoti Veezhinathan).
+- **IISc Bangalore**: Already present in seed data but had severe duplicate entries (75 entries for ~56 unique faculty). Deduplicated by keeping one entry per unique `dblp_pid`, removing 19 duplicate name variants.
+- **Result**: SPARK now ranks **4 institutions** (up from 2): IIT Bombay (#1), IISc Bangalore (#2), IIT Madras (#3), IIIT Delhi (#4).
+
+### 2. DBLP PID Auto-Resolution
+- Built a DBLP search API integration to automatically resolve faculty names to DBLP author PIDs for institutions where only names are available.
+- Uses exact match first, then falls back to word-overlap heuristics for fuzzy matching.
+- Successfully resolved 38/41 IIT Madras faculty PIDs from name-only draft data.
+
+### 3. Data Quality
+- **IISc deduplication**: Removed 19 duplicate faculty entries that would have caused double-counted publications (e.g., "Chiranjib Bhattacharyya" / "Chiru Bhattacharyya", 3× Matthew Thazhuthaveetil variants, 4× Venkatesh Babu variants).
+- **Pipeline re-run**: Full DBLP fetch for all 187 faculty across 4 institutions. Generated 1,765 publications and 1,947 authorships.
+
 ## v1.3.0 — 2026-06-22
 
 ### 1. Geometric Mean Institution Scoring

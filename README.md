@@ -33,7 +33,7 @@
 | Data source       | DBLP              | **DBLP + IRINS**                               |
 | Transparency      | Open source       | Open source + open data            |
 
-> **Example:** IIIT Delhi faculty publish extensively in conferences like COMAD, ISEC, IndoCrypt, ICDCN, and many ICORE A-ranked venues that CSRankings ignores entirely. SPARK counts them all.
+> **Currently tracking:** IIT Bombay, IISc Bangalore, IIT Madras, and IIIT Delhi — with more institutions planned.
 
 ---
 
