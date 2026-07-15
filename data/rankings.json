@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T14:06:11Z",
+  "generated_at": "2026-07-15T17:07:59Z",
   "year_range": [
     2015,
     2026
@@ -89807,11 +89807,11 @@
       "short": "IIITH",
       "country": "India",
       "website": "https://www.iiit.ac.in",
-      "total_score": 138.1867,
-      "geo_mean_score": 9.9754,
-      "total_papers": 531,
+      "total_score": 138.3867,
+      "geo_mean_score": 10.0216,
+      "total_papers": 532,
       "total_papers_astar": 250,
-      "total_papers_a": 281,
+      "total_papers_a": 282,
       "faculty_count": 47,
       "area_breakdown": [
         {
@@ -89862,11 +89862,11 @@
         {
           "for_code": "4606",
           "description": "Distributed Computing and Systems Software",
-          "papers": 10,
+          "papers": 11,
           "papers_astar": 6,
-          "papers_a": 4,
-          "score": 2.4333,
-          "weighted_score": 7.6666
+          "papers_a": 5,
+          "score": 2.6333,
+          "weighted_score": 8.0666
         },
         {
           "for_code": "4608",
@@ -108470,12 +108470,23 @@
           "dblp_pid": "84/2688",
           "role": "",
           "homepage": "https://www.iiit.ac.in/people/faculty/kkishore",
-          "score": 0.8333,
+          "score": 1.0333,
           "papers_astar": 0,
-          "papers_a": 3,
+          "papers_a": 4,
           "papers_journal": 0,
-          "total_matched": 3,
+          "total_matched": 4,
           "publications": [
+            {
+              "title": "GPU Algorithms for Biconnected Components on Large Graphs.",
+              "venue": "IPDPS",
+              "venue_full": "IEEE International Parallel and Distributed Processing Symposium (was IPPS and SPDP)",
+              "venue_rank": "A",
+              "year": 2026,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://doi.org/10.1109/IPDPS65963.2026.00018",
+              "for_code": "4606"
+            },
             {
               "title": "Shared-Memory Parallel Algorithms for Fully Dynamic Maintenance of 2-Connected Components.",
               "venue": "IPDPS",
@@ -113866,12 +113877,12 @@
       "short": "IIITD",
       "country": "India",
       "website": "https://www.iiitd.ac.in",
-      "total_score": 101.1888,
-      "geo_mean_score": 10.9996,
-      "total_papers": 426,
-      "total_papers_astar": 190,
-      "total_papers_a": 188,
-      "faculty_count": 38,
+      "total_score": 96.8019,
+      "geo_mean_score": 10.6936,
+      "total_papers": 404,
+      "total_papers_astar": 177,
+      "total_papers_a": 179,
+      "faculty_count": 36,
       "area_breakdown": [
         {
           "for_code": "4601",
@@ -113885,20 +113896,20 @@
         {
           "for_code": "4602",
           "description": "Artificial Intelligence",
-          "papers": 151,
-          "papers_astar": 88,
-          "papers_a": 63,
-          "score": 34.9233,
-          "weighted_score": 110.2918
+          "papers": 138,
+          "papers_astar": 82,
+          "papers_a": 56,
+          "score": 32.0136,
+          "weighted_score": 101.4532
         },
         {
           "for_code": "4603",
           "description": "Computer Vision and Multimedia",
-          "papers": 44,
+          "papers": 43,
           "papers_astar": 16,
-          "papers_a": 28,
-          "score": 11.2513,
-          "weighted_score": 28.8404
+          "papers_a": 27,
+          "score": 11.0513,
+          "weighted_score": 28.4404
         },
         {
           "for_code": "4604",
@@ -113912,11 +113923,11 @@
         {
           "for_code": "4605",
           "description": "Data Management and Data Science",
-          "papers": 52,
-          "papers_astar": 20,
-          "papers_a": 32,
-          "score": 11.6531,
-          "weighted_score": 31.9
+          "papers": 45,
+          "papers_astar": 14,
+          "papers_a": 31,
+          "score": 10.5006,
+          "weighted_score": 27.5758
         },
         {
           "for_code": "4606",
@@ -113930,11 +113941,11 @@
         {
           "for_code": "4607",
           "description": "Graphics, Augmented Reality and Games",
-          "papers": 5,
-          "papers_astar": 5,
+          "papers": 4,
+          "papers_astar": 4,
           "papers_a": 0,
-          "score": 1.075,
-          "weighted_score": 4.3
+          "score": 0.95,
+          "weighted_score": 3.8
         },
         {
           "for_code": "4608",
@@ -119222,474 +119233,6 @@
           ]
         },
         {
-          "name": "Gautam Shroff",
-          "dblp_pid": null,
-          "irins_id": "555347",
-          "irins_url": "https://iiitd.irins.org/profile/555347",
-          "role": "Professor",
-          "homepage": "",
-          "score": 4.3869,
-          "papers_astar": 10,
-          "papers_a": 10,
-          "papers_journal": 1,
-          "total_matched": 21,
-          "publications": [
-            {
-              "title": "ConceptSearch: Towards Efficient Program Search Using LLMs for Abstraction and Reasoning Corpus (ARC)",
-              "venue": "AAAI",
-              "venue_full": "National Conference of the American Association for Artificial Intelligence",
-              "venue_rank": "A*",
-              "year": 2025,
-              "num_authors": 2,
-              "authors": [
-                "Singhal K.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.5,
-              "doi": "10.1609/aaai.v39i28.35300",
-              "url": "http://dx.doi.org/10.1609/aaai.v39i28.35300",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "SCM4SR: Structural Causal Model-based Data Augmentation for Robust Session-based Recommendation",
-              "venue": "SIGIR",
-              "venue_full": "ACM International Conference on Research and Development in Information Retrieval",
-              "venue_rank": "A*",
-              "year": 2024,
-              "num_authors": 5,
-              "authors": [
-                "Gupta M.",
-                "Gupta P.",
-                "Narwariya J.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.1145/3626772.3657940",
-              "url": "http://dx.doi.org/10.1145/3626772.3657940",
-              "for_code": "4605",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "From monolingual to multilingual faq assistant using multilingual co-training",
-              "venue": "EMNLP",
-              "venue_full": "Empirical Methods in Natural Language Processing",
-              "venue_rank": "A*",
-              "year": 2021,
-              "num_authors": 7,
-              "authors": [
-                "Patidar M.",
-                "Kumari S.",
-                "Patwardhan M.",
-                "Karande S.",
-                "Agarwal P.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.1429,
-              "doi": null,
-              "url": null,
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Continual Learning for Multivariate Time Series Tasks with Variable Input Dimensions",
-              "venue": "ICDM",
-              "venue_full": "IEEE International Conference on Data Mining",
-              "venue_rank": "A*",
-              "year": 2021,
-              "num_authors": 5,
-              "authors": [
-                "Gupta V.",
-                "Narwariya J.",
-                "Malhotra P.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.1109/ICDM51629.2021.00026",
-              "url": "http://dx.doi.org/10.1109/ICDM51629.2021.00026",
-              "for_code": "4605",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Regularizing fully convolutional networks for time series classification by decorrelating filters",
-              "venue": "AAAI",
-              "venue_full": "National Conference of the American Association for Artificial Intelligence",
-              "venue_rank": "A*",
-              "year": 2019,
-              "num_authors": 5,
-              "authors": [
-                "Paneri K.",
-                "Vishnu T.V.",
-                "Malhotra P.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.1609/aaai.v33i01.330110003",
-              "url": "http://dx.doi.org/10.1609/aaai.v33i01.330110003",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Sequence and time aware neighborhood for session-based recommendations",
-              "venue": "SIGIR",
-              "venue_full": "ACM International Conference on Research and Development in Information Retrieval",
-              "venue_rank": "A*",
-              "year": 2019,
-              "num_authors": 5,
-              "authors": [
-                "Garg D.",
-                "Gupta P.",
-                "Malhotra P.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.1145/3331184.3331322",
-              "url": "http://dx.doi.org/10.1145/3331184.3331322",
-              "for_code": "4605",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Knadia: Enterprise knowledge assisted dialogue systems using deep learning",
-              "venue": "ICDE",
-              "venue_full": "International Conference on Data Engineering",
-              "venue_rank": "A*",
-              "year": 2018,
-              "num_authors": 10,
-              "authors": [
-                "Singh M.",
-                "Agarwal P.",
-                "Chaudhary A.",
-                "Shroff G.",
-                "Khurana P.",
-                "Patidar M.",
-                "Bisht V.",
-                "Bansal R.",
-                "Sachan P.",
-                "Kumar ..."
-              ],
-              "adjusted_count": 0.1,
-              "doi": "10.1109/ICDE.2018.00161",
-              "url": "http://dx.doi.org/10.1109/ICDE.2018.00161",
-              "for_code": "4605",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "An AR Inspection Framework: Feasibility Study with Multiple AR Devices",
-              "venue": "ISMAR",
-              "venue_full": "IEEE/ACM International Symposium on Mixed and Augmented Reality",
-              "venue_rank": "A*",
-              "year": 2017,
-              "num_authors": 8,
-              "authors": [
-                "Ramakrishna P.",
-                "Hassan E.",
-                "Hebbalaguppe R.",
-                "Sharma M.",
-                "Gupta G.",
-                "Vig L.",
-                "Sharma G.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.125,
-              "doi": "10.1109/ISMAR-Adjunct.2016.0080",
-              "url": "http://dx.doi.org/10.1109/ISMAR-Adjunct.2016.0080",
-              "for_code": "4607",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Activity Detection from Email Meta-Data Clustering",
-              "venue": "ICDM",
-              "venue_full": "IEEE International Conference on Data Mining",
-              "venue_rank": "A*",
-              "year": 2016,
-              "num_authors": 6,
-              "authors": [
-                "Patidar M.",
-                "Rohatgi S.",
-                "Chaudhary A.",
-                "Singh M.P.",
-                "Agarwal P.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": "10.1109/ICDMW.2016.0087",
-              "url": "http://dx.doi.org/10.1109/ICDMW.2016.0087",
-              "for_code": "4605",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Multi-sensor Visual Analytics Supported by Machine-Learning Models",
-              "venue": "ICDM",
-              "venue_full": "IEEE International Conference on Data Mining",
-              "venue_rank": "A*",
-              "year": 2016,
-              "num_authors": 7,
-              "authors": [
-                "Sharma G.",
-                "Shroff G.",
-                "Pandey A.",
-                "Singh B.",
-                "Sehgal G.",
-                "Paneri K.",
-                "Agarwal P."
-              ],
-              "adjusted_count": 0.1429,
-              "doi": "10.1109/ICDMW.2015.190",
-              "url": "http://dx.doi.org/10.1109/ICDMW.2015.190",
-              "for_code": "4605",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Program Synthesis for Complex QA on Charts via Probabilistic Grammar Based Filtered Iterative Back-Translation",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2023,
-              "num_authors": 6,
-              "authors": [
-                "Bhaisaheb S.",
-                "Paliwal S.",
-                "Patil R.",
-                "Patwardhan M.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": "10.18653/v1/2023.findings-eacl.189",
-              "url": "http://dx.doi.org/10.18653/v1/2023.findings-eacl.189",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Calibrating Deep Neural Networks using Explicit Regularisation and Dynamic Data Pruning",
-              "venue": "WACV",
-              "venue_full": "IEEE Workshop on Applications of Computer Vision",
-              "venue_rank": "A",
-              "year": 2023,
-              "num_authors": 5,
-              "authors": [
-                "Patra R.",
-                "Hebbalaguppe R.",
-                "Dash T.",
-                "Shroff G.",
-                "Vig L."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.1109/WACV56688.2023.00159",
-              "url": "http://dx.doi.org/10.1109/WACV56688.2023.00159",
-              "for_code": "4603",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Intent Detection and Discovery from User Logs via Deep Semi-Supervised Contrastive Clustering",
-              "venue": "NAACL",
-              "venue_full": "North American Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2022,
-              "num_authors": 5,
-              "authors": [
-                "Kumar R.",
-                "Patidar M.",
-                "Varshney V.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.18653/v1/2022.naacl-main.134",
-              "url": "http://dx.doi.org/10.18653/v1/2022.naacl-main.134",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Prompt Augmented Generative Replay via Supervised Contrastive Learning for Lifelong Intent Detection",
-              "venue": "NAACL",
-              "venue_full": "North American Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2022,
-              "num_authors": 5,
-              "authors": [
-                "Varshney V.",
-                "Patidar M.",
-                "Kumar R.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.18653/v1/2022.findings-naacl.84",
-              "url": "http://dx.doi.org/10.18653/v1/2022.findings-naacl.84",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Complex question answering on knowledge graphs using machine translation and multi-task learning",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2021,
-              "num_authors": 6,
-              "authors": [
-                "Srivastava S.",
-                "Patidar M.",
-                "Chowdhury S.",
-                "Agarwal P.",
-                "Bhattacharya I.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": "10.18653/v1/2021.eacl-main.300",
-              "url": "http://dx.doi.org/10.18653/v1/2021.eacl-main.300",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Recommending in changing times",
-              "venue": "RecSys",
-              "venue_full": "ACM International Conference on Recommender Systems",
-              "venue_rank": "A",
-              "year": 2020,
-              "num_authors": 7,
-              "authors": [
-                "Kunde S.",
-                "Mishra M.",
-                "Pandit A.",
-                "Singhal R.",
-                "Nambiar M.K.",
-                "Shroff G.",
-                "Gupta S."
-              ],
-              "adjusted_count": 0.1429,
-              "doi": "10.1145/3383313.3418492",
-              "url": "http://dx.doi.org/10.1145/3383313.3418492",
-              "for_code": "4605",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "A reinforcement learning framework for container selection and ship load sequencing in ports",
-              "venue": "AAMAS",
-              "venue_full": "International Joint Conference on Autonomous Agents and Multiagent Systems (previously the International Conference on Multiagent Systems, ICMAS, changed in 2000)",
-              "venue_rank": "A",
-              "year": 2019,
-              "num_authors": 6,
-              "authors": [
-                "Verma R.",
-                "Saikia S.",
-                "Khadilkar H.",
-                "Agarwal P.",
-                "Shroff G.",
-                "Srinivasan A."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": null,
-              "url": null,
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Crop planning using stochastic visual optimization",
-              "venue": "IEEE VIS",
-              "venue_full": "IEEE Visualization",
-              "venue_rank": "A",
-              "year": 2018,
-              "num_authors": 6,
-              "authors": [
-                "Sehgal G.",
-                "Gupta B.",
-                "Paneri K.",
-                "Singh K.",
-                "Sharma G.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": "10.1109/VDS.2017.8573443",
-              "url": "http://dx.doi.org/10.1109/VDS.2017.8573443",
-              "for_code": "4608",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Learning and knowledge transfer with memory networks for machine comprehension",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2017,
-              "num_authors": 3,
-              "authors": [
-                "Yadav M.",
-                "Vig L.",
-                "Shroff G."
-              ],
-              "adjusted_count": 0.3333,
-              "doi": "10.18653/v1/e17-1080",
-              "url": "http://dx.doi.org/10.18653/v1/e17-1080",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Application of machine learning techniques for inverse prediction in manufacturing process chains",
-              "venue": "ICME",
-              "venue_full": "IEEE International Conference on Multimedia and Expo",
-              "venue_rank": "A",
-              "year": 2015,
-              "num_authors": 6,
-              "authors": [
-                "Shah S.",
-                "Reddy S.",
-                "Sardeshmukh A.",
-                "Gautham B.P.",
-                "Shroff G.",
-                "Srinivasan A."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": "10.1002/9781119139508.ch31",
-              "url": "http://dx.doi.org/10.1002/9781119139508.ch31",
-              "for_code": "4603",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Computing research at Tata consultancy services",
-              "venue": "CACM",
-              "venue_full": "Communications of the ACM",
-              "venue_rank": "Journal",
-              "publisher": "ACM",
-              "year": 2019,
-              "num_authors": 2,
-              "authors": [
-                "Shroff G.",
-                "Ananth Krishnan K."
-              ],
-              "adjusted_count": 0.5,
-              "doi": "10.1145/3343443",
-              "url": "http://dx.doi.org/10.1145/3343443",
-              "source": "irins",
-              "pub_type": "journal"
-            }
-          ]
-        },
-        {
           "name": "Arun Balaji Buduru",
           "dblp_pid": "128/4273",
           "role": "Associate Professor",
@@ -120727,6 +120270,1461 @@
               "dblp_key": "conf/wocn/SharmaA13a",
               "url": "https://doi.org/10.1109/WOCN.2013.6616216",
               "pages": "1-5"
+            }
+          ]
+        },
+        {
+          "name": "Gautam M. Shroff",
+          "dblp_pid": "54/3265",
+          "role": "",
+          "homepage": "https://iiitd.ac.in/gautam",
+          "score": 4.2763,
+          "papers_astar": 4,
+          "papers_a": 13,
+          "papers_journal": 1,
+          "total_matched": 18,
+          "publications": [
+            {
+              "title": "ConceptSearch: Towards Efficient Program Search Using LLMs for Abstraction and Reasoning Corpus (ARC).",
+              "venue": "AAAI",
+              "venue_full": "National Conference of the American Association for Artificial Intelligence",
+              "venue_rank": "A*",
+              "year": 2025,
+              "num_authors": 2,
+              "adjusted_count": 0.5,
+              "url": "https://doi.org/10.1609/aaai.v39i19.34259",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Continual Learning for Multivariate Time Series Tasks with Variable Input Dimensions.",
+              "venue": "ICDM",
+              "venue_full": "IEEE International Conference on Data Mining",
+              "venue_rank": "A*",
+              "year": 2021,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://doi.org/10.1109/ICDM51629.2021.00026",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "KNADIA: Enterprise KNowledge Assisted DIAlogue Systems Using Deep Learning.",
+              "venue": "ICDE",
+              "venue_full": "International Conference on Data Engineering",
+              "venue_rank": "A*",
+              "year": 2018,
+              "num_authors": 10,
+              "adjusted_count": 0.1,
+              "url": "https://doi.org/10.1109/ICDE.2018.00161",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Resolving Abstract Anaphora Implicitly in Conversational Assistants using a Hierarchically stacked RNN.",
+              "venue": "KDD",
+              "venue_full": "ACM International Conference on Knowledge Discovery and Data Mining",
+              "venue_rank": "A*",
+              "year": 2018,
+              "num_authors": 4,
+              "adjusted_count": 0.25,
+              "url": "https://doi.org/10.1145/3219819.3219915",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Program Synthesis for Complex QA on Charts via Probabilistic Grammar Based Filtered Iterative Back-Translation.",
+              "venue": "EACL",
+              "venue_full": "European Association for Computational Linguistics",
+              "venue_rank": "A",
+              "year": 2023,
+              "num_authors": 6,
+              "adjusted_count": 0.1667,
+              "url": "https://doi.org/10.18653/v1/2023.findings-eacl.189",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Calibrating Deep Neural Networks using Explicit Regularisation and Dynamic Data Pruning.",
+              "venue": "WACV",
+              "venue_full": "IEEE Workshop on Applications of Computer Vision",
+              "venue_rank": "A",
+              "year": 2023,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://doi.org/10.1109/WACV56688.2023.00159",
+              "for_code": "4603",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Prompt Augmented Generative Replay via Supervised Contrastive Learning for Lifelong Intent Detection.",
+              "venue": "NAACL",
+              "venue_full": "North American Association for Computational Linguistics",
+              "venue_rank": "A",
+              "year": 2022,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://doi.org/10.18653/v1/2022.findings-naacl.84",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Intent Detection and Discovery from User Logs via Deep Semi-Supervised Contrastive Clustering.",
+              "venue": "NAACL",
+              "venue_full": "North American Association for Computational Linguistics",
+              "venue_rank": "A",
+              "year": 2022,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://doi.org/10.18653/v1/2022.naacl-main.134",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Complex Question Answering on knowledge graphs using machine translation and multi-task learning.",
+              "venue": "EACL",
+              "venue_full": "European Association for Computational Linguistics",
+              "venue_rank": "A",
+              "year": 2021,
+              "num_authors": 6,
+              "adjusted_count": 0.1667,
+              "url": "https://doi.org/10.18653/v1/2021.eacl-main.300",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Recommending in changing times.",
+              "venue": "RecSys",
+              "venue_full": "ACM International Conference on Recommender Systems",
+              "venue_rank": "A",
+              "year": 2020,
+              "num_authors": 7,
+              "adjusted_count": 0.1429,
+              "url": "https://doi.org/10.1145/3383313.3418492",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Retrieving Relationships from a Knowledge Graph for Question Answering.",
+              "venue": "ECIR",
+              "venue_full": "European Conference on Information Retrieval",
+              "venue_rank": "A",
+              "year": 2019,
+              "num_authors": 3,
+              "adjusted_count": 0.3333,
+              "url": "https://doi.org/10.1007/978-3-030-15712-8_3",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Meta-Learning for Black-Box Optimization.",
+              "venue": "ECML PKDD",
+              "venue_full": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Database (PKDD and ECML combined from 2008)",
+              "venue_rank": "A",
+              "year": 2019,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://doi.org/10.1007/978-3-030-46147-8_22",
+              "for_code": "4611",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Automatic Conversational Helpdesk Solution using Seq2Seq and Slot-filling Models.",
+              "venue": "CIKM",
+              "venue_full": "ACM International Conference on Information and Knowledge Management",
+              "venue_rank": "A",
+              "year": 2018,
+              "num_authors": 4,
+              "adjusted_count": 0.25,
+              "url": "https://doi.org/10.1145/3269206.3272029",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Crop planning using stochastic visual optimization",
+              "venue": "IEEE VIS",
+              "venue_full": "IEEE Visualization",
+              "venue_rank": "A",
+              "year": 2018,
+              "num_authors": 6,
+              "authors": [
+                "Sehgal G.",
+                "Gupta B.",
+                "Paneri K.",
+                "Singh K.",
+                "Sharma G.",
+                "Shroff G."
+              ],
+              "adjusted_count": 0.1667,
+              "doi": "10.1109/VDS.2017.8573443",
+              "url": "http://dx.doi.org/10.1109/VDS.2017.8573443",
+              "for_code": "4608",
+              "source": "irins",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Hybrid BiLSTM-Siamese network for FAQ Assistance.",
+              "venue": "CIKM",
+              "venue_full": "ACM International Conference on Information and Knowledge Management",
+              "venue_rank": "A",
+              "year": 2017,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://doi.org/10.1145/3132847.3132861",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Learning and Knowledge Transfer with Memory Networks for Machine Comprehension.",
+              "venue": "EACL",
+              "venue_full": "European Association for Computational Linguistics",
+              "venue_rank": "A",
+              "year": 2017,
+              "num_authors": 3,
+              "adjusted_count": 0.3333,
+              "url": "https://doi.org/10.18653/v1/e17-1080",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Application of machine learning techniques for inverse prediction in manufacturing process chains",
+              "venue": "ICME",
+              "venue_full": "IEEE International Conference on Multimedia and Expo",
+              "venue_rank": "A",
+              "year": 2015,
+              "num_authors": 6,
+              "authors": [
+                "Shah S.",
+                "Reddy S.",
+                "Sardeshmukh A.",
+                "Gautham B.P.",
+                "Shroff G.",
+                "Srinivasan A."
+              ],
+              "adjusted_count": 0.1667,
+              "doi": "10.1002/9781119139508.ch31",
+              "url": "http://dx.doi.org/10.1002/9781119139508.ch31",
+              "for_code": "4603",
+              "source": "irins",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Computing research at Tata consultancy services",
+              "venue": "CACM",
+              "venue_full": "Communications of the ACM",
+              "venue_rank": "Journal",
+              "publisher": "ACM",
+              "year": 2019,
+              "num_authors": 2,
+              "authors": [
+                "Shroff G.",
+                "Ananth Krishnan K."
+              ],
+              "adjusted_count": 0.5,
+              "doi": "10.1145/3343443",
+              "url": "http://dx.doi.org/10.1145/3343443",
+              "source": "irins",
+              "pub_type": "journal"
+            }
+          ],
+          "skipped_publications": [
+            {
+              "title": "ConceptSearch: Towards Efficient Program Search Using LLMs for Abstraction and Reasoning Corpus (ARC) (Student Abstract).",
+              "year": 2025,
+              "booktitle": "AAAI",
+              "venue_key": "aaai",
+              "num_authors": 2,
+              "authors": [
+                "Kartik Singhal",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/aaai/SinghalS25a",
+              "url": "https://doi.org/10.1609/aaai.v39i28.35300",
+              "pages": "29493-29494"
+            },
+            {
+              "title": "SCM4SR: Structural Causal Model-based Data Augmentation for Robust Session-based Recommendation.",
+              "year": 2024,
+              "booktitle": "SIGIR",
+              "venue_key": "sigir",
+              "num_authors": 5,
+              "authors": [
+                "Muskan Gupta",
+                "Priyanka Gupta 0003",
+                "Jyoti Narwariya",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/sigir/GuptaGNVS24",
+              "url": "https://doi.org/10.1145/3626772.3657940",
+              "pages": "2609-2613"
+            },
+            {
+              "title": "X4SR: Post-Hoc Explanations for Session-based Recommendations.",
+              "year": 2023,
+              "booktitle": "eCom@SIGIR",
+              "venue_key": "ecom",
+              "num_authors": 5,
+              "authors": [
+                "Jyoti Narwariya",
+                "Priyanka Gupta 0003",
+                "Garima Gupta",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/ecom/NarwariyaGGVS23",
+              "url": "https://ceur-ws.org/Vol-3589/paper_26.pdf",
+              "pages": ""
+            },
+            {
+              "title": "Can LLMs solve generative visual analogies?",
+              "year": 2023,
+              "booktitle": "IARML@IJCAI",
+              "venue_key": "ijcai",
+              "num_authors": 4,
+              "authors": [
+                "Shrey Pandit",
+                "Gautam Shroff",
+                "Ashwin Srinivasan 0001",
+                "Lovekesh Vig"
+              ],
+              "dblp_key": "conf/ijcai/PanditS0V23",
+              "url": "https://ceur-ws.org/Vol-3492/paper3.pdf",
+              "pages": "30-32"
+            },
+            {
+              "title": "Solving Visual Analogies Using Neural Algorithmic Reasoning (Student Abstract).",
+              "year": 2022,
+              "booktitle": "AAAI",
+              "venue_key": "aaai",
+              "num_authors": 5,
+              "authors": [
+                "Atharv Sonwane",
+                "Gautam Shroff",
+                "Lovekesh Vig",
+                "Ashwin Srinivasan 0001",
+                "Tirtharaj Dash"
+              ],
+              "dblp_key": "conf/aaai/SonwaneSV0D22",
+              "url": "https://doi.org/10.1609/aaai.v36i11.21664",
+              "pages": "13055-13056"
+            },
+            {
+              "title": "CauSeR: Causal Session-based Recommendations for Handling Popularity Bias.",
+              "year": 2021,
+              "booktitle": "CIKM",
+              "venue_key": "cikm",
+              "num_authors": 5,
+              "authors": [
+                "Priyanka Gupta 0003",
+                "Ankit Sharma",
+                "Pankaj Malhotra",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/cikm/GuptaSMVS21",
+              "url": "https://doi.org/10.1145/3459637.3482071",
+              "pages": "3048-3052"
+            },
+            {
+              "title": "Information Extraction from Document Images via FCA based Template Detection and Knowledge Graph Rule Induction.",
+              "year": 2020,
+              "booktitle": "CVPR Workshops",
+              "venue_key": "cvpr",
+              "num_authors": 7,
+              "authors": [
+                "Mouli Rastogi",
+                "Syed Afshan Ali",
+                "Mrinal Rawat",
+                "Lovekesh Vig",
+                "Puneet Agarwal",
+                "Gautam Shroff",
+                "Ashwin Srinivasan 0001"
+              ],
+              "dblp_key": "conf/cvpr/RastogiARVAS020",
+              "url": "https://openaccess.thecvf.com/content_CVPRW_2020/html/w34/Rastogi_Information_Extraction_From_Document_Images_via_FCA-Based_Template_Detection_and_CVPRW_2020_paper.html",
+              "pages": "2377-2385"
+            },
+            {
+              "title": "CAMTA: Causal Attention Model for Multi-touch Attribution.",
+              "year": 2020,
+              "booktitle": "ICDM (Workshops)",
+              "venue_key": "icdm",
+              "num_authors": 6,
+              "authors": [
+                "Sachin Kumar",
+                "Garima Gupta",
+                "Ranjitha Prasad",
+                "Arnab Chatterjee",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/icdm/KumarGPCVS20",
+              "url": "https://doi.org/10.1109/ICDMW51313.2020.00020",
+              "pages": "79-86"
+            },
+            {
+              "title": "Hi-CI: Deep Causal Inference in High Dimensions.",
+              "year": 2020,
+              "booktitle": "CD@KDD",
+              "venue_key": "kdd",
+              "num_authors": 6,
+              "authors": [
+                "Ankit Sharma",
+                "Garima Gupta",
+                "Ranjitha Prasad",
+                "Arnab Chatterjee",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/kdd/SharmaGPCVS20",
+              "url": "http://proceedings.mlr.press/v127/sharma20a.html",
+              "pages": "39-61"
+            },
+            {
+              "title": "Improved Question Answering using Domain Prediction.",
+              "year": 2020,
+              "booktitle": "Converse@KDD",
+              "venue_key": "kdd",
+              "num_authors": 7,
+              "authors": [
+                "Himani Srivastava",
+                "Prerna Khurana",
+                "Saurabh Srivastava",
+                "Vaibhav Varshney",
+                "Lovekesh Vig",
+                "Puneet Agarwal",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/kdd/SrivastavaKSVVA20",
+              "url": "https://ceur-ws.org/Vol-2666/KDD_Converse20_paper_6.pdf",
+              "pages": ""
+            },
+            {
+              "title": "CovidDiagnosis: Deep Diagnosis of COVID-19 Patients Using Chest X-Rays.",
+              "year": 2020,
+              "booktitle": "TIA@MICCAI",
+              "venue_key": "miccai",
+              "num_authors": 9,
+              "authors": [
+                "Kushagra Mahajan",
+                "Monika Sharma",
+                "Lovekesh Vig",
+                "Rishab Khincha",
+                "Soundarya Krishnan",
+                "Adithya Niranjan",
+                "Tirtharaj Dash",
+                "Ashwin Srinivasan 0001",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/miccai/MahajanSVKKNDSS20",
+              "url": "https://doi.org/10.1007/978-3-030-62469-9_6",
+              "pages": "61-73"
+            },
+            {
+              "title": "Regularizing Fully Convolutional Networks for Time Series Classification by Decorrelating Filters.",
+              "year": 2019,
+              "booktitle": "AAAI",
+              "venue_key": "aaai",
+              "num_authors": 5,
+              "authors": [
+                "Kaushal Paneri",
+                "Vishnu TV",
+                "Pankaj Malhotra",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/aaai/PaneriTMVS19",
+              "url": "https://doi.org/10.1609/aaai.v33i01.330110003",
+              "pages": "10003-10004"
+            },
+            {
+              "title": "From Monolingual to Multilingual FAQ Assistant using Multilingual Co-training.",
+              "year": 2019,
+              "booktitle": "DeepLo@EMNLP-IJCNLP",
+              "venue_key": "acl-deeplo",
+              "num_authors": 7,
+              "authors": [
+                "Mayur Patidar",
+                "Surabhi Kumari",
+                "Manasi Patwardhan 0001",
+                "Shirish Karande 0001",
+                "Puneet Agarwal",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/acl-deeplo/PatidarKPKAVS19",
+              "url": "https://doi.org/10.18653/v1/D19-6113",
+              "pages": "115-123"
+            },
+            {
+              "title": "A Reinforcement Learning Framework for Container Selection and Ship Load Sequencing in Ports.",
+              "year": 2019,
+              "booktitle": "AAMAS",
+              "venue_key": "atal",
+              "num_authors": 6,
+              "authors": [
+                "Richa Verma",
+                "Sarmimala Saikia",
+                "Harshad Khadilkar",
+                "Puneet Agarwal",
+                "Gautam Shroff",
+                "Ashwin Srinivasan 0001"
+              ],
+              "dblp_key": "conf/atal/VermaSKASS19",
+              "url": "http://dl.acm.org/citation.cfm?id=3332074",
+              "pages": "2250-2252"
+            },
+            {
+              "title": "One-shot Information Extraction from Document Images using Neuro-Deductive Program Synthesis.",
+              "year": 2019,
+              "booktitle": "NeSy@IJCAI",
+              "venue_key": "nesy",
+              "num_authors": 5,
+              "authors": [
+                "Vishal Sunder",
+                "Ashwin Srinivasan 0001",
+                "Lovekesh Vig",
+                "Gautam Shroff",
+                "Rohit Rahul"
+              ],
+              "dblp_key": "conf/nesy/SunderSVSR19",
+              "url": null,
+              "pages": ""
+            },
+            {
+              "title": "Natural Language Business Intelligence Question Answering Through SeqtoSeq Transfer Learning.",
+              "year": 2019,
+              "booktitle": "PAKDD (Workshops)",
+              "venue_key": "pakdd",
+              "num_authors": 5,
+              "authors": [
+                "Amit Sangroya",
+                "Pratik Saini",
+                "Mrinal Rawat",
+                "Gautam Shroff",
+                "C. Anantaram"
+              ],
+              "dblp_key": "conf/pakdd/SangroyaSRSA19",
+              "url": "https://doi.org/10.1007/978-3-030-26142-9_25",
+              "pages": "286-297"
+            },
+            {
+              "title": "Sequence and Time Aware Neighborhood for Session-based Recommendations: STAN.",
+              "year": 2019,
+              "booktitle": "SIGIR",
+              "venue_key": "sigir",
+              "num_authors": 5,
+              "authors": [
+                "Diksha Garg",
+                "Priyanka Gupta 0003",
+                "Pankaj Malhotra",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/sigir/GargGMVS19",
+              "url": "https://doi.org/10.1145/3331184.3331322",
+              "pages": "1069-1072"
+            },
+            {
+              "title": "MEETING BOT: Reinforcement Learning for Dialogue Based Meeting Scheduling.",
+              "year": 2018,
+              "booktitle": "AAAI Workshops",
+              "venue_key": "aaai",
+              "num_authors": 4,
+              "authors": [
+                "Vishwanath D",
+                "Lovekesh Vig",
+                "Gautam Shroff",
+                "Puneet Agarwal"
+              ],
+              "dblp_key": "conf/aaai/DVSA18",
+              "url": "https://aaai.org/ocs/index.php/WS/AAAIW18/paper/view/17336",
+              "pages": "699-705"
+            },
+            {
+              "title": "Deep Reader: Information Extraction from Document Images via Relation Extraction and Natural Language.",
+              "year": 2018,
+              "booktitle": "ACCV Workshops",
+              "venue_key": "accv",
+              "num_authors": 9,
+              "authors": [
+                "Vishwanath D",
+                "Rohit Rahul",
+                "Gunjan Sehgal",
+                "Swati",
+                "Arindam Chowdhury",
+                "Monika Sharma",
+                "Lovekesh Vig",
+                "Gautam Shroff",
+                "Ashwin Srinivasan 0001"
+              ],
+              "dblp_key": "conf/accv/DRSSCSVSS18",
+              "url": "https://doi.org/10.1007/978-3-030-21074-8_15",
+              "pages": "186-201"
+            },
+            {
+              "title": "Using Features From Pre-trained TimeNET For Clinical Predictions.",
+              "year": 2018,
+              "booktitle": "KDH@IJCAI",
+              "venue_key": "ijcai",
+              "num_authors": 4,
+              "authors": [
+                "Priyanka Gupta 0003",
+                "Pankaj Malhotra",
+                "Lovekesh Vig",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/ijcai/GuptaMVS18",
+              "url": "https://ceur-ws.org/Vol-2148/paper06.pdf",
+              "pages": "38-44"
+            },
+            {
+              "title": "MobiCom'18 Panel: Hammer & Nail vis-a-vis AI / ML Applications to Networked Systems.",
+              "year": 2018,
+              "booktitle": "MobiCom",
+              "venue_key": "mobicom",
+              "num_authors": 5,
+              "authors": [
+                "Pravin Bhagwat",
+                "Andrea Goldsmith",
+                "Manish Gupta",
+                "Rajeev Rastogi",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/mobicom/BhagwatGGRS18",
+              "url": "https://doi.org/10.1145/3241539.3241590",
+              "pages": "653-654"
+            },
+            {
+              "title": "Visual Predictive Analytics using iFuseML.",
+              "year": 2018,
+              "booktitle": "EuroVA@EuroVis",
+              "venue_key": "vissym",
+              "num_authors": 6,
+              "authors": [
+                "Gunjan Sehgal",
+                "Mrinal Rawat",
+                "Bindu Gupta",
+                "Garima Gupta",
+                "Geetika Sharma",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/vissym/SehgalRGGSS18",
+              "url": "https://doi.org/10.2312/eurova.20181106",
+              "pages": "13-17"
+            },
+            {
+              "title": "Visual Statistical Analysis of Environmental Sensor Data.",
+              "year": 2017,
+              "booktitle": "VAST",
+              "venue_key": "ieeevast",
+              "num_authors": 6,
+              "authors": [
+                "Bindu Gupta",
+                "Kaushal Paneri",
+                "Gunjan Sehgal",
+                "Karamjit Singh",
+                "Geetika Sharma",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/ieeevast/GuptaPSSSS17",
+              "url": "https://doi.org/10.1109/VAST.2017.8585515",
+              "pages": "245-246"
+            },
+            {
+              "title": "Automated Product-Attribute Mapping.",
+              "year": 2017,
+              "booktitle": "PAKDD (Workshops)",
+              "venue_key": "pakdd",
+              "num_authors": 4,
+              "authors": [
+                "Karamjit Singh",
+                "Garima Gupta",
+                "Gautam Shroff",
+                "Puneet Agarwal"
+              ],
+              "dblp_key": "conf/pakdd/SinghGSA17",
+              "url": "https://doi.org/10.1007/978-3-319-67274-8_15",
+              "pages": "163-175"
+            },
+            {
+              "title": "Activity Detection from Email Meta-Data Clustering.",
+              "year": 2016,
+              "booktitle": "ICDM Workshops",
+              "venue_key": "icdm",
+              "num_authors": 6,
+              "authors": [
+                "Mayur Patidar",
+                "Shaurya Rohatgi",
+                "Ashish Chaudhary",
+                "Mahesh P. Singh",
+                "Puneet Agarwal",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/icdm/PatidarRCSAS16",
+              "url": "https://doi.org/10.1109/ICDMW.2016.0087",
+              "pages": "568-575"
+            },
+            {
+              "title": "An AR Inspection Framework: Feasibility Study with Multiple AR Devices.",
+              "year": 2016,
+              "booktitle": "ISMAR Adjunct",
+              "venue_key": "ismar",
+              "num_authors": 8,
+              "authors": [
+                "Ramakrishna Perla",
+                "Ehtesham Hassan",
+                "Ramya Hebbalaguppe",
+                "Monika Sharma",
+                "Gaurav Gupta",
+                "Lovekesh Vig",
+                "Geetika Sharma",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/ismar/RamakrishnaHHSG16",
+              "url": "https://doi.org/10.1109/ISMAR-Adjunct.2016.0080",
+              "pages": "221-226"
+            },
+            {
+              "title": "Neuro-Symbolic EDA-Based Optimization Using ILP-Enhanced DBNs.",
+              "year": 2016,
+              "booktitle": "CoCo@NIPS",
+              "venue_key": "nips",
+              "num_authors": 6,
+              "authors": [
+                "Sarmimala Saikia",
+                "Lovekesh Vig",
+                "Ashwin Srinivasan 0001",
+                "Gautam Shroff",
+                "Puneet Agarwal",
+                "Richa Rawat"
+              ],
+              "dblp_key": "conf/nips/SaikiaVSSAR16",
+              "url": "https://ceur-ws.org/Vol-1773/CoCoNIPS_2016_paper7.pdf",
+              "pages": ""
+            },
+            {
+              "title": "Generic Framework to Predict Repeat Behavior of Customers Using Their Transaction History.",
+              "year": 2016,
+              "booktitle": "WI",
+              "venue_key": "webi",
+              "num_authors": 3,
+              "authors": [
+                "Auon Haidar Kazmi",
+                "Gautam Shroff",
+                "Puneet Agarwal"
+              ],
+              "dblp_key": "conf/webi/KazmiSA16",
+              "url": "https://doi.org/10.1109/WI.2016.0072",
+              "pages": "449-452"
+            },
+            {
+              "title": "Distributed Algorithm for Relationship Queries on Large Graphs.",
+              "year": 2015,
+              "booktitle": "LSDS-IR@CIKM",
+              "venue_key": "cikm",
+              "num_authors": 3,
+              "authors": [
+                "Puneet Agarwal",
+                "Maya Ramanath",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/cikm/AgarwalRS15",
+              "url": "https://doi.org/10.1145/2809948.2809949",
+              "pages": "9-12"
+            },
+            {
+              "title": "Multi-sensor Visual Analytics Supported by Machine-Learning Models.",
+              "year": 2015,
+              "booktitle": "ICDM Workshops",
+              "venue_key": "icdm",
+              "num_authors": 7,
+              "authors": [
+                "Geetika Sharma",
+                "Gautam Shroff",
+                "Aditeya Pandey",
+                "Brijendra Singh",
+                "Gunjan Sehgal",
+                "Kaushal Paneri",
+                "Puneet Agarwal"
+              ],
+              "dblp_key": "conf/icdm/SharmaSPSSPA15",
+              "url": "https://doi.org/10.1109/ICDMW.2015.190",
+              "pages": "668-674"
+            },
+            {
+              "title": "Exploratory Data Analysis Using Alternating Covers of Rules and Exceptions.",
+              "year": 2014,
+              "booktitle": "COMAD",
+              "venue_key": "comad",
+              "num_authors": 6,
+              "authors": [
+                "Sarmimala Saikia",
+                "Gautam Shroff",
+                "Puneet Agarwal",
+                "Ashwin Srinivasan 0001",
+                "Aditeya Pandey",
+                "Gaurangi Anand"
+              ],
+              "dblp_key": "conf/comad/SaikiaSASPA14",
+              "url": "http://comad.in/comad2014/Proceedings/Poster2.pdf",
+              "pages": "105-108"
+            },
+            {
+              "title": "Graph-Parallel Entity Resolution using LSH & IMM.",
+              "year": 2014,
+              "booktitle": "EDBT/ICDT Workshops",
+              "venue_key": "edbt",
+              "num_authors": 3,
+              "authors": [
+                "Pankaj Malhotra",
+                "Puneet Agarwal",
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/edbt/MalhotraAS14",
+              "url": "https://ceur-ws.org/Vol-1133/paper-07.pdf",
+              "pages": "41-49"
+            },
+            {
+              "title": "Interactively Visualizing Summaries of Rules and Exceptions.",
+              "year": 2014,
+              "booktitle": "EuroVA@EuroVis",
+              "venue_key": "vissym",
+              "num_authors": 5,
+              "authors": [
+                "Geetika Sharma",
+                "Gautam Shroff",
+                "Aditeya Pandey",
+                "Puneet Agarwal",
+                "Ashwin Srinivasan 0001"
+              ],
+              "dblp_key": "conf/vissym/SharmaSPAS14",
+              "url": "https://doi.org/10.2312/eurova.20141146",
+              "pages": ""
+            },
+            {
+              "title": "InstantApps: A WYSIWYG model driven interpreter for web applications.",
+              "year": 2009,
+              "booktitle": "ICSE Companion",
+              "venue_key": "icse",
+              "num_authors": 3,
+              "authors": [
+                "Gautam Shroff",
+                "Puneet Agarwal",
+                "Premkumar T. Devanbu"
+              ],
+              "dblp_key": "conf/icse/ShroffAD09",
+              "url": "https://doi.org/10.1109/ICSE-COMPANION.2009.5071040",
+              "pages": "417-418"
+            },
+            {
+              "title": "Dev 2.0: model driven development in the cloud.",
+              "year": 2008,
+              "booktitle": "SIGSOFT FSE",
+              "venue_key": "sigsoft",
+              "num_authors": 1,
+              "authors": [
+                "Gautam Shroff"
+              ],
+              "dblp_key": "conf/sigsoft/Shroff08",
+              "url": "https://doi.org/10.1145/1453101.1453139",
+              "pages": "283"
+            }
+          ]
+        },
+        {
+          "name": "Raghava Mutharaju",
+          "dblp_pid": "63/7446",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/raghavam",
+          "score": 3.8599,
+          "papers_astar": 3,
+          "papers_a": 9,
+          "papers_journal": 3,
+          "total_matched": 15,
+          "publications": [
+            {
+              "title": "Moral Compass: A Data-Driven Benchmark for Ethical Cognition in AI.",
+              "venue": "IJCAI",
+              "venue_full": "International Joint Conference on Artificial Intelligence",
+              "venue_rank": "A*",
+              "year": 2025,
+              "num_authors": 6,
+              "adjusted_count": 0.1667,
+              "url": "https://doi.org/10.24963/ijcai.2025/1059",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Revisiting Document-Level Relation Extraction with Context-Guided Link Prediction.",
+              "venue": "AAAI",
+              "venue_full": "National Conference of the American Association for Artificial Intelligence",
+              "venue_rank": "A*",
+              "year": 2024,
+              "num_authors": 4,
+              "adjusted_count": 0.25,
+              "url": "https://doi.org/10.1609/aaai.v38i16.29792",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "Knowledge-Driven Cross-Document Relation Extraction.",
+              "venue": "ACL",
+              "venue_full": "Association for Computational Linguistics",
+              "venue_rank": "A*",
+              "year": 2024,
+              "num_authors": 4,
+              "adjusted_count": 0.25,
+              "url": "https://doi.org/10.18653/v1/2024.findings-acl.227",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "OntoInsight - A Metric-Guided Tool for Ontology Quality Evaluation with LLM-Powered Recommendations.",
+              "venue": "ER",
+              "venue_full": "International Conference on Conceptual Modelling",
+              "venue_rank": "A",
+              "year": 2025,
+              "num_authors": 4,
+              "adjusted_count": 0.25,
+              "url": "https://doi.org/10.1007/978-3-032-08623-5_21",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "GenACT: An Ontology-Based Temporal Web Data Generator.",
+              "venue": "ER",
+              "venue_full": "International Conference on Conceptual Modelling",
+              "venue_rank": "A",
+              "year": 2024,
+              "num_authors": 7,
+              "adjusted_count": 0.1429,
+              "url": "https://doi.org/10.1007/978-3-031-75872-0_17",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "SAQI: An Ontology Based Knowledge Graph Platform for Social Air Quality Index.",
+              "venue": "ER",
+              "venue_full": "International Conference on Conceptual Modelling",
+              "venue_rank": "A",
+              "year": 2024,
+              "num_authors": 7,
+              "adjusted_count": 0.1429,
+              "url": "https://doi.org/10.1007/978-3-031-75872-0_18",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "JobXMLC: EXtreme Multi-Label Classification of Job Skills with Graph Neural Networks.",
+              "venue": "EACL",
+              "venue_full": "European Association for Computational Linguistics",
+              "venue_rank": "A",
+              "year": 2023,
+              "num_authors": 6,
+              "adjusted_count": 0.1667,
+              "url": "https://doi.org/10.18653/v1/2023.findings-eacl.163",
+              "for_code": "4602",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "ReOnto: A Neuro-Symbolic Approach for Biomedical Relation Extraction.",
+              "venue": "ECML PKDD",
+              "venue_full": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Database (PKDD and ECML combined from 2008)",
+              "venue_rank": "A",
+              "year": 2023,
+              "num_authors": 3,
+              "adjusted_count": 0.3333,
+              "url": "https://doi.org/10.1007/978-3-031-43421-1_14",
+              "for_code": "4611",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "An Ontology Design Pattern Recommendation System.",
+              "venue": "ISWC",
+              "venue_full": "International Semantic Web Conference",
+              "venue_rank": "A",
+              "year": 2021,
+              "num_authors": 2,
+              "adjusted_count": 0.5,
+              "url": "https://doi.org/10.3233/SSW210017",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "An Ontology Design Pattern for Modeling Bias.",
+              "venue": "ISWC",
+              "venue_full": "International Semantic Web Conference",
+              "venue_rank": "A",
+              "year": 2021,
+              "num_authors": 2,
+              "adjusted_count": 0.5,
+              "url": "https://doi.org/10.3233/SSW210024",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "OWL2Bench: A Benchmark for OWL 2 Reasoners.",
+              "venue": "ISWC",
+              "venue_full": "International Semantic Web Conference",
+              "venue_rank": "A",
+              "year": 2020,
+              "num_authors": 3,
+              "adjusted_count": 0.3333,
+              "url": "https://doi.org/10.1007/978-3-030-62466-8_6",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "OWL2Bench: Towards a Customizable Benchmark for OWL 2 Reasoners.",
+              "venue": "ISWC",
+              "venue_full": "International Semantic Web Conference",
+              "venue_rank": "A",
+              "year": 2020,
+              "num_authors": 5,
+              "adjusted_count": 0.2,
+              "url": "https://ceur-ws.org/Vol-2721/paper587.pdf",
+              "for_code": "4605",
+              "source": "dblp",
+              "pub_type": "conference"
+            },
+            {
+              "title": "RConE: Rough Cone Embedding for Multi-Hop Logical Query Answering on Multi-Modal Knowledge Graphs",
+              "venue": "TKDE",
+              "venue_full": "IEEE Transactions on Knowledge and Data Engineering",
+              "venue_rank": "Journal",
+              "publisher": "IEEE",
+              "year": 2025,
+              "num_authors": 3,
+              "authors": [
+                "Kharbanda M.",
+                "Shah R.R.",
+                "Mutharaju R."
+              ],
+              "adjusted_count": 0.3333,
+              "doi": "10.1109/TKDE.2025.3584054",
+              "url": "http://dx.doi.org/10.1109/TKDE.2025.3584054",
+              "source": "irins",
+              "pub_type": "journal"
+            },
+            {
+              "title": "Opacity, Transparency, and the Ethics of Affective Computing",
+              "venue": "TAFFC",
+              "venue_full": "IEEE Transactions on Affective Computing",
+              "venue_rank": "Journal",
+              "publisher": "IEEE",
+              "year": 2024,
+              "num_authors": 5,
+              "authors": [
+                "Kumar M.",
+                "Aijaz A.",
+                "Chattar O.",
+                "Shukla J.",
+                "Mutharaju R."
+              ],
+              "adjusted_count": 0.2,
+              "doi": "10.1109/TAFFC.2023.3278230",
+              "url": "http://dx.doi.org/10.1109/TAFFC.2023.3278230",
+              "source": "irins",
+              "pub_type": "journal"
+            },
+            {
+              "title": "An Ontology and Rule-Based Clinical Decision Support System for Personalized Nutrition Recommendations in the Neonatal Intensive Care Unit",
+              "venue": "Access",
+              "venue_full": "IEEE Access",
+              "venue_rank": "Journal",
+              "publisher": "IEEE",
+              "year": 2023,
+              "num_authors": 11,
+              "authors": [
+                "Kaur R.",
+                "Jain M.",
+                "McAdams R.M.",
+                "Sun Y.",
+                "Gupta S.",
+                "Mutharaju R.",
+                "Cho S.J.",
+                "Saluja S.",
+                "Palma J.P.",
+                "Kaur A.",
+                "Sing..."
+              ],
+              "adjusted_count": 0.0909,
+              "doi": "10.1109/ACCESS.2023.3341403",
+              "url": "http://dx.doi.org/10.1109/ACCESS.2023.3341403",
+              "source": "irins",
+              "pub_type": "journal"
+            }
+          ],
+          "skipped_publications": [
+            {
+              "title": "A Deep Dive Into Benchmarking Ontology Reasoners: Techniques, Tools, and Insights.",
+              "year": 2025,
+              "booktitle": "ER (Companion)",
+              "venue_key": "er",
+              "num_authors": 2,
+              "authors": [
+                "Gunjan Singh",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/er/SinghM25",
+              "url": "https://ceur-ws.org/Vol-4099/ER25_tutorial_Singh.pdf",
+              "pages": "292-295"
+            },
+            {
+              "title": "Learned Indexes for Efficient Querying on Knowledge Graphs.",
+              "year": 2025,
+              "booktitle": "ISWC (Industry/Doctoral Consortium/Posters/Demos)",
+              "venue_key": "semweb",
+              "num_authors": 7,
+              "authors": [
+                "Gaurav Dawra",
+                "Aanchal Gupta",
+                "Nandika Jain",
+                "Yogender Kumar",
+                "Jishnu Raj Parashar",
+                "Bapi Chatterjee",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/semweb/DawraGJKPCM25",
+              "url": "https://ceur-ws.org/Vol-4085/paper47.pdf",
+              "pages": "286-292"
+            },
+            {
+              "title": "An Ontology to Capture Contextual Information to Facilitate Ethical Decision-making in AI Systems.",
+              "year": 2024,
+              "booktitle": "COMAD/CODS",
+              "venue_key": "comad",
+              "num_authors": 5,
+              "authors": [
+                "Aisha Aijaz",
+                "Raghava Mutharaju",
+                "Manohar Kumar",
+                "Omkar Chattar",
+                "Jainendra Shukla"
+              ],
+              "dblp_key": "conf/comad/AijazMKCS24",
+              "url": "https://doi.org/10.1145/3632410.3632493",
+              "pages": "590-591"
+            },
+            {
+              "title": "OWL2Gen: Towards a Configurable Ontology Generator for Benchmarking.",
+              "year": 2024,
+              "booktitle": "ER (Companion)",
+              "venue_key": "er",
+              "num_authors": 4,
+              "authors": [
+                "Gunjan Singh",
+                "Ashwat Kumar",
+                "Sumit Bhatia",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/er/SinghKBM24",
+              "url": "https://ceur-ws.org/Vol-3849/poster-demo6.pdf",
+              "pages": "151-155"
+            },
+            {
+              "title": "Building and Using a Planning Ontology from Past Data for Performance Efficiency.",
+              "year": 2023,
+              "booktitle": "PLATO@ICAPS",
+              "venue_key": "plato",
+              "num_authors": 4,
+              "authors": [
+                "Bharath Muppasani",
+                "Vishal Pallagani",
+                "Biplav Srivastava",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/plato/MuppasaniPSM23",
+              "url": "https://ceur-ws.org/Vol-3493/short-paper-2.pdf",
+              "pages": ""
+            },
+            {
+              "title": "A SPARQL to Cypher Transpiler: Proposal and Initial Results.",
+              "year": 2022,
+              "booktitle": "COMAD/CODS",
+              "venue_key": "comad",
+              "num_authors": 3,
+              "authors": [
+                "Lakshya A. Agrawal",
+                "Nikunj Singhal",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/comad/AgrawalSM22",
+              "url": "https://doi.org/10.1145/3493700.3493757",
+              "pages": "312-313"
+            },
+            {
+              "title": "Neuro-Symbolic Techniques for Description Logic Reasoning (Student Abstract).",
+              "year": 2021,
+              "booktitle": "AAAI",
+              "venue_key": "aaai",
+              "num_authors": 4,
+              "authors": [
+                "Gunjan Singh",
+                "Sutapa Mondal",
+                "Sumit Bhatia",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/aaai/SinghMBM21",
+              "url": "https://doi.org/10.1609/aaai.v35i18.17942",
+              "pages": "15891-15892"
+            },
+            {
+              "title": "OntoSeer: A Tool to Ease the Ontology Development Process.",
+              "year": 2021,
+              "booktitle": "COMAD/CODS",
+              "venue_key": "comad",
+              "num_authors": 2,
+              "authors": [
+                "Pramit Bhattacharyya",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/comad/BhattacharyyaM21",
+              "url": "https://doi.org/10.1145/3430984.3431067",
+              "pages": "428"
+            },
+            {
+              "title": "Extraction of Union and Intersection Axioms from Biomedical Text.",
+              "year": 2021,
+              "booktitle": "ESWC (Satellite Events)",
+              "venue_key": "esws",
+              "num_authors": 3,
+              "authors": [
+                "Nikhil Sachdeva",
+                "Monika Jain",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/esws/SachdevaJM21",
+              "url": "https://doi.org/10.1007/978-3-030-80418-3_27",
+              "pages": "147-151"
+            },
+            {
+              "title": "EmELvar: A NeuroSymbolic Reasoner for the EL++ Description Logic.",
+              "year": 2021,
+              "booktitle": "SemREC@ISWC",
+              "venue_key": "semweb",
+              "num_authors": 4,
+              "authors": [
+                "Biswesh Mohapatra",
+                "Sumit Bhatia",
+                "Raghava Mutharaju",
+                "G. Srinivasaraghavan 0001"
+              ],
+              "dblp_key": "conf/semweb/MohapatraBM021",
+              "url": "https://ceur-ws.org/Vol-3123/paper6.pdf",
+              "pages": "44-51"
+            },
+            {
+              "title": "An Ontology Design Pattern for Modeling Pollution.",
+              "year": 2021,
+              "booktitle": "WOP@ISWC",
+              "venue_key": "wop",
+              "num_authors": 3,
+              "authors": [
+                "Saad Ahmad",
+                "Sudhir Attri",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/wop/AhmadAM21",
+              "url": "https://ceur-ws.org/Vol-3011/pattern3.pdf",
+              "pages": ""
+            },
+            {
+              "title": "A Benchmark for OWL 2 DL Reasoners.",
+              "year": 2020,
+              "booktitle": "COMAD/CODS",
+              "venue_key": "comad",
+              "num_authors": 3,
+              "authors": [
+                "Gunjan Singh",
+                "Sumit Bhatia",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/comad/SinghBM20",
+              "url": "https://doi.org/10.1145/3371158.3371222",
+              "pages": "353"
+            },
+            {
+              "title": "Cardinality Extraction from Text for Ontology Learning.",
+              "year": 2020,
+              "booktitle": "COMAD/CODS",
+              "venue_key": "comad",
+              "num_authors": 3,
+              "authors": [
+                "Monika Jain",
+                "Paramita Mirza",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/comad/JainMM20",
+              "url": "https://doi.org/10.1145/3371158.3371223",
+              "pages": "354"
+            },
+            {
+              "title": "ODPReco - A Tool to Recommend Ontology Design Patterns.",
+              "year": 2019,
+              "booktitle": "WOP@ISWC",
+              "venue_key": "semweb",
+              "num_authors": 2,
+              "authors": [
+                "Maleeha Arif Yasvi",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/semweb/YasviM19",
+              "url": "https://ceur-ws.org/Vol-2459/short1.pdf",
+              "pages": "71-75"
+            },
+            {
+              "title": "Towards a Concurrent Approximate Description Logic Reasoner.",
+              "year": 2019,
+              "booktitle": "ISWC (Satellites)",
+              "venue_key": "semweb",
+              "num_authors": 4,
+              "authors": [
+                "Raj Kamal Yadav",
+                "Gunjan Singh",
+                "Raghava Mutharaju",
+                "Sumit Bhatia"
+              ],
+              "dblp_key": "conf/semweb/YadavSMB19",
+              "url": "https://ceur-ws.org/Vol-2456/paper38.pdf",
+              "pages": "145-148"
+            },
+            {
+              "title": "Reasoning with Large Scale OWL 2 EL Ontologies Based on MapReduce.",
+              "year": 2016,
+              "booktitle": "APWeb (2)",
+              "venue_key": "apweb",
+              "num_authors": 5,
+              "authors": [
+                "Zhangquan Zhou",
+                "Guilin Qi",
+                "Chang Liu 0021",
+                "Raghava Mutharaju",
+                "Pascal Hitzler"
+              ],
+              "dblp_key": "conf/apweb/ZhouQLMH16",
+              "url": "https://doi.org/10.1007/978-3-319-45817-5_40",
+              "pages": "429-433"
+            },
+            {
+              "title": "Are We Really Standing on the Shoulders of Giants?",
+              "year": 2015,
+              "booktitle": "NoISE@ESWC",
+              "venue_key": "esws",
+              "num_authors": 2,
+              "authors": [
+                "Raghava Mutharaju",
+                "Pavan Kapanipathi"
+              ],
+              "dblp_key": "conf/esws/MutharajuK15",
+              "url": "https://ceur-ws.org/Vol-1435/NoISE2015_paper_9.pdf",
+              "pages": ""
+            },
+            {
+              "title": "Distributed OWL EL Reasoning: The Story So Far.",
+              "year": 2014,
+              "booktitle": "SSWS@ISWC",
+              "venue_key": "semweb",
+              "num_authors": 3,
+              "authors": [
+                "Raghava Mutharaju",
+                "Pascal Hitzler",
+                "Prabhaker Mateti"
+              ],
+              "dblp_key": "conf/semweb/MutharajuHM14",
+              "url": "https://ceur-ws.org/Vol-1261/SSWS2014_paper5.pdf",
+              "pages": "61-76"
+            },
+            {
+              "title": "Developing a distributed reasoner for the Semantic Web.",
+              "year": 2014,
+              "booktitle": "ISWC (Developers Workshop)",
+              "venue_key": "semweb",
+              "num_authors": 3,
+              "authors": [
+                "Raghava Mutharaju",
+                "Prabhaker Mateti",
+                "Pascal Hitzler"
+              ],
+              "dblp_key": "conf/semweb/MutharajuMH14",
+              "url": "https://ceur-ws.org/Vol-1268/paper18.pdf",
+              "pages": "108-112"
+            },
+            {
+              "title": "DistEL: A Distributed EL+ Ontology Classifier.",
+              "year": 2013,
+              "booktitle": "SSWS@ISWC",
+              "venue_key": "semweb",
+              "num_authors": 3,
+              "authors": [
+                "Raghava Mutharaju",
+                "Pascal Hitzler",
+                "Prabhaker Mateti"
+              ],
+              "dblp_key": "conf/semweb/MutharajuHM13",
+              "url": "https://ceur-ws.org/Vol-1046/SSWS2013_paper2.pdf",
+              "pages": "17-32"
+            },
+            {
+              "title": "D-SPARQ: Distributed, Scalable and Efficient RDF Query Engine.",
+              "year": 2013,
+              "booktitle": "ISWC (Posters & Demos)",
+              "venue_key": "semweb",
+              "num_authors": 4,
+              "authors": [
+                "Raghava Mutharaju",
+                "Sherif Sakr",
+                "Alessandra Sala",
+                "Pascal Hitzler"
+              ],
+              "dblp_key": "conf/semweb/MutharajuSSH13",
+              "url": "https://ceur-ws.org/Vol-1035/iswc2013_poster_21.pdf",
+              "pages": "261-264"
+            },
+            {
+              "title": "Reasoning with Fuzzy-EL+ Ontologies Using MapReduce.",
+              "year": 2012,
+              "booktitle": "ECAI",
+              "venue_key": "ecai",
+              "num_authors": 5,
+              "authors": [
+                "Zhangquan Zhou",
+                "Guilin Qi",
+                "Chang Liu 0021",
+                "Pascal Hitzler",
+                "Raghava Mutharaju"
+              ],
+              "dblp_key": "conf/ecai/ZhouQLHM12",
+              "url": "https://doi.org/10.3233/978-1-61499-098-7-933",
+              "pages": "933-934"
             }
           ]
         },
@@ -122088,789 +123086,6 @@
           ]
         },
         {
-          "name": "Gautam M. Shroff",
-          "dblp_pid": "54/3265",
-          "role": "",
-          "homepage": "https://iiitd.ac.in/gautam",
-          "score": 3.4429,
-          "papers_astar": 4,
-          "papers_a": 11,
-          "papers_journal": 0,
-          "total_matched": 15,
-          "publications": [
-            {
-              "title": "ConceptSearch: Towards Efficient Program Search Using LLMs for Abstraction and Reasoning Corpus (ARC).",
-              "venue": "AAAI",
-              "venue_full": "National Conference of the American Association for Artificial Intelligence",
-              "venue_rank": "A*",
-              "year": 2025,
-              "num_authors": 2,
-              "adjusted_count": 0.5,
-              "url": "https://doi.org/10.1609/aaai.v39i19.34259",
-              "for_code": "4602"
-            },
-            {
-              "title": "Program Synthesis for Complex QA on Charts via Probabilistic Grammar Based Filtered Iterative Back-Translation.",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2023,
-              "num_authors": 6,
-              "adjusted_count": 0.1667,
-              "url": "https://doi.org/10.18653/v1/2023.findings-eacl.189",
-              "for_code": "4602"
-            },
-            {
-              "title": "Calibrating Deep Neural Networks using Explicit Regularisation and Dynamic Data Pruning.",
-              "venue": "WACV",
-              "venue_full": "IEEE Workshop on Applications of Computer Vision",
-              "venue_rank": "A",
-              "year": 2023,
-              "num_authors": 5,
-              "adjusted_count": 0.2,
-              "url": "https://doi.org/10.1109/WACV56688.2023.00159",
-              "for_code": "4603"
-            },
-            {
-              "title": "Prompt Augmented Generative Replay via Supervised Contrastive Learning for Lifelong Intent Detection.",
-              "venue": "NAACL",
-              "venue_full": "North American Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2022,
-              "num_authors": 5,
-              "adjusted_count": 0.2,
-              "url": "https://doi.org/10.18653/v1/2022.findings-naacl.84",
-              "for_code": "4602"
-            },
-            {
-              "title": "Intent Detection and Discovery from User Logs via Deep Semi-Supervised Contrastive Clustering.",
-              "venue": "NAACL",
-              "venue_full": "North American Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2022,
-              "num_authors": 5,
-              "adjusted_count": 0.2,
-              "url": "https://doi.org/10.18653/v1/2022.naacl-main.134",
-              "for_code": "4602"
-            },
-            {
-              "title": "Complex Question Answering on knowledge graphs using machine translation and multi-task learning.",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2021,
-              "num_authors": 6,
-              "adjusted_count": 0.1667,
-              "url": "https://doi.org/10.18653/v1/2021.eacl-main.300",
-              "for_code": "4602"
-            },
-            {
-              "title": "Continual Learning for Multivariate Time Series Tasks with Variable Input Dimensions.",
-              "venue": "ICDM",
-              "venue_full": "IEEE International Conference on Data Mining",
-              "venue_rank": "A*",
-              "year": 2021,
-              "num_authors": 5,
-              "adjusted_count": 0.2,
-              "url": "https://doi.org/10.1109/ICDM51629.2021.00026",
-              "for_code": "4605"
-            },
-            {
-              "title": "Recommending in changing times.",
-              "venue": "RecSys",
-              "venue_full": "ACM International Conference on Recommender Systems",
-              "venue_rank": "A",
-              "year": 2020,
-              "num_authors": 7,
-              "adjusted_count": 0.1429,
-              "url": "https://doi.org/10.1145/3383313.3418492",
-              "for_code": "4605"
-            },
-            {
-              "title": "Retrieving Relationships from a Knowledge Graph for Question Answering.",
-              "venue": "ECIR",
-              "venue_full": "European Conference on Information Retrieval",
-              "venue_rank": "A",
-              "year": 2019,
-              "num_authors": 3,
-              "adjusted_count": 0.3333,
-              "url": "https://doi.org/10.1007/978-3-030-15712-8_3",
-              "for_code": "4605"
-            },
-            {
-              "title": "Meta-Learning for Black-Box Optimization.",
-              "venue": "ECML PKDD",
-              "venue_full": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Database (PKDD and ECML combined from 2008)",
-              "venue_rank": "A",
-              "year": 2019,
-              "num_authors": 5,
-              "adjusted_count": 0.2,
-              "url": "https://doi.org/10.1007/978-3-030-46147-8_22",
-              "for_code": "4611"
-            },
-            {
-              "title": "Automatic Conversational Helpdesk Solution using Seq2Seq and Slot-filling Models.",
-              "venue": "CIKM",
-              "venue_full": "ACM International Conference on Information and Knowledge Management",
-              "venue_rank": "A",
-              "year": 2018,
-              "num_authors": 4,
-              "adjusted_count": 0.25,
-              "url": "https://doi.org/10.1145/3269206.3272029",
-              "for_code": "4605"
-            },
-            {
-              "title": "KNADIA: Enterprise KNowledge Assisted DIAlogue Systems Using Deep Learning.",
-              "venue": "ICDE",
-              "venue_full": "International Conference on Data Engineering",
-              "venue_rank": "A*",
-              "year": 2018,
-              "num_authors": 10,
-              "adjusted_count": 0.1,
-              "url": "https://doi.org/10.1109/ICDE.2018.00161",
-              "for_code": "4605"
-            },
-            {
-              "title": "Resolving Abstract Anaphora Implicitly in Conversational Assistants using a Hierarchically stacked RNN.",
-              "venue": "KDD",
-              "venue_full": "ACM International Conference on Knowledge Discovery and Data Mining",
-              "venue_rank": "A*",
-              "year": 2018,
-              "num_authors": 4,
-              "adjusted_count": 0.25,
-              "url": "https://doi.org/10.1145/3219819.3219915",
-              "for_code": "4605"
-            },
-            {
-              "title": "Hybrid BiLSTM-Siamese network for FAQ Assistance.",
-              "venue": "CIKM",
-              "venue_full": "ACM International Conference on Information and Knowledge Management",
-              "venue_rank": "A",
-              "year": 2017,
-              "num_authors": 5,
-              "adjusted_count": 0.2,
-              "url": "https://doi.org/10.1145/3132847.3132861",
-              "for_code": "4605"
-            },
-            {
-              "title": "Learning and Knowledge Transfer with Memory Networks for Machine Comprehension.",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2017,
-              "num_authors": 3,
-              "adjusted_count": 0.3333,
-              "url": "https://doi.org/10.18653/v1/e17-1080",
-              "for_code": "4602"
-            }
-          ],
-          "skipped_publications": [
-            {
-              "title": "ConceptSearch: Towards Efficient Program Search Using LLMs for Abstraction and Reasoning Corpus (ARC) (Student Abstract).",
-              "year": 2025,
-              "booktitle": "AAAI",
-              "venue_key": "aaai",
-              "num_authors": 2,
-              "authors": [
-                "Kartik Singhal",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/aaai/SinghalS25a",
-              "url": "https://doi.org/10.1609/aaai.v39i28.35300",
-              "pages": "29493-29494"
-            },
-            {
-              "title": "SCM4SR: Structural Causal Model-based Data Augmentation for Robust Session-based Recommendation.",
-              "year": 2024,
-              "booktitle": "SIGIR",
-              "venue_key": "sigir",
-              "num_authors": 5,
-              "authors": [
-                "Muskan Gupta",
-                "Priyanka Gupta 0003",
-                "Jyoti Narwariya",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/sigir/GuptaGNVS24",
-              "url": "https://doi.org/10.1145/3626772.3657940",
-              "pages": "2609-2613"
-            },
-            {
-              "title": "X4SR: Post-Hoc Explanations for Session-based Recommendations.",
-              "year": 2023,
-              "booktitle": "eCom@SIGIR",
-              "venue_key": "ecom",
-              "num_authors": 5,
-              "authors": [
-                "Jyoti Narwariya",
-                "Priyanka Gupta 0003",
-                "Garima Gupta",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/ecom/NarwariyaGGVS23",
-              "url": "https://ceur-ws.org/Vol-3589/paper_26.pdf",
-              "pages": ""
-            },
-            {
-              "title": "Can LLMs solve generative visual analogies?",
-              "year": 2023,
-              "booktitle": "IARML@IJCAI",
-              "venue_key": "ijcai",
-              "num_authors": 4,
-              "authors": [
-                "Shrey Pandit",
-                "Gautam Shroff",
-                "Ashwin Srinivasan 0001",
-                "Lovekesh Vig"
-              ],
-              "dblp_key": "conf/ijcai/PanditS0V23",
-              "url": "https://ceur-ws.org/Vol-3492/paper3.pdf",
-              "pages": "30-32"
-            },
-            {
-              "title": "Solving Visual Analogies Using Neural Algorithmic Reasoning (Student Abstract).",
-              "year": 2022,
-              "booktitle": "AAAI",
-              "venue_key": "aaai",
-              "num_authors": 5,
-              "authors": [
-                "Atharv Sonwane",
-                "Gautam Shroff",
-                "Lovekesh Vig",
-                "Ashwin Srinivasan 0001",
-                "Tirtharaj Dash"
-              ],
-              "dblp_key": "conf/aaai/SonwaneSV0D22",
-              "url": "https://doi.org/10.1609/aaai.v36i11.21664",
-              "pages": "13055-13056"
-            },
-            {
-              "title": "CauSeR: Causal Session-based Recommendations for Handling Popularity Bias.",
-              "year": 2021,
-              "booktitle": "CIKM",
-              "venue_key": "cikm",
-              "num_authors": 5,
-              "authors": [
-                "Priyanka Gupta 0003",
-                "Ankit Sharma",
-                "Pankaj Malhotra",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/cikm/GuptaSMVS21",
-              "url": "https://doi.org/10.1145/3459637.3482071",
-              "pages": "3048-3052"
-            },
-            {
-              "title": "Information Extraction from Document Images via FCA based Template Detection and Knowledge Graph Rule Induction.",
-              "year": 2020,
-              "booktitle": "CVPR Workshops",
-              "venue_key": "cvpr",
-              "num_authors": 7,
-              "authors": [
-                "Mouli Rastogi",
-                "Syed Afshan Ali",
-                "Mrinal Rawat",
-                "Lovekesh Vig",
-                "Puneet Agarwal",
-                "Gautam Shroff",
-                "Ashwin Srinivasan 0001"
-              ],
-              "dblp_key": "conf/cvpr/RastogiARVAS020",
-              "url": "https://openaccess.thecvf.com/content_CVPRW_2020/html/w34/Rastogi_Information_Extraction_From_Document_Images_via_FCA-Based_Template_Detection_and_CVPRW_2020_paper.html",
-              "pages": "2377-2385"
-            },
-            {
-              "title": "CAMTA: Causal Attention Model for Multi-touch Attribution.",
-              "year": 2020,
-              "booktitle": "ICDM (Workshops)",
-              "venue_key": "icdm",
-              "num_authors": 6,
-              "authors": [
-                "Sachin Kumar",
-                "Garima Gupta",
-                "Ranjitha Prasad",
-                "Arnab Chatterjee",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/icdm/KumarGPCVS20",
-              "url": "https://doi.org/10.1109/ICDMW51313.2020.00020",
-              "pages": "79-86"
-            },
-            {
-              "title": "Hi-CI: Deep Causal Inference in High Dimensions.",
-              "year": 2020,
-              "booktitle": "CD@KDD",
-              "venue_key": "kdd",
-              "num_authors": 6,
-              "authors": [
-                "Ankit Sharma",
-                "Garima Gupta",
-                "Ranjitha Prasad",
-                "Arnab Chatterjee",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/kdd/SharmaGPCVS20",
-              "url": "http://proceedings.mlr.press/v127/sharma20a.html",
-              "pages": "39-61"
-            },
-            {
-              "title": "Improved Question Answering using Domain Prediction.",
-              "year": 2020,
-              "booktitle": "Converse@KDD",
-              "venue_key": "kdd",
-              "num_authors": 7,
-              "authors": [
-                "Himani Srivastava",
-                "Prerna Khurana",
-                "Saurabh Srivastava",
-                "Vaibhav Varshney",
-                "Lovekesh Vig",
-                "Puneet Agarwal",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/kdd/SrivastavaKSVVA20",
-              "url": "https://ceur-ws.org/Vol-2666/KDD_Converse20_paper_6.pdf",
-              "pages": ""
-            },
-            {
-              "title": "CovidDiagnosis: Deep Diagnosis of COVID-19 Patients Using Chest X-Rays.",
-              "year": 2020,
-              "booktitle": "TIA@MICCAI",
-              "venue_key": "miccai",
-              "num_authors": 9,
-              "authors": [
-                "Kushagra Mahajan",
-                "Monika Sharma",
-                "Lovekesh Vig",
-                "Rishab Khincha",
-                "Soundarya Krishnan",
-                "Adithya Niranjan",
-                "Tirtharaj Dash",
-                "Ashwin Srinivasan 0001",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/miccai/MahajanSVKKNDSS20",
-              "url": "https://doi.org/10.1007/978-3-030-62469-9_6",
-              "pages": "61-73"
-            },
-            {
-              "title": "Regularizing Fully Convolutional Networks for Time Series Classification by Decorrelating Filters.",
-              "year": 2019,
-              "booktitle": "AAAI",
-              "venue_key": "aaai",
-              "num_authors": 5,
-              "authors": [
-                "Kaushal Paneri",
-                "Vishnu TV",
-                "Pankaj Malhotra",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/aaai/PaneriTMVS19",
-              "url": "https://doi.org/10.1609/aaai.v33i01.330110003",
-              "pages": "10003-10004"
-            },
-            {
-              "title": "From Monolingual to Multilingual FAQ Assistant using Multilingual Co-training.",
-              "year": 2019,
-              "booktitle": "DeepLo@EMNLP-IJCNLP",
-              "venue_key": "acl-deeplo",
-              "num_authors": 7,
-              "authors": [
-                "Mayur Patidar",
-                "Surabhi Kumari",
-                "Manasi Patwardhan 0001",
-                "Shirish Karande 0001",
-                "Puneet Agarwal",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/acl-deeplo/PatidarKPKAVS19",
-              "url": "https://doi.org/10.18653/v1/D19-6113",
-              "pages": "115-123"
-            },
-            {
-              "title": "A Reinforcement Learning Framework for Container Selection and Ship Load Sequencing in Ports.",
-              "year": 2019,
-              "booktitle": "AAMAS",
-              "venue_key": "atal",
-              "num_authors": 6,
-              "authors": [
-                "Richa Verma",
-                "Sarmimala Saikia",
-                "Harshad Khadilkar",
-                "Puneet Agarwal",
-                "Gautam Shroff",
-                "Ashwin Srinivasan 0001"
-              ],
-              "dblp_key": "conf/atal/VermaSKASS19",
-              "url": "http://dl.acm.org/citation.cfm?id=3332074",
-              "pages": "2250-2252"
-            },
-            {
-              "title": "One-shot Information Extraction from Document Images using Neuro-Deductive Program Synthesis.",
-              "year": 2019,
-              "booktitle": "NeSy@IJCAI",
-              "venue_key": "nesy",
-              "num_authors": 5,
-              "authors": [
-                "Vishal Sunder",
-                "Ashwin Srinivasan 0001",
-                "Lovekesh Vig",
-                "Gautam Shroff",
-                "Rohit Rahul"
-              ],
-              "dblp_key": "conf/nesy/SunderSVSR19",
-              "url": null,
-              "pages": ""
-            },
-            {
-              "title": "Natural Language Business Intelligence Question Answering Through SeqtoSeq Transfer Learning.",
-              "year": 2019,
-              "booktitle": "PAKDD (Workshops)",
-              "venue_key": "pakdd",
-              "num_authors": 5,
-              "authors": [
-                "Amit Sangroya",
-                "Pratik Saini",
-                "Mrinal Rawat",
-                "Gautam Shroff",
-                "C. Anantaram"
-              ],
-              "dblp_key": "conf/pakdd/SangroyaSRSA19",
-              "url": "https://doi.org/10.1007/978-3-030-26142-9_25",
-              "pages": "286-297"
-            },
-            {
-              "title": "Sequence and Time Aware Neighborhood for Session-based Recommendations: STAN.",
-              "year": 2019,
-              "booktitle": "SIGIR",
-              "venue_key": "sigir",
-              "num_authors": 5,
-              "authors": [
-                "Diksha Garg",
-                "Priyanka Gupta 0003",
-                "Pankaj Malhotra",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/sigir/GargGMVS19",
-              "url": "https://doi.org/10.1145/3331184.3331322",
-              "pages": "1069-1072"
-            },
-            {
-              "title": "MEETING BOT: Reinforcement Learning for Dialogue Based Meeting Scheduling.",
-              "year": 2018,
-              "booktitle": "AAAI Workshops",
-              "venue_key": "aaai",
-              "num_authors": 4,
-              "authors": [
-                "Vishwanath D",
-                "Lovekesh Vig",
-                "Gautam Shroff",
-                "Puneet Agarwal"
-              ],
-              "dblp_key": "conf/aaai/DVSA18",
-              "url": "https://aaai.org/ocs/index.php/WS/AAAIW18/paper/view/17336",
-              "pages": "699-705"
-            },
-            {
-              "title": "Deep Reader: Information Extraction from Document Images via Relation Extraction and Natural Language.",
-              "year": 2018,
-              "booktitle": "ACCV Workshops",
-              "venue_key": "accv",
-              "num_authors": 9,
-              "authors": [
-                "Vishwanath D",
-                "Rohit Rahul",
-                "Gunjan Sehgal",
-                "Swati",
-                "Arindam Chowdhury",
-                "Monika Sharma",
-                "Lovekesh Vig",
-                "Gautam Shroff",
-                "Ashwin Srinivasan 0001"
-              ],
-              "dblp_key": "conf/accv/DRSSCSVSS18",
-              "url": "https://doi.org/10.1007/978-3-030-21074-8_15",
-              "pages": "186-201"
-            },
-            {
-              "title": "Using Features From Pre-trained TimeNET For Clinical Predictions.",
-              "year": 2018,
-              "booktitle": "KDH@IJCAI",
-              "venue_key": "ijcai",
-              "num_authors": 4,
-              "authors": [
-                "Priyanka Gupta 0003",
-                "Pankaj Malhotra",
-                "Lovekesh Vig",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/ijcai/GuptaMVS18",
-              "url": "https://ceur-ws.org/Vol-2148/paper06.pdf",
-              "pages": "38-44"
-            },
-            {
-              "title": "MobiCom'18 Panel: Hammer & Nail vis-a-vis AI / ML Applications to Networked Systems.",
-              "year": 2018,
-              "booktitle": "MobiCom",
-              "venue_key": "mobicom",
-              "num_authors": 5,
-              "authors": [
-                "Pravin Bhagwat",
-                "Andrea Goldsmith",
-                "Manish Gupta",
-                "Rajeev Rastogi",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/mobicom/BhagwatGGRS18",
-              "url": "https://doi.org/10.1145/3241539.3241590",
-              "pages": "653-654"
-            },
-            {
-              "title": "Visual Predictive Analytics using iFuseML.",
-              "year": 2018,
-              "booktitle": "EuroVA@EuroVis",
-              "venue_key": "vissym",
-              "num_authors": 6,
-              "authors": [
-                "Gunjan Sehgal",
-                "Mrinal Rawat",
-                "Bindu Gupta",
-                "Garima Gupta",
-                "Geetika Sharma",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/vissym/SehgalRGGSS18",
-              "url": "https://doi.org/10.2312/eurova.20181106",
-              "pages": "13-17"
-            },
-            {
-              "title": "Visual Statistical Analysis of Environmental Sensor Data.",
-              "year": 2017,
-              "booktitle": "VAST",
-              "venue_key": "ieeevast",
-              "num_authors": 6,
-              "authors": [
-                "Bindu Gupta",
-                "Kaushal Paneri",
-                "Gunjan Sehgal",
-                "Karamjit Singh",
-                "Geetika Sharma",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/ieeevast/GuptaPSSSS17",
-              "url": "https://doi.org/10.1109/VAST.2017.8585515",
-              "pages": "245-246"
-            },
-            {
-              "title": "Automated Product-Attribute Mapping.",
-              "year": 2017,
-              "booktitle": "PAKDD (Workshops)",
-              "venue_key": "pakdd",
-              "num_authors": 4,
-              "authors": [
-                "Karamjit Singh",
-                "Garima Gupta",
-                "Gautam Shroff",
-                "Puneet Agarwal"
-              ],
-              "dblp_key": "conf/pakdd/SinghGSA17",
-              "url": "https://doi.org/10.1007/978-3-319-67274-8_15",
-              "pages": "163-175"
-            },
-            {
-              "title": "Activity Detection from Email Meta-Data Clustering.",
-              "year": 2016,
-              "booktitle": "ICDM Workshops",
-              "venue_key": "icdm",
-              "num_authors": 6,
-              "authors": [
-                "Mayur Patidar",
-                "Shaurya Rohatgi",
-                "Ashish Chaudhary",
-                "Mahesh P. Singh",
-                "Puneet Agarwal",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/icdm/PatidarRCSAS16",
-              "url": "https://doi.org/10.1109/ICDMW.2016.0087",
-              "pages": "568-575"
-            },
-            {
-              "title": "An AR Inspection Framework: Feasibility Study with Multiple AR Devices.",
-              "year": 2016,
-              "booktitle": "ISMAR Adjunct",
-              "venue_key": "ismar",
-              "num_authors": 8,
-              "authors": [
-                "Ramakrishna Perla",
-                "Ehtesham Hassan",
-                "Ramya Hebbalaguppe",
-                "Monika Sharma",
-                "Gaurav Gupta",
-                "Lovekesh Vig",
-                "Geetika Sharma",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/ismar/RamakrishnaHHSG16",
-              "url": "https://doi.org/10.1109/ISMAR-Adjunct.2016.0080",
-              "pages": "221-226"
-            },
-            {
-              "title": "Neuro-Symbolic EDA-Based Optimization Using ILP-Enhanced DBNs.",
-              "year": 2016,
-              "booktitle": "CoCo@NIPS",
-              "venue_key": "nips",
-              "num_authors": 6,
-              "authors": [
-                "Sarmimala Saikia",
-                "Lovekesh Vig",
-                "Ashwin Srinivasan 0001",
-                "Gautam Shroff",
-                "Puneet Agarwal",
-                "Richa Rawat"
-              ],
-              "dblp_key": "conf/nips/SaikiaVSSAR16",
-              "url": "https://ceur-ws.org/Vol-1773/CoCoNIPS_2016_paper7.pdf",
-              "pages": ""
-            },
-            {
-              "title": "Generic Framework to Predict Repeat Behavior of Customers Using Their Transaction History.",
-              "year": 2016,
-              "booktitle": "WI",
-              "venue_key": "webi",
-              "num_authors": 3,
-              "authors": [
-                "Auon Haidar Kazmi",
-                "Gautam Shroff",
-                "Puneet Agarwal"
-              ],
-              "dblp_key": "conf/webi/KazmiSA16",
-              "url": "https://doi.org/10.1109/WI.2016.0072",
-              "pages": "449-452"
-            },
-            {
-              "title": "Distributed Algorithm for Relationship Queries on Large Graphs.",
-              "year": 2015,
-              "booktitle": "LSDS-IR@CIKM",
-              "venue_key": "cikm",
-              "num_authors": 3,
-              "authors": [
-                "Puneet Agarwal",
-                "Maya Ramanath",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/cikm/AgarwalRS15",
-              "url": "https://doi.org/10.1145/2809948.2809949",
-              "pages": "9-12"
-            },
-            {
-              "title": "Multi-sensor Visual Analytics Supported by Machine-Learning Models.",
-              "year": 2015,
-              "booktitle": "ICDM Workshops",
-              "venue_key": "icdm",
-              "num_authors": 7,
-              "authors": [
-                "Geetika Sharma",
-                "Gautam Shroff",
-                "Aditeya Pandey",
-                "Brijendra Singh",
-                "Gunjan Sehgal",
-                "Kaushal Paneri",
-                "Puneet Agarwal"
-              ],
-              "dblp_key": "conf/icdm/SharmaSPSSPA15",
-              "url": "https://doi.org/10.1109/ICDMW.2015.190",
-              "pages": "668-674"
-            },
-            {
-              "title": "Exploratory Data Analysis Using Alternating Covers of Rules and Exceptions.",
-              "year": 2014,
-              "booktitle": "COMAD",
-              "venue_key": "comad",
-              "num_authors": 6,
-              "authors": [
-                "Sarmimala Saikia",
-                "Gautam Shroff",
-                "Puneet Agarwal",
-                "Ashwin Srinivasan 0001",
-                "Aditeya Pandey",
-                "Gaurangi Anand"
-              ],
-              "dblp_key": "conf/comad/SaikiaSASPA14",
-              "url": "http://comad.in/comad2014/Proceedings/Poster2.pdf",
-              "pages": "105-108"
-            },
-            {
-              "title": "Graph-Parallel Entity Resolution using LSH & IMM.",
-              "year": 2014,
-              "booktitle": "EDBT/ICDT Workshops",
-              "venue_key": "edbt",
-              "num_authors": 3,
-              "authors": [
-                "Pankaj Malhotra",
-                "Puneet Agarwal",
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/edbt/MalhotraAS14",
-              "url": "https://ceur-ws.org/Vol-1133/paper-07.pdf",
-              "pages": "41-49"
-            },
-            {
-              "title": "Interactively Visualizing Summaries of Rules and Exceptions.",
-              "year": 2014,
-              "booktitle": "EuroVA@EuroVis",
-              "venue_key": "vissym",
-              "num_authors": 5,
-              "authors": [
-                "Geetika Sharma",
-                "Gautam Shroff",
-                "Aditeya Pandey",
-                "Puneet Agarwal",
-                "Ashwin Srinivasan 0001"
-              ],
-              "dblp_key": "conf/vissym/SharmaSPAS14",
-              "url": "https://doi.org/10.2312/eurova.20141146",
-              "pages": ""
-            },
-            {
-              "title": "InstantApps: A WYSIWYG model driven interpreter for web applications.",
-              "year": 2009,
-              "booktitle": "ICSE Companion",
-              "venue_key": "icse",
-              "num_authors": 3,
-              "authors": [
-                "Gautam Shroff",
-                "Puneet Agarwal",
-                "Premkumar T. Devanbu"
-              ],
-              "dblp_key": "conf/icse/ShroffAD09",
-              "url": "https://doi.org/10.1109/ICSE-COMPANION.2009.5071040",
-              "pages": "417-418"
-            },
-            {
-              "title": "Dev 2.0: model driven development in the cloud.",
-              "year": 2008,
-              "booktitle": "SIGSOFT FSE",
-              "venue_key": "sigsoft",
-              "num_authors": 1,
-              "authors": [
-                "Gautam Shroff"
-              ],
-              "dblp_key": "conf/sigsoft/Shroff08",
-              "url": "https://doi.org/10.1145/1453101.1453139",
-              "pages": "283"
-            }
-          ]
-        },
-        {
           "name": "Syamantak Das",
           "dblp_pid": "135/6297",
           "role": "",
@@ -123046,495 +123261,6 @@
             }
           ],
           "skipped_publications": []
-        },
-        {
-          "name": "Raghava Mutharaju",
-          "dblp_pid": "63/7446",
-          "role": "",
-          "homepage": "https://www.iiitd.ac.in/raghavam",
-          "score": 3.2357,
-          "papers_astar": 3,
-          "papers_a": 9,
-          "papers_journal": 0,
-          "total_matched": 12,
-          "publications": [
-            {
-              "title": "OntoInsight - A Metric-Guided Tool for Ontology Quality Evaluation with LLM-Powered Recommendations.",
-              "venue": "ER",
-              "venue_full": "International Conference on Conceptual Modelling",
-              "venue_rank": "A",
-              "year": 2025,
-              "num_authors": 4,
-              "adjusted_count": 0.25,
-              "url": "https://doi.org/10.1007/978-3-032-08623-5_21",
-              "for_code": "4605"
-            },
-            {
-              "title": "Moral Compass: A Data-Driven Benchmark for Ethical Cognition in AI.",
-              "venue": "IJCAI",
-              "venue_full": "International Joint Conference on Artificial Intelligence",
-              "venue_rank": "A*",
-              "year": 2025,
-              "num_authors": 6,
-              "adjusted_count": 0.1667,
-              "url": "https://doi.org/10.24963/ijcai.2025/1059",
-              "for_code": "4602"
-            },
-            {
-              "title": "Revisiting Document-Level Relation Extraction with Context-Guided Link Prediction.",
-              "venue": "AAAI",
-              "venue_full": "National Conference of the American Association for Artificial Intelligence",
-              "venue_rank": "A*",
-              "year": 2024,
-              "num_authors": 4,
-              "adjusted_count": 0.25,
-              "url": "https://doi.org/10.1609/aaai.v38i16.29792",
-              "for_code": "4602"
-            },
-            {
-              "title": "Knowledge-Driven Cross-Document Relation Extraction.",
-              "venue": "ACL",
-              "venue_full": "Association for Computational Linguistics",
-              "venue_rank": "A*",
-              "year": 2024,
-              "num_authors": 4,
-              "adjusted_count": 0.25,
-              "url": "https://doi.org/10.18653/v1/2024.findings-acl.227",
-              "for_code": "4602"
-            },
-            {
-              "title": "GenACT: An Ontology-Based Temporal Web Data Generator.",
-              "venue": "ER",
-              "venue_full": "International Conference on Conceptual Modelling",
-              "venue_rank": "A",
-              "year": 2024,
-              "num_authors": 7,
-              "adjusted_count": 0.1429,
-              "url": "https://doi.org/10.1007/978-3-031-75872-0_17",
-              "for_code": "4605"
-            },
-            {
-              "title": "SAQI: An Ontology Based Knowledge Graph Platform for Social Air Quality Index.",
-              "venue": "ER",
-              "venue_full": "International Conference on Conceptual Modelling",
-              "venue_rank": "A",
-              "year": 2024,
-              "num_authors": 7,
-              "adjusted_count": 0.1429,
-              "url": "https://doi.org/10.1007/978-3-031-75872-0_18",
-              "for_code": "4605"
-            },
-            {
-              "title": "JobXMLC: EXtreme Multi-Label Classification of Job Skills with Graph Neural Networks.",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2023,
-              "num_authors": 6,
-              "adjusted_count": 0.1667,
-              "url": "https://doi.org/10.18653/v1/2023.findings-eacl.163",
-              "for_code": "4602"
-            },
-            {
-              "title": "ReOnto: A Neuro-Symbolic Approach for Biomedical Relation Extraction.",
-              "venue": "ECML PKDD",
-              "venue_full": "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Database (PKDD and ECML combined from 2008)",
-              "venue_rank": "A",
-              "year": 2023,
-              "num_authors": 3,
-              "adjusted_count": 0.3333,
-              "url": "https://doi.org/10.1007/978-3-031-43421-1_14",
-              "for_code": "4611"
-            },
-            {
-              "title": "An Ontology Design Pattern Recommendation System.",
-              "venue": "ISWC",
-              "venue_full": "International Semantic Web Conference",
-              "venue_rank": "A",
-              "year": 2021,
-              "num_authors": 2,
-              "adjusted_count": 0.5,
-              "url": "https://doi.org/10.3233/SSW210017",
-              "for_code": "4605"
-            },
-            {
-              "title": "An Ontology Design Pattern for Modeling Bias.",
-              "venue": "ISWC",
-              "venue_full": "International Semantic Web Conference",
-              "venue_rank": "A",
-              "year": 2021,
-              "num_authors": 2,
-              "adjusted_count": 0.5,
-              "url": "https://doi.org/10.3233/SSW210024",
-              "for_code": "4605"
-            },
-            {
-              "title": "OWL2Bench: A Benchmark for OWL 2 Reasoners.",
-              "venue": "ISWC",
-              "venue_full": "International Semantic Web Conference",
-              "venue_rank": "A",
-              "year": 2020,
-              "num_authors": 3,
-              "adjusted_count": 0.3333,
-              "url": "https://doi.org/10.1007/978-3-030-62466-8_6",
-              "for_code": "4605"
-            },
-            {
-              "title": "OWL2Bench: Towards a Customizable Benchmark for OWL 2 Reasoners.",
-              "venue": "ISWC",
-              "venue_full": "International Semantic Web Conference",
-              "venue_rank": "A",
-              "year": 2020,
-              "num_authors": 5,
-              "adjusted_count": 0.2,
-              "url": "https://ceur-ws.org/Vol-2721/paper587.pdf",
-              "for_code": "4605"
-            }
-          ],
-          "skipped_publications": [
-            {
-              "title": "A Deep Dive Into Benchmarking Ontology Reasoners: Techniques, Tools, and Insights.",
-              "year": 2025,
-              "booktitle": "ER (Companion)",
-              "venue_key": "er",
-              "num_authors": 2,
-              "authors": [
-                "Gunjan Singh",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/er/SinghM25",
-              "url": "https://ceur-ws.org/Vol-4099/ER25_tutorial_Singh.pdf",
-              "pages": "292-295"
-            },
-            {
-              "title": "Learned Indexes for Efficient Querying on Knowledge Graphs.",
-              "year": 2025,
-              "booktitle": "ISWC (Industry/Doctoral Consortium/Posters/Demos)",
-              "venue_key": "semweb",
-              "num_authors": 7,
-              "authors": [
-                "Gaurav Dawra",
-                "Aanchal Gupta",
-                "Nandika Jain",
-                "Yogender Kumar",
-                "Jishnu Raj Parashar",
-                "Bapi Chatterjee",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/semweb/DawraGJKPCM25",
-              "url": "https://ceur-ws.org/Vol-4085/paper47.pdf",
-              "pages": "286-292"
-            },
-            {
-              "title": "An Ontology to Capture Contextual Information to Facilitate Ethical Decision-making in AI Systems.",
-              "year": 2024,
-              "booktitle": "COMAD/CODS",
-              "venue_key": "comad",
-              "num_authors": 5,
-              "authors": [
-                "Aisha Aijaz",
-                "Raghava Mutharaju",
-                "Manohar Kumar",
-                "Omkar Chattar",
-                "Jainendra Shukla"
-              ],
-              "dblp_key": "conf/comad/AijazMKCS24",
-              "url": "https://doi.org/10.1145/3632410.3632493",
-              "pages": "590-591"
-            },
-            {
-              "title": "OWL2Gen: Towards a Configurable Ontology Generator for Benchmarking.",
-              "year": 2024,
-              "booktitle": "ER (Companion)",
-              "venue_key": "er",
-              "num_authors": 4,
-              "authors": [
-                "Gunjan Singh",
-                "Ashwat Kumar",
-                "Sumit Bhatia",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/er/SinghKBM24",
-              "url": "https://ceur-ws.org/Vol-3849/poster-demo6.pdf",
-              "pages": "151-155"
-            },
-            {
-              "title": "Building and Using a Planning Ontology from Past Data for Performance Efficiency.",
-              "year": 2023,
-              "booktitle": "PLATO@ICAPS",
-              "venue_key": "plato",
-              "num_authors": 4,
-              "authors": [
-                "Bharath Muppasani",
-                "Vishal Pallagani",
-                "Biplav Srivastava",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/plato/MuppasaniPSM23",
-              "url": "https://ceur-ws.org/Vol-3493/short-paper-2.pdf",
-              "pages": ""
-            },
-            {
-              "title": "A SPARQL to Cypher Transpiler: Proposal and Initial Results.",
-              "year": 2022,
-              "booktitle": "COMAD/CODS",
-              "venue_key": "comad",
-              "num_authors": 3,
-              "authors": [
-                "Lakshya A. Agrawal",
-                "Nikunj Singhal",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/comad/AgrawalSM22",
-              "url": "https://doi.org/10.1145/3493700.3493757",
-              "pages": "312-313"
-            },
-            {
-              "title": "Neuro-Symbolic Techniques for Description Logic Reasoning (Student Abstract).",
-              "year": 2021,
-              "booktitle": "AAAI",
-              "venue_key": "aaai",
-              "num_authors": 4,
-              "authors": [
-                "Gunjan Singh",
-                "Sutapa Mondal",
-                "Sumit Bhatia",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/aaai/SinghMBM21",
-              "url": "https://doi.org/10.1609/aaai.v35i18.17942",
-              "pages": "15891-15892"
-            },
-            {
-              "title": "OntoSeer: A Tool to Ease the Ontology Development Process.",
-              "year": 2021,
-              "booktitle": "COMAD/CODS",
-              "venue_key": "comad",
-              "num_authors": 2,
-              "authors": [
-                "Pramit Bhattacharyya",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/comad/BhattacharyyaM21",
-              "url": "https://doi.org/10.1145/3430984.3431067",
-              "pages": "428"
-            },
-            {
-              "title": "Extraction of Union and Intersection Axioms from Biomedical Text.",
-              "year": 2021,
-              "booktitle": "ESWC (Satellite Events)",
-              "venue_key": "esws",
-              "num_authors": 3,
-              "authors": [
-                "Nikhil Sachdeva",
-                "Monika Jain",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/esws/SachdevaJM21",
-              "url": "https://doi.org/10.1007/978-3-030-80418-3_27",
-              "pages": "147-151"
-            },
-            {
-              "title": "EmELvar: A NeuroSymbolic Reasoner for the EL++ Description Logic.",
-              "year": 2021,
-              "booktitle": "SemREC@ISWC",
-              "venue_key": "semweb",
-              "num_authors": 4,
-              "authors": [
-                "Biswesh Mohapatra",
-                "Sumit Bhatia",
-                "Raghava Mutharaju",
-                "G. Srinivasaraghavan 0001"
-              ],
-              "dblp_key": "conf/semweb/MohapatraBM021",
-              "url": "https://ceur-ws.org/Vol-3123/paper6.pdf",
-              "pages": "44-51"
-            },
-            {
-              "title": "An Ontology Design Pattern for Modeling Pollution.",
-              "year": 2021,
-              "booktitle": "WOP@ISWC",
-              "venue_key": "wop",
-              "num_authors": 3,
-              "authors": [
-                "Saad Ahmad",
-                "Sudhir Attri",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/wop/AhmadAM21",
-              "url": "https://ceur-ws.org/Vol-3011/pattern3.pdf",
-              "pages": ""
-            },
-            {
-              "title": "A Benchmark for OWL 2 DL Reasoners.",
-              "year": 2020,
-              "booktitle": "COMAD/CODS",
-              "venue_key": "comad",
-              "num_authors": 3,
-              "authors": [
-                "Gunjan Singh",
-                "Sumit Bhatia",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/comad/SinghBM20",
-              "url": "https://doi.org/10.1145/3371158.3371222",
-              "pages": "353"
-            },
-            {
-              "title": "Cardinality Extraction from Text for Ontology Learning.",
-              "year": 2020,
-              "booktitle": "COMAD/CODS",
-              "venue_key": "comad",
-              "num_authors": 3,
-              "authors": [
-                "Monika Jain",
-                "Paramita Mirza",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/comad/JainMM20",
-              "url": "https://doi.org/10.1145/3371158.3371223",
-              "pages": "354"
-            },
-            {
-              "title": "ODPReco - A Tool to Recommend Ontology Design Patterns.",
-              "year": 2019,
-              "booktitle": "WOP@ISWC",
-              "venue_key": "semweb",
-              "num_authors": 2,
-              "authors": [
-                "Maleeha Arif Yasvi",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/semweb/YasviM19",
-              "url": "https://ceur-ws.org/Vol-2459/short1.pdf",
-              "pages": "71-75"
-            },
-            {
-              "title": "Towards a Concurrent Approximate Description Logic Reasoner.",
-              "year": 2019,
-              "booktitle": "ISWC (Satellites)",
-              "venue_key": "semweb",
-              "num_authors": 4,
-              "authors": [
-                "Raj Kamal Yadav",
-                "Gunjan Singh",
-                "Raghava Mutharaju",
-                "Sumit Bhatia"
-              ],
-              "dblp_key": "conf/semweb/YadavSMB19",
-              "url": "https://ceur-ws.org/Vol-2456/paper38.pdf",
-              "pages": "145-148"
-            },
-            {
-              "title": "Reasoning with Large Scale OWL 2 EL Ontologies Based on MapReduce.",
-              "year": 2016,
-              "booktitle": "APWeb (2)",
-              "venue_key": "apweb",
-              "num_authors": 5,
-              "authors": [
-                "Zhangquan Zhou",
-                "Guilin Qi",
-                "Chang Liu 0021",
-                "Raghava Mutharaju",
-                "Pascal Hitzler"
-              ],
-              "dblp_key": "conf/apweb/ZhouQLMH16",
-              "url": "https://doi.org/10.1007/978-3-319-45817-5_40",
-              "pages": "429-433"
-            },
-            {
-              "title": "Are We Really Standing on the Shoulders of Giants?",
-              "year": 2015,
-              "booktitle": "NoISE@ESWC",
-              "venue_key": "esws",
-              "num_authors": 2,
-              "authors": [
-                "Raghava Mutharaju",
-                "Pavan Kapanipathi"
-              ],
-              "dblp_key": "conf/esws/MutharajuK15",
-              "url": "https://ceur-ws.org/Vol-1435/NoISE2015_paper_9.pdf",
-              "pages": ""
-            },
-            {
-              "title": "Distributed OWL EL Reasoning: The Story So Far.",
-              "year": 2014,
-              "booktitle": "SSWS@ISWC",
-              "venue_key": "semweb",
-              "num_authors": 3,
-              "authors": [
-                "Raghava Mutharaju",
-                "Pascal Hitzler",
-                "Prabhaker Mateti"
-              ],
-              "dblp_key": "conf/semweb/MutharajuHM14",
-              "url": "https://ceur-ws.org/Vol-1261/SSWS2014_paper5.pdf",
-              "pages": "61-76"
-            },
-            {
-              "title": "Developing a distributed reasoner for the Semantic Web.",
-              "year": 2014,
-              "booktitle": "ISWC (Developers Workshop)",
-              "venue_key": "semweb",
-              "num_authors": 3,
-              "authors": [
-                "Raghava Mutharaju",
-                "Prabhaker Mateti",
-                "Pascal Hitzler"
-              ],
-              "dblp_key": "conf/semweb/MutharajuMH14",
-              "url": "https://ceur-ws.org/Vol-1268/paper18.pdf",
-              "pages": "108-112"
-            },
-            {
-              "title": "DistEL: A Distributed EL+ Ontology Classifier.",
-              "year": 2013,
-              "booktitle": "SSWS@ISWC",
-              "venue_key": "semweb",
-              "num_authors": 3,
-              "authors": [
-                "Raghava Mutharaju",
-                "Pascal Hitzler",
-                "Prabhaker Mateti"
-              ],
-              "dblp_key": "conf/semweb/MutharajuHM13",
-              "url": "https://ceur-ws.org/Vol-1046/SSWS2013_paper2.pdf",
-              "pages": "17-32"
-            },
-            {
-              "title": "D-SPARQ: Distributed, Scalable and Efficient RDF Query Engine.",
-              "year": 2013,
-              "booktitle": "ISWC (Posters & Demos)",
-              "venue_key": "semweb",
-              "num_authors": 4,
-              "authors": [
-                "Raghava Mutharaju",
-                "Sherif Sakr",
-                "Alessandra Sala",
-                "Pascal Hitzler"
-              ],
-              "dblp_key": "conf/semweb/MutharajuSSH13",
-              "url": "https://ceur-ws.org/Vol-1035/iswc2013_poster_21.pdf",
-              "pages": "261-264"
-            },
-            {
-              "title": "Reasoning with Fuzzy-EL+ Ontologies Using MapReduce.",
-              "year": 2012,
-              "booktitle": "ECAI",
-              "venue_key": "ecai",
-              "num_authors": 5,
-              "authors": [
-                "Zhangquan Zhou",
-                "Guilin Qi",
-                "Chang Liu 0021",
-                "Pascal Hitzler",
-                "Raghava Mutharaju"
-              ],
-              "dblp_key": "conf/ecai/ZhouQLHM12",
-              "url": "https://doi.org/10.3233/978-1-61499-098-7-933",
-              "pages": "933-934"
-            }
-          ]
         },
         {
           "name": "Tanmoy Kundu",
@@ -125416,172 +125142,6 @@
               "dblp_key": "conf/www/RamanujamGKST09",
               "url": "https://doi.org/10.1145/1526709.1526855",
               "pages": "1059-1060"
-            }
-          ]
-        },
-        {
-          "name": "V. Raghava Mutharaju",
-          "dblp_pid": null,
-          "irins_id": "105091",
-          "irins_url": "https://iiitd.irins.org/profile/105091",
-          "role": "Assistant Professor",
-          "homepage": "",
-          "score": 1.4576,
-          "papers_astar": 3,
-          "papers_a": 1,
-          "papers_journal": 3,
-          "total_matched": 7,
-          "publications": [
-            {
-              "title": "Moral Compass: A Data-Driven Benchmark for Ethical Cognition in AI",
-              "venue": "IJCAI",
-              "venue_full": "International Joint Conference on Artificial Intelligence",
-              "venue_rank": "A*",
-              "year": 2025,
-              "num_authors": 6,
-              "authors": [
-                "Aijaz A.",
-                "Batra A.",
-                "Bazaz A.",
-                "Srinivasa S.",
-                "Mutharaju R.",
-                "Kumar M."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": "10.24963/ijcai.2025/1059",
-              "url": "http://dx.doi.org/10.24963/ijcai.2025/1059",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Revisiting Document-Level Relation Extraction with Context-Guided Link Prediction",
-              "venue": "AAAI",
-              "venue_full": "National Conference of the American Association for Artificial Intelligence",
-              "venue_rank": "A*",
-              "year": 2024,
-              "num_authors": 4,
-              "authors": [
-                "Jain M.",
-                "Mutharaju R.",
-                "Kavuluru R.",
-                "Singh K."
-              ],
-              "adjusted_count": 0.25,
-              "doi": "10.1609/aaai.v38i16.29792",
-              "url": "http://dx.doi.org/10.1609/aaai.v38i16.29792",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "Knowledge-Driven Cross-Document Relation Extraction",
-              "venue": "ACL",
-              "venue_full": "Association for Computational Linguistics",
-              "venue_rank": "A*",
-              "year": 2024,
-              "num_authors": 4,
-              "authors": [
-                "Jain M.",
-                "Mutharaju R.",
-                "Singh K.",
-                "Kavuluru R."
-              ],
-              "adjusted_count": 0.25,
-              "doi": "10.18653/v1/2024.findings-acl.227",
-              "url": "http://dx.doi.org/10.18653/v1/2024.findings-acl.227",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "JobXMLC: EXtreme Multi-Label Classification of Job Skills with Graph Neural Networks",
-              "venue": "EACL",
-              "venue_full": "European Association for Computational Linguistics",
-              "venue_rank": "A",
-              "year": 2023,
-              "num_authors": 6,
-              "authors": [
-                "Goyal N.",
-                "Kalra J.S.",
-                "Sharma C.",
-                "Mutharaju R.",
-                "Sachdeva N.",
-                "Kumaraguru P."
-              ],
-              "adjusted_count": 0.1667,
-              "doi": "10.18653/v1/2023.findings-eacl.163",
-              "url": "http://dx.doi.org/10.18653/v1/2023.findings-eacl.163",
-              "for_code": "4602",
-              "source": "irins",
-              "pub_type": "conference"
-            },
-            {
-              "title": "RConE: Rough Cone Embedding for Multi-Hop Logical Query Answering on Multi-Modal Knowledge Graphs",
-              "venue": "TKDE",
-              "venue_full": "IEEE Transactions on Knowledge and Data Engineering",
-              "venue_rank": "Journal",
-              "publisher": "IEEE",
-              "year": 2025,
-              "num_authors": 3,
-              "authors": [
-                "Kharbanda M.",
-                "Shah R.R.",
-                "Mutharaju R."
-              ],
-              "adjusted_count": 0.3333,
-              "doi": "10.1109/TKDE.2025.3584054",
-              "url": "http://dx.doi.org/10.1109/TKDE.2025.3584054",
-              "source": "irins",
-              "pub_type": "journal"
-            },
-            {
-              "title": "Opacity, Transparency, and the Ethics of Affective Computing",
-              "venue": "TAFFC",
-              "venue_full": "IEEE Transactions on Affective Computing",
-              "venue_rank": "Journal",
-              "publisher": "IEEE",
-              "year": 2024,
-              "num_authors": 5,
-              "authors": [
-                "Kumar M.",
-                "Aijaz A.",
-                "Chattar O.",
-                "Shukla J.",
-                "Mutharaju R."
-              ],
-              "adjusted_count": 0.2,
-              "doi": "10.1109/TAFFC.2023.3278230",
-              "url": "http://dx.doi.org/10.1109/TAFFC.2023.3278230",
-              "source": "irins",
-              "pub_type": "journal"
-            },
-            {
-              "title": "An Ontology and Rule-Based Clinical Decision Support System for Personalized Nutrition Recommendations in the Neonatal Intensive Care Unit",
-              "venue": "Access",
-              "venue_full": "IEEE Access",
-              "venue_rank": "Journal",
-              "publisher": "IEEE",
-              "year": 2023,
-              "num_authors": 11,
-              "authors": [
-                "Kaur R.",
-                "Jain M.",
-                "McAdams R.M.",
-                "Sun Y.",
-                "Gupta S.",
-                "Mutharaju R.",
-                "Cho S.J.",
-                "Saluja S.",
-                "Palma J.P.",
-                "Kaur A.",
-                "Sing..."
-              ],
-              "adjusted_count": 0.0909,
-              "doi": "10.1109/ACCESS.2023.3341403",
-              "url": "http://dx.doi.org/10.1109/ACCESS.2023.3341403",
-              "source": "irins",
-              "pub_type": "journal"
             }
           ]
         },

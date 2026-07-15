@@ -433,12 +433,30 @@ def merge_irins_into_faculty(faculty_results, irins_data):
     def normalize_name(name):
         return re.sub(r'[^a-z]', '', name.lower())
 
-    # Build name->irins_faculty lookup
-    irins_lookup = {}
-    for fac in irins_data.get("faculty", []):
-        # Normalize name for matching
-        name_key = normalize_name(fac["name"])
-        irins_lookup[name_key] = fac
+    def name_keys(name):
+        """Match keys for one person's name.
+
+        Includes the fully normalised form plus an initials-stripped form, so
+        IRINS's "Gautam Shroff" matches the roster's "Gautam M. Shroff" (and
+        "V. Raghava Mutharaju" matches "Raghava Mutharaju") instead of being
+        mistaken for a new person and double-counted.
+
+        Initials are only stripped when >= 2 real tokens remain, so distinct
+        people like "S. Kumar" / "R. Kumar" never collapse onto each other.
+        """
+        keys = {normalize_name(name)}
+        tokens = [t for t in re.split(r'[^a-z]+', name.lower()) if t]
+        core = [t for t in tokens if len(t) > 1]
+        if len(core) >= 2:
+            keys.add("".join(core))
+        return keys
+
+    # Build match-key -> irins faculty name lookup (first spelling wins).
+    irins_by_name = {fac["name"]: fac for fac in irins_data.get("faculty", [])}
+    key_to_irins_name = {}
+    for irins_name in irins_by_name:
+        for key in name_keys(irins_name):
+            key_to_irins_name.setdefault(key, irins_name)
 
     merged_count = 0
     deduped_count = 0
@@ -446,12 +464,16 @@ def merge_irins_into_faculty(faculty_results, irins_data):
     matched_names = set()
 
     for fac_result in faculty_results:
-        fac_name_norm = normalize_name(fac_result["name"])
-        irins_fac = irins_lookup.get(fac_name_norm)
-        if not irins_fac:
+        irins_name = None
+        for key in name_keys(fac_result["name"]):
+            if key in key_to_irins_name:
+                irins_name = key_to_irins_name[key]
+                break
+        if not irins_name:
             continue
+        irins_fac = irins_by_name[irins_name]
 
-        matched_names.add(fac_name_norm)
+        matched_names.add(irins_name)
 
         def normalize_title(title):
             return re.sub(r'[^a-z0-9]', '', title.lower())
@@ -547,10 +569,11 @@ def merge_irins_into_faculty(faculty_results, irins_data):
             return (type_order.get(p.get("venue_rank", ""), 3), -p.get("year", 0), p.get("venue", ""))
         fac_result["publications"].sort(key=sort_key)
 
-    # Add new faculty from IRINS that weren't in faculty.json
+    # Add faculty found ONLY in IRINS (genuinely absent from faculty.json —
+    # name variants of existing faculty were matched above, not re-added).
     new_faculty_count = 0
-    for name_key, irins_fac in irins_lookup.items():
-        if name_key not in matched_names and irins_fac.get("total_matched", 0) > 0:
+    for irins_name, irins_fac in irins_by_name.items():
+        if irins_name not in matched_names and irins_fac.get("total_matched", 0) > 0:
             fac_result = {
                 "name": irins_fac["name"],
                 "dblp_pid": None,
