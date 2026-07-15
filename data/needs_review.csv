@@ -1,0 +1,35 @@
+institution,csrankings_name,dblp_pid,action,note,confidence,reason,acknowledged,dblp_url,homepage
+IIITD,Pankaj Jalote,j/PankajJalote,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/j/PankajJalote,https://www.iiitd.edu.in/~jalote
+IIITH,Deepak Gangadharan,98/7452,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/98/7452,https://www.iiit.ac.in/faculty/deepak-gangadharan
+IIITH,Govindarajulu Regeti,27/8325,,,REVIEW,no publications since 2015,,https://dblp.org/pid/27/8325,https://iiit.ac.in/people/faculty/gregeti
+IIITH,Kalluri R. Sarma,02/6803,,,REVIEW,no publications since 2015,,https://dblp.org/pid/02/6803,https://www.iiit.ac.in/people/faculty/krsarma
+IIITH,Kannan Srinathan,,,,REVIEW,no exact DBLP author-name match,,,https://www.iiit.ac.in/people/faculty/srinathan
+IIITH,R. K. Bagga,57/5018,,,REVIEW,no publications since 2015,,https://dblp.org/pid/57/5018,https://www.iiit.ac.in/people/faculty/rbagga
+IIITH,Raghu Reddy,,,,REVIEW,no exact DBLP author-name match,,,http://faculty.iiit.ac.in/~raghu.reddy
+IIITH,Rambabu Kalla,164/3332,,,REVIEW,no publications since 2015,,https://dblp.org/pid/164/3332,https://www.iiit.ac.in/people/faculty/rambabukalla
+IISC,Chiru Bhattacharyya,,,,REVIEW,no exact DBLP author-name match,,,http://www.csa.iisc.ac.in/~chiru
+IISC,Deepak D'Souza,,,,REVIEW,no exact DBLP author-name match,,,http://www.csa.iisc.ac.in/~deepakd
+IISC,Dilip P. Patil,,,,REVIEW,no exact DBLP author-name match,,,http://www.math.iisc.ernet.in/~patil
+IISC,Filbert Minj,45/1508,,,REVIEW,no publications since 2015,,https://dblp.org/pid/45/1508,https://www.serc.iisc.ac.in/faculty
+IISC,Matthew Jacob Thazhuthaveetil,,,,REVIEW,no exact DBLP author-name match,,,http://www.csa.iisc.ac.in/~mjt
+IISC,Matthew Thazhuthaveetil,,,,REVIEW,no exact DBLP author-name match,,,http://www.csa.iisc.ac.in/~mjt
+IISC,Narayanas Balakrishnan,,,,REVIEW,no exact DBLP author-name match,,,https://www.serc.iisc.ac.in/faculty/prof-n-balakrishnan
+IISC,R.C. Hansdah,,,,REVIEW,no exact DBLP author-name match,,,http://www.csa.iisc.ac.in/people/people-faculty-hansdah.html
+IISC,Y. Narahari,,,,REVIEW,no exact DBLP author-name match,,,http://www.csa.iisc.ac.in/~hari
+IISC,Yadati Narahari,,,,REVIEW,no exact DBLP author-name match,,,http://www.csa.iisc.ac.in/~hari
+IITB,Akash Kumar 0003,140/9567-3,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/140/9567-3,https://sites.google.com/view/kumarakash/home
+IITB,Arjun Nitin Bhagoji,199/2164,,,REVIEW,"aliases resolved to multiple PIDs: ['160/8607', '199/2164']",,https://dblp.org/pid/199/2164,https://arjunbhagoji.github.io
+IITB,Ashutosh Kumar Gupta 0001,,,,REVIEW,no exact DBLP author-name match,,,https://www.cse.iitb.ac.in/~akg
+IITB,Bernard Menezes,,,,REVIEW,no exact DBLP author-name match,,,https://www.cse.iitb.ac.in/~bernard
+IITB,Dhananjay M. Dhamdhere,d/DMDhamdhere,,,REVIEW,no publications since 2015,,https://dblp.org/pid/d/DMDhamdhere,https://www.cse.iitb.ac.in/~dmd
+IITD,Rajendra Kumar 0002,42/7523-2,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/42/7523-2,https://k-rajendra.github.io
+IITK,Sunil Easaw Simon,,,,REVIEW,no exact DBLP author-name match,,,http://www.cse.iitk.ac.in/users/simon
+IITK,Sunil Simon,15/4902,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/15/4902,http://www.cse.iitk.ac.in/users/simon
+IITKGP,Chittaranjan Mandal 0002,175/5896,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/175/5896,http://cse.iitkgp.ac.in/~chitta
+IITKGP,Jayanta Mukherjee 0001,,,,REVIEW,no exact DBLP author-name match,,,http://www.facweb.iitkgp.ac.in/~jay
+IITKGP,Pabitra Mitra,m/PabitraMitra,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/m/PabitraMitra,http://cse.iitkgp.ac.in/~pabitra
+IITM,Harish Guruprasad Ramaswamy,,,,REVIEW,no exact DBLP author-name match,,,https://sites.google.com/site/harishguruprasad
+IITM,John Augustine,,,,REVIEW,no exact DBLP author-name match,,,https://www.iitm.ac.in/info/fac/augustine
+IITM,Kamakoti Veezhinathan,,,,REVIEW,no exact DBLP author-name match,,,http://rise.cse.iitm.ac.in/people/faculty/kama/kama.html
+IITM,Prashanth Lakshmanrao Ananthapadmanabharao,90/3161,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/90/3161,http://www.cse.iitm.ac.in/~prashla
+IITM,Yadu Vasudev,23/10305,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/23/10305,https://yaduvasudev.github.io

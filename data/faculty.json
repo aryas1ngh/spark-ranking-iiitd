@@ -113,6 +113,114 @@
           "dblp_pid": "146/0131",
           "role": "Assistant Professor",
           "homepage": "https://www.iiitd.ac.in/rinku"
+        },
+        {
+          "name": "Anubha Gupta",
+          "dblp_pid": "95/491",
+          "role": "",
+          "homepage": "http://faculty.iiitd.ac.in/~anubha"
+        },
+        {
+          "name": "Debajyoti Bera",
+          "dblp_pid": "46/6276",
+          "role": "",
+          "homepage": "https://www.iiitd.edu.in/~dbera"
+        },
+        {
+          "name": "Debarka Sengupta",
+          "dblp_pid": "14/11132",
+          "role": "",
+          "homepage": "http://iiitd.ac.in/debarka"
+        },
+        {
+          "name": "Gajendra Pal Singh Raghava",
+          "dblp_pid": "43/5459",
+          "role": "",
+          "homepage": "http://webs.iiitd.edu.in/raghava"
+        },
+        {
+          "name": "Ganesh Bagler",
+          "dblp_pid": "86/5221",
+          "role": "",
+          "homepage": "http://faculty.iiitd.ac.in/~bagler"
+        },
+        {
+          "name": "Gautam M. Shroff",
+          "dblp_pid": "54/3265",
+          "role": "",
+          "homepage": "https://iiitd.ac.in/gautam"
+        },
+        {
+          "name": "Mukulika Maity",
+          "dblp_pid": "157/1298",
+          "role": "",
+          "homepage": "http://www.iiitd.ac.in/people/faculty"
+        },
+        {
+          "name": "Nikhil Gupta",
+          "dblp_pid": "49/6983-8",
+          "role": "",
+          "homepage": "https://sites.google.com/view/nikhilgupta1"
+        },
+        {
+          "name": "Raghava Mutharaju",
+          "dblp_pid": "63/7446",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/raghavam"
+        },
+        {
+          "name": "Ravi Anand",
+          "dblp_pid": "203/4259",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/ravianand"
+        },
+        {
+          "name": "Saket Anand",
+          "dblp_pid": "11/4747",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/anands"
+        },
+        {
+          "name": "Sambuddho Chakravarty",
+          "dblp_pid": "95/1983",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/sambuddho"
+        },
+        {
+          "name": "Sujay Deb",
+          "dblp_pid": "61/8572",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/sdeb"
+        },
+        {
+          "name": "Supratim Shit",
+          "dblp_pid": "185/5317",
+          "role": "",
+          "homepage": "https://sites.google.com/view/supratims/home"
+        },
+        {
+          "name": "Syamantak Das",
+          "dblp_pid": "135/6297",
+          "role": "",
+          "homepage": "http://faculty.iiitd.ac.in/~syamantak"
+        },
+        {
+          "name": "Tanmoy Kundu",
+          "dblp_pid": "226/6193-1",
+          "role": "",
+          "homepage": "https://tanmoy1040.wixsite.com/researchprofile"
+        },
+        {
+          "name": "Vinayak Abrol",
+          "dblp_pid": "136/4698",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/vabrol"
+        },
+        {
+          "name": "Vivek Kumar",
+          "dblp_pid": "82/2381-1",
+          "role": "",
+          "homepage": "https://www.iiitd.ac.in/vivekk"
         }
       ],
       "irins_url": "https://iiitd.irins.org"
@@ -1025,6 +1133,1154 @@
           "homepage": "https://yaduvasudev.github.io",
           "role": "Faculty",
           "dblp_pid": "23/10305"
+        }
+      ]
+    },
+    {
+      "name": "IIT Delhi",
+      "short": "IITD",
+      "country": "India",
+      "website": "https://www.iitd.ac.in",
+      "faculty": [
+        {
+          "name": "Aaditeshwar Seth",
+          "dblp_pid": "13/1287",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~aseth"
+        },
+        {
+          "name": "Abhilash Jindal",
+          "dblp_pid": "44/10603",
+          "role": "",
+          "homepage": "http://abhilash-jindal.com"
+        },
+        {
+          "name": "Adarsh Barik",
+          "dblp_pid": "194/2621",
+          "role": "",
+          "homepage": "https://adarsh-barik.github.io"
+        },
+        {
+          "name": "Amit Kumar",
+          "dblp_pid": "k/AmitKumar1",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~amitk"
+        },
+        {
+          "name": "Amitabha Bagchi",
+          "dblp_pid": "77/5034",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~bagchi"
+        },
+        {
+          "name": "Arambam James Singh",
+          "dblp_pid": "175/5473",
+          "role": "",
+          "homepage": "https://jamesarambam.me"
+        },
+        {
+          "name": "Ashish Chiplunkar",
+          "dblp_pid": "83/7271",
+          "role": "",
+          "homepage": "https://www.cse.iitd.ac.in/~ashishc"
+        },
+        {
+          "name": "Bhaskar Pratim Mukhoty",
+          "dblp_pid": "166/1438",
+          "role": "",
+          "homepage": "https://sites.google.com/view/bhaskar-mukhoty"
+        },
+        {
+          "name": "Chetan Arora",
+          "dblp_pid": "19/1006-1",
+          "role": "",
+          "homepage": "https://www.cse.iitd.ac.in/~chetan"
+        },
+        {
+          "name": "Huzur Saran",
+          "dblp_pid": "s/HuzurSaran",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~saran"
+        },
+        {
+          "name": "Kaustubh Beedkar",
+          "dblp_pid": "54/5149",
+          "role": "",
+          "homepage": "https://web.iitd.ac.in/~kbeedkar"
+        },
+        {
+          "name": "Keerti Choudhary",
+          "dblp_pid": "159/2125",
+          "role": "",
+          "homepage": "https://web.iitd.ac.in/~keerti"
+        },
+        {
+          "name": "Kolin Paul",
+          "dblp_pid": "51/544",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~kolin"
+        },
+        {
+          "name": "Kumar Madhukar",
+          "dblp_pid": "134/8956",
+          "role": "",
+          "homepage": "https://homecse.iitd.ac.in/team/kumar-madhukar"
+        },
+        {
+          "name": "Mausam",
+          "dblp_pid": "30/6391",
+          "role": "",
+          "homepage": "https://www.cse.iitd.ac.in/~mausam"
+        },
+        {
+          "name": "Maya Ramanath",
+          "dblp_pid": "r/MayaRamanath",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ac.in/~ramanath"
+        },
+        {
+          "name": "Naveen Garg",
+          "dblp_pid": "g/NaveenGarg",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~naveen"
+        },
+        {
+          "name": "Nikhil Balaji",
+          "dblp_pid": "136/2160",
+          "role": "",
+          "homepage": "https://sites.google.com/view/nikhilbalaji/home"
+        },
+        {
+          "name": "Niladri Chatterjee",
+          "dblp_pid": "03/545",
+          "role": "",
+          "homepage": "https://web.iitd.ac.in/~niladri"
+        },
+        {
+          "name": "Parag Singla",
+          "dblp_pid": "14/167",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ac.in/~parags"
+        },
+        {
+          "name": "Preeti Ranjan Panda",
+          "dblp_pid": "46/1929",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~panda"
+        },
+        {
+          "name": "Prem Kumar Kalra",
+          "dblp_pid": "k/PremKumarKalra",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~pkalra"
+        },
+        {
+          "name": "Priyanka Golia",
+          "dblp_pid": "265/6125",
+          "role": "",
+          "homepage": "https://priyanka-golia.github.io"
+        },
+        {
+          "name": "Ragesh Jaiswal",
+          "dblp_pid": "63/1704",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~rjaiswal"
+        },
+        {
+          "name": "Rahul Garg",
+          "dblp_pid": "55/1248",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~rahulgarg"
+        },
+        {
+          "name": "Rahul Narain",
+          "dblp_pid": "72/2110",
+          "role": "",
+          "homepage": "http://rahul.narain.name"
+        },
+        {
+          "name": "Raunak P. Bhattacharyya",
+          "dblp_pid": "194/1906",
+          "role": "",
+          "homepage": "https://raunak-bhattacharyya.github.io"
+        },
+        {
+          "name": "Rijurekha Sen",
+          "dblp_pid": "29/8210",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~rijurekha"
+        },
+        {
+          "name": "Rohan Paul",
+          "dblp_pid": "92/7394",
+          "role": "",
+          "homepage": "https://www.cse.iitd.ac.in/~rohanpaul"
+        },
+        {
+          "name": "Rohit Vaish",
+          "dblp_pid": "155/1879",
+          "role": "",
+          "homepage": "https://rohitvaish.in"
+        },
+        {
+          "name": "Sandeep Kumar",
+          "dblp_pid": "06/5441-2",
+          "role": "",
+          "homepage": "https://sites.google.com/view/sandeepkr/home"
+        },
+        {
+          "name": "Sanjiva Prasad",
+          "dblp_pid": "p/SanjivaPrasad",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~sanjiva"
+        },
+        {
+          "name": "Sayan Ranu",
+          "dblp_pid": "38/768",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ac.in/~sayan"
+        },
+        {
+          "name": "Smruti Ranjan Sarangi",
+          "dblp_pid": "s/SmrutiRSarangi",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ac.in/~srsarangi"
+        },
+        {
+          "name": "Sorav Bansal",
+          "dblp_pid": "97/6573",
+          "role": "",
+          "homepage": "https://sorav.compiler.ai"
+        },
+        {
+          "name": "Srikanta Bedathur Jagannath",
+          "dblp_pid": "b/SrikantaJBedathur",
+          "role": "",
+          "homepage": "https://www.cse.iitd.ac.in/~srikanta"
+        },
+        {
+          "name": "Subodh Kumar",
+          "dblp_pid": "81/6554-1",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ac.in/~subodh"
+        },
+        {
+          "name": "Subodh Sharma",
+          "dblp_pid": "77/1586-1",
+          "role": "",
+          "homepage": "http://www.cse.iitd.ernet.in/~svs"
+        },
+        {
+          "name": "Sudipan Saha",
+          "dblp_pid": "124/2800",
+          "role": "",
+          "homepage": "https://web.iitd.ac.in/~sahasudipan"
+        },
+        {
+          "name": "Sumeet Agarwal",
+          "dblp_pid": "25/6438",
+          "role": "",
+          "homepage": "https://web.iitd.ac.in/~sumeet"
+        },
+        {
+          "name": "Tanmoy Chakraborty",
+          "dblp_pid": "65/2136-2",
+          "role": "",
+          "homepage": "https://tanmoychak.com"
+        },
+        {
+          "name": "Tarun Mangla",
+          "dblp_pid": "136/8000",
+          "role": "",
+          "homepage": "https://tarunmangla.github.io"
+        },
+        {
+          "name": "Vaishnavi Sundararajan",
+          "dblp_pid": "154/9586",
+          "role": "",
+          "homepage": "https://homecse.iitd.ac.in/team/vaishnavi-sundararajan"
+        },
+        {
+          "name": "Venkata Koppula",
+          "dblp_pid": "14/9023",
+          "role": "",
+          "homepage": "https://web.iitd.ac.in/~kvenkata"
+        },
+        {
+          "name": "Vireshwar Kumar",
+          "dblp_pid": "41/9886",
+          "role": "",
+          "homepage": "https://www.cse.iitd.ernet.in/~viresh"
+        }
+      ]
+    },
+    {
+      "name": "IIT Kanpur",
+      "short": "IITK",
+      "country": "India",
+      "website": "https://www.iitk.ac.in",
+      "state": "Uttar Pradesh",
+      "city": "Kanpur",
+      "faculty": [
+        {
+          "name": "Abhranil Chatterjee",
+          "dblp_pid": "139/0807-1",
+          "role": "",
+          "homepage": "https://cabhranil.bitbucket.io"
+        },
+        {
+          "name": "Adithya Vadapalli",
+          "dblp_pid": "207/8076",
+          "role": "",
+          "homepage": "https://avadapal.github.io"
+        },
+        {
+          "name": "Amey Karkare",
+          "dblp_pid": "93/511",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/karkare"
+        },
+        {
+          "name": "Amitabha Mukerjee",
+          "dblp_pid": "m/AmitabhaMukerjee",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/amit"
+        },
+        {
+          "name": "Amitangshu Pal",
+          "dblp_pid": "59/7987",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/amitangshu"
+        },
+        {
+          "name": "Angshuman Karmakar",
+          "dblp_pid": "189/1488",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/angshuman"
+        },
+        {
+          "name": "Anil Seth",
+          "dblp_pid": "75/359",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/seth"
+        },
+        {
+          "name": "Arnab Bhattacharya",
+          "dblp_pid": "48/2626-1",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/arnabb"
+        },
+        {
+          "name": "Ashutosh Modi",
+          "dblp_pid": "139/0873",
+          "role": "",
+          "homepage": "https://ashutosh-modi.github.io"
+        },
+        {
+          "name": "Debadatta Mishra",
+          "dblp_pid": "144/4955",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/deba"
+        },
+        {
+          "name": "Debapriya Basu Roy",
+          "dblp_pid": "116/4686",
+          "role": "",
+          "homepage": "https://dbroy24.wixsite.com/research"
+        },
+        {
+          "name": "Dheeraj Sanghi",
+          "dblp_pid": "66/4913",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/dheeraj"
+        },
+        {
+          "name": "Hamim Zafar",
+          "dblp_pid": "31/8830",
+          "role": "",
+          "homepage": "https://sites.google.com/view/cosmiclab-iitk/team"
+        },
+        {
+          "name": "Indranil Saha",
+          "dblp_pid": "88/6031-1",
+          "role": "",
+          "homepage": "http://cse.iitk.ac.in/users/isaha"
+        },
+        {
+          "name": "Mainak Chaudhuri",
+          "dblp_pid": "34/3071",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/mainakc"
+        },
+        {
+          "name": "Manindra Agrawal",
+          "dblp_pid": "a/ManindraAgrawal",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/manindra"
+        },
+        {
+          "name": "Nisheeth Srivastava",
+          "dblp_pid": "11/4827",
+          "role": "",
+          "homepage": "http://www.iitk.ac.in/new/nisheeth-srivastava"
+        },
+        {
+          "name": "Nitin Saxena",
+          "dblp_pid": "86/6915",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/nitin"
+        },
+        {
+          "name": "Phalguni Gupta",
+          "dblp_pid": "59/1749",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/pg"
+        },
+        {
+          "name": "Piyush Rai",
+          "dblp_pid": "02/525",
+          "role": "",
+          "homepage": "http://cse.iitk.ac.in/users/piyush"
+        },
+        {
+          "name": "Preeti Malakar",
+          "dblp_pid": "05/9135",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/pmalakar"
+        },
+        {
+          "name": "Priyanka Bagade",
+          "dblp_pid": "06/11414",
+          "role": "",
+          "homepage": "https://pbagade0.wixsite.com/priyanka/about"
+        },
+        {
+          "name": "Purushottam Kar",
+          "dblp_pid": "70/7247",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/purushot"
+        },
+        {
+          "name": "Raghunath Tewari",
+          "dblp_pid": "94/2680",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/rtewari"
+        },
+        {
+          "name": "Rajat Mittal",
+          "dblp_pid": "60/1673-1",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/rmittal"
+        },
+        {
+          "name": "Rajat Moona",
+          "dblp_pid": "16/2265",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/moona"
+        },
+        {
+          "name": "Sandeep Kumar Shukla",
+          "dblp_pid": "s/SKShukla",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/sandeeps"
+        },
+        {
+          "name": "Sanjeev Saxena",
+          "dblp_pid": "98/4046",
+          "role": "",
+          "homepage": "http://www.iitk.ac.in/new/dr-sanjeev-saxena"
+        },
+        {
+          "name": "Satyadev Nandakumar",
+          "dblp_pid": "38/5248",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/satyadev"
+        },
+        {
+          "name": "Sayak Ray Chowdhury",
+          "dblp_pid": "195/8152",
+          "role": "",
+          "homepage": "https://sites.google.com/view/sayakraychowdhury/home"
+        },
+        {
+          "name": "Soumya Dutta",
+          "dblp_pid": "58/7687",
+          "role": "",
+          "homepage": "https://soumyadutta-cse.github.io"
+        },
+        {
+          "name": "Sruti Srinivasa Ragavan",
+          "dblp_pid": "171/5106",
+          "role": "",
+          "homepage": "https://sruti-s-ragavan.github.io"
+        },
+        {
+          "name": "Subhajit Roy",
+          "dblp_pid": "95/621",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/subhajit"
+        },
+        {
+          "name": "Sumit Ganguly",
+          "dblp_pid": "g/SumitGanguly",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/sganguly"
+        },
+        {
+          "name": "Surender Baswana",
+          "dblp_pid": "00/1481",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/sbaswana"
+        },
+        {
+          "name": "Sutanu Gayen",
+          "dblp_pid": "183/2766",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/sutanu"
+        },
+        {
+          "name": "Swarnendu Biswas",
+          "dblp_pid": "87/7683",
+          "role": "",
+          "homepage": "https://www.cse.iitk.ac.in/users/swarnendu"
+        },
+        {
+          "name": "T. V. Prabhakar",
+          "dblp_pid": "95/794",
+          "role": "",
+          "homepage": "http://www.cse.iitk.ac.in/users/tvp"
+        },
+        {
+          "name": "Urbi Chatterjee",
+          "dblp_pid": "176/7583",
+          "role": "",
+          "homepage": "https://urbiism.wixsite.com/urbi1989"
+        }
+      ]
+    },
+    {
+      "name": "IIT Kharagpur",
+      "short": "IITKGP",
+      "country": "India",
+      "website": "https://www.iitkgp.ac.in",
+      "state": "West Bengal",
+      "city": "Kharagpur",
+      "faculty": [
+        {
+          "name": "Abhijit Das",
+          "dblp_pid": "73/1871-4",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~abhij"
+        },
+        {
+          "name": "Abhijnan Chakraborty",
+          "dblp_pid": "116/1678",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~abhijnan"
+        },
+        {
+          "name": "Abir Das",
+          "dblp_pid": "141/1311",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~adas"
+        },
+        {
+          "name": "Adway Mitra",
+          "dblp_pid": "120/6812",
+          "role": "",
+          "homepage": "https://sites.google.com/site/adwayresearch"
+        },
+        {
+          "name": "Animesh Mukherjee",
+          "dblp_pid": "m/AnimeshMukherjee",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~animeshm"
+        },
+        {
+          "name": "Anupam Basu",
+          "dblp_pid": "33/138",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~debmalya/AB_website"
+        },
+        {
+          "name": "Aritra Hazra",
+          "dblp_pid": "89/5237",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~aritrah"
+        },
+        {
+          "name": "Arnab Sarkar",
+          "dblp_pid": "88/4287-1",
+          "role": "",
+          "homepage": "https://facweb.iitkgp.ac.in/~arnab/index.html"
+        },
+        {
+          "name": "Arobinda Gupta",
+          "dblp_pid": "g/ArobindaGupta",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~agupta"
+        },
+        {
+          "name": "Ayan Chaudhury",
+          "dblp_pid": "93/8773",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~ayanc"
+        },
+        {
+          "name": "Bhargab B. Bhattacharya",
+          "dblp_pid": "b/BhargabBBhattacharya",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~bhargab"
+        },
+        {
+          "name": "Bivas Mitra",
+          "dblp_pid": "49/4803",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~bivasm"
+        },
+        {
+          "name": "Debaditya Roy",
+          "dblp_pid": "150/4133",
+          "role": "",
+          "homepage": "https://sites.google.com/view/debadityaroy"
+        },
+        {
+          "name": "Debasis Samanta",
+          "dblp_pid": "28/3822",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~dsamanta"
+        },
+        {
+          "name": "Debdeep Mukhopadhyay",
+          "dblp_pid": "85/3079",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~debdeep"
+        },
+        {
+          "name": "Dipanwita Roy Chowdhury",
+          "dblp_pid": "09/6690",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~drc"
+        },
+        {
+          "name": "Indranil Sengupta",
+          "dblp_pid": "01/5135-1",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~isg"
+        },
+        {
+          "name": "Jayanta Mukhopadhyay",
+          "dblp_pid": "21/3522",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~jay"
+        },
+        {
+          "name": "Jiaul Hoque Paik",
+          "dblp_pid": "27/9831",
+          "role": "",
+          "homepage": "https://jiaul.github.io"
+        },
+        {
+          "name": "Jibesh Patra",
+          "dblp_pid": "139/0517",
+          "role": "",
+          "homepage": "https://jibesh.com"
+        },
+        {
+          "name": "Krothapalli Sreenivasa Rao",
+          "dblp_pid": "50/5583",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~ksrao"
+        },
+        {
+          "name": "Koustav Rudra",
+          "dblp_pid": "139/5123",
+          "role": "",
+          "homepage": "https://sites.google.com/view/krudra5/home"
+        },
+        {
+          "name": "Mahesh Mohan M. R.",
+          "dblp_pid": "211/7261",
+          "role": "",
+          "homepage": "https://maheshmohanmr.github.io"
+        },
+        {
+          "name": "Mainack Mondal",
+          "dblp_pid": "87/8324",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~mainack"
+        },
+        {
+          "name": "Monosij Maitra",
+          "dblp_pid": "227/7795",
+          "role": "",
+          "homepage": "https://monosijm.github.io"
+        },
+        {
+          "name": "Niloy Ganguly",
+          "dblp_pid": "52/6987",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~niloy"
+        },
+        {
+          "name": "P. P. Chakrabarti",
+          "dblp_pid": "c/PPChakrabarti",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~ppchak"
+        },
+        {
+          "name": "Palash Dey",
+          "dblp_pid": "40/7987",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~palash"
+        },
+        {
+          "name": "Pallab Dasgupta",
+          "dblp_pid": "39/2452",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~pallab"
+        },
+        {
+          "name": "Partha Bhowmick",
+          "dblp_pid": "77/6124",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~pb"
+        },
+        {
+          "name": "Partha Pratim Das",
+          "dblp_pid": "43/4145",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~ppd"
+        },
+        {
+          "name": "Pawan Goyal",
+          "dblp_pid": "77/2307-2",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~pawang"
+        },
+        {
+          "name": "Plaban Kumar Bhowmick",
+          "dblp_pid": "34/8186",
+          "role": "",
+          "homepage": "https://plaban.github.io"
+        },
+        {
+          "name": "Prabhat Kumar Mishra",
+          "dblp_pid": "175/9540",
+          "role": "",
+          "homepage": "https://prabhatkmishra.github.io"
+        },
+        {
+          "name": "Pralay Mitra",
+          "dblp_pid": "83/9413",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~pralay"
+        },
+        {
+          "name": "Rajat Subhra Chakraborty",
+          "dblp_pid": "05/1579",
+          "role": "",
+          "homepage": "https://sites.google.com/site/rschakraborty"
+        },
+        {
+          "name": "Rajib Mall",
+          "dblp_pid": "83/954",
+          "role": "",
+          "homepage": "http://www.iitkgp.ac.in/department/CS/faculty/cs-rajib"
+        },
+        {
+          "name": "Sandip Chakraborty",
+          "dblp_pid": "28/9571",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~sandipc"
+        },
+        {
+          "name": "Saptarshi Ghosh",
+          "dblp_pid": "06/900-1",
+          "role": "",
+          "homepage": "https://sites.google.com/site/saptarshighosh"
+        },
+        {
+          "name": "Sarani Bhattacharya",
+          "dblp_pid": "130/3236",
+          "role": "",
+          "homepage": "https://sites.google.com/view/drsaranibhattacharya/bio"
+        },
+        {
+          "name": "Satrajit Ghosh",
+          "dblp_pid": "08/10311",
+          "role": "",
+          "homepage": "https://satcrypt.github.io"
+        },
+        {
+          "name": "Shamik Sural",
+          "dblp_pid": "67/3314",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~shamik"
+        },
+        {
+          "name": "Somak Aditya",
+          "dblp_pid": "165/0785",
+          "role": "",
+          "homepage": "https://adityasomak.github.io"
+        },
+        {
+          "name": "Somdyuti Paul",
+          "dblp_pid": "204/1738",
+          "role": "",
+          "homepage": "https://somdyuti2.github.io"
+        },
+        {
+          "name": "Somindu C. Ramanna",
+          "dblp_pid": "02/9925",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~somindu"
+        },
+        {
+          "name": "Soumya Kanti Ghosh",
+          "dblp_pid": "34/9049-1",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~skg"
+        },
+        {
+          "name": "Soumyajit Dey",
+          "dblp_pid": "89/4589",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~soumya"
+        },
+        {
+          "name": "Sourangshu Bhattacharya",
+          "dblp_pid": "64/6249",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~sourangshu"
+        },
+        {
+          "name": "Sudebkumar Prasant Pal",
+          "dblp_pid": "p/SudebkumarPrasantPal",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~spp"
+        },
+        {
+          "name": "Sudeshna Kolay",
+          "dblp_pid": "75/11145",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~skolay"
+        },
+        {
+          "name": "Sudeshna Sarkar",
+          "dblp_pid": "61/3197",
+          "role": "",
+          "homepage": "http://www.facweb.iitkgp.ac.in/~sudeshna"
+        },
+        {
+          "name": "Sudip Misra",
+          "dblp_pid": "36/1023",
+          "role": "",
+          "homepage": "http://cse.iitkgp.ac.in/~smisra"
+        },
+        {
+          "name": "Sujoy Ghose",
+          "dblp_pid": "29/5797",
+          "role": "",
+          "homepage": "http://www.myopencourses.com/profile/prof-sujoy-ghosh"
+        },
+        {
+          "name": "Swagato Sanyal",
+          "dblp_pid": "21/7413",
+          "role": "",
+          "homepage": "https://cse.iitkgp.ac.in/~swagato"
+        }
+      ]
+    },
+    {
+      "name": "IIIT Hyderabad",
+      "short": "IIITH",
+      "country": "India",
+      "website": "https://www.iiit.ac.in",
+      "state": "Telangana",
+      "city": "Hyderabad",
+      "faculty": [
+        {
+          "name": "Anil Kumar Vuppala",
+          "dblp_pid": "15/8468",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/anilvuppala"
+        },
+        {
+          "name": "Anoop M. Namboodiri",
+          "dblp_pid": "16/143",
+          "role": "",
+          "homepage": "http://iiit.ac.in/~anoop"
+        },
+        {
+          "name": "Ashok Kumar Das",
+          "dblp_pid": "39/871",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/ashokkdas"
+        },
+        {
+          "name": "Bapi Raju Surampudi",
+          "dblp_pid": "50/1424",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/rajubapi"
+        },
+        {
+          "name": "Cheerakkuzhi Veluthemana Jawahar",
+          "dblp_pid": "j/CVJawahar",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/~jawahar"
+        },
+        {
+          "name": "Charu Sharma",
+          "dblp_pid": "202/8640",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/Charusharma"
+        },
+        {
+          "name": "Dipti Misra Sharma",
+          "dblp_pid": "58/217",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/dipti"
+        },
+        {
+          "name": "Garimella Rama Murthy",
+          "dblp_pid": "81/2699",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/ramamurthy"
+        },
+        {
+          "name": "Girish Varma",
+          "dblp_pid": "00/8171",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/girish.varma"
+        },
+        {
+          "name": "Jayanthi Sivaswamy",
+          "dblp_pid": "61/121",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/jsivaswamy"
+        },
+        {
+          "name": "Madhava Krishna",
+          "dblp_pid": "90/4844",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/mkrishna"
+        },
+        {
+          "name": "K. S. Rajan",
+          "dblp_pid": "04/8409",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/rajan"
+        },
+        {
+          "name": "K. Srinathan",
+          "dblp_pid": "s/KSrinathan",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/srinathan"
+        },
+        {
+          "name": "Kamalakar Karlapalem",
+          "dblp_pid": "k/KKarlapalem",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/kamal"
+        },
+        {
+          "name": "Karthik Vaidhyanathan",
+          "dblp_pid": "241/0360",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/faculty/karthik-vaidhyanathan"
+        },
+        {
+          "name": "Kavita Vemuri",
+          "dblp_pid": "165/3944",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/kvemuri"
+        },
+        {
+          "name": "Kishore Kothapalli",
+          "dblp_pid": "84/2688",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/kkishore"
+        },
+        {
+          "name": "S. Prahallad Kishore",
+          "dblp_pid": "56/5472",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/kishore"
+        },
+        {
+          "name": "Krishna Reddy Polepalli",
+          "dblp_pid": "78/2714",
+          "role": "",
+          "homepage": "http://faculty.iiit.ac.in/~pkreddy"
+        },
+        {
+          "name": "Kshitij Gajjar",
+          "dblp_pid": "205/2712",
+          "role": "",
+          "homepage": "https://sites.google.com/view/kshitijgajjar"
+        },
+        {
+          "name": "Makarand Tapaswi",
+          "dblp_pid": "69/1484",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/Makarand"
+        },
+        {
+          "name": "Manish Shrivastava",
+          "dblp_pid": "65/3881",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/m.shrivastava"
+        },
+        {
+          "name": "Naresh Manwani",
+          "dblp_pid": "17/2536",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/naresh.manwani"
+        },
+        {
+          "name": "Nita Parekh",
+          "dblp_pid": "22/2557",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/nita"
+        },
+        {
+          "name": "P. J. Narayanan",
+          "dblp_pid": "n/PJNarayanan",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/~pjn"
+        },
+        {
+          "name": "Ubaidulla Pandarakkottilil",
+          "dblp_pid": "89/5028",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/pubaidulla"
+        },
+        {
+          "name": "Pawan Kumar",
+          "dblp_pid": "53/773-1",
+          "role": "",
+          "homepage": "https://faculty.iiit.ac.in/~pawan.kumar"
+        },
+        {
+          "name": "Ponnurangam Kumaraguru",
+          "dblp_pid": "97/5147",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/PKguru"
+        },
+        {
+          "name": "Prasad Krishnan",
+          "dblp_pid": "175/1464",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/prasad.krishnan"
+        },
+        {
+          "name": "Praveen Paruchuri",
+          "dblp_pid": "22/1006",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/praveen.p"
+        },
+        {
+          "name": "Priyanka Srivastava",
+          "dblp_pid": "122/1984",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/priyanka"
+        },
+        {
+          "name": "Priyesh Shukla",
+          "dblp_pid": "260/0640",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/faculty/priyesh-shukla"
+        },
+        {
+          "name": "Radhika Mamidi",
+          "dblp_pid": "134/6779",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/radhikamamidi"
+        },
+        {
+          "name": "Ramesh Loganathan",
+          "dblp_pid": "136/4557",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/ramesh.loganathan"
+        },
+        {
+          "name": "Ravi Kiran Sarvadevabhatla",
+          "dblp_pid": "62/150",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/ravi.kiran"
+        },
+        {
+          "name": "Sachin Chaudhari",
+          "dblp_pid": "16/6527",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/sachin.chaudhari"
+        },
+        {
+          "name": "Saswata Shannigrahi",
+          "dblp_pid": "12/5416",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/saswata.sh"
+        },
+        {
+          "name": "Shatrunjay Rawat",
+          "dblp_pid": "144/5319",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/shatrunjay.rawat"
+        },
+        {
+          "name": "Soma Paul",
+          "dblp_pid": "91/9570",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/soma"
+        },
+        {
+          "name": "Spandan Roy",
+          "dblp_pid": "136/9869",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/Spandan"
+        },
+        {
+          "name": "Sujit Gujar",
+          "dblp_pid": "08/776",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/sujit.g"
+        },
+        {
+          "name": "Suresh Purini",
+          "dblp_pid": "81/4357",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/psuresh"
+        },
+        {
+          "name": "Vasudeva Varma",
+          "dblp_pid": "03/4045",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/~vv/Home.html"
+        },
+        {
+          "name": "Venkatesh Choppella",
+          "dblp_pid": "44/7025",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/choppell"
+        },
+        {
+          "name": "Vikram Pudi",
+          "dblp_pid": "80/594",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/vikram"
+        },
+        {
+          "name": "Vineet Gandhi",
+          "dblp_pid": "117/2021",
+          "role": "",
+          "homepage": "https://www.iiit.ac.in/people/faculty/vgandhi"
+        },
+        {
+          "name": "Y. Raghu Reddy",
+          "dblp_pid": "r/RaghuReddy",
+          "role": "",
+          "homepage": "http://faculty.iiit.ac.in/~raghu.reddy"
         }
       ]
     }

@@ -1,0 +1,12 @@
+# SPARK manual PID overrides — the human-in-the-loop source of truth.
+# The resolver reads this FIRST and it survives every re-run.
+#   action=set  → force dblp_pid for this person (roster, tier MANUAL)
+#   action=drop → exclude this person entirely (duplicate variant / not CS)
+#   action=ack  → leave unresolved but stop alerting (stays in the review file)
+# Lines starting with '#' and blank lines are ignored. Match by CSRankings name.
+#
+# Examples (delete or replace):
+#   IITM,Kamakoti Veezhinathan,,drop,duplicate of V. Kamakoti (25/3336) already in roster
+#   IISC,Chiru Bhattacharyya,,drop,alias of Chiranjib Bhattacharyya
+#   IITB,Bernard Menezes,,ack,retired; no clean DBLP profile
+institution,csrankings_name,dblp_pid,action,note

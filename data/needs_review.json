@@ -1,0 +1,987 @@
+{
+  "generated_at": "2026-07-14T13:43:23Z",
+  "count": 34,
+  "untriaged": 34,
+  "results": [
+    {
+      "institution": "IIT Delhi",
+      "short": "IITD",
+      "name": "Rajendra Kumar",
+      "csrankings_name": "Rajendra Kumar 0002",
+      "aliases": [
+        "Rajendra Kumar 0002"
+      ],
+      "homepage": "https://k-rajendra.github.io",
+      "dblp_pid": "42/7523-2",
+      "dblp_match_name": "Rajendra Kumar 0002",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/42/7523-2",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0002-4240-5458",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "Indian Institute of Technology, Kanpur",
+          "National University of Singapore, Centre for Quantum Technologies, Singapore"
+        ],
+        "recent_pubs": 24,
+        "total_pubs": 24,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Delhi",
+      "short": "IIITD",
+      "name": "Pankaj Jalote",
+      "csrankings_name": "Pankaj Jalote",
+      "aliases": [
+        "Pankaj Jalote"
+      ],
+      "homepage": "https://www.iiitd.edu.in/~jalote",
+      "dblp_pid": "j/PankajJalote",
+      "dblp_match_name": "Pankaj Jalote",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/j/PankajJalote",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0009-0001-8552-8394",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "Indian Institute of Technology Kanpur, India"
+        ],
+        "recent_pubs": 23,
+        "total_pubs": 124,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Bombay",
+      "short": "IITB",
+      "name": "Akash Kumar",
+      "csrankings_name": "Akash Kumar 0003",
+      "aliases": [
+        "Akash Kumar 0003"
+      ],
+      "homepage": "https://sites.google.com/view/kumarakash/home",
+      "dblp_pid": "140/9567-3",
+      "dblp_match_name": "Akash Kumar 0003",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/140/9567-3",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "Purdue University, IN, USA"
+        ],
+        "recent_pubs": 28,
+        "total_pubs": 29,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Bombay",
+      "short": "IITB",
+      "name": "Arjun Nitin Bhagoji",
+      "csrankings_name": "Arjun Nitin Bhagoji",
+      "aliases": [
+        "Arjun Nitin Bhagoji",
+        "Arjun Bhagoji"
+      ],
+      "homepage": "https://arjunbhagoji.github.io",
+      "dblp_pid": "199/2164",
+      "dblp_match_name": "Arjun Nitin Bhagoji",
+      "confidence": "REVIEW",
+      "reason": "aliases resolved to multiple PIDs: ['160/8607', '199/2164']",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/199/2164",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0002-2803-5649",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 57,
+        "total_pubs": 57,
+        "alias_pid_conflict": true
+      }
+    },
+    {
+      "institution": "IIT Bombay",
+      "short": "IITB",
+      "name": "Ashutosh Kumar Gupta",
+      "csrankings_name": "Ashutosh Kumar Gupta 0001",
+      "aliases": [
+        "Ashutosh Kumar Gupta 0001"
+      ],
+      "homepage": "https://www.cse.iitb.ac.in/~akg",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Bombay",
+      "short": "IITB",
+      "name": "Bernard Menezes",
+      "csrankings_name": "Bernard Menezes",
+      "aliases": [
+        "Bernard Menezes"
+      ],
+      "homepage": "https://www.cse.iitb.ac.in/~bernard",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Bombay",
+      "short": "IITB",
+      "name": "Dhananjay M. Dhamdhere",
+      "csrankings_name": "Dhananjay M. Dhamdhere",
+      "aliases": [
+        "Dhananjay M. Dhamdhere"
+      ],
+      "homepage": "https://www.cse.iitb.ac.in/~dmd",
+      "dblp_pid": "d/DMDhamdhere",
+      "dblp_match_name": "Dhananjay M. Dhamdhere",
+      "confidence": "REVIEW",
+      "reason": "no publications since 2015",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/d/DMDhamdhere",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": true,
+        "affiliation_match": true,
+        "affiliations": [
+          "Indian Institute of Technology, Bombay, India"
+        ],
+        "recent_pubs": 0,
+        "total_pubs": 19,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Madras",
+      "short": "IITM",
+      "name": "Harish Guruprasad Ramaswamy",
+      "csrankings_name": "Harish Guruprasad Ramaswamy",
+      "aliases": [
+        "Harish Guruprasad Ramaswamy"
+      ],
+      "homepage": "https://sites.google.com/site/harishguruprasad",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Madras",
+      "short": "IITM",
+      "name": "John Augustine",
+      "csrankings_name": "John Augustine",
+      "aliases": [
+        "John Augustine"
+      ],
+      "homepage": "https://www.iitm.ac.in/info/fac/augustine",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Madras",
+      "short": "IITM",
+      "name": "Kamakoti Veezhinathan",
+      "csrankings_name": "Kamakoti Veezhinathan",
+      "aliases": [
+        "Kamakoti Veezhinathan",
+        "Veezhinathan Kamakoti"
+      ],
+      "homepage": "http://rise.cse.iitm.ac.in/people/faculty/kama/kama.html",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Madras",
+      "short": "IITM",
+      "name": "Prashanth Lakshmanrao Ananthapadmanabharao",
+      "csrankings_name": "Prashanth Lakshmanrao Ananthapadmanabharao",
+      "aliases": [
+        "Prashanth Lakshmanrao Ananthapadmanabharao",
+        "Prashanth L. A."
+      ],
+      "homepage": "http://www.cse.iitm.ac.in/~prashla",
+      "dblp_pid": "90/3161",
+      "dblp_match_name": "Prashanth L. A.",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/90/3161",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0003-0362-6730",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "University of Maryland",
+          "INRIA Lille - Nord Europe",
+          "Indian Institute of Science, Department of Computer Science and Automation"
+        ],
+        "recent_pubs": 72,
+        "total_pubs": 94,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Madras",
+      "short": "IITM",
+      "name": "Yadu Vasudev",
+      "csrankings_name": "Yadu Vasudev",
+      "aliases": [
+        "Yadu Vasudev"
+      ],
+      "homepage": "https://yaduvasudev.github.io",
+      "dblp_pid": "23/10305",
+      "dblp_match_name": "Yadu Vasudev",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/23/10305",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": "0000-0001-7918-7194",
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "Institute of Mathematical Sciences, Chennai, India"
+        ],
+        "recent_pubs": 23,
+        "total_pubs": 32,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Chiru Bhattacharyya",
+      "csrankings_name": "Chiru Bhattacharyya",
+      "aliases": [
+        "Chiru Bhattacharyya"
+      ],
+      "homepage": "http://www.csa.iisc.ac.in/~chiru",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Deepak D'Souza",
+      "csrankings_name": "Deepak D'Souza",
+      "aliases": [
+        "Deepak D'Souza"
+      ],
+      "homepage": "http://www.csa.iisc.ac.in/~deepakd",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Dilip P. Patil",
+      "csrankings_name": "Dilip P. Patil",
+      "aliases": [
+        "Dilip P. Patil"
+      ],
+      "homepage": "http://www.math.iisc.ernet.in/~patil",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Filbert Minj",
+      "csrankings_name": "Filbert Minj",
+      "aliases": [
+        "Filbert Minj"
+      ],
+      "homepage": "https://www.serc.iisc.ac.in/faculty",
+      "dblp_pid": "45/1508",
+      "dblp_match_name": "Filbert Minj",
+      "confidence": "REVIEW",
+      "reason": "no publications since 2015",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/45/1508",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 2,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Matthew Jacob Thazhuthaveetil",
+      "csrankings_name": "Matthew Jacob Thazhuthaveetil",
+      "aliases": [
+        "Matthew Jacob Thazhuthaveetil"
+      ],
+      "homepage": "http://www.csa.iisc.ac.in/~mjt",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Matthew Thazhuthaveetil",
+      "csrankings_name": "Matthew Thazhuthaveetil",
+      "aliases": [
+        "Matthew Thazhuthaveetil"
+      ],
+      "homepage": "http://www.csa.iisc.ac.in/~mjt",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Narayanas Balakrishnan",
+      "csrankings_name": "Narayanas Balakrishnan",
+      "aliases": [
+        "Narayanas Balakrishnan"
+      ],
+      "homepage": "https://www.serc.iisc.ac.in/faculty/prof-n-balakrishnan",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "R.C. Hansdah",
+      "csrankings_name": "R.C. Hansdah",
+      "aliases": [
+        "R.C. Hansdah"
+      ],
+      "homepage": "http://www.csa.iisc.ac.in/people/people-faculty-hansdah.html",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Y. Narahari",
+      "csrankings_name": "Y. Narahari",
+      "aliases": [
+        "Y. Narahari"
+      ],
+      "homepage": "http://www.csa.iisc.ac.in/~hari",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IISc Bangalore",
+      "short": "IISC",
+      "name": "Yadati Narahari",
+      "csrankings_name": "Yadati Narahari",
+      "aliases": [
+        "Yadati Narahari"
+      ],
+      "homepage": "http://www.csa.iisc.ac.in/~hari",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Kanpur",
+      "short": "IITK",
+      "name": "Sunil Easaw Simon",
+      "csrankings_name": "Sunil Easaw Simon",
+      "aliases": [
+        "Sunil Easaw Simon"
+      ],
+      "homepage": "http://www.cse.iitk.ac.in/users/simon",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Kanpur",
+      "short": "IITK",
+      "name": "Sunil Simon",
+      "csrankings_name": "Sunil Simon",
+      "aliases": [
+        "Sunil Simon"
+      ],
+      "homepage": "http://www.cse.iitk.ac.in/users/simon",
+      "dblp_pid": "15/4902",
+      "dblp_match_name": "Sunil Simon",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/15/4902",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "National Research Institute for Mathematics and Computer Science, Amsterdam, Netherlands"
+        ],
+        "recent_pubs": 26,
+        "total_pubs": 44,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Kharagpur",
+      "short": "IITKGP",
+      "name": "Chittaranjan Mandal",
+      "csrankings_name": "Chittaranjan Mandal 0002",
+      "aliases": [
+        "Chittaranjan Mandal 0002",
+        "Chittaranjan R. Mandal"
+      ],
+      "homepage": "http://cse.iitkgp.ac.in/~chitta",
+      "dblp_pid": "175/5896",
+      "dblp_match_name": "Chittaranjan Mandal 0002",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/175/5896",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0002-5228-7002",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "Indian Institute of Technology, Department of Computer Science and Engineering, Kharagpur, India"
+        ],
+        "recent_pubs": 23,
+        "total_pubs": 25,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Kharagpur",
+      "short": "IITKGP",
+      "name": "Jayanta Mukherjee",
+      "csrankings_name": "Jayanta Mukherjee 0001",
+      "aliases": [
+        "Jayanta Mukherjee 0001"
+      ],
+      "homepage": "http://www.facweb.iitkgp.ac.in/~jay",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIT Kharagpur",
+      "short": "IITKGP",
+      "name": "Pabitra Mitra",
+      "csrankings_name": "Pabitra Mitra",
+      "aliases": [
+        "Pabitra Mitra"
+      ],
+      "homepage": "http://cse.iitkgp.ac.in/~pabitra",
+      "dblp_pid": "m/PabitraMitra",
+      "dblp_match_name": "Pabitra Mitra",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/m/PabitraMitra",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0002-1908-9813",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "Indian Statistical Institute, India"
+        ],
+        "recent_pubs": 182,
+        "total_pubs": 272,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Hyderabad",
+      "short": "IIITH",
+      "name": "Deepak Gangadharan",
+      "csrankings_name": "Deepak Gangadharan",
+      "aliases": [
+        "Deepak Gangadharan"
+      ],
+      "homepage": "https://www.iiit.ac.in/faculty/deepak-gangadharan",
+      "dblp_pid": "98/7452",
+      "dblp_match_name": "Deepak Gangadharan",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/98/7452",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": "0000-0001-6630-0012",
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "University of Erlangen-Nuremberg, Department of Computer Science",
+          "Technical University of Denmark, Department of Applied Mathematics and Computer Science"
+        ],
+        "recent_pubs": 43,
+        "total_pubs": 62,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Hyderabad",
+      "short": "IIITH",
+      "name": "Govindarajulu Regeti",
+      "csrankings_name": "Govindarajulu Regeti",
+      "aliases": [
+        "Govindarajulu Regeti"
+      ],
+      "homepage": "https://iiit.ac.in/people/faculty/gregeti",
+      "dblp_pid": "27/8325",
+      "dblp_match_name": "Govindarajulu Regeti",
+      "confidence": "REVIEW",
+      "reason": "no publications since 2015",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/27/8325",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 3,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Hyderabad",
+      "short": "IIITH",
+      "name": "Kalluri R. Sarma",
+      "csrankings_name": "Kalluri R. Sarma",
+      "aliases": [
+        "Kalluri R. Sarma"
+      ],
+      "homepage": "https://www.iiit.ac.in/people/faculty/krsarma",
+      "dblp_pid": "02/6803",
+      "dblp_match_name": "Kalluri R. Sarma",
+      "confidence": "REVIEW",
+      "reason": "no publications since 2015",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/02/6803",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 3,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Hyderabad",
+      "short": "IIITH",
+      "name": "Kannan Srinathan",
+      "csrankings_name": "Kannan Srinathan",
+      "aliases": [
+        "Kannan Srinathan"
+      ],
+      "homepage": "https://www.iiit.ac.in/people/faculty/srinathan",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Hyderabad",
+      "short": "IIITH",
+      "name": "R. K. Bagga",
+      "csrankings_name": "R. K. Bagga",
+      "aliases": [
+        "R. K. Bagga"
+      ],
+      "homepage": "https://www.iiit.ac.in/people/faculty/rbagga",
+      "dblp_pid": "57/5018",
+      "dblp_match_name": "R. K. Bagga",
+      "confidence": "REVIEW",
+      "reason": "no publications since 2015",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/57/5018",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 2,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Hyderabad",
+      "short": "IIITH",
+      "name": "Raghu Reddy",
+      "csrankings_name": "Raghu Reddy",
+      "aliases": [
+        "Raghu Reddy"
+      ],
+      "homepage": "http://faculty.iiit.ac.in/~raghu.reddy",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "IIIT Hyderabad",
+      "short": "IIITH",
+      "name": "Rambabu Kalla",
+      "csrankings_name": "Rambabu Kalla",
+      "aliases": [
+        "Rambabu Kalla"
+      ],
+      "homepage": "https://www.iiit.ac.in/people/faculty/rambabukalla",
+      "dblp_pid": "164/3332",
+      "dblp_match_name": "Rambabu Kalla",
+      "confidence": "REVIEW",
+      "reason": "no publications since 2015",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/164/3332",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 1,
+        "alias_pid_conflict": false
+      }
+    }
+  ]
+}
