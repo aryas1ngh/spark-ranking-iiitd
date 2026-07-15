@@ -2,6 +2,38 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.5.0 — 2026-07-15
+
+### 1. Reproducible Roster Pipeline (replaces the one-off PID script)
+- **`pipeline/resolve_pids.py`**: builds an institution's roster from the public **CSRankings CSV** (data only — no CSRankings code) and resolves each person to a DBLP PID. CSRankings names *are* DBLP names (including homonym suffixes like `Amit Kumar 0001`), so resolution scans the DBLP author-search API for an **exact author-string match** rather than guessing — e.g. `Amit Kumar 0001` → `k/AmitKumar1`.
+- **Multi-signal verification**: each PID is checked against the DBLP person record (ORCID, homepage, affiliation note, publications since 2015) and tiered **HIGH / MEDIUM / REVIEW**.
+- **Alias collapsing**: CSRankings lists spelling variants as separate rows sharing a Scholar id; these are merged into one person before resolution (e.g. 55 IIT Delhi rows → 46 people).
+- **Idempotent cache** (`data/{short}_pid_cache.json`): re-runs skip already-resolved faculty and only resolve newly-added ones, so a monthly refresh is cheap.
+- **`--all`** writes one combined roster (`data/resolved_faculty.json`) plus one shared needs-review file for every tracked institution.
+
+### 2. Human-in-the-Loop Review (works in production, without an operator present)
+- **`data/pid_overrides.csv`** — durable, maintainer-editable source of truth, read *before* the cache and any DBLP call, so manual fixes survive every re-run:
+  - `set` — force a PID → person joins the roster as tier **MANUAL**
+  - `drop` — exclude a duplicate variant / non-CS entry
+  - `ack` — leave unresolved but mute it from the alert
+- **`pipeline/refresh.sh`** — monthly entry point (cron). Runs resolve → integrate, tees a timestamped log to `pipeline/logs/`, appends history to `data/review_log.md`, and **exits 2 when untriaged review items exist** (1 = run failed, 0 = all triaged) so cron can alert. Alerts fire only on *untriaged* items, so the standing hard cases don't cry wolf.
+- **Review artifacts**: `data/needs_review.md` (self-documenting), `.json`, and `.csv` — the CSV's first five columns match `pid_overrides.csv` so a maintainer can fill in `action` and paste rows straight across.
+
+### 3. New Institutions: IIT Delhi, IIT Kanpur, IIT Kharagpur & IIIT Hyderabad
+- SPARK now ranks **8 institutions** (up from 4). Adding one is a single config entry in `INSTITUTIONS` plus a pipeline run — no other code changes.
+- **`pipeline/integrate_roster.py`** merges the resolved roster into `data/faculty.json` **add-only**: existing institutions keep their curated entries, roles and `irins_url` links; only genuinely-new faculty are appended (matched by PID, then name/alias). New institutions are added whole. Idempotent, and wired into `refresh.sh` so it is never run by hand.
+- **Result**: `faculty.json` 175 → **378 faculty** across 8 institutions (additions only); rankings rebuilt to **3,325 publications / 4,003 authorships**.
+
+### 4. Data Quality
+- **IRINS double-counting fix**: `merge_irins_into_faculty` matched names with a strict letters-only normalisation, so a middle initial broke the match and IRINS re-added the *same person* as new — e.g. `Gautam Shroff` alongside `Gautam M. Shroff` (10 overlapping papers), and `V. Raghava Mutharaju` alongside `Raghava Mutharaju` (4 overlapping). Name matching now also compares an **initials-stripped key** (only when ≥2 real tokens remain, so `S. Kumar` / `R. Kumar` never collapse). IRINS papers now merge into the existing person and pass through the existing DOI/title/fuzzy dedup. This corrected IIIT Delhi from an inflated 11.00 (double-counted) / understated 10.59 (papers dropped) to **10.69**, and removed the `Faculty not found` warnings from `load_rankings`.
+- **DBLP affiliation noise**: DBLP records `ERNET, India` as the affiliation for many senior Indian faculty (scraped from legacy `*.ernet.in` e-mail domains). It is now treated as *no affiliation* rather than a mismatch, which stopped 5 genuine IISc/IITM faculty being wrongly pushed into review.
+- **Affiliation matching** normalises punctuation, so DBLP's `Indian Institute of Technology, Delhi` matches the keyword `indian institute of technology delhi`.
+- **DBLP rate-limit resilience**: the search API throttles hard; requests are now spaced 3s apart with exponential backoff and a cooldown after exhausted retries. The cache makes any interrupted run resumable.
+- **Cross-check vs the hand-curated roster**: of 157 overlapping faculty, 153 PIDs agreed and only 4 differed — with the resolver more accurate on those (e.g. `faculty.json`'s `J. Lakshmi` PID pointed at an unrelated author).
+
+### ⚠️ Known methodological caveat
+IIIT Delhi is currently the **only** institution with IRINS data scraped, so it alone receives journal and IRINS-only conference papers; the other seven are DBLP-conference-only. This advantages IIIT Delhi for reasons unrelated to research output. Closing it requires either scraping IRINS for every institution or excluding IRINS-only papers from scoring. Relatedly, the #6/#7 gap (IIIT Delhi 10.69 vs IIT Kanpur 10.66) is far smaller than the noise in the data and should be read as a tie.
+
 ## v1.4.0 — 2026-07-07
 
 ### 1. New Institutions: IIT Madras & IISc Bangalore

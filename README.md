@@ -30,10 +30,13 @@
 | A\* conferences   | ~30               | **62**                       |
 | Coverage          | Select areas only | **All CS subfields**         |
 | Methodology       | Geometric mean    | Adjusted count + Geometric Mean    |
-| Data source       | DBLP              | **DBLP + IRINS**                               |
+| Data source       | DBLP              | **DBLP + IRINS**                   |
+| Faculty roster    | Curated CSV       | **Same CSV, PIDs re-verified against DBLP** |
 | Transparency      | Open source       | Open source + open data            |
 
-> **Currently tracking:** IIT Bombay, IISc Bangalore, IIT Madras, and IIIT Delhi — with more institutions planned.
+> **On CSRankings:** SPARK uses CSRankings' public affiliation CSV purely as a **faculty roster** — i.e. which professors belong to which CS department. None of its code, and none of its ~45-venue list, is used. Every DBLP identity is independently re-resolved and verified, and all scoring is computed from ICORE A\*/A venues.
+
+> **Currently tracking 8 institutions:** IIT Bombay, IIT Kharagpur, IIT Delhi, IISc Bangalore, IIT Madras, IIIT Delhi, IIT Kanpur, and IIIT Hyderabad — 378 faculty, 3,325 publications. Adding another is a single config entry plus a pipeline run (see [Adding an institution](#adding-an-institution)).
 
 ---
 
@@ -108,19 +111,34 @@ SPARK uses a **Django REST Framework** backend that handles the heavy lifting of
 spark/
 ├── backend/                     # Django REST Backend
 │   ├── api/                     # DRF Models, Views, Serializers
-│   │   └── management/commands/ # Data Pipeline scripts
-│   │       ├── load_seed_data.py
+│   │   └── management/commands/ # DB loaders
+│   │       ├── load_seed_data.py    # faculty.json + conferences → DB
+│   │       ├── load_rankings.py     # rankings.json → DB (fast path)
 │   │       ├── load_irins.py
 │   │       └── fetch_dblp.py
 │   ├── backend/                 # Project Settings, URLs
-│   ├── db.sqlite3               # Auto-generated SQLite Database
+│   ├── db.sqlite3               # Auto-generated SQLite Database (gitignored)
 │   └── requirements.txt         # Python dependencies
 │
-├── data/                        # Local data and checkpoints
+├── pipeline/                    # Data pipeline (run offline)
+│   ├── refresh.sh               # ★ monthly entry point (resolve → integrate)
+│   ├── resolve_pids.py          # CSRankings roster → verified DBLP PIDs
+│   ├── integrate_roster.py      # resolved roster → faculty.json (add-only)
+│   ├── fetch_publications.py    # faculty.json → rankings.json
+│   ├── scrape_icore.py          # ICORE A*/A conference list
+│   └── scrape_irins.py          # IRINS faculty + publications
 │
-├── src/                         # Frontend source
-│   ├── main.js                  # App logic, rendering, filters
-│   └── index.css                # Design system (dark mode, glassmorphism)
+├── data/
+│   ├── faculty.json             # ★ the roster (site source of truth)
+│   ├── rankings.json            # ★ computed publications/scores → DB
+│   ├── icore_conferences.json   # tracked A*/A venues
+│   ├── pid_overrides.csv        # ★ maintainer's manual PID decisions
+│   ├── resolved_faculty.json    # resolver output (all institutions)
+│   └── needs_review.{md,csv,json}  # items needing a human
+│
+├── src/                         # Local demo frontend (the production
+│   ├── main.js                  # frontend lives in a separate repo and
+│   └── index.css                # consumes this backend's REST API)
 ```
 
 ---
@@ -169,8 +187,50 @@ SPARK uses **adjusted counts**, calculating scores on the fly directly in the da
 
 ## Data Pipeline
 
-SPARK fetches academic data automatically from two primary sources:
+```
+CSRankings CSV ─→ resolve_pids.py ─→ resolved_faculty.json ─→ integrate_roster.py ─→ faculty.json
+                        │                                                                  │
+                        └─→ needs_review.{md,csv,json} ──→ maintainer ──→ pid_overrides.csv│
+                                                                                           ▼
+                                              DB ←── load_rankings ←── rankings.json ←── fetch_publications.py
+```
 
-1. **IRINS Scraper**: Parses the institutional research information system to automatically discover and import faculty lists for CS/CSE departments.
-2. **DBLP Fetcher**: Retrieves XML dumps of publications from the DBLP API via `dblp_key` match (preventing string-matching fuzzy errors), resolving exact venue and author matches.
-3. **Strict Workshop Filtering**: Both pipelines implement rigorous heuristics to filter out non-research papers (<= 5 pages, or with "workshop", "adjunct", "poster" etc. in the title or proceeding venue).
+1. **Roster resolution** (`resolve_pids.py`): builds each institution's faculty list from the public **CSRankings CSV** (data only — no CSRankings code) and resolves every person to a DBLP PID. CSRankings names *are* DBLP names (including homonym suffixes like `Amit Kumar 0001`), so it takes the **exact author-string match** from DBLP's search API rather than guessing. Each PID is then verified against the DBLP person record (ORCID, homepage, affiliation, recent publications) and tiered **HIGH / MEDIUM / REVIEW**. An idempotent cache means re-runs only resolve *new* faculty.
+2. **Roster integration** (`integrate_roster.py`): merges verified faculty into `faculty.json` **add-only** — existing curated entries, roles and IRINS links are never overwritten.
+3. **DBLP Fetcher** (`fetch_publications.py`): retrieves publication XML per faculty PID and matches venues via `dblp_key` (not fuzzy strings), producing `rankings.json`.
+4. **IRINS Scraper**: parses the institutional research information system for faculty and publications, merged with three-layer dedup (DOI → exact title → fuzzy title).
+5. **Strict Workshop Filtering**: rigorous heuristics drop non-research papers (≤ 5 pages, or "workshop"/"adjunct"/"poster" etc. in the title or proceedings venue).
+
+### Monthly refresh & the review loop
+
+```bash
+bash pipeline/refresh.sh      # resolve → integrate; writes logs + review files
+```
+
+This is the cron entry point. It exits **0** when everything is triaged, **2** when items need a human, and **1** if the run failed — so cron can alert. Anything the resolver can't verify lands in `data/needs_review.csv`; the maintainer resolves it by adding a row to **`data/pid_overrides.csv`**, which the resolver reads *before* the cache and any DBLP call, so manual fixes survive every re-run:
+
+| action | effect |
+|---|---|
+| `set` | force a DBLP PID → person joins the roster as tier `MANUAL` |
+| `drop` | exclude a duplicate name variant / non-CS entry |
+| `ack` | leave unresolved, but stop alerting on it |
+
+To rebuild scores after a roster change, run `pipeline/fetch_publications.py` (slow — hits DBLP for every faculty member), then reload the DB with `load_seed_data` + `load_rankings`.
+
+### Adding an institution
+
+Add one entry to `INSTITUTIONS` in `pipeline/resolve_pids.py` — the exact CSRankings affiliation string plus keywords that confirm identity in a DBLP affiliation note:
+
+```python
+"IITK": {
+    "name": "IIT Kanpur", "affiliation": "IIT Kanpur",
+    "country": "India", "website": "https://www.iitk.ac.in",
+    "affiliation_keywords": ["indian institute of technology kanpur", "iit kanpur"],
+},
+```
+
+Then run `bash pipeline/refresh.sh` (resolves + integrates), `pipeline/fetch_publications.py`, and the two DB loaders. No other code changes.
+
+### Known caveat
+
+IIIT Delhi is currently the **only** institution with IRINS data scraped, so it alone receives journal and IRINS-only conference papers while the other seven are DBLP-conference-only. This advantages IIIT Delhi for reasons unrelated to research output. Closing the gap requires either scraping IRINS for every institution or excluding IRINS-only papers from scoring.
