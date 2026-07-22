@@ -1,8 +1,8 @@
 # SPARK — Faculty PIDs needing review
 
-Generated: 2026-07-14T13:43:23Z  |  Source: CSRankings CSV
+Generated: 2026-07-21T20:47:35Z  |  Source: CSRankings CSV
 
-**34** untriaged of **34** flagged, across 8 institutions.
+**53** untriaged of **53** flagged, across 25 institutions.
 
 ## How to resolve
 
@@ -44,7 +44,18 @@ IITB,Bernard Menezes,,ack,retired; no clean DBLP profile
 | IITB | REVIEW | Ashutosh Kumar Gupta | — | no exact DBLP author-name match |  |
 | IITB | REVIEW | Bernard Menezes | — | no exact DBLP author-name match |  |
 | IITB | REVIEW | Dhananjay M. Dhamdhere | [d/DMDhamdhere](https://dblp.org/pid/d/DMDhamdhere) | no publications since 2015 |  |
+| IITBHU | REVIEW | Tanima Dutta | [124/3022](https://dblp.org/pid/124/3022) | DBLP affiliation does not mention this institution |  |
 | IITD | REVIEW | Rajendra Kumar | [42/7523-2](https://dblp.org/pid/42/7523-2) | DBLP affiliation does not mention this institution |  |
+| IITDH | REVIEW | Vijeth J. Kotagi | [172/4519](https://dblp.org/pid/172/4519) | DBLP affiliation does not mention this institution |  |
+| IITG | REVIEW | Jain Arijit Sur | — | no exact DBLP author-name match |  |
+| IITG | REVIEW | Rajasekhar Inkulu | — | no exact DBLP author-name match |  |
+| IITG | REVIEW | S. V. Rao | — | no exact DBLP author-name match |  |
+| IITG | REVIEW | Sushanta Karmakar | [26/3091](https://dblp.org/pid/26/3091) | no publications since 2015 |  |
+| IITGN | REVIEW | Yogesh Kumar Meena | [66/10604](https://dblp.org/pid/66/10604) | no publications since 2015 |  |
+| IITH | REVIEW | Ch. Sobhan Babu | — | no exact DBLP author-name match |  |
+| IITH | REVIEW | U. Ramakrishna | [91/10859](https://dblp.org/pid/91/10859) | aliases resolved to multiple PIDs: ['256/5234', '91/10859'] |  |
+| IITJ | REVIEW | Deepak Mishra | [65/6758-1](https://dblp.org/pid/65/6758-1) | DBLP affiliation does not mention this institution |  |
+| IITJMU | REVIEW | Samaresh Bera | [71/8917](https://dblp.org/pid/71/8917) | DBLP affiliation does not mention this institution |  |
 | IITK | REVIEW | Sunil Easaw Simon | — | no exact DBLP author-name match |  |
 | IITK | REVIEW | Sunil Simon | [15/4902](https://dblp.org/pid/15/4902) | DBLP affiliation does not mention this institution |  |
 | IITKGP | REVIEW | Chittaranjan Mandal | [175/5896](https://dblp.org/pid/175/5896) | DBLP affiliation does not mention this institution |  |
@@ -54,4 +65,12 @@ IITB,Bernard Menezes,,ack,retired; no clean DBLP profile
 | IITM | REVIEW | John Augustine | — | no exact DBLP author-name match |  |
 | IITM | REVIEW | Kamakoti Veezhinathan | — | no exact DBLP author-name match |  |
 | IITM | REVIEW | Prashanth Lakshmanrao Ananthapadmanabharao | [90/3161](https://dblp.org/pid/90/3161) | DBLP affiliation does not mention this institution |  |
-| IITM | REVIEW | Yadu Vasudev | [23/10305](https://dblp.org/pid/23/10305) | DBLP affiliation does not mention this institution |  |
+| IITM | REVIEW | Yadu Vasudev | [23/10305](https://dblp.org/pid/23/10305) | no publications since 2015 |  |
+| IITMANDI | REVIEW | Dileep Aroor Dinesh | — | no exact DBLP author-name match |  |
+| IITMANDI | REVIEW | Renu Rameshan | — | no exact DBLP author-name match |  |
+| IITR | REVIEW | P. Sateesh Kumar | [14/7491](https://dblp.org/pid/14/7491) | no publications since 2015 |  |
+| IITR | REVIEW | Partha Pratim Roy | — | no exact DBLP author-name match |  |
+| IITRPR | REVIEW | Jung Hyun Jun | — | no exact DBLP author-name match |  |
+| IITRPR | REVIEW | S. R. S. Iyengar | — | no exact DBLP author-name match |  |
+| IITTP | REVIEW | Ajin George Joseph | — | no exact DBLP author-name match |  |
+| IITTP | REVIEW | Ajin Joseph | [171/3116](https://dblp.org/pid/171/3116) | DBLP affiliation does not mention this institution |  |

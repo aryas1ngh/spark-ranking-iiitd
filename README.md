@@ -36,7 +36,7 @@
 
 > **On CSRankings:** SPARK uses CSRankings' public affiliation CSV purely as a **faculty roster** — i.e. which professors belong to which CS department. None of its code, and none of its ~45-venue list, is used. Every DBLP identity is independently re-resolved and verified, and all scoring is computed from ICORE A\*/A venues.
 
-> **Currently tracking 8 institutions:** IIT Bombay, IIT Kharagpur, IIT Delhi, IISc Bangalore, IIT Madras, IIIT Delhi, IIT Kanpur, and IIIT Hyderabad — 378 faculty, 3,325 publications. Adding another is a single config entry plus a pipeline run (see [Adding an institution](#adding-an-institution)).
+> **Currently tracking 25 institutions** — every IIT present in the CSRankings roster, plus IISc Bangalore, IIIT Delhi and IIIT Hyderabad — 592 faculty, 4,892 publications. Adding another is a single config entry in `pipeline/institutions.py` plus a pipeline run (see [Adding an institution](#adding-an-institution)).
 
 ---
 
@@ -122,6 +122,7 @@ spark/
 │
 ├── pipeline/                    # Data pipeline (run offline)
 │   ├── refresh.sh               # ★ monthly entry point (resolve → integrate)
+│   ├── institutions.py          # ★ tracked institutions (the config to edit)
 │   ├── resolve_pids.py          # CSRankings roster → verified DBLP PIDs
 │   ├── integrate_roster.py      # resolved roster → faculty.json (add-only)
 │   ├── fetch_publications.py    # faculty.json → rankings.json
@@ -219,18 +220,21 @@ To rebuild scores after a roster change, run `pipeline/fetch_publications.py` (s
 
 ### Adding an institution
 
-Add one entry to `INSTITUTIONS` in `pipeline/resolve_pids.py` — the exact CSRankings affiliation string plus keywords that confirm identity in a DBLP affiliation note:
+Add one entry to `INSTITUTIONS` in `pipeline/institutions.py` — the exact CSRankings affiliation string plus keywords that confirm identity in a DBLP affiliation note:
 
 ```python
 "IITK": {
     "name": "IIT Kanpur", "affiliation": "IIT Kanpur",
     "country": "India", "website": "https://www.iitk.ac.in",
+    "state": "Uttar Pradesh", "city": "Kanpur",
     "affiliation_keywords": ["indian institute of technology kanpur", "iit kanpur"],
 },
 ```
+
+The dict key is the short code and also names the PID cache (`IITK` → `data/iitk_pid_cache.json`), so keep it stable once added. `affiliation` must match the CSRankings string **verbatim** — a typo silently yields zero faculty. Keywords are matched as substrings on punctuation-stripped text, so avoid ones that nest inside another tracked institution's name (`iit hyderabad` is a substring of `iiit hyderabad`).
 
 Then run `bash pipeline/refresh.sh` (resolves + integrates), `pipeline/fetch_publications.py`, and the two DB loaders. No other code changes.
 
 ### Known caveat
 
-IIIT Delhi is currently the **only** institution with IRINS data scraped, so it alone receives journal and IRINS-only conference papers while the other seven are DBLP-conference-only. This advantages IIIT Delhi for reasons unrelated to research output. Closing the gap requires either scraping IRINS for every institution or excluding IRINS-only papers from scoring.
+IIIT Delhi is currently the **only** institution with IRINS data scraped, so it alone receives journal and IRINS-only conference papers while the other 24 are DBLP-conference-only. This advantages IIIT Delhi for reasons unrelated to research output. Closing the gap requires either scraping IRINS for every institution or excluding IRINS-only papers from scoring.

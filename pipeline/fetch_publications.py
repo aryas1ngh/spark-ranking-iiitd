@@ -26,9 +26,22 @@ JOURNALS_FILE = os.path.join(DATA_DIR, "ieee_acm_journals.json")
 OUTPUT_FILE = os.path.join(DATA_DIR, "rankings.json")
 
 DBLP_BASE = "https://dblp.uni-trier.de"
-DELAY_SECONDS = 3.0  # DBLP rate limit compliance - be very polite
+# Polite gap between DBLP calls. Matches resolve_pids.py: at 3s a bulk run over
+# hundreds of faculty slides into a 503 spiral where nearly every call burns the
+# retry ladder, which is slower overall than simply asking less often.
+DELAY_SECONDS = 8.0
 MAX_RETRIES = 4
 RETRY_BASE_DELAY = 5  # seconds, doubles each retry
+
+# Checkpoint of raw DBLP fetches, keyed by PID. A full run over 592 faculty is a
+# multi-hour job against a throttling API, and rankings.json is only written at
+# the very end — without this, one failure at hour two loses everything.
+#
+# Deliberately caches the *network* result, not the scored result: venue matching
+# and scoring are cheap and depend on icore_conferences.json, so they are
+# recomputed every run and an ICORE refresh takes effect without a re-fetch.
+# Delete this file to force a full re-fetch from DBLP.
+FETCH_CACHE_FILE = os.path.join(DATA_DIR, "dblp_fetch_cache.json")
 YEAR_START = 2015
 YEAR_END = 2026
 
@@ -103,9 +116,26 @@ def is_short_or_workshop_paper(title, pages_str, booktitle=""):
     return False
 
 
+def load_fetch_cache():
+    """Load the raw-DBLP-fetch checkpoint (see FETCH_CACHE_FILE)."""
+    if os.path.exists(FETCH_CACHE_FILE):
+        with open(FETCH_CACHE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_fetch_cache(cache):
+    """Persist the checkpoint. Called after every faculty member, so an
+    interrupted run resumes rather than repeating hours of DBLP calls."""
+    tmp = FETCH_CACHE_FILE + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False)
+    os.replace(tmp, FETCH_CACHE_FILE)   # atomic: a kill mid-write can't corrupt it
+
+
 def fetch_author_publications(pid, session):
     """Fetch all publications for an author from DBLP using their PID.
-    
+
     Returns a list of publication dicts. Includes retry logic for 429 errors.
     """
     url = f"{DBLP_BASE}/pid/{pid}.xml"
@@ -218,15 +248,26 @@ def fetch_author_publications(pid, session):
     return publications, skipped_publications
 
 
-def process_faculty_member(faculty, icore_lookup, session):
-    """Process a single faculty member: fetch pubs, match against ICORE, compute score."""
+def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None):
+    """Process a single faculty member: fetch pubs, match against ICORE, compute score.
+
+    `fetch_cache` (pid → raw DBLP result) makes the network step resumable; pass
+    None to always hit DBLP. Scoring below always runs, cached or not.
+    """
     pid = faculty["dblp_pid"]
     name = faculty["name"]
-    
-    print(f"    → Fetching publications for {name} (pid: {pid})...")
-    
-    pubs, skipped_pubs = fetch_author_publications(pid, session)
-    print(f"      Found {len(pubs)} conference papers total (skipped {len(skipped_pubs)} short/workshop)")
+
+    cached = fetch_cache.get(pid) if fetch_cache is not None else None
+    if cached is not None:
+        pubs, skipped_pubs = cached["pubs"], cached["skipped"]
+        print(f"    → {name} (pid: {pid}) — cached {len(pubs)} papers")
+    else:
+        print(f"    → Fetching publications for {name} (pid: {pid})...")
+        pubs, skipped_pubs = fetch_author_publications(pid, session)
+        if fetch_cache is not None:
+            fetch_cache[pid] = {"pubs": pubs, "skipped": skipped_pubs}
+            save_fetch_cache(fetch_cache)
+        print(f"      Found {len(pubs)} conference papers total (skipped {len(skipped_pubs)} short/workshop)")
     
     # Filter by year range
     pubs = [p for p in pubs if YEAR_START <= p["year"] <= YEAR_END]
@@ -616,7 +657,11 @@ def main():
     session.headers.update({
         "User-Agent": "SPARK-Academic-Ranking-Tool/1.0 (academic research project)"
     })
-    
+
+    fetch_cache = load_fetch_cache()
+    if fetch_cache:
+        print(f"\nResuming from {FETCH_CACHE_FILE}: {len(fetch_cache)} faculty already fetched")
+
     all_institutions = []
     
     for institution in faculty_data["institutions"]:
@@ -629,10 +674,13 @@ def main():
         faculty_results = []
         
         for i, fac in enumerate(institution["faculty"]):
-            result = process_faculty_member(fac, icore_lookup, session)
+            was_cached = fac["dblp_pid"] in fetch_cache
+            result = process_faculty_member(fac, icore_lookup, session, fetch_cache)
             faculty_results.append(result)
-            
-            if i < len(institution["faculty"]) - 1:
+
+            # Only pace ourselves when we actually called DBLP; replaying the
+            # checkpoint after an interrupted run should be instant.
+            if not was_cached and i < len(institution["faculty"]) - 1:
                 time.sleep(DELAY_SECONDS)
         
         # Sort faculty by score descending

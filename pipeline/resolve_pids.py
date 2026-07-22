@@ -65,7 +65,11 @@ OVERRIDES_FILE = os.path.join(DATA_DIR, "pid_overrides.csv")
 DBLP_SEARCH_URL = "https://dblp.org/search/author/api"
 DBLP_PID_XML = "https://dblp.org/pid/{pid}.xml"
 
-DELAY_SECONDS = 3.0          # polite gap between DBLP calls (search API throttles hard)
+# Polite gap between DBLP calls. The search API throttles hard: at 3s a bulk
+# run (100+ uncached people) slides into a 503 spiral where nearly every call
+# burns the retry ladder below, costing ~60s/person. Backing off to 8s stays
+# under the limit and finishes a large batch sooner than fighting the throttle.
+DELAY_SECONDS = 8.0
 MAX_RETRIES = 5
 RETRY_BASE_DELAY = 8         # seconds, doubles each retry
 COOLDOWN_AFTER_FAILURE = 45  # extra pause after exhausting retries (DBLP IP block cools down)
@@ -83,61 +87,11 @@ HEADERS = {"User-Agent": "SPARK-Academic-Ranking-Tool/1.0 (academic research pro
 # mismatch" review for genuine faculty.
 UNINFORMATIVE_AFFILIATIONS = {"ernet india", "ernet"}
 
-# Known institutions (all currently tracked). `--all` processes every entry;
+# Tracked institutions live in pipeline/institutions.py — one entry per
+# department, edited by hand when adding one. `--all` processes every entry;
 # `--institution SHORT` picks one; otherwise pass --affiliation/--short/--name.
-# `affiliation` is the exact CSRankings affiliation string; `affiliation_keywords`
-# are phrases that, if present in a DBLP affiliation note, confirm identity.
-INSTITUTIONS = {
-    "IITD": {
-        "name": "IIT Delhi", "affiliation": "IIT Delhi",
-        "country": "India", "website": "https://www.iitd.ac.in",
-        "affiliation_keywords": ["indian institute of technology delhi", "iit delhi"],
-    },
-    "IIITD": {
-        "name": "IIIT Delhi", "affiliation": "IIIT Delhi",
-        "country": "India", "website": "https://www.iiitd.ac.in",
-        "affiliation_keywords": [
-            "indraprastha institute of information technology", "iiit delhi", "iiit d",
-        ],
-    },
-    "IITB": {
-        "name": "IIT Bombay", "affiliation": "IIT Bombay",
-        "country": "India", "website": "https://www.iitb.ac.in",
-        "affiliation_keywords": ["indian institute of technology bombay", "iit bombay"],
-    },
-    "IITM": {
-        "name": "IIT Madras", "affiliation": "IIT Madras",
-        "country": "India", "website": "https://www.iitm.ac.in",
-        "state": "Tamil Nadu", "city": "Chennai",
-        "affiliation_keywords": ["indian institute of technology madras", "iit madras"],
-    },
-    "IISC": {
-        "name": "IISc Bangalore", "affiliation": "IISc Bangalore",
-        "country": "India", "website": "https://iisc.ac.in/",
-        "state": "Karnataka", "city": "Bangalore",
-        "affiliation_keywords": ["indian institute of science", "iisc"],
-    },
-    "IITK": {
-        "name": "IIT Kanpur", "affiliation": "IIT Kanpur",
-        "country": "India", "website": "https://www.iitk.ac.in",
-        "state": "Uttar Pradesh", "city": "Kanpur",
-        "affiliation_keywords": ["indian institute of technology kanpur", "iit kanpur"],
-    },
-    "IITKGP": {
-        "name": "IIT Kharagpur", "affiliation": "IIT Kharagpur",
-        "country": "India", "website": "https://www.iitkgp.ac.in",
-        "state": "West Bengal", "city": "Kharagpur",
-        "affiliation_keywords": ["indian institute of technology kharagpur", "iit kharagpur"],
-    },
-    "IIITH": {
-        "name": "IIIT Hyderabad", "affiliation": "IIIT Hyderabad",
-        "country": "India", "website": "https://www.iiit.ac.in",
-        "state": "Telangana", "city": "Hyderabad",
-        "affiliation_keywords": [
-            "international institute of information technology hyderabad", "iiit hyderabad",
-        ],
-    },
-}
+sys.path.insert(0, SCRIPT_DIR)
+from institutions import INSTITUTIONS  # noqa: E402
 
 DISAMBIG_SUFFIX = re.compile(r"\s+\d{4}$")   # DBLP homonym suffix, e.g. "Amit Kumar 0001"
 
@@ -613,6 +567,10 @@ def resolve_institution(short, inst, csv_path, session, refresh=False, limit=Non
         results.append(result)
         cache[person["identity"]] = result
         print(f"        → {pid or 'UNRESOLVED'} [{tier}] {notes}")
+        # Persist after every person, not just at the end of the institution:
+        # a DBLP throttle can stretch one institution over hours, and an
+        # interrupted run should never re-resolve work already paid for.
+        save_cache(short, cache)
 
     save_cache(short, cache)
     counts = {

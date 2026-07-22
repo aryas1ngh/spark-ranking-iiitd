@@ -2,6 +2,24 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.6.0 — 2026-07-21
+
+### 1. Coverage: every IIT in the CSRankings roster (8 → 25 institutions)
+- Added the **17 remaining IITs**: Hyderabad, Guwahati, Jodhpur, Gandhinagar, Bhilai, Ropar, Mandi, Dharwad, (BHU) Varanasi, Tirupati, Roorkee, Patna, Palakkad, Jammu, Indore, Goa and Bhubaneswar.
+- **Result**: `faculty.json` 378 → **592 faculty** across 25 institutions (+214). Resolver roster: 578 verified people — 208 HIGH, 370 MEDIUM — with 53 flagged for review.
+- **Rankings rebuilt**: 3,325 → **4,892 publications** (2,816 A\*, 2,028 A). Top of the table is unchanged (IIT Bombay, IIT Kharagpur, IIT Delhi, IISc Bangalore); the new institutions enter from #9 (IIT Jodhpur, 8.42) downward.
+- Each institution's affiliation string was checked against the CSRankings CSV before the run: a typo silently yields zero faculty, so all 25 were confirmed to match real rows (742 roster rows, up from 478).
+
+### 2. `pipeline/institutions.py` — institutions are now config, not code
+- The `INSTITUTIONS` dict moved out of `resolve_pids.py` into its own module, with a header documenting the schema and the two things that silently break a new entry (the `affiliation` string must match CSRankings **verbatim**; the short key names the PID cache and must stay stable).
+- `IIT Hyderabad` deliberately carries **no short keyword**: matching is substring-based on punctuation-stripped text, and `iit hyderabad` is a substring of `iiit hyderabad`, which would confirm an IIIT Hyderabad homonym as IIT Hyderabad faculty.
+
+### 3. Pipeline resilience under DBLP throttling
+- **`DELAY_SECONDS` 3.0 → 8.0**. At 3s a bulk run (100+ uncached people) slid into a 503 spiral where nearly every call burned the retry ladder, measured at **~60s/person**. Backing off to 8s roughly halved that (~40s/person) and made the retry ladder markedly shallower (depth distribution 21/11/3/1, versus 48/30/12/8 at 3s) — the slower gap finishes a large batch *sooner* than fighting the throttle.
+- **`save_cache` now writes after every person**, not once per institution. The per-institution window cost a killed run ~18 already-resolved people; with 25 institutions and DBLP able to stretch one over hours, an interrupted run now loses at most the person in flight.
+- **`fetch_publications.py` is now resumable** (`data/dblp_fetch_cache.json`, written atomically after every faculty member). A 592-faculty run is multi-hour and `rankings.json` is only written at the very end, so a failure at hour two previously lost everything. The checkpoint stores the *raw DBLP fetch*, not the scored result — venue matching is cheap and depends on `icore_conferences.json`, so scores are recomputed every run and an ICORE refresh takes effect without re-fetching 592 authors.
+- Its `DELAY_SECONDS` moved to 8.0 as well, and the inter-call sleep is now skipped on cache hits so a resumed run replays instantly. Measured effect: **~9.2s/faculty with one rate-limit hit across the whole run**, versus the 40–60s/person the resolver averaged fighting 503s at 3s.
+
 ## v1.5.0 — 2026-07-15
 
 ### 1. Reproducible Roster Pipeline (replaces the one-off PID script)

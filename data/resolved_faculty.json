@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T13:43:23Z",
+  "generated_at": "2026-07-21T20:47:35Z",
   "source": "CSRankings",
   "institutions": [
     {
@@ -7,6 +7,8 @@
       "short": "IITD",
       "country": "India",
       "website": "https://www.iitd.ac.in",
+      "state": "Delhi",
+      "city": "New Delhi",
       "faculty_count": 45,
       "faculty": [
         {
@@ -565,6 +567,8 @@
       "short": "IIITD",
       "country": "India",
       "website": "https://www.iiitd.ac.in",
+      "state": "Delhi",
+      "city": "New Delhi",
       "faculty_count": 32,
       "faculty": [
         {
@@ -962,6 +966,8 @@
       "short": "IITB",
       "country": "India",
       "website": "https://www.iitb.ac.in",
+      "state": "Maharashtra",
+      "city": "Mumbai",
       "faculty_count": 58,
       "faculty": [
         {
@@ -4525,6 +4531,2790 @@
           "dblp_match_name": "Y. Raghu Reddy",
           "dblp_pid": "r/RaghuReddy",
           "match_confidence": "high"
+        }
+      ]
+    },
+    {
+      "name": "IIT Bhubaneswar",
+      "short": "IITBBS",
+      "country": "India",
+      "website": "https://www.iitbbs.ac.in",
+      "state": "Odisha",
+      "city": "Bhubaneswar",
+      "faculty_count": 2,
+      "faculty": [
+        {
+          "name": "Debi Prosad Dogra",
+          "csrankings_name": "Debi Prosad Dogra",
+          "aliases": [
+            "Debi Prosad Dogra"
+          ],
+          "homepage": "http://www.iitbbs.ac.in/profile.php/dpdogra",
+          "orcid": null,
+          "dblp_match_name": "Debi Prosad Dogra",
+          "dblp_pid": "97/7630",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sudipta Saha",
+          "csrankings_name": "Sudipta Saha",
+          "aliases": [
+            "Sudipta Saha"
+          ],
+          "homepage": "http://www.iitbbs.ac.in/old/profile.php/sudipta",
+          "orcid": null,
+          "dblp_match_name": "Sudipta Saha",
+          "dblp_pid": "81/6959",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Bhilai",
+      "short": "IITBHILAI",
+      "country": "India",
+      "website": "https://www.iitbhilai.ac.in",
+      "state": "Chhattisgarh",
+      "city": "Bhilai",
+      "faculty_count": 14,
+      "faculty": [
+        {
+          "name": "Amit Kumar Dhar",
+          "csrankings_name": "Amit Kumar Dhar",
+          "aliases": [
+            "Amit Kumar Dhar"
+          ],
+          "homepage": "https://www.iitbhilai.ac.in/index.php?pid=amitkdhar",
+          "orcid": "0009-0007-8350-0148",
+          "dblp_match_name": "Amit Kumar Dhar",
+          "dblp_pid": "48/11471",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anand M. Baswade",
+          "csrankings_name": "Anand M. Baswade",
+          "aliases": [
+            "Anand M. Baswade"
+          ],
+          "homepage": "https://anandbaswade08.wixsite.com/home",
+          "orcid": null,
+          "dblp_match_name": "Anand M. Baswade",
+          "dblp_pid": "177/7886",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Barun Gorain",
+          "csrankings_name": "Barun Gorain",
+          "aliases": [
+            "Barun Gorain"
+          ],
+          "homepage": "https://sites.google.com/site/barungorainiitg/home",
+          "orcid": null,
+          "dblp_match_name": "Barun Gorain",
+          "dblp_pid": "122/3006",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Dhiman Saha",
+          "csrankings_name": "Dhiman Saha",
+          "aliases": [
+            "Dhiman Saha"
+          ],
+          "homepage": "http://dhimans.in",
+          "orcid": null,
+          "dblp_match_name": "Dhiman Saha",
+          "dblp_pid": "32/6561",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Gagan Raj Gupta",
+          "csrankings_name": "Gagan Raj Gupta 0001",
+          "aliases": [
+            "Gagan Raj Gupta 0001",
+            "Gagan Gupta 0001"
+          ],
+          "homepage": "https://www.iitbhilai.ac.in/index.php?pid=gagan",
+          "orcid": "0000-0002-8568-2949",
+          "dblp_match_name": "Gagan Raj Gupta 0001",
+          "dblp_pid": "20/860-1",
+          "match_confidence": "high"
+        },
+        {
+          "name": "I. Vinod Reddy",
+          "csrankings_name": "I. Vinod Reddy",
+          "aliases": [
+            "I. Vinod Reddy"
+          ],
+          "homepage": "https://sites.google.com/a/iitgn.ac.in/vinodreddy/home",
+          "orcid": null,
+          "dblp_match_name": "I. Vinod Reddy",
+          "dblp_pid": "158/8471",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rajesh Kumar Mundotiya",
+          "csrankings_name": "Rajesh Kumar Mundotiya",
+          "aliases": [
+            "Rajesh Kumar Mundotiya"
+          ],
+          "homepage": "https://rajeshkmmundotiya.wixsite.com/home",
+          "orcid": null,
+          "dblp_match_name": "Rajesh Kumar Mundotiya",
+          "dblp_pid": "208/4429",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rishi Ranjan Singh",
+          "csrankings_name": "Rishi Ranjan Singh",
+          "aliases": [
+            "Rishi Ranjan Singh"
+          ],
+          "homepage": "https://www.iitbhilai.ac.in/index.php?pid=rishi",
+          "orcid": null,
+          "dblp_match_name": "Rishi Ranjan Singh",
+          "dblp_pid": "129/1674",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Santosh Biswas",
+          "csrankings_name": "Santosh Biswas",
+          "aliases": [
+            "Santosh Biswas"
+          ],
+          "homepage": "https://www.iitbhilai.ac.in/index.php?pid=santosh",
+          "orcid": null,
+          "dblp_match_name": "Santosh Biswas",
+          "dblp_pid": "70/2285",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sk Subidh Ali",
+          "csrankings_name": "Sk Subidh Ali",
+          "aliases": [
+            "Sk Subidh Ali",
+            "Subidh Ali"
+          ],
+          "homepage": "https://www.iitbhilai.ac.in/index.php?pid=subidh",
+          "orcid": "0000-0001-5942-4455",
+          "dblp_match_name": "Subidh Ali",
+          "dblp_pid": "80/9687",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Soumajit Pramanik",
+          "csrankings_name": "Soumajit Pramanik",
+          "aliases": [
+            "Soumajit Pramanik"
+          ],
+          "homepage": "https://www.iitbhilai.ac.in/index.php?pid=soumajit",
+          "orcid": null,
+          "dblp_match_name": "Soumajit Pramanik",
+          "dblp_pid": "61/11469",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Souradyuti Paul",
+          "csrankings_name": "Souradyuti Paul",
+          "aliases": [
+            "Souradyuti Paul"
+          ],
+          "homepage": "https://souradyuti.com",
+          "orcid": null,
+          "dblp_match_name": "Souradyuti Paul",
+          "dblp_pid": "40/6271",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Subhajit Sidhanta",
+          "csrankings_name": "Subhajit Sidhanta",
+          "aliases": [
+            "Subhajit Sidhanta"
+          ],
+          "homepage": "https://sites.google.com/iitbhilai.ac.in/subhajit/home",
+          "orcid": null,
+          "dblp_match_name": "Subhajit Sidhanta",
+          "dblp_pid": "117/7682",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Vishwesh Jatala",
+          "csrankings_name": "Vishwesh Jatala",
+          "aliases": [
+            "Vishwesh Jatala"
+          ],
+          "homepage": "https://vishweshjatala.github.io",
+          "orcid": null,
+          "dblp_match_name": "Vishwesh Jatala",
+          "dblp_pid": "160/8460",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT (BHU) Varanasi",
+      "short": "IITBHU",
+      "country": "India",
+      "website": "https://www.iitbhu.ac.in",
+      "state": "Uttar Pradesh",
+      "city": "Varanasi",
+      "faculty_count": 12,
+      "faculty": [
+        {
+          "name": "Amrita Chaturvedi",
+          "csrankings_name": "Amrita Chaturvedi",
+          "aliases": [
+            "Amrita Chaturvedi"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty.html",
+          "orcid": null,
+          "dblp_match_name": "Amrita Chaturvedi",
+          "dblp_pid": "136/8375",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anil Kumar Singh",
+          "csrankings_name": "Anil Kumar Singh",
+          "aliases": [
+            "Anil Kumar Singh"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty/37.html",
+          "orcid": null,
+          "dblp_match_name": "Anil Kumar Singh",
+          "dblp_pid": "35/1354",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anil Kumar Tripathi",
+          "csrankings_name": "Anil Kumar Tripathi",
+          "aliases": [
+            "Anil Kumar Tripathi"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty/34.html",
+          "orcid": null,
+          "dblp_match_name": "Anil Kumar Tripathi",
+          "dblp_pid": "79/5825",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "C. Ravindranath Chowdary",
+          "csrankings_name": "C. Ravindranath Chowdary",
+          "aliases": [
+            "C. Ravindranath Chowdary"
+          ],
+          "homepage": "http://www.old.iitbhu.ac.in/cse/index.php/people/faculty/36.html",
+          "orcid": null,
+          "dblp_match_name": "C. Ravindranath Chowdary",
+          "dblp_pid": "72/4664",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Hari Prabhat Gupta",
+          "csrankings_name": "Hari Prabhat Gupta",
+          "aliases": [
+            "Hari Prabhat Gupta"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty.html",
+          "orcid": "0000-0003-3207-1340",
+          "dblp_match_name": "Hari Prabhat Gupta",
+          "dblp_pid": "126/2508",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "K. K. Shukla",
+          "csrankings_name": "K. K. Shukla 0001",
+          "aliases": [
+            "K. K. Shukla 0001",
+            "Kaushal Kumar Shukla",
+            "Kaushal K. Shukla"
+          ],
+          "homepage": "http://www.old.iitbhu.ac.in/cse/index.php/people/faculty/30_pubs.html",
+          "orcid": "0000-0002-8756-6474",
+          "dblp_match_name": "Kaushal K. Shukla",
+          "dblp_pid": "56/10402",
+          "match_confidence": "high"
+        },
+        {
+          "name": "K. Lakshmanan",
+          "csrankings_name": "K. Lakshmanan 0001",
+          "aliases": [
+            "K. Lakshmanan 0001"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty.html",
+          "orcid": null,
+          "dblp_match_name": "K. Lakshmanan 0001",
+          "dblp_pid": "80/449",
+          "match_confidence": "high"
+        },
+        {
+          "name": "R. B. Mishra",
+          "csrankings_name": "R. B. Mishra",
+          "aliases": [
+            "R. B. Mishra"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty/24.html",
+          "orcid": null,
+          "dblp_match_name": "R. B. Mishra",
+          "dblp_pid": "86/1305",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rajeev Sangal",
+          "csrankings_name": "Rajeev Sangal",
+          "aliases": [
+            "Rajeev Sangal"
+          ],
+          "homepage": "https://www.iiit.ac.in/people/faculty/sangal",
+          "orcid": null,
+          "dblp_match_name": "Rajeev Sangal",
+          "dblp_pid": "31/5370",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Ruchir Gupta",
+          "csrankings_name": "Ruchir Gupta",
+          "aliases": [
+            "Ruchir Gupta"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty.html",
+          "orcid": "0000-0001-9970-3889",
+          "dblp_match_name": "Ruchir Gupta",
+          "dblp_pid": "59/9057",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sanjay Kumar Singh",
+          "csrankings_name": "Sanjay Kumar Singh",
+          "aliases": [
+            "Sanjay Kumar Singh"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty/25.html",
+          "orcid": null,
+          "dblp_match_name": "Sanjay Kumar Singh",
+          "dblp_pid": "11/4030",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sukomal Pal",
+          "csrankings_name": "Sukomal Pal",
+          "aliases": [
+            "Sukomal Pal"
+          ],
+          "homepage": "http://www.iitbhu.ac.in/cse/index.php/people/faculty/40.html",
+          "orcid": null,
+          "dblp_match_name": "Sukomal Pal",
+          "dblp_pid": "06/3884",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Dharwad",
+      "short": "IITDH",
+      "country": "India",
+      "website": "https://www.iitdh.ac.in",
+      "state": "Karnataka",
+      "city": "Dharwad",
+      "faculty_count": 13,
+      "faculty": [
+        {
+          "name": "Achyut Mani Tripathi",
+          "csrankings_name": "Achyut Mani Tripathi",
+          "aliases": [
+            "Achyut Mani Tripathi"
+          ],
+          "homepage": "https://achyutmani.github.io",
+          "orcid": null,
+          "dblp_match_name": "Achyut Mani Tripathi",
+          "dblp_pid": "173/8904",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anand Konjengbam",
+          "csrankings_name": "Anand Konjengbam",
+          "aliases": [
+            "Anand Konjengbam"
+          ],
+          "homepage": "https://sites.google.com/view/drkonjengbamanand",
+          "orcid": null,
+          "dblp_match_name": "Anand Konjengbam",
+          "dblp_pid": "196/6087",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Gayathri Ananthanarayanan",
+          "csrankings_name": "Gayathri Ananthanarayanan",
+          "aliases": [
+            "Gayathri Ananthanarayanan"
+          ],
+          "homepage": "https://homepages.iitdh.ac.in/~gayathri",
+          "orcid": "0000-0001-7429-7888",
+          "dblp_match_name": "Gayathri Ananthanarayanan",
+          "dblp_pid": "142/0165",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Kedar V. Khandeparkar",
+          "csrankings_name": "Kedar V. Khandeparkar",
+          "aliases": [
+            "Kedar V. Khandeparkar",
+            "Kedar Khandeparkar"
+          ],
+          "homepage": "https://iitdh.ac.in/~kedark",
+          "orcid": null,
+          "dblp_match_name": "Kedar Khandeparkar",
+          "dblp_pid": "146/7832",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Koteswararao Kondepu",
+          "csrankings_name": "Koteswararao Kondepu",
+          "aliases": [
+            "Koteswararao Kondepu"
+          ],
+          "homepage": "https://scholar.google.com/citations?hl=en&user=X-yZFQkAAAAJ",
+          "orcid": null,
+          "dblp_match_name": "Koteswararao Kondepu",
+          "dblp_pid": "81/3117",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Nikhil Hegde",
+          "csrankings_name": "Nikhil Hegde",
+          "aliases": [
+            "Nikhil Hegde"
+          ],
+          "homepage": "https://hegden.github.io",
+          "orcid": "0009-0004-7600-5665",
+          "dblp_match_name": "Nikhil Hegde",
+          "dblp_pid": "174/4866",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Prabuchandran K. J.",
+          "csrankings_name": "Prabuchandran K. J.",
+          "aliases": [
+            "Prabuchandran K. J."
+          ],
+          "homepage": "https://scholar.google.com/citations?hl=en&user=JSL--pMAAAAJ",
+          "orcid": null,
+          "dblp_match_name": "Prabuchandran K. J.",
+          "dblp_pid": "140/5406",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "R. B. Sandeep",
+          "csrankings_name": "R. B. Sandeep",
+          "aliases": [
+            "R. B. Sandeep"
+          ],
+          "homepage": "https://sites.google.com/site/homepagesandeeprb",
+          "orcid": "0000-0003-4383-1819",
+          "dblp_match_name": "R. B. Sandeep",
+          "dblp_pid": "37/9923",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Rajshekar Kalayappan",
+          "csrankings_name": "Rajshekar Kalayappan",
+          "aliases": [
+            "Rajshekar Kalayappan"
+          ],
+          "homepage": "https://www.iitdh.ac.in/~rajshekar.k",
+          "orcid": "0000-0001-8154-2984",
+          "dblp_match_name": "Rajshekar Kalayappan",
+          "dblp_pid": "134/7234",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Ramchandra Phawade",
+          "csrankings_name": "Ramchandra Phawade",
+          "aliases": [
+            "Ramchandra Phawade"
+          ],
+          "homepage": "https://iitdh.ac.in/prb",
+          "orcid": null,
+          "dblp_match_name": "Ramchandra Phawade",
+          "dblp_pid": "73/9959",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Siba Narayan Swain",
+          "csrankings_name": "Siba Narayan Swain",
+          "aliases": [
+            "Siba Narayan Swain"
+          ],
+          "homepage": "https://scholar.google.com/citations?user=1H0G24kAAAAJ",
+          "orcid": null,
+          "dblp_match_name": "Siba Narayan Swain",
+          "dblp_pid": "172/4440",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Tamal Das",
+          "csrankings_name": "Tamal Das",
+          "aliases": [
+            "Tamal Das"
+          ],
+          "homepage": "https://sites.google.com/view/dtamal",
+          "orcid": null,
+          "dblp_match_name": "Tamal Das",
+          "dblp_pid": "68/6940",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Vandana Bharti",
+          "csrankings_name": "Vandana Bharti",
+          "aliases": [
+            "Vandana Bharti"
+          ],
+          "homepage": "https://sites.google.com/iitdh.ac.in/vandana",
+          "orcid": null,
+          "dblp_match_name": "Vandana Bharti",
+          "dblp_pid": "296/9405",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Guwahati",
+      "short": "IITG",
+      "country": "India",
+      "website": "https://www.iitg.ac.in",
+      "state": "Assam",
+      "city": "Guwahati",
+      "faculty_count": 25,
+      "faculty": [
+        {
+          "name": "Amit Awekar",
+          "csrankings_name": "Amit Awekar",
+          "aliases": [
+            "Amit Awekar"
+          ],
+          "homepage": "https://www.iitg.ernet.in/awekar",
+          "orcid": "0000-0003-1559-8247",
+          "dblp_match_name": "Amit Awekar",
+          "dblp_pid": "136/7882",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Arijit Sur",
+          "csrankings_name": "Arijit Sur",
+          "aliases": [
+            "Arijit Sur"
+          ],
+          "homepage": "http://www.iitg.ernet.in/arijit",
+          "orcid": null,
+          "dblp_match_name": "Arijit Sur",
+          "dblp_pid": "07/5501",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Aryabartta Sahu",
+          "csrankings_name": "Aryabartta Sahu",
+          "aliases": [
+            "Aryabartta Sahu"
+          ],
+          "homepage": "https://www.iitg.ernet.in/asahu",
+          "orcid": null,
+          "dblp_match_name": "Aryabartta Sahu",
+          "dblp_pid": "07/7356",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Ashish Anand",
+          "csrankings_name": "Ashish Anand",
+          "aliases": [
+            "Ashish Anand"
+          ],
+          "homepage": "http://www.iitg.ernet.in/anand.ashish",
+          "orcid": "0000-0002-0024-3358",
+          "dblp_match_name": "Ashish Anand",
+          "dblp_pid": "02/1142",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Benny George Kenkireth",
+          "csrankings_name": "Benny George Kenkireth",
+          "aliases": [
+            "Benny George Kenkireth"
+          ],
+          "homepage": "http://www.iitg.ernet.in/ben",
+          "orcid": null,
+          "dblp_match_name": "Benny George Kenkireth",
+          "dblp_pid": "39/2282",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Chandan Karfa",
+          "csrankings_name": "Chandan Karfa",
+          "aliases": [
+            "Chandan Karfa"
+          ],
+          "homepage": "http://www.iitg.ernet.in/cse/internet-pages/ckarfa",
+          "orcid": "0000-0002-3835-4184",
+          "dblp_match_name": "Chandan Karfa",
+          "dblp_pid": "52/1342",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Deepanjan Kesh",
+          "csrankings_name": "Deepanjan Kesh",
+          "aliases": [
+            "Deepanjan Kesh"
+          ],
+          "homepage": "https://www.iitg.ernet.in/deepkesh",
+          "orcid": null,
+          "dblp_match_name": "Deepanjan Kesh",
+          "dblp_pid": "52/25",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Diganta Goswami",
+          "csrankings_name": "Diganta Goswami",
+          "aliases": [
+            "Diganta Goswami"
+          ],
+          "homepage": "https://www.iitg.ernet.in/dgoswami",
+          "orcid": null,
+          "dblp_match_name": "Diganta Goswami",
+          "dblp_pid": "06/6115",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Gautam Barua",
+          "csrankings_name": "Gautam Barua",
+          "aliases": [
+            "Gautam Barua"
+          ],
+          "homepage": "https://www.iitg.ernet.in/gb",
+          "orcid": null,
+          "dblp_match_name": "Gautam Barua",
+          "dblp_pid": "77/3938",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Hemangee Kalpesh Kapoor",
+          "csrankings_name": "Hemangee Kalpesh Kapoor",
+          "aliases": [
+            "Hemangee Kalpesh Kapoor",
+            "Hemangee K. Kapoor"
+          ],
+          "homepage": "http://www.iitg.ac.in/hemangee",
+          "orcid": "0000-0002-9376-7686",
+          "dblp_match_name": "Hemangee K. Kapoor",
+          "dblp_pid": "75/2282",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Jatindra Kumar Deka",
+          "csrankings_name": "Jatindra Kumar Deka",
+          "aliases": [
+            "Jatindra Kumar Deka"
+          ],
+          "homepage": "https://www.iitg.ernet.in/jatin",
+          "orcid": null,
+          "dblp_match_name": "Jatindra Kumar Deka",
+          "dblp_pid": "34/3677",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "John Jose",
+          "csrankings_name": "John Jose",
+          "aliases": [
+            "John Jose"
+          ],
+          "homepage": "https://www.iitg.ernet.in/johnjose",
+          "orcid": "0000-0002-0314-8778",
+          "dblp_match_name": "John Jose",
+          "dblp_pid": "123/7042",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Moumita Patra",
+          "csrankings_name": "Moumita Patra",
+          "aliases": [
+            "Moumita Patra"
+          ],
+          "homepage": "https://patramoumita88.wixsite.com/moumita",
+          "orcid": null,
+          "dblp_match_name": "Moumita Patra",
+          "dblp_pid": "38/10604",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Pinaki Mitra",
+          "csrankings_name": "Pinaki Mitra",
+          "aliases": [
+            "Pinaki Mitra"
+          ],
+          "homepage": "http://www.iitg.ernet.in/pinaki",
+          "orcid": null,
+          "dblp_match_name": "Pinaki Mitra",
+          "dblp_pid": "57/776",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Pradip Kumar Das",
+          "csrankings_name": "Pradip Kumar Das",
+          "aliases": [
+            "Pradip Kumar Das",
+            "Pradip K. Das"
+          ],
+          "homepage": "http://www.iitg.ernet.in/pkdas",
+          "orcid": null,
+          "dblp_match_name": "Pradip K. Das",
+          "dblp_pid": "08/2976",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Purandar Bhaduri",
+          "csrankings_name": "Purandar Bhaduri",
+          "aliases": [
+            "Purandar Bhaduri"
+          ],
+          "homepage": "https://www.iitg.ernet.in/pbhaduri",
+          "orcid": "0000-0002-8847-0394",
+          "dblp_match_name": "Purandar Bhaduri",
+          "dblp_pid": "b/PurandarBhaduri",
+          "match_confidence": "high"
+        },
+        {
+          "name": "R. Inkulu",
+          "csrankings_name": "R. Inkulu",
+          "aliases": [
+            "R. Inkulu"
+          ],
+          "homepage": "http://www.iitg.ernet.in/rinkulu",
+          "orcid": null,
+          "dblp_match_name": "R. Inkulu",
+          "dblp_pid": "96/2562",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rashmi Dutta Baruah",
+          "csrankings_name": "Rashmi Dutta Baruah",
+          "aliases": [
+            "Rashmi Dutta Baruah"
+          ],
+          "homepage": "https://www.iitg.ernet.in/r.duttabaruah",
+          "orcid": null,
+          "dblp_match_name": "Rashmi Dutta Baruah",
+          "dblp_pid": "96/99",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sajith Gopalan",
+          "csrankings_name": "Sajith Gopalan",
+          "aliases": [
+            "Sajith Gopalan"
+          ],
+          "homepage": "http://www.iitg.ernet.in/sajith",
+          "orcid": null,
+          "dblp_match_name": "Sajith Gopalan",
+          "dblp_pid": "117/5911",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Samit Bhattacharya",
+          "csrankings_name": "Samit Bhattacharya",
+          "aliases": [
+            "Samit Bhattacharya"
+          ],
+          "homepage": "http://www.iitg.ernet.in/samit",
+          "orcid": null,
+          "dblp_match_name": "Samit Bhattacharya",
+          "dblp_pid": "03/4226",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sanasam Ranbir Singh",
+          "csrankings_name": "Sanasam Ranbir Singh",
+          "aliases": [
+            "Sanasam Ranbir Singh"
+          ],
+          "homepage": "https://www.iitg.ernet.in/ranbir",
+          "orcid": null,
+          "dblp_match_name": "Sanasam Ranbir Singh",
+          "dblp_pid": "81/2295",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Shivashankar B. Nair",
+          "csrankings_name": "Shivashankar B. Nair",
+          "aliases": [
+            "Shivashankar B. Nair"
+          ],
+          "homepage": "https://www.iitg.ernet.in/sbnair",
+          "orcid": null,
+          "dblp_match_name": "Shivashankar B. Nair",
+          "dblp_pid": "09/2815",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sukumar Nandi",
+          "csrankings_name": "Sukumar Nandi",
+          "aliases": [
+            "Sukumar Nandi"
+          ],
+          "homepage": "https://www.iitg.ernet.in/sukumar",
+          "orcid": "0000-0002-5869-1057",
+          "dblp_match_name": "Sukumar Nandi",
+          "dblp_pid": "20/4077",
+          "match_confidence": "high"
+        },
+        {
+          "name": "T. Venkatesh",
+          "csrankings_name": "T. Venkatesh",
+          "aliases": [
+            "T. Venkatesh"
+          ],
+          "homepage": "http://www.iitg.ernet.in/t.venkat",
+          "orcid": null,
+          "dblp_match_name": "T. Venkatesh",
+          "dblp_pid": "14/3381",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "V. Vijaya Saradhi",
+          "csrankings_name": "V. Vijaya Saradhi",
+          "aliases": [
+            "V. Vijaya Saradhi"
+          ],
+          "homepage": "https://www.iitg.ernet.in/saradhi",
+          "orcid": null,
+          "dblp_match_name": "V. Vijaya Saradhi",
+          "dblp_pid": "25/4061",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Gandhinagar",
+      "short": "IITGN",
+      "country": "India",
+      "website": "https://www.iitgn.ac.in",
+      "state": "Gujarat",
+      "city": "Gandhinagar",
+      "faculty_count": 13,
+      "faculty": [
+        {
+          "name": "Abhishek Bichhawat",
+          "csrankings_name": "Abhishek Bichhawat",
+          "aliases": [
+            "Abhishek Bichhawat"
+          ],
+          "homepage": "https://iitgn.ac.in/faculty/cse/abhishek",
+          "orcid": "0000-0002-3075-2743",
+          "dblp_match_name": "Abhishek Bichhawat",
+          "dblp_pid": "61/10308",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Anirban Dasgupta",
+          "csrankings_name": "Anirban Dasgupta 0001",
+          "aliases": [
+            "Anirban Dasgupta 0001"
+          ],
+          "homepage": "http://www.iitgn.ac.in/faculty/comp/anirban.htm",
+          "orcid": "0000-0002-8494-3692",
+          "dblp_match_name": "Anirban Dasgupta 0001",
+          "dblp_pid": "54/385-1",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Balagopal Komarath",
+          "csrankings_name": "Balagopal Komarath",
+          "aliases": [
+            "Balagopal Komarath"
+          ],
+          "homepage": "https://iitgn.ac.in/faculty/cse/balagopal",
+          "orcid": null,
+          "dblp_match_name": "Balagopal Komarath",
+          "dblp_pid": "124/2629",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Bireswar Das",
+          "csrankings_name": "Bireswar Das",
+          "aliases": [
+            "Bireswar Das"
+          ],
+          "homepage": "http://www.iitgn.ac.in/faculty/comp/bireswar.htm",
+          "orcid": "0000-0002-3758-4033",
+          "dblp_match_name": "Bireswar Das",
+          "dblp_pid": "93/3858",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Krishna Prasad Miyapuram",
+          "csrankings_name": "Krishna Prasad Miyapuram",
+          "aliases": [
+            "Krishna Prasad Miyapuram",
+            "Krishna P. Miyapuram"
+          ],
+          "homepage": "http://cogs.iitgn.ac.in/people/faculty/krishna-miyapuram",
+          "orcid": null,
+          "dblp_match_name": "Krishna P. Miyapuram",
+          "dblp_pid": "00/4508",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Manisha Padala",
+          "csrankings_name": "Manisha Padala",
+          "aliases": [
+            "Manisha Padala",
+            "Padala Manisha",
+            "P. Manisha"
+          ],
+          "homepage": "https://sites.google.com/view/manishapadala/home",
+          "orcid": null,
+          "dblp_match_name": "Manisha Padala",
+          "dblp_pid": "213/8101",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Manoj Gupta",
+          "csrankings_name": "Manoj Gupta 0002",
+          "aliases": [
+            "Manoj Gupta 0002"
+          ],
+          "homepage": "http://www.iitgn.ac.in/faculty/comp/manoj.htm",
+          "orcid": "0000-0002-2248-8700",
+          "dblp_match_name": "Manoj Gupta 0002",
+          "dblp_pid": "05/5157-2",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Mayank Singh",
+          "csrankings_name": "Mayank Singh 0001",
+          "aliases": [
+            "Mayank Singh 0001"
+          ],
+          "homepage": "https://iitgn.ac.in/faculty/cse/fac-mayank",
+          "orcid": "0000-0001-8757-2623",
+          "dblp_match_name": "Mayank Singh 0001",
+          "dblp_pid": "96/4770",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Neeldhara Misra",
+          "csrankings_name": "Neeldhara Misra",
+          "aliases": [
+            "Neeldhara Misra"
+          ],
+          "homepage": "http://www.iitgn.ac.in/faculty/comp/neeldhara.htm",
+          "orcid": null,
+          "dblp_match_name": "Neeldhara Misra",
+          "dblp_pid": "85/6789",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Nipun Batra",
+          "csrankings_name": "Nipun Batra 0001",
+          "aliases": [
+            "Nipun Batra 0001"
+          ],
+          "homepage": "https://www.iitgn.ac.in/faculty/comp/nipun.htm",
+          "orcid": "0000-0002-0736-7169",
+          "dblp_match_name": "Nipun Batra 0001",
+          "dblp_pid": "19/2128",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Sameer G. Kulkarni",
+          "csrankings_name": "Sameer G. Kulkarni",
+          "aliases": [
+            "Sameer G. Kulkarni"
+          ],
+          "homepage": "https://iitgn.ac.in/faculty/cse/sameer",
+          "orcid": null,
+          "dblp_match_name": "Sameer G. Kulkarni",
+          "dblp_pid": "185/5705",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Shanmuganathan Raman",
+          "csrankings_name": "Shanmuganathan Raman",
+          "aliases": [
+            "Shanmuganathan Raman"
+          ],
+          "homepage": "http://www.iitgn.ac.in/faculty/electrical/shanmuganathan.htm",
+          "orcid": "0000-0003-2718-7891",
+          "dblp_match_name": "Shanmuganathan Raman",
+          "dblp_pid": "70/4688",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Shouvick Mondal",
+          "csrankings_name": "Shouvick Mondal",
+          "aliases": [
+            "Shouvick Mondal"
+          ],
+          "homepage": "https://sites.google.com/view/shouvick",
+          "orcid": "0000-0002-0703-8728",
+          "dblp_match_name": "Shouvick Mondal",
+          "dblp_pid": "167/4011",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Goa",
+      "short": "IITGOA",
+      "country": "India",
+      "website": "https://www.iitgoa.ac.in",
+      "state": "Goa",
+      "city": "Ponda",
+      "faculty_count": 9,
+      "faculty": [
+        {
+          "name": "A. V. Sreejith",
+          "csrankings_name": "A. V. Sreejith",
+          "aliases": [
+            "A. V. Sreejith"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/~sreejithav",
+          "orcid": null,
+          "dblp_match_name": "A. V. Sreejith",
+          "dblp_pid": "89/8556",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Amaldev Manuel",
+          "csrankings_name": "Amaldev Manuel",
+          "aliases": [
+            "Amaldev Manuel"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/~amal",
+          "orcid": null,
+          "dblp_match_name": "Amaldev Manuel",
+          "dblp_pid": "38/7255",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Arpita Korwar",
+          "csrankings_name": "Arpita Korwar",
+          "aliases": [
+            "Arpita Korwar"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/~arpita",
+          "orcid": null,
+          "dblp_match_name": "Arpita Korwar",
+          "dblp_pid": "52/10454",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Clint Pazhayidam George",
+          "csrankings_name": "Clint Pazhayidam George",
+          "aliases": [
+            "Clint Pazhayidam George",
+            "Clint P. George"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/~clint",
+          "orcid": null,
+          "dblp_match_name": "Clint P. George",
+          "dblp_pid": "00/9490",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Divya Padmanabhan",
+          "csrankings_name": "Divya Padmanabhan",
+          "aliases": [
+            "Divya Padmanabhan"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/faculty_page.php?id=130",
+          "orcid": null,
+          "dblp_match_name": "Divya Padmanabhan",
+          "dblp_pid": "62/6000",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Neha V. Karanjkar",
+          "csrankings_name": "Neha V. Karanjkar",
+          "aliases": [
+            "Neha V. Karanjkar"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/faculty_page.php?id=95",
+          "orcid": null,
+          "dblp_match_name": "Neha V. Karanjkar",
+          "dblp_pid": "87/9120",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Satyanath Bhat",
+          "csrankings_name": "Satyanath Bhat",
+          "aliases": [
+            "Satyanath Bhat"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/faculty_page.php?id=112",
+          "orcid": null,
+          "dblp_match_name": "Satyanath Bhat",
+          "dblp_pid": "85/10824",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sharad Sinha",
+          "csrankings_name": "Sharad Sinha",
+          "aliases": [
+            "Sharad Sinha"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/~sharad",
+          "orcid": "0000-0002-4532-2017",
+          "dblp_match_name": "Sharad Sinha",
+          "dblp_pid": "24/9978",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sudakshina Dutta",
+          "csrankings_name": "Sudakshina Dutta",
+          "aliases": [
+            "Sudakshina Dutta"
+          ],
+          "homepage": "https://www.iitgoa.ac.in/~sudakshina",
+          "orcid": null,
+          "dblp_match_name": "Sudakshina Dutta",
+          "dblp_pid": "43/11032",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Hyderabad",
+      "short": "IITH",
+      "country": "India",
+      "website": "https://www.iith.ac.in",
+      "state": "Telangana",
+      "city": "Hyderabad",
+      "faculty_count": 19,
+      "faculty": [
+        {
+          "name": "A. Antony Franklin",
+          "csrankings_name": "A. Antony Franklin",
+          "aliases": [
+            "A. Antony Franklin"
+          ],
+          "homepage": "http://www.iith.ac.in/~antony/index.html",
+          "orcid": "0000-0002-1809-2025",
+          "dblp_match_name": "A. Antony Franklin",
+          "dblp_pid": "63/3408",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Bheemarjuna Reddy Tamma",
+          "csrankings_name": "Bheemarjuna Reddy Tamma",
+          "aliases": [
+            "Bheemarjuna Reddy Tamma",
+            "Tamma Bheemarjuna Reddy"
+          ],
+          "homepage": "http://www.iith.ac.in/~tbr",
+          "orcid": "0000-0002-4056-7963",
+          "dblp_match_name": "Tamma Bheemarjuna Reddy",
+          "dblp_pid": "26/4025",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Chalavadi Krishna Mohan",
+          "csrankings_name": "Chalavadi Krishna Mohan",
+          "aliases": [
+            "Chalavadi Krishna Mohan",
+            "C. Krishna Mohan",
+            "Krishna Mohan C"
+          ],
+          "homepage": "http://www.iith.ac.in/~ckm",
+          "orcid": "0000-0002-7316-0836",
+          "dblp_match_name": "C. Krishna Mohan",
+          "dblp_pid": "30/4639",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Jagarlapudi Saketha Nath",
+          "csrankings_name": "Jagarlapudi Saketha Nath",
+          "aliases": [
+            "Jagarlapudi Saketha Nath",
+            "Saketha Nath Jagarlapudi",
+            "J. Saketha Nath"
+          ],
+          "homepage": "http://www.iith.ac.in/~saketha",
+          "orcid": null,
+          "dblp_match_name": "Saketha Nath Jagarlapudi",
+          "dblp_pid": "45/3130",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Kotaro Kataoka",
+          "csrankings_name": "Kotaro Kataoka",
+          "aliases": [
+            "Kotaro Kataoka"
+          ],
+          "homepage": "http://cse.iith.ac.in/profile/faculty/kotaro",
+          "orcid": "0000-0003-0545-3415",
+          "dblp_match_name": "Kotaro Kataoka",
+          "dblp_pid": "31/4385",
+          "match_confidence": "high"
+        },
+        {
+          "name": "M. V. Panduranga Rao",
+          "csrankings_name": "M. V. Panduranga Rao",
+          "aliases": [
+            "M. V. Panduranga Rao"
+          ],
+          "homepage": "https://cse.iith.ac.in/?q=People/Faculty",
+          "orcid": null,
+          "dblp_match_name": "M. V. Panduranga Rao",
+          "dblp_pid": "92/4566",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Manish Singh",
+          "csrankings_name": "Manish Singh 0002",
+          "aliases": [
+            "Manish Singh 0002"
+          ],
+          "homepage": "https://www.iith.ac.in/~msingh",
+          "orcid": "0000-0002-7919-2206",
+          "dblp_match_name": "Manish Singh 0002",
+          "dblp_pid": "78/459-2",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Manohar Kaul",
+          "csrankings_name": "Manohar Kaul",
+          "aliases": [
+            "Manohar Kaul",
+            "Manu Kaul"
+          ],
+          "homepage": "http://www.iith.ac.in/~mkaul",
+          "orcid": null,
+          "dblp_match_name": "Manohar Kaul",
+          "dblp_pid": "29/10735",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Maria Francis",
+          "csrankings_name": "Maria Francis",
+          "aliases": [
+            "Maria Francis"
+          ],
+          "homepage": "https://sites.google.com/view/maria-francis/home",
+          "orcid": null,
+          "dblp_match_name": "Maria Francis",
+          "dblp_pid": "129/1447",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Maunendra Sankar Desarkar",
+          "csrankings_name": "Maunendra Sankar Desarkar",
+          "aliases": [
+            "Maunendra Sankar Desarkar"
+          ],
+          "homepage": "http://www.iith.ac.in/~maunendra",
+          "orcid": "0000-0003-1963-7338",
+          "dblp_match_name": "Maunendra Sankar Desarkar",
+          "dblp_pid": "46/8779",
+          "match_confidence": "high"
+        },
+        {
+          "name": "N. R. Aravind",
+          "csrankings_name": "N. R. Aravind",
+          "aliases": [
+            "N. R. Aravind"
+          ],
+          "homepage": "http://www.iith.ac.in/~aravind",
+          "orcid": null,
+          "dblp_match_name": "N. R. Aravind",
+          "dblp_pid": "38/7531",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "P. K. Srijith",
+          "csrankings_name": "P. K. Srijith",
+          "aliases": [
+            "P. K. Srijith",
+            "Srijith P. K"
+          ],
+          "homepage": "https://cse.iith.ac.in/?q=People/Faculty",
+          "orcid": "0000-0002-2820-0835",
+          "dblp_match_name": "P. K. Srijith",
+          "dblp_pid": "120/8712",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Praveen Tammana",
+          "csrankings_name": "Praveen Tammana",
+          "aliases": [
+            "Praveen Tammana"
+          ],
+          "homepage": "https://www.iith.ac.in/cse/praveent",
+          "orcid": null,
+          "dblp_match_name": "Praveen Tammana",
+          "dblp_pid": "174/9515",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rakesh Venkat",
+          "csrankings_name": "Rakesh Venkat",
+          "aliases": [
+            "Rakesh Venkat"
+          ],
+          "homepage": "https://www.iith.ac.in/~rakeshvenkat",
+          "orcid": null,
+          "dblp_match_name": "Rakesh Venkat",
+          "dblp_pid": "147/5130",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rogers Mathew",
+          "csrankings_name": "Rogers Mathew",
+          "aliases": [
+            "Rogers Mathew"
+          ],
+          "homepage": "https://iith.ac.in/~rogers",
+          "orcid": null,
+          "dblp_match_name": "Rogers Mathew",
+          "dblp_pid": "92/5653",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Sathya Peri",
+          "csrankings_name": "Sathya Peri",
+          "aliases": [
+            "Sathya Peri"
+          ],
+          "homepage": "http://www.iith.ac.in/~sathya_p",
+          "orcid": "0000-0002-3471-7929",
+          "dblp_match_name": "Sathya Peri",
+          "dblp_pid": "41/5564",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sobhan Babu Chintapalli",
+          "csrankings_name": "Sobhan Babu Chintapalli",
+          "aliases": [
+            "Sobhan Babu Chintapalli"
+          ],
+          "homepage": "https://www.iith.ac.in/~sobhan",
+          "orcid": null,
+          "dblp_match_name": "Sobhan Babu Chintapalli",
+          "dblp_pid": "233/3456",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Subrahmanyam Kalyanasundaram",
+          "csrankings_name": "Subrahmanyam Kalyanasundaram",
+          "aliases": [
+            "Subrahmanyam Kalyanasundaram"
+          ],
+          "homepage": "https://www.iith.ac.in/~subruk",
+          "orcid": null,
+          "dblp_match_name": "Subrahmanyam Kalyanasundaram",
+          "dblp_pid": "12/7758",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Vineeth Nallure Balasubramanian",
+          "csrankings_name": "Vineeth Nallure Balasubramanian",
+          "aliases": [
+            "Vineeth Nallure Balasubramanian",
+            "Vineeth N. Balasubramanian",
+            "Vineeth Balasubramanian"
+          ],
+          "homepage": "https://people.iith.ac.in/vineethnb",
+          "orcid": "0000-0003-2656-0375",
+          "dblp_match_name": "Vineeth N. Balasubramanian",
+          "dblp_pid": "88/4691",
+          "match_confidence": "high"
+        }
+      ]
+    },
+    {
+      "name": "IIT Indore",
+      "short": "IITI",
+      "country": "India",
+      "website": "https://www.iiti.ac.in",
+      "state": "Madhya Pradesh",
+      "city": "Indore",
+      "faculty_count": 11,
+      "faculty": [
+        {
+          "name": "Abhishek Srivastava",
+          "csrankings_name": "Abhishek Srivastava",
+          "aliases": [
+            "Abhishek Srivastava"
+          ],
+          "homepage": "http://cse.iiti.ac.in/faculty.html",
+          "orcid": null,
+          "dblp_match_name": "Abhishek Srivastava",
+          "dblp_pid": "38/1922",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anirban Sengupta",
+          "csrankings_name": "Anirban Sengupta",
+          "aliases": [
+            "Anirban Sengupta"
+          ],
+          "homepage": "http://www.iiti.ac.in/~asengupt",
+          "orcid": null,
+          "dblp_match_name": "Anirban Sengupta",
+          "dblp_pid": "37/258",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Aruna Tiwari",
+          "csrankings_name": "Aruna Tiwari",
+          "aliases": [
+            "Aruna Tiwari"
+          ],
+          "homepage": "http://www.iiti.ac.in/~artiwari",
+          "orcid": null,
+          "dblp_match_name": "Aruna Tiwari",
+          "dblp_pid": "07/3137",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Bodhisatwa Mazumdar",
+          "csrankings_name": "Bodhisatwa Mazumdar",
+          "aliases": [
+            "Bodhisatwa Mazumdar"
+          ],
+          "homepage": "http://cse.iiti.ac.in/faculty.html",
+          "orcid": "0000-0003-1883-4639",
+          "dblp_match_name": "Bodhisatwa Mazumdar",
+          "dblp_pid": "79/11161",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Gourinath Banda",
+          "csrankings_name": "Gourinath Banda",
+          "aliases": [
+            "Gourinath Banda"
+          ],
+          "homepage": "http://cse.iiti.ac.in/faculty.html",
+          "orcid": null,
+          "dblp_match_name": "Gourinath Banda",
+          "dblp_pid": "85/5678",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Kapil Ahuja",
+          "csrankings_name": "Kapil Ahuja",
+          "aliases": [
+            "Kapil Ahuja"
+          ],
+          "homepage": "http://www.iiti.ac.in/~kahuja",
+          "orcid": "0000-0001-9640-4437",
+          "dblp_match_name": "Kapil Ahuja",
+          "dblp_pid": "77/1128",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Lawqueen Kanesh",
+          "csrankings_name": "Lawqueen Kanesh",
+          "aliases": [
+            "Lawqueen Kanesh"
+          ],
+          "homepage": "https://sites.google.com/view/lawqueenkanesh/home",
+          "orcid": null,
+          "dblp_match_name": "Lawqueen Kanesh",
+          "dblp_pid": "199/5848",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Narendra S. Chaudhari",
+          "csrankings_name": "Narendra S. Chaudhari",
+          "aliases": [
+            "Narendra S. Chaudhari"
+          ],
+          "homepage": "http://www.iiti.ac.in/~narendra",
+          "orcid": null,
+          "dblp_match_name": "Narendra S. Chaudhari",
+          "dblp_pid": "76/624",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Neminath Hubballi",
+          "csrankings_name": "Neminath Hubballi",
+          "aliases": [
+            "Neminath Hubballi"
+          ],
+          "homepage": "http://iiti.ac.in/people/~neminath",
+          "orcid": null,
+          "dblp_match_name": "Neminath Hubballi",
+          "dblp_pid": "20/7949",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Somnath Dey",
+          "csrankings_name": "Somnath Dey",
+          "aliases": [
+            "Somnath Dey"
+          ],
+          "homepage": "http://www.iiti.ac.in/~somnathd",
+          "orcid": null,
+          "dblp_match_name": "Somnath Dey",
+          "dblp_pid": "86/1192",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Surya Prakash",
+          "csrankings_name": "Surya Prakash 0001",
+          "aliases": [
+            "Surya Prakash 0001"
+          ],
+          "homepage": "http://www.iiti.ac.in/~surya",
+          "orcid": null,
+          "dblp_match_name": "Surya Prakash 0001",
+          "dblp_pid": "66/4392-1",
+          "match_confidence": "high"
+        }
+      ]
+    },
+    {
+      "name": "IIT Jodhpur",
+      "short": "IITJ",
+      "country": "India",
+      "website": "https://www.iitj.ac.in",
+      "state": "Rajasthan",
+      "city": "Jodhpur",
+      "faculty_count": 19,
+      "faculty": [
+        {
+          "name": "Anand Mishra",
+          "csrankings_name": "Anand Mishra 0001",
+          "aliases": [
+            "Anand Mishra 0001"
+          ],
+          "homepage": "https://anandmishra22.github.io",
+          "orcid": "0000-0002-7806-2557",
+          "dblp_match_name": "Anand Mishra 0001",
+          "dblp_pid": "26/2579",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Angshuman Paul",
+          "csrankings_name": "Angshuman Paul",
+          "aliases": [
+            "Angshuman Paul"
+          ],
+          "homepage": "https://sites.google.com/view/angshumanpaul/home",
+          "orcid": null,
+          "dblp_match_name": "Angshuman Paul",
+          "dblp_pid": "126/4534",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anil Shukla",
+          "csrankings_name": "Anil Shukla",
+          "aliases": [
+            "Anil Shukla"
+          ],
+          "homepage": "https://en-gb.facebook.com/anil.shukla.589583",
+          "orcid": null,
+          "dblp_match_name": "Anil Shukla",
+          "dblp_pid": "161/4030",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Avinash Sharma",
+          "csrankings_name": "Avinash Sharma 0001",
+          "aliases": [
+            "Avinash Sharma 0001"
+          ],
+          "homepage": "https://3dcomputervision.github.io",
+          "orcid": "0000-0001-5013-5024",
+          "dblp_match_name": "Avinash Sharma 0001",
+          "dblp_pid": "08/4811-1",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Chiranjoy Chattopadhyay",
+          "csrankings_name": "Chiranjoy Chattopadhyay",
+          "aliases": [
+            "Chiranjoy Chattopadhyay"
+          ],
+          "homepage": "http://home.iitj.ac.in/~chiranjoy",
+          "orcid": null,
+          "dblp_match_name": "Chiranjoy Chattopadhyay",
+          "dblp_pid": "125/2929",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Debasis Das",
+          "csrankings_name": "Debasis Das 0001",
+          "aliases": [
+            "Debasis Das 0001"
+          ],
+          "homepage": "https://sites.google.com/view/debasisdas",
+          "orcid": "0000-0001-6205-4096",
+          "dblp_match_name": "Debasis Das 0001",
+          "dblp_pid": "31/8262-1",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Dip Sankar Banerjee",
+          "csrankings_name": "Dip Sankar Banerjee",
+          "aliases": [
+            "Dip Sankar Banerjee"
+          ],
+          "homepage": "http://home.iitj.ac.in/~dipsankarb",
+          "orcid": "0000-0002-0476-1224",
+          "dblp_match_name": "Dip Sankar Banerjee",
+          "dblp_pid": "19/10955",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Gaurav Harit",
+          "csrankings_name": "Gaurav Harit",
+          "aliases": [
+            "Gaurav Harit"
+          ],
+          "homepage": "http://home.iitj.ac.in/~gharit",
+          "orcid": null,
+          "dblp_match_name": "Gaurav Harit",
+          "dblp_pid": "58/4372",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Manas Khatua",
+          "csrankings_name": "Manas Khatua",
+          "aliases": [
+            "Manas Khatua"
+          ],
+          "homepage": "http://manaskhatua.github.io",
+          "orcid": null,
+          "dblp_match_name": "Manas Khatua",
+          "dblp_pid": "125/1666",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Mayank Vatsa",
+          "csrankings_name": "Mayank Vatsa",
+          "aliases": [
+            "Mayank Vatsa"
+          ],
+          "homepage": "http://home.iitj.ac.in/~mvatsa",
+          "orcid": "0000-0001-5952-2274",
+          "dblp_match_name": "Mayank Vatsa",
+          "dblp_pid": "58/323",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Palash Das",
+          "csrankings_name": "Palash Das",
+          "aliases": [
+            "Palash Das"
+          ],
+          "homepage": "http://home.iitj.ac.in/~palashdas",
+          "orcid": null,
+          "dblp_match_name": "Palash Das",
+          "dblp_pid": "156/2488",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Pallavi Jain",
+          "csrankings_name": "Pallavi Jain 0001",
+          "aliases": [
+            "Pallavi Jain 0001"
+          ],
+          "homepage": "https://pallavijain.weebly.com",
+          "orcid": null,
+          "dblp_match_name": "Pallavi Jain 0001",
+          "dblp_pid": "136/4807",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Pratik Mazumder",
+          "csrankings_name": "Pratik Mazumder",
+          "aliases": [
+            "Pratik Mazumder"
+          ],
+          "homepage": "https://sites.google.com/view/pratikmazumder",
+          "orcid": "0000-0003-1103-1884",
+          "dblp_match_name": "Pratik Mazumder",
+          "dblp_pid": "237/9769",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Richa Singh",
+          "csrankings_name": "Richa Singh 0001",
+          "aliases": [
+            "Richa Singh 0001"
+          ],
+          "homepage": "http://home.iitj.ac.in/~richa",
+          "orcid": "0000-0003-4060-4573",
+          "dblp_match_name": "Richa Singh 0001",
+          "dblp_pid": "75/3512",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Romi Banerjee",
+          "csrankings_name": "Romi Banerjee",
+          "aliases": [
+            "Romi Banerjee"
+          ],
+          "homepage": "https://sites.google.com/site/romibitsnbob/home",
+          "orcid": null,
+          "dblp_match_name": "Romi Banerjee",
+          "dblp_pid": "130/5071",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Suchetana Chakraborty",
+          "csrankings_name": "Suchetana Chakraborty",
+          "aliases": [
+            "Suchetana Chakraborty"
+          ],
+          "homepage": "http://home.iitj.ac.in/~suchetana",
+          "orcid": null,
+          "dblp_match_name": "Suchetana Chakraborty",
+          "dblp_pid": "52/10123",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Sumit Kalra",
+          "csrankings_name": "Sumit Kalra",
+          "aliases": [
+            "Sumit Kalra"
+          ],
+          "homepage": "http://home.iitj.ac.in/~sumitk",
+          "orcid": null,
+          "dblp_match_name": "Sumit Kalra",
+          "dblp_pid": "152/3927",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Vimal Raj Sharma",
+          "csrankings_name": "Vimal Raj Sharma",
+          "aliases": [
+            "Vimal Raj Sharma",
+            "Vimalraj Sharma"
+          ],
+          "homepage": "http://home.iitj.ac.in/~vimalraj",
+          "orcid": null,
+          "dblp_match_name": "Vimalraj Sharma",
+          "dblp_pid": "221/4444",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Yashaswi Verma",
+          "csrankings_name": "Yashaswi Verma",
+          "aliases": [
+            "Yashaswi Verma"
+          ],
+          "homepage": "https://sites.google.com/view/yashaswiverma",
+          "orcid": "0000-0003-2317-2641",
+          "dblp_match_name": "Yashaswi Verma",
+          "dblp_pid": "117/4872",
+          "match_confidence": "high"
+        }
+      ]
+    },
+    {
+      "name": "IIT Jammu",
+      "short": "IITJMU",
+      "country": "India",
+      "website": "https://www.iitjammu.ac.in",
+      "state": "Jammu and Kashmir",
+      "city": "Jammu",
+      "faculty_count": 11,
+      "faculty": [
+        {
+          "name": "Gaurav Varshney",
+          "csrankings_name": "Gaurav Varshney",
+          "aliases": [
+            "Gaurav Varshney"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~gauravvarshney",
+          "orcid": null,
+          "dblp_match_name": "Gaurav Varshney",
+          "dblp_pid": "73/4883",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Harkeerat Kaur",
+          "csrankings_name": "Harkeerat Kaur",
+          "aliases": [
+            "Harkeerat Kaur"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~harkeeratkaur",
+          "orcid": null,
+          "dblp_match_name": "Harkeerat Kaur",
+          "dblp_pid": "49/5360",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Manoj Singh Gaur",
+          "csrankings_name": "Manoj Singh Gaur",
+          "aliases": [
+            "Manoj Singh Gaur"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~manojsinghgaur",
+          "orcid": null,
+          "dblp_match_name": "Manoj Singh Gaur",
+          "dblp_pid": "80/7311",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Prabhat Munshi",
+          "csrankings_name": "Prabhat Munshi",
+          "aliases": [
+            "Prabhat Munshi"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~prabhatmunshi",
+          "orcid": null,
+          "dblp_match_name": "Prabhat Munshi",
+          "dblp_pid": "16/1048",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sayantan Mukherjee",
+          "csrankings_name": "Sayantan Mukherjee",
+          "aliases": [
+            "Sayantan Mukherjee"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~sayantanmukherjee",
+          "orcid": null,
+          "dblp_match_name": "Sayantan Mukherjee",
+          "dblp_pid": "150/8065",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Shaifu Gupta",
+          "csrankings_name": "Shaifu Gupta",
+          "aliases": [
+            "Shaifu Gupta"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~shaifugupta",
+          "orcid": null,
+          "dblp_match_name": "Shaifu Gupta",
+          "dblp_pid": "213/9336",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Subhasis Bhattacharjee",
+          "csrankings_name": "Subhasis Bhattacharjee",
+          "aliases": [
+            "Subhasis Bhattacharjee"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~subhasisbhattacharjee",
+          "orcid": "0000-0002-3015-3388",
+          "dblp_match_name": "Subhasis Bhattacharjee",
+          "dblp_pid": "95/4618",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Suman Banerjee",
+          "csrankings_name": "Suman Banerjee 0002",
+          "aliases": [
+            "Suman Banerjee 0002"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~sumanbanerjee",
+          "orcid": null,
+          "dblp_match_name": "Suman Banerjee 0002",
+          "dblp_pid": "345/5455-2",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Sumit K. Pandey",
+          "csrankings_name": "Sumit K. Pandey",
+          "aliases": [
+            "Sumit K. Pandey"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~sumitkpandey",
+          "orcid": null,
+          "dblp_match_name": "Sumit K. Pandey",
+          "dblp_pid": "224/8753",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Vinit Jakhetiya",
+          "csrankings_name": "Vinit Jakhetiya",
+          "aliases": [
+            "Vinit Jakhetiya"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~vinitjakhetiya",
+          "orcid": null,
+          "dblp_match_name": "Vinit Jakhetiya",
+          "dblp_pid": "27/9850",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Yamuna Prasad",
+          "csrankings_name": "Yamuna Prasad",
+          "aliases": [
+            "Yamuna Prasad"
+          ],
+          "homepage": "https://www.iitjammu.ac.in/computer_science_engineering/faculty-list/~yamunaprasad",
+          "orcid": null,
+          "dblp_match_name": "Yamuna Prasad",
+          "dblp_pid": "50/8181",
+          "match_confidence": "high"
+        }
+      ]
+    },
+    {
+      "name": "IIT Mandi",
+      "short": "IITMANDI",
+      "country": "India",
+      "website": "https://www.iitmandi.ac.in",
+      "state": "Himachal Pradesh",
+      "city": "Mandi",
+      "faculty_count": 13,
+      "faculty": [
+        {
+          "name": "Aditya Nigam",
+          "csrankings_name": "Aditya Nigam",
+          "aliases": [
+            "Aditya Nigam"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~aditya",
+          "orcid": "0000-0003-4755-0619",
+          "dblp_match_name": "Aditya Nigam",
+          "dblp_pid": "60/7950",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anil Kumar Sao",
+          "csrankings_name": "Anil Kumar Sao",
+          "aliases": [
+            "Anil Kumar Sao"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~anil",
+          "orcid": null,
+          "dblp_match_name": "Anil Kumar Sao",
+          "dblp_pid": "65/5924",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Aroor Dinesh Dileep",
+          "csrankings_name": "Aroor Dinesh Dileep",
+          "aliases": [
+            "Aroor Dinesh Dileep"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~addileep",
+          "orcid": null,
+          "dblp_match_name": "Aroor Dinesh Dileep",
+          "dblp_pid": "152/1278",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Padmanabhan Rajan",
+          "csrankings_name": "Padmanabhan Rajan",
+          "aliases": [
+            "Padmanabhan Rajan"
+          ],
+          "homepage": "https://faculty.iitmandi.ac.in/~padman",
+          "orcid": null,
+          "dblp_match_name": "Padmanabhan Rajan",
+          "dblp_pid": "11/10499",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Renu M. Rameshan",
+          "csrankings_name": "Renu M. Rameshan",
+          "aliases": [
+            "Renu M. Rameshan"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/research/publications/Author/renumr.php",
+          "orcid": null,
+          "dblp_match_name": "Renu M. Rameshan",
+          "dblp_pid": "81/10698",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Samar Agnihotri",
+          "csrankings_name": "Samar Agnihotri",
+          "aliases": [
+            "Samar Agnihotri"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~samar",
+          "orcid": null,
+          "dblp_match_name": "Samar Agnihotri",
+          "dblp_pid": "28/1360",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Satyajit Thakor",
+          "csrankings_name": "Satyajit Thakor",
+          "aliases": [
+            "Satyajit Thakor"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~satyajit",
+          "orcid": null,
+          "dblp_match_name": "Satyajit Thakor",
+          "dblp_pid": "05/7001",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Siddhartha Sarma",
+          "csrankings_name": "Siddhartha Sarma",
+          "aliases": [
+            "Siddhartha Sarma"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~siddhartha/index.html",
+          "orcid": null,
+          "dblp_match_name": "Siddhartha Sarma",
+          "dblp_pid": "133/3910",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sriram Kailasam",
+          "csrankings_name": "Sriram Kailasam",
+          "aliases": [
+            "Sriram Kailasam"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~sriramk",
+          "orcid": null,
+          "dblp_match_name": "Sriram Kailasam",
+          "dblp_pid": "63/9995",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Subashish Datta",
+          "csrankings_name": "Subashish Datta",
+          "aliases": [
+            "Subashish Datta"
+          ],
+          "homepage": "https://www.facebook.com/subashish.datta",
+          "orcid": null,
+          "dblp_match_name": "Subashish Datta",
+          "dblp_pid": "36/9185",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Timothy A. Gonsalves",
+          "csrankings_name": "Timothy A. Gonsalves",
+          "aliases": [
+            "Timothy A. Gonsalves"
+          ],
+          "homepage": "http://www.cse.iitm.ac.in/~tag",
+          "orcid": null,
+          "dblp_match_name": "Timothy A. Gonsalves",
+          "dblp_pid": "12/6704",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Tushar Jain",
+          "csrankings_name": "Tushar Jain",
+          "aliases": [
+            "Tushar Jain"
+          ],
+          "homepage": "http://faculty.iitmandi.ac.in/~tushar",
+          "orcid": "0000-0002-9261-803X",
+          "dblp_match_name": "Tushar Jain",
+          "dblp_pid": "49/8043",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Varun Dutt",
+          "csrankings_name": "Varun Dutt",
+          "aliases": [
+            "Varun Dutt"
+          ],
+          "homepage": "https://faculty.iitmandi.ac.in/~varun",
+          "orcid": null,
+          "dblp_match_name": "Varun Dutt",
+          "dblp_pid": "80/9838",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Patna",
+      "short": "IITP",
+      "country": "India",
+      "website": "https://www.iitp.ac.in",
+      "state": "Bihar",
+      "city": "Patna",
+      "faculty_count": 13,
+      "faculty": [
+        {
+          "name": "Abyayananda Maiti",
+          "csrankings_name": "Abyayananda Maiti",
+          "aliases": [
+            "Abyayananda Maiti"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/computer-center/people/head/1095-dr-abyayananda-maiti.html",
+          "orcid": null,
+          "dblp_match_name": "Abyayananda Maiti",
+          "dblp_pid": "48/9828",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Arijit Mondal",
+          "csrankings_name": "Arijit Mondal",
+          "aliases": [
+            "Arijit Mondal"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/584-arijit-mondal.html",
+          "orcid": null,
+          "dblp_match_name": "Arijit Mondal",
+          "dblp_pid": "08/5656",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Ashok Singh Sairam",
+          "csrankings_name": "Ashok Singh Sairam",
+          "aliases": [
+            "Ashok Singh Sairam"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/dr-ashok-singh-sairam.html",
+          "orcid": null,
+          "dblp_match_name": "Ashok Singh Sairam",
+          "dblp_pid": "45/173",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Asif Ekbal",
+          "csrankings_name": "Asif Ekbal",
+          "aliases": [
+            "Asif Ekbal"
+          ],
+          "homepage": "http://iitp.ac.in/~asif",
+          "orcid": null,
+          "dblp_match_name": "Asif Ekbal",
+          "dblp_pid": "11/3590",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Jimson Mathew",
+          "csrankings_name": "Jimson Mathew",
+          "aliases": [
+            "Jimson Mathew"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/1502-dr-jimson-mathew.html",
+          "orcid": null,
+          "dblp_match_name": "Jimson Mathew",
+          "dblp_pid": "93/1946",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Joydeep Chandra",
+          "csrankings_name": "Joydeep Chandra",
+          "aliases": [
+            "Joydeep Chandra"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/computer-center/people/head/705-dr-joydeep-chandra.html",
+          "orcid": "0000-0001-5994-9024",
+          "dblp_match_name": "Joydeep Chandra",
+          "dblp_pid": "59/4869",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rajiv Misra",
+          "csrankings_name": "Rajiv Misra",
+          "aliases": [
+            "Rajiv Misra"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/dr-rajiv-misra.html",
+          "orcid": "0000-0002-4910-5749",
+          "dblp_match_name": "Rajiv Misra",
+          "dblp_pid": "12/1024",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Raju Halder",
+          "csrankings_name": "Raju Halder",
+          "aliases": [
+            "Raju Halder"
+          ],
+          "homepage": "https://iitp.ac.in/~halder",
+          "orcid": "0000-0002-8873-8258",
+          "dblp_match_name": "Raju Halder",
+          "dblp_pid": "18/7553",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Samrat Mondal",
+          "csrankings_name": "Samrat Mondal",
+          "aliases": [
+            "Samrat Mondal"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/dr-samrat-mondal.html",
+          "orcid": "0000-0002-2159-3410",
+          "dblp_match_name": "Samrat Mondal",
+          "dblp_pid": "99/3101",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Somanath Tripathy",
+          "csrankings_name": "Somanath Tripathy",
+          "aliases": [
+            "Somanath Tripathy"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/dr-somanath-tripathy.html",
+          "orcid": null,
+          "dblp_match_name": "Somanath Tripathy",
+          "dblp_pid": "94/1950",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sourav Kumar Dandapat",
+          "csrankings_name": "Sourav Kumar Dandapat",
+          "aliases": [
+            "Sourav Kumar Dandapat"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/1608-dr-sourav-kumar-dandapat.html",
+          "orcid": null,
+          "dblp_match_name": "Sourav Kumar Dandapat",
+          "dblp_pid": "97/8395",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sriparna Saha",
+          "csrankings_name": "Sriparna Saha 0001",
+          "aliases": [
+            "Sriparna Saha 0001"
+          ],
+          "homepage": "http://www.iitp.ac.in/~sriparna",
+          "orcid": "0000-0001-5458-9381",
+          "dblp_match_name": "Sriparna Saha 0001",
+          "dblp_pid": "27/1664-1",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Suman Kumar Maji",
+          "csrankings_name": "Suman Kumar Maji",
+          "aliases": [
+            "Suman Kumar Maji"
+          ],
+          "homepage": "https://iitp.ac.in/index.php/departments/engineering/computer-science-a-engineering/people/faculty/1450-dr-suman-kumar-maji.html",
+          "orcid": null,
+          "dblp_match_name": "Suman Kumar Maji",
+          "dblp_pid": "118/7789",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Palakkad",
+      "short": "IITPKD",
+      "country": "India",
+      "website": "https://www.iitpkd.ac.in",
+      "state": "Kerala",
+      "city": "Palakkad",
+      "faculty_count": 11,
+      "faculty": [
+        {
+          "name": "Albert Sunny",
+          "csrankings_name": "Albert Sunny",
+          "aliases": [
+            "Albert Sunny"
+          ],
+          "homepage": "https://albert-sunny.github.io",
+          "orcid": null,
+          "dblp_match_name": "Albert Sunny",
+          "dblp_pid": "08/8261",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Anish Hirwe",
+          "csrankings_name": "Anish Hirwe",
+          "aliases": [
+            "Anish Hirwe"
+          ],
+          "homepage": "https://iitpkd.ac.in/people/anish",
+          "orcid": null,
+          "dblp_match_name": "Anish Hirwe",
+          "dblp_pid": "185/2446",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Deepak Rajendraprasad",
+          "csrankings_name": "Deepak Rajendraprasad",
+          "aliases": [
+            "Deepak Rajendraprasad"
+          ],
+          "homepage": "https://www.iitpkd.ac.in/people/deepak",
+          "orcid": "0000-0001-9101-8967",
+          "dblp_match_name": "Deepak Rajendraprasad",
+          "dblp_pid": "40/8774",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Jasine Babu",
+          "csrankings_name": "Jasine Babu",
+          "aliases": [
+            "Jasine Babu"
+          ],
+          "homepage": "https://iitpkd.ac.in/people/jasine",
+          "orcid": null,
+          "dblp_match_name": "Jasine Babu",
+          "dblp_pid": "84/9220",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Krishnamoorthy Dinesh",
+          "csrankings_name": "Krishnamoorthy Dinesh 0001",
+          "aliases": [
+            "Krishnamoorthy Dinesh 0001"
+          ],
+          "homepage": "https://kdinesh.bitbucket.io",
+          "orcid": null,
+          "dblp_match_name": "Krishnamoorthy Dinesh 0001",
+          "dblp_pid": "156/0653",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Piyush P. Kurur",
+          "csrankings_name": "Piyush P. Kurur",
+          "aliases": [
+            "Piyush P. Kurur"
+          ],
+          "homepage": "https://piyush-kurur.github.io",
+          "orcid": null,
+          "dblp_match_name": "Piyush P. Kurur",
+          "dblp_pid": "32/4550",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "R. Krithika",
+          "csrankings_name": "R. Krithika 0001",
+          "aliases": [
+            "R. Krithika 0001"
+          ],
+          "homepage": "https://www.iitpkd.ac.in/people/krithika",
+          "orcid": null,
+          "dblp_match_name": "R. Krithika 0001",
+          "dblp_pid": "67/10948",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Sandeep Chandran",
+          "csrankings_name": "Sandeep Chandran",
+          "aliases": [
+            "Sandeep Chandran"
+          ],
+          "homepage": "https://www.iitpkd.ac.in/people/sandeepchandran",
+          "orcid": "0000-0001-7110-5668",
+          "dblp_match_name": "Sandeep Chandran",
+          "dblp_pid": "129/7618",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Srimanta Bhattacharya",
+          "csrankings_name": "Srimanta Bhattacharya",
+          "aliases": [
+            "Srimanta Bhattacharya"
+          ],
+          "homepage": "https://www.iitpkd.ac.in/people/srimanta",
+          "orcid": null,
+          "dblp_match_name": "Srimanta Bhattacharya",
+          "dblp_pid": "94/9219",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Unnikrishnan Cheramangalath",
+          "csrankings_name": "Unnikrishnan Cheramangalath",
+          "aliases": [
+            "Unnikrishnan Cheramangalath",
+            "Unnikrishnan C."
+          ],
+          "homepage": "https://unnikrishnan-c.github.io",
+          "orcid": null,
+          "dblp_match_name": "Unnikrishnan C.",
+          "dblp_pid": "174/8276",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Vivek Chaturvedi",
+          "csrankings_name": "Vivek Chaturvedi",
+          "aliases": [
+            "Vivek Chaturvedi"
+          ],
+          "homepage": "https://iitpkd.ac.in/people/vivek",
+          "orcid": "0000-0003-1358-0107",
+          "dblp_match_name": "Vivek Chaturvedi",
+          "dblp_pid": "72/8378",
+          "match_confidence": "high"
+        }
+      ]
+    },
+    {
+      "name": "IIT Roorkee",
+      "short": "IITR",
+      "country": "India",
+      "website": "https://www.iitr.ac.in",
+      "state": "Uttarakhand",
+      "city": "Roorkee",
+      "faculty_count": 9,
+      "faculty": [
+        {
+          "name": "Balasubramanian Raman",
+          "csrankings_name": "Balasubramanian Raman",
+          "aliases": [
+            "Balasubramanian Raman",
+            "Raman Balasubramanian"
+          ],
+          "homepage": "http://www.iitr.ac.in/departments/CSE/pages/Home+Departments_and_Centres+Mathematics+People+Faculty+Balasubramanian_R_.html",
+          "orcid": null,
+          "dblp_match_name": "Balasubramanian Raman",
+          "dblp_pid": "57/6641",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Dhaval C. Patel",
+          "csrankings_name": "Dhaval C. Patel 0002",
+          "aliases": [
+            "Dhaval C. Patel 0002",
+            "Dhaval Patel 0002"
+          ],
+          "homepage": "http://faculty.iitr.ac.in/~patelfec",
+          "orcid": "0000-0001-6210-0902",
+          "dblp_match_name": "Dhaval Patel 0002",
+          "dblp_pid": "28/1282-2",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Durga Toshniwal",
+          "csrankings_name": "Durga Toshniwal",
+          "aliases": [
+            "Durga Toshniwal"
+          ],
+          "homepage": "http://www.iitr.ac.in/departments/CSE/pages/People+Faculty+Durga_Toshniwal.html",
+          "orcid": null,
+          "dblp_match_name": "Durga Toshniwal",
+          "dblp_pid": "37/640",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Manoj Misra",
+          "csrankings_name": "Manoj Misra",
+          "aliases": [
+            "Manoj Misra"
+          ],
+          "homepage": "https://iitr.ac.in/~CSE/Manoj_Mishra",
+          "orcid": null,
+          "dblp_match_name": "Manoj Misra",
+          "dblp_pid": "71/3734",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Rajdeep Niyogi",
+          "csrankings_name": "Rajdeep Niyogi",
+          "aliases": [
+            "Rajdeep Niyogi"
+          ],
+          "homepage": "http://www.iitr.ac.in/departments/CSE/pages/People+Faculty+rajdpfec.html",
+          "orcid": null,
+          "dblp_match_name": "Rajdeep Niyogi",
+          "dblp_pid": "87/5531",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Ranita Biswas",
+          "csrankings_name": "Ranita Biswas",
+          "aliases": [
+            "Ranita Biswas"
+          ],
+          "homepage": "http://faculty.iitr.ac.in/~ranitafcs",
+          "orcid": null,
+          "dblp_match_name": "Ranita Biswas",
+          "dblp_pid": "150/5003",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sudip Roy",
+          "csrankings_name": "Sudip Roy 0001",
+          "aliases": [
+            "Sudip Roy 0001"
+          ],
+          "homepage": "http://www.iitr.ac.in/departments/CSE/pages/People+Sudip_Roy.html",
+          "orcid": "0000-0001-7873-3069",
+          "dblp_match_name": "Sudip Roy 0001",
+          "dblp_pid": "44/4775",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Sugata Gangopadhyay",
+          "csrankings_name": "Sugata Gangopadhyay",
+          "aliases": [
+            "Sugata Gangopadhyay"
+          ],
+          "homepage": "http://www.iitr.ac.in/departments/CSE/pages/Home+Departments_and_Centres+Mathematics+People+Faculty+Gangopadhyay_Sugata.html",
+          "orcid": null,
+          "dblp_match_name": "Sugata Gangopadhyay",
+          "dblp_pid": "86/1861",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Vaskar Raychoudhury",
+          "csrankings_name": "Vaskar Raychoudhury",
+          "aliases": [
+            "Vaskar Raychoudhury"
+          ],
+          "homepage": "http://faculty.iitr.ac.in/~vaskafec",
+          "orcid": null,
+          "dblp_match_name": "Vaskar Raychoudhury",
+          "dblp_pid": "97/4817",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Ropar",
+      "short": "IITRPR",
+      "country": "India",
+      "website": "https://www.iitrpr.ac.in",
+      "state": "Punjab",
+      "city": "Rupnagar",
+      "faculty_count": 11,
+      "faculty": [
+        {
+          "name": "Abhinav Dhall",
+          "csrankings_name": "Abhinav Dhall",
+          "aliases": [
+            "Abhinav Dhall"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/abhinavdhall",
+          "orcid": null,
+          "dblp_match_name": "Abhinav Dhall",
+          "dblp_pid": "05/7591",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Apurva Mudgal",
+          "csrankings_name": "Apurva Mudgal",
+          "aliases": [
+            "Apurva Mudgal"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/apurva",
+          "orcid": null,
+          "dblp_match_name": "Apurva Mudgal",
+          "dblp_pid": "43/6643",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Balwinder Sodhi",
+          "csrankings_name": "Balwinder Sodhi",
+          "aliases": [
+            "Balwinder Sodhi"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/sodhi",
+          "orcid": null,
+          "dblp_match_name": "Balwinder Sodhi",
+          "dblp_pid": "43/10009",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Deepti R. Bathula",
+          "csrankings_name": "Deepti R. Bathula",
+          "aliases": [
+            "Deepti R. Bathula"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/bathula",
+          "orcid": null,
+          "dblp_match_name": "Deepti R. Bathula",
+          "dblp_pid": "16/2063",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Mukesh Kumar Saini",
+          "csrankings_name": "Mukesh Kumar Saini",
+          "aliases": [
+            "Mukesh Kumar Saini",
+            "Mukesh Saini"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/mukeshsaini",
+          "orcid": null,
+          "dblp_match_name": "Mukesh Saini",
+          "dblp_pid": "83/3852",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Narayanan Chatapuram Krishnan",
+          "csrankings_name": "Narayanan Chatapuram Krishnan",
+          "aliases": [
+            "Narayanan Chatapuram Krishnan",
+            "Narayanan C. Krishnan"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/ckn",
+          "orcid": "0000-0002-6132-0310",
+          "dblp_match_name": "Narayanan Chatapuram Krishnan",
+          "dblp_pid": "58/3743",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Neeraj Goel",
+          "csrankings_name": "Neeraj Goel",
+          "aliases": [
+            "Neeraj Goel"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/neerajgoel",
+          "orcid": "0000-0003-3824-9437",
+          "dblp_match_name": "Neeraj Goel",
+          "dblp_pid": "10/380",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Nitin Auluck",
+          "csrankings_name": "Nitin Auluck",
+          "aliases": [
+            "Nitin Auluck"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/nitin",
+          "orcid": null,
+          "dblp_match_name": "Nitin Auluck",
+          "dblp_pid": "86/5420",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Puneet Goyal",
+          "csrankings_name": "Puneet Goyal",
+          "aliases": [
+            "Puneet Goyal"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/puneet",
+          "orcid": null,
+          "dblp_match_name": "Puneet Goyal",
+          "dblp_pid": "51/10700",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sudarshan Iyengar",
+          "csrankings_name": "Sudarshan Iyengar",
+          "aliases": [
+            "Sudarshan Iyengar"
+          ],
+          "homepage": "http://sudarshaniyengar.com",
+          "orcid": null,
+          "dblp_match_name": "Sudarshan Iyengar",
+          "dblp_pid": "90/10042",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Sujata Pal",
+          "csrankings_name": "Sujata Pal",
+          "aliases": [
+            "Sujata Pal"
+          ],
+          "homepage": "http://www.iitrpr.ac.in/cse/sujata",
+          "orcid": "0000-0001-6652-9669",
+          "dblp_match_name": "Sujata Pal",
+          "dblp_pid": "157/7765",
+          "match_confidence": "medium"
+        }
+      ]
+    },
+    {
+      "name": "IIT Tirupati",
+      "short": "IITTP",
+      "country": "India",
+      "website": "https://www.iittp.ac.in",
+      "state": "Andhra Pradesh",
+      "city": "Tirupati",
+      "faculty_count": 9,
+      "faculty": [
+        {
+          "name": "Chalavadi Vishnu",
+          "csrankings_name": "Chalavadi Vishnu",
+          "aliases": [
+            "Chalavadi Vishnu",
+            "Vishnu Chalavadi"
+          ],
+          "homepage": "https://vish9u.github.io",
+          "orcid": null,
+          "dblp_match_name": "Chalavadi Vishnu",
+          "dblp_pid": "302/7458",
+          "match_confidence": "high"
+        },
+        {
+          "name": "G. Ramakrishna",
+          "csrankings_name": "G. Ramakrishna",
+          "aliases": [
+            "G. Ramakrishna"
+          ],
+          "homepage": "https://iittp.ac.in/dr-g-ramakrishna",
+          "orcid": "0000-0002-7554-0349",
+          "dblp_match_name": "G. Ramakrishna",
+          "dblp_pid": "119/4835",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Jaynarayan T. Tudu",
+          "csrankings_name": "Jaynarayan T. Tudu",
+          "aliases": [
+            "Jaynarayan T. Tudu"
+          ],
+          "homepage": "https://jayresearch.github.io",
+          "orcid": null,
+          "dblp_match_name": "Jaynarayan T. Tudu",
+          "dblp_pid": "35/8110",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Kalidas Yeturu",
+          "csrankings_name": "Kalidas Yeturu",
+          "aliases": [
+            "Kalidas Yeturu"
+          ],
+          "homepage": "https://iittp.ac.in/dr-kalidas-yeturu",
+          "orcid": null,
+          "dblp_match_name": "Kalidas Yeturu",
+          "dblp_pid": "03/7099",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Raghavendra Kanakagiri",
+          "csrankings_name": "Raghavendra Kanakagiri",
+          "aliases": [
+            "Raghavendra Kanakagiri"
+          ],
+          "homepage": "https://raghavendrak.github.io",
+          "orcid": "0000-0002-5561-2421",
+          "dblp_match_name": "Raghavendra Kanakagiri",
+          "dblp_pid": "248/6427",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "S. Raja",
+          "csrankings_name": "S. Raja 0001",
+          "aliases": [
+            "S. Raja 0001",
+            "Raja S 0001"
+          ],
+          "homepage": "https://iittp.ac.in/dr-s-raja",
+          "orcid": null,
+          "dblp_match_name": "S. Raja 0001",
+          "dblp_pid": "45/8284",
+          "match_confidence": "high"
+        },
+        {
+          "name": "Sridhar Chimalakonda",
+          "csrankings_name": "Sridhar Chimalakonda",
+          "aliases": [
+            "Sridhar Chimalakonda"
+          ],
+          "homepage": "https://researchweb.iiit.ac.in/~sridhar_ch",
+          "orcid": "0000-0003-0818-8178",
+          "dblp_match_name": "Sridhar Chimalakonda",
+          "dblp_pid": "76/1783",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "V. Mahendran",
+          "csrankings_name": "V. Mahendran",
+          "aliases": [
+            "V. Mahendran"
+          ],
+          "homepage": "https://www.iittp.ac.in/dr-v-mahendran",
+          "orcid": null,
+          "dblp_match_name": "V. Mahendran",
+          "dblp_pid": "306/6686",
+          "match_confidence": "medium"
+        },
+        {
+          "name": "Venkata Ramana Badarla",
+          "csrankings_name": "Venkata Ramana Badarla",
+          "aliases": [
+            "Venkata Ramana Badarla",
+            "Venkataramana Badarla"
+          ],
+          "homepage": "https://iittp.ac.in/dr-venkata-ramana-badarla",
+          "orcid": null,
+          "dblp_match_name": "Venkataramana Badarla",
+          "dblp_pid": "48/1142",
+          "match_confidence": "medium"
         }
       ]
     }
