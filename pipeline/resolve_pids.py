@@ -585,11 +585,26 @@ def resolve_institution(short, inst, csv_path, session, refresh=False, limit=Non
     return rows, people, results, counts
 
 
-def write_combined(all_inst):
+def read_json(path):
+    """Load a JSON file, or return None if it isn't there / is unreadable."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
+def write_combined(all_inst, merge=False):
     """Write ONE roster file (every institution, HIGH+MEDIUM faculty) and ONE
     shared needs-review file (REVIEW + unresolved, every institution).
 
     all_inst: list of (short, inst, results, counts).
+
+    merge=False (an --all run) rebuilds both files from scratch.
+    merge=True (single-institution mode) rewrites only the blocks and review
+    rows belonging to the institutions in `all_inst` and carries every other
+    institution over verbatim from the files on disk — so adding one college
+    costs one institution's worth of DBLP calls, not the whole roster's.
     """
     generated_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     roster = {"generated_at": generated_at, "source": "CSRankings", "institutions": []}
@@ -624,6 +639,27 @@ def write_combined(all_inst):
         roster["institutions"].append(block)
         summary.append((short, inst["name"], counts, len(faculty)))
 
+    if merge:
+        touched = {short.upper() for short, *_ in all_inst}
+        fresh = {b["short"].upper(): b for b in roster["institutions"]}
+        prior_roster = read_json(RESOLVED_FILE) or {}
+        merged = []
+        for block in prior_roster.get("institutions", []):
+            key = block.get("short", "").upper()
+            # Replace a re-resolved institution in place (keeps file order
+            # stable across runs); carry every other one over untouched.
+            merged.append(fresh.pop(key) if key in fresh else block)
+        merged.extend(fresh.values())  # institutions seen for the first time
+        roster["institutions"] = merged
+
+        # Same for the shared review file: drop this institution's stale rows,
+        # keep everyone else's, so `untriaged` still covers the whole project
+        # and refresh.sh's exit code stays meaningful.
+        prior_review = read_json(NEEDS_REVIEW_JSON) or {}
+        carried = [r for r in prior_review.get("results", [])
+                   if r.get("short", "").upper() not in touched]
+        review_rows = carried + review_rows
+
     with open(RESOLVED_FILE, "w", encoding="utf-8") as f:
         json.dump(roster, f, indent=2, ensure_ascii=False)
 
@@ -648,7 +684,8 @@ def write_combined(all_inst):
         "",
         f"Generated: {generated_at}  |  Source: CSRankings CSV",
         "",
-        f"**{untriaged}** untriaged of **{len(review_rows)}** flagged, across {len(all_inst)} institutions.",
+        f"**{untriaged}** untriaged of **{len(review_rows)}** flagged, "
+        f"across {len(roster['institutions'])} institutions.",
         "",
         "## How to resolve",
         "",
@@ -775,6 +812,12 @@ def main():
                     help="Full rebuild: re-download CSV AND ignore the PID cache")
     ap.add_argument("--limit", type=int, help="Only process the first N unique people per institution (testing)")
     ap.add_argument("--delay", type=float, help=f"Seconds between DBLP calls (default {DELAY_SECONDS})")
+    ap.add_argument("--merge", dest="merge", action="store_true", default=None,
+                    help="Fold this institution into data/resolved_faculty.json + needs_review.* "
+                         "instead of only writing its own files. Every other institution is "
+                         "carried over untouched. Default ON for --institution.")
+    ap.add_argument("--no-merge", dest="merge", action="store_false",
+                    help="Write only the per-institution draft/report/review files")
     args = ap.parse_args()
 
     if args.delay is not None:
@@ -814,9 +857,11 @@ def main():
         return
 
     # ── Single-institution mode ──
+    tracked = False
     if args.institution and args.institution.upper() in INSTITUTIONS:
         short = args.institution.upper()
         inst = INSTITUTIONS[short]
+        tracked = True
     elif args.affiliation:
         short = (args.short or args.affiliation).upper()
         inst = {
@@ -837,13 +882,32 @@ def main():
         short, inst, args.csv, session, refresh=args.refresh, limit=args.limit, overrides=overrides)
     draft_path, report_path, review_path = write_outputs(short, inst, results, counts)
 
+    # An ad-hoc --affiliation probe stays out of the shared roster unless the
+    # maintainer explicitly asks; a tracked --institution folds in by default,
+    # which is what makes the single-college path feed integrate_roster.py.
+    do_merge = args.merge if args.merge is not None else tracked
+
     print("\n" + "=" * 60)
     print(f"  resolved {counts['resolved']}/{counts['unique_people']}  "
           f"(HIGH {counts['high']}, MEDIUM {counts['medium']}, REVIEW {counts['review']})")
     print(f"  draft:  {draft_path}")
     print(f"  report: {report_path}")
     print(f"  review: {review_path}")
+
+    if do_merge:
+        roster, review_doc, _ = write_combined([(short, inst, results, counts)], merge=True)
+        print(f"  merged into {RESOLVED_FILE}")
+        total = sum(i.get("faculty_count", len(i.get("faculty", [])))
+                    for i in roster["institutions"])
+        print(f"    → {len(roster['institutions'])} institutions, {total} roster faculty")
+        print(f"    → needs-review now {review_doc['untriaged']} untriaged "
+              f"of {review_doc['count']} flagged (all institutions)")
+    else:
+        print("  (not merged into resolved_faculty.json — pass --merge to fold it in)")
     print("=" * 60)
+
+    if do_merge and review_doc["untriaged"] > 0:
+        sys.exit(2)  # same contract as refresh.sh: 2 = a human should look
 
 
 if __name__ == "__main__":

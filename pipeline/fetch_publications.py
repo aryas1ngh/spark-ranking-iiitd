@@ -1,10 +1,24 @@
 #!/usr/bin/env python3
 """
-Fetch publications from DBLP for all faculty members.
-Matches publications against ICORE A*/A conferences.
-Outputs data/rankings.json with scored results.
+Fetch publications from DBLP for faculty members, match them against ICORE
+A*/A conferences, and write the scored results to data/rankings.json.
+
+Two ways to run it:
+
+    # everything, cache honoured — cheap after an interrupted run
+    python pipeline/fetch_publications.py
+
+    # ONE institution: fetch only its faculty and splice the result into the
+    # existing rankings.json. The other institutions are carried over verbatim,
+    # so adding a college costs that college's DBLP calls and nothing else.
+    python pipeline/fetch_publications.py --institution IITK
+
+    # overnight refresh: re-fetch anyone whose DBLP data is over 30 days old,
+    # which is how new publications and new papers by existing faculty land.
+    python pipeline/fetch_publications.py --max-age 30
 """
 
+import argparse
 import json
 import math
 import os
@@ -40,7 +54,10 @@ RETRY_BASE_DELAY = 5  # seconds, doubles each retry
 # Deliberately caches the *network* result, not the scored result: venue matching
 # and scoring are cheap and depend on icore_conferences.json, so they are
 # recomputed every run and an ICORE refresh takes effect without a re-fetch.
-# Delete this file to force a full re-fetch from DBLP.
+#
+# Entries carry a `fetched_at` epoch so --max-age can expire them selectively:
+# without that, the only way to pick up new publications was to delete the whole
+# file and re-fetch every faculty member from scratch.
 FETCH_CACHE_FILE = os.path.join(DATA_DIR, "dblp_fetch_cache.json")
 YEAR_START = 2015
 YEAR_END = 2026
@@ -131,6 +148,25 @@ def save_fetch_cache(cache):
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False)
     os.replace(tmp, FETCH_CACHE_FILE)   # atomic: a kill mid-write can't corrupt it
+
+
+def cache_lookup(cache, pid, max_age_days=None):
+    """Return the cached DBLP result for `pid`, or None to (re-)fetch it.
+
+    max_age_days=None keeps every entry, however old — the resumable-checkpoint
+    behaviour. With a max age, entries older than that expire, and so do the
+    pre-timestamp entries written before this flag existed: their real age is
+    unknown, and treating unknown as stale is the safe direction for a refresh.
+    """
+    entry = cache.get(pid) if cache is not None else None
+    if not entry or "pubs" not in entry:
+        return None
+    if max_age_days is None:
+        return entry
+    fetched_at = entry.get("fetched_at")
+    if fetched_at is None or (time.time() - fetched_at) > max_age_days * 86400:
+        return None
+    return entry
 
 
 def fetch_author_publications(pid, session):
@@ -248,16 +284,17 @@ def fetch_author_publications(pid, session):
     return publications, skipped_publications
 
 
-def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None):
+def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None, max_age_days=None):
     """Process a single faculty member: fetch pubs, match against ICORE, compute score.
 
     `fetch_cache` (pid → raw DBLP result) makes the network step resumable; pass
-    None to always hit DBLP. Scoring below always runs, cached or not.
+    None to always hit DBLP. `max_age_days` expires stale entries (see
+    cache_lookup). Scoring below always runs, cached or not.
     """
     pid = faculty["dblp_pid"]
     name = faculty["name"]
 
-    cached = fetch_cache.get(pid) if fetch_cache is not None else None
+    cached = cache_lookup(fetch_cache, pid, max_age_days)
     if cached is not None:
         pubs, skipped_pubs = cached["pubs"], cached["skipped"]
         print(f"    → {name} (pid: {pid}) — cached {len(pubs)} papers")
@@ -265,7 +302,8 @@ def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None):
         print(f"    → Fetching publications for {name} (pid: {pid})...")
         pubs, skipped_pubs = fetch_author_publications(pid, session)
         if fetch_cache is not None:
-            fetch_cache[pid] = {"pubs": pubs, "skipped": skipped_pubs}
+            fetch_cache[pid] = {"pubs": pubs, "skipped": skipped_pubs,
+                                "fetched_at": time.time()}
             save_fetch_cache(fetch_cache)
         print(f"      Found {len(pubs)} conference papers total (skipped {len(skipped_pubs)} short/workshop)")
     
@@ -639,20 +677,69 @@ def merge_irins_into_faculty(faculty_results, irins_data):
 
     return faculty_results
 
+
+def parse_codes(values):
+    """--institution IITK --institution IITB  ==  --institution IITK,IITB"""
+    if not values:
+        return None
+    return {c.strip().upper() for v in values for c in v.split(",") if c.strip()}
+
+
 def main():
+    global DELAY_SECONDS
+    ap = argparse.ArgumentParser(
+        description="Fetch DBLP publications and score them against ICORE A*/A venues.")
+    ap.add_argument("--institution", action="append", metavar="CODE",
+                    help="Only fetch these short codes (repeatable or comma-separated). "
+                         "Every other institution is carried over from the existing "
+                         "rankings.json instead of being re-fetched.")
+    ap.add_argument("--max-age", dest="max_age", type=float, metavar="DAYS",
+                    help="Re-fetch faculty whose cached DBLP data is older than DAYS "
+                         "(this is how a refresh picks up new publications).")
+    ap.add_argument("--refresh", action="store_true",
+                    help="Ignore the fetch cache completely — equivalent to --max-age 0")
+    ap.add_argument("--delay", type=float,
+                    help=f"Seconds between DBLP calls (default {DELAY_SECONDS})")
+    args = ap.parse_args()
+
+    if args.delay is not None:
+        DELAY_SECONDS = args.delay
+    max_age_days = 0 if args.refresh else args.max_age
+
     print("=" * 60)
     print("SPARK — DBLP Publication Fetcher & Ranker")
     print("=" * 60)
-    
+
     # Load ICORE conferences
     print(f"\nLoading ICORE conferences from {ICORE_FILE}...")
     icore_lookup = load_icore_conferences()
     print(f"  Loaded {len(icore_lookup)} conferences with DBLP keys")
-    
+
     # Load faculty
     print(f"\nLoading faculty from {FACULTY_FILE}...")
     faculty_data = load_faculty()
-    
+
+    # Institution selection. `only` is None for a whole-roster run; otherwise
+    # we fetch just those blocks and splice them into the previous rankings.
+    only = parse_codes(args.institution)
+    if only:
+        known = {i.get("short", "").upper() for i in faculty_data["institutions"]}
+        unknown = only - known
+        if unknown:
+            ap.error(f"not in {FACULTY_FILE}: {', '.join(sorted(unknown))}\n"
+                     f"       known codes: {', '.join(sorted(known))}\n"
+                     f"       (a brand-new college must go through resolve_pids.py + "
+                     f"integrate_roster.py first)")
+        targets = [i for i in faculty_data["institutions"]
+                   if i.get("short", "").upper() in only]
+        print(f"  Partial run: {', '.join(i['short'] for i in targets)} "
+              f"({len(faculty_data['institutions']) - len(targets)} institutions carried over)")
+    else:
+        targets = faculty_data["institutions"]
+
+    if max_age_days is not None:
+        print(f"  Cache policy: re-fetch anything older than {max_age_days} day(s)")
+
     session = requests.Session()
     session.headers.update({
         "User-Agent": "SPARK-Academic-Ranking-Tool/1.0 (academic research project)"
@@ -663,8 +750,8 @@ def main():
         print(f"\nResuming from {FETCH_CACHE_FILE}: {len(fetch_cache)} faculty already fetched")
 
     all_institutions = []
-    
-    for institution in faculty_data["institutions"]:
+
+    for institution in targets:
         inst_name = institution["name"]
         print(f"\n{'─' * 60}")
         print(f"Processing: {inst_name}")
@@ -674,8 +761,9 @@ def main():
         faculty_results = []
         
         for i, fac in enumerate(institution["faculty"]):
-            was_cached = fac["dblp_pid"] in fetch_cache
-            result = process_faculty_member(fac, icore_lookup, session, fetch_cache)
+            was_cached = cache_lookup(fetch_cache, fac["dblp_pid"], max_age_days) is not None
+            result = process_faculty_member(
+                fac, icore_lookup, session, fetch_cache, max_age_days)
             faculty_results.append(result)
 
             # Only pace ourselves when we actually called DBLP; replaying the
@@ -707,10 +795,11 @@ def main():
             "total_papers_astar": total_astar,
             "total_papers_a": total_a,
             "faculty_count": len(faculty_results),
+            "updated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "area_breakdown": area_breakdown,
             "faculty": faculty_results,
         }
-        
+
         all_institutions.append(inst_result)
         
         print(f"\n  Institution Summary:")
@@ -718,9 +807,6 @@ def main():
         print(f"    A* papers:      {total_astar}")
         print(f"    A papers:       {total_a}")
         print(f"    Total matched:  {total_papers}")
-    
-    # Sort institutions by geo mean score
-    all_institutions.sort(key=lambda i: -i["geo_mean_score"])
     
     # Try to merge IRINS data (per-institution)
     print(f"\nMerging IRINS data...")
@@ -749,25 +835,55 @@ def main():
                   f"J={inst.get('total_papers_journal', 0)}")
         else:
             print(f"  No IRINS data for {inst['name']} (run scrape_irins.py --institution {inst_short})")
-    
+
+    # Splice into the previous rankings when only some institutions were run.
+    # Blocks we didn't fetch are reused byte-for-byte; the freshly scored ones
+    # replace their old selves, and the whole list is re-sorted so ranks stay
+    # consistent with the new scores.
+    carried = []
+    if only:
+        try:
+            with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+                prior = json.load(f)
+        except (OSError, ValueError):
+            prior = None
+        if prior is None:
+            print(f"\nWARNING: no readable {OUTPUT_FILE} to merge into — writing "
+                  f"only the {len(all_institutions)} institution(s) fetched this run.")
+        else:
+            fresh = {i["short"].upper() for i in all_institutions}
+            carried = [i for i in prior.get("institutions", [])
+                       if i.get("short", "").upper() not in fresh]
+            all_institutions = all_institutions + carried
+            print(f"\nCarried over {len(carried)} institution(s) from the previous rankings.")
+
+    all_institutions.sort(key=lambda i: -i["geo_mean_score"])
+
     # Build final output
     # Load ICORE data for conference list in output
     with open(ICORE_FILE, "r") as f:
         icore_data = json.load(f)
-    
+
     # Load journal data if available
     journal_count = 0
     if os.path.exists(JOURNALS_FILE):
         with open(JOURNALS_FILE, "r") as f:
             journals_data = json.load(f)
         journal_count = len(journals_data.get("journals", []))
-    
+
+    # Derived from the files on disk rather than from whichever institution
+    # happened to be processed last, so a partial run can't drop "IRINS".
+    any_irins = any(
+        os.path.exists(os.path.join(IRINS_DIR, f"irins_{i['short'].lower()}.json"))
+        for i in all_institutions if i.get("short")
+    )
+
     output = {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "year_range": [YEAR_START, YEAR_END],
         "conference_source": "ICORE2026",
         "journal_source": "Curated IEEE/ACM" if journal_count else None,
-        "data_sources": ["DBLP"] + (["IRINS"] if irins_data else []),
+        "data_sources": ["DBLP"] + (["IRINS"] if any_irins else []),
         "total_conferences_tracked": len(icore_lookup),
         "total_conferences_astar": icore_data["total_a_star"],
         "total_conferences_a": icore_data["total_a"],
@@ -775,13 +891,17 @@ def main():
         "institutions": all_institutions,
         "conferences": icore_data["conferences"],
     }
-    
+
     os.makedirs(DATA_DIR, exist_ok=True)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    tmp = OUTPUT_FILE + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    
+    os.replace(tmp, OUTPUT_FILE)   # never leave a half-written rankings.json behind
+
     print(f"\n{'=' * 60}")
     print(f"✓ Rankings saved to {OUTPUT_FILE}")
+    print(f"  {len(all_institutions)} institutions "
+          f"({len(all_institutions) - len(carried)} scored this run, {len(carried)} carried over)")
     print(f"{'=' * 60}")
 
 

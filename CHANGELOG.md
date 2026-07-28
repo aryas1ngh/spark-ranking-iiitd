@@ -2,6 +2,25 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.7.0 — 2026-07-28
+
+### 1. Adding a college no longer re-runs the pipeline for everybody
+Every stage is now scoped by institution, so the cost of adding the 26th college is one college's worth of DBLP calls instead of twenty-six.
+
+- **`pipeline/add_institution.sh IITK`** — new one-command path: resolve → integrate → score, all `--institution`-scoped. Refuses before any network traffic if the code isn't in `institutions.py`, and mirrors `refresh.sh`'s exit codes (0 / 2 untriaged / 1 failed) so the same cron alerting works.
+- **`resolve_pids.py --institution`** now folds its result into `data/resolved_faculty.json` and the shared `needs_review.*` files instead of only writing per-institution drafts — replacing that institution's blocks and rows, carrying the other 24 over verbatim. Previously the single-institution mode left the combined roster stale, so `integrate_roster.py` had nothing new to merge and only `--all` actually fed the site. An ad-hoc `--affiliation` probe still stays out of the shared files unless `--merge` is passed.
+- **`integrate_roster.py --institution`** — scopes the add-only merge into `faculty.json`.
+- **`fetch_publications.py --institution`** — fetches only those institutions and splices them into the existing `rankings.json`; untouched institutions are reused byte-for-byte and the list is re-sorted so ranks stay consistent. Verified: a scoped `--institution IITK` run leaves all 24 other blocks byte-identical, and an unscoped run still reproduces the previous `rankings.json` exactly.
+
+### 2. Refresh can now find new publications without discarding the cache
+- **`fetch_publications.py --max-age DAYS`** re-fetches only faculty whose cached DBLP data is older than `DAYS`. Cache entries carry a `fetched_at` stamp; entries written before this change have no stamp and are treated as stale, which is the safe direction. Previously the only way to pick up a new paper by an existing faculty member was to delete `dblp_fetch_cache.json` and re-fetch all 592 authors from scratch. `--refresh` is the explicit "ignore the cache entirely" form.
+- **`refresh.sh --with-publications [--max-age DAYS]`** (default 30) continues past the roster stage into rescoring, making the overnight job a single command. Bare `refresh.sh` is unchanged — still roster-only, still the cheap cron entry point.
+
+### 3. Two ranking bugs found while making the above verifiable
+- **`data_sources` was reported from a leaked loop variable** — the IRINS check inspected whichever institution happened to be processed *last*, so `rankings.json` advertised `["DBLP"]` even though IIIT Delhi's IRINS papers were merged in. Now derived from the per-institution IRINS files actually present.
+- **Institutions were sorted before the IRINS merge, not after**, so the stored order didn't reflect final scores: IIIT Delhi (10.69 post-merge) sat below IIIT Hyderabad (10.02). The sort now runs after the merge.
+- `rankings.json` is written atomically (tmp + `os.replace`), so an interrupted write can't leave a truncated file, and each institution block carries an `updated_at` stamp showing when it was last scored.
+
 ## v1.6.0 — 2026-07-21
 
 ### 1. Coverage: every IIT in the CSRankings roster (8 → 25 institutions)

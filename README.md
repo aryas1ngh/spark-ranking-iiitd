@@ -122,6 +122,7 @@ spark/
 │
 ├── pipeline/                    # Data pipeline (run offline)
 │   ├── refresh.sh               # ★ monthly entry point (resolve → integrate)
+│   ├── add_institution.sh       # ★ add ONE college, skipping the rest
 │   ├── institutions.py          # ★ tracked institutions (the config to edit)
 │   ├── resolve_pids.py          # CSRankings roster → verified DBLP PIDs
 │   ├── integrate_roster.py      # resolved roster → faculty.json (add-only)
@@ -202,10 +203,24 @@ CSRankings CSV ─→ resolve_pids.py ─→ resolved_faculty.json ─→ integr
 4. **IRINS Scraper**: parses the institutional research information system for faculty and publications, merged with three-layer dedup (DOI → exact title → fuzzy title).
 5. **Strict Workshop Filtering**: rigorous heuristics drop non-research papers (≤ 5 pages, or "workshop"/"adjunct"/"poster" etc. in the title or proceedings venue).
 
+### Two ways to run the pipeline
+
+Every stage is scoped by institution, so routine maintenance never costs a full rebuild:
+
+| | command | what it touches | cost |
+|---|---|---|---|
+| **Add one college** | `bash pipeline/add_institution.sh IITK` | that college only — everyone else is carried over verbatim | one college's DBLP calls (minutes) |
+| **Monthly roster refresh** | `bash pipeline/refresh.sh` | all rosters; publication scores untouched | cached PIDs, mostly fast |
+| **Full overnight refresh** | `bash pipeline/refresh.sh --with-publications` | rosters **and** re-fetches publications older than 30 days | hours against a throttled DBLP |
+
+The two compose: add a college during the day and let the overnight job run later — it picks up the new college's fresh data as already-cached and spends its time looking for new papers everywhere else.
+
 ### Monthly refresh & the review loop
 
 ```bash
-bash pipeline/refresh.sh      # resolve → integrate; writes logs + review files
+bash pipeline/refresh.sh                          # resolve → integrate
+bash pipeline/refresh.sh --with-publications      # …then rescore publications
+bash pipeline/refresh.sh --with-publications --max-age 7   # stricter staleness
 ```
 
 This is the cron entry point. It exits **0** when everything is triaged, **2** when items need a human, and **1** if the run failed — so cron can alert. Anything the resolver can't verify lands in `data/needs_review.csv`; the maintainer resolves it by adding a row to **`data/pid_overrides.csv`**, which the resolver reads *before* the cache and any DBLP call, so manual fixes survive every re-run:
@@ -216,7 +231,7 @@ This is the cron entry point. It exits **0** when everything is triaged, **2** w
 | `drop` | exclude a duplicate name variant / non-CS entry |
 | `ack` | leave unresolved, but stop alerting on it |
 
-To rebuild scores after a roster change, run `pipeline/fetch_publications.py` (slow — hits DBLP for every faculty member), then reload the DB with `load_seed_data` + `load_rankings`.
+Publication scoring is opt-in because it's the slow half. `data/dblp_fetch_cache.json` keys raw DBLP results by PID with a fetch timestamp, and `--max-age DAYS` re-fetches only entries older than that — which is what surfaces new papers by existing faculty. Without `--max-age`, cached faculty are replayed for free. After any run that changes scores, reload the DB with `load_seed_data` + `load_rankings`.
 
 ### Adding an institution
 
@@ -233,7 +248,23 @@ Add one entry to `INSTITUTIONS` in `pipeline/institutions.py` — the exact CSRa
 
 The dict key is the short code and also names the PID cache (`IITK` → `data/iitk_pid_cache.json`), so keep it stable once added. `affiliation` must match the CSRankings string **verbatim** — a typo silently yields zero faculty. Keywords are matched as substrings on punctuation-stripped text, so avoid ones that nest inside another tracked institution's name (`iit hyderabad` is a substring of `iiit hyderabad`).
 
-Then run `bash pipeline/refresh.sh` (resolves + integrates), `pipeline/fetch_publications.py`, and the two DB loaders. No other code changes.
+That config entry is the only manual step. Then:
+
+```bash
+bash pipeline/add_institution.sh IITK
+```
+
+which resolves, integrates and scores **just that college** — the institutions already tracked are neither re-resolved nor re-fetched. Finish by reloading the DB (`load_seed_data` + `load_rankings`). No other code changes.
+
+Under the hood it's three scoped commands, each usable on its own:
+
+```bash
+python pipeline/resolve_pids.py       --institution IITK   # → resolved_faculty.json
+python pipeline/integrate_roster.py   --institution IITK   # → faculty.json (add-only)
+python pipeline/fetch_publications.py --institution IITK   # → rankings.json (spliced)
+```
+
+Each folds its result into the shared file and leaves every other institution's data byte-identical, so the combined roster, `needs_review.*` counts and the rankings stay whole-project even after a single-college run. `resolve_pids.py --affiliation` (ad-hoc probe of an untracked string) stays out of the shared files unless you pass `--merge`.
 
 ### Known caveat
 

@@ -18,8 +18,9 @@ live in needs_review.*), so nothing unverified is merged.
 Idempotent: re-running matches on pid/name and won't create duplicates.
 
 Usage:
-    python pipeline/integrate_roster.py            # merge and write faculty.json
-    python pipeline/integrate_roster.py --dry-run  # report what would change only
+    python pipeline/integrate_roster.py                     # merge every institution
+    python pipeline/integrate_roster.py --institution IITK  # merge only this one
+    python pipeline/integrate_roster.py --dry-run           # report changes only
 """
 
 import argparse
@@ -49,15 +50,34 @@ def to_faculty_entry(rf):
     }
 
 
+def parse_codes(values):
+    """--institution IITK --institution IITB  ==  --institution IITK,IITB"""
+    if not values:
+        return None
+    return {c.strip().upper() for v in values for c in v.split(",") if c.strip()}
+
+
 def main():
     ap = argparse.ArgumentParser(description="Merge resolved_faculty.json into faculty.json.")
     ap.add_argument("--dry-run", action="store_true", help="Report changes without writing")
+    ap.add_argument("--institution", action="append", metavar="CODE",
+                    help="Only merge these short codes (repeatable or comma-separated). "
+                         "Default: every institution in resolved_faculty.json.")
     args = ap.parse_args()
 
     with open(FACULTY_FILE, encoding="utf-8") as f:
         faculty = json.load(f)
     with open(RESOLVED_FILE, encoding="utf-8") as f:
         resolved = json.load(f)
+
+    only = parse_codes(args.institution)
+    if only:
+        available = {i["short"].upper() for i in resolved["institutions"]}
+        unknown = only - available
+        if unknown:
+            ap.error(f"not in resolved_faculty.json: {', '.join(sorted(unknown))}. "
+                     f"Resolve it first: python pipeline/resolve_pids.py --institution "
+                     f"{sorted(unknown)[0]}")
 
     existing_by_name = {i["name"]: i for i in faculty["institutions"]}
 
@@ -67,6 +87,8 @@ def main():
 
     for rinst in resolved["institutions"]:
         name = rinst["name"]
+        if only and rinst["short"].upper() not in only:
+            continue
         if name in existing_by_name:
             inst = existing_by_name[name]
             existing_pids = {f.get("dblp_pid") for f in inst["faculty"] if f.get("dblp_pid")}
@@ -95,7 +117,9 @@ def main():
             per_inst.append((rinst["short"], name, "new", len(block["faculty"]), len(block["faculty"])))
 
     print("=" * 60)
-    print("Integrate resolved roster → faculty.json" + ("  (DRY RUN)" if args.dry_run else ""))
+    scope = f"  [only {', '.join(sorted(only))}]" if only else ""
+    print("Integrate resolved roster → faculty.json" + scope
+          + ("  (DRY RUN)" if args.dry_run else ""))
     print("=" * 60)
     for short, name, mode, added, total in per_inst:
         print(f"  {short:7s} {name:16s} [{mode:5s}] +{added:3d} faculty  (roster now {total})")

@@ -6,6 +6,18 @@
 # combined roster + shared needs-review file, tees a timestamped run log, and
 # appends a one-line summary to data/review_log.md.
 #
+#   bash pipeline/refresh.sh
+#       roster only: resolve → integrate. Publication scores are left alone.
+#
+#   bash pipeline/refresh.sh --with-publications [--max-age DAYS]
+#       the full overnight job: roster, then re-fetch every faculty member whose
+#       cached DBLP data is older than DAYS (default 30) and rewrite
+#       rankings.json. This is what picks up new papers, new faculty, and any
+#       institution added since the last run — hours against a throttled API.
+#
+# To add a single college WITHOUT re-running everyone, use the scoped path:
+#   bash pipeline/add_institution.sh IITK
+#
 # Exit code:
 #   0  — nothing needs a human (all review items are set/drop/ack'd)
 #   2  — untriaged review items exist; a maintainer should open the review file
@@ -16,6 +28,17 @@
 #   0 3 1 * * cd /path/to/spark && bash pipeline/refresh.sh >> pipeline/logs/cron.out 2>&1
 #
 set -euo pipefail
+
+WITH_PUBS=0
+MAX_AGE=30
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --with-publications) WITH_PUBS=1; shift ;;
+    --max-age) MAX_AGE="$2"; shift 2 ;;
+    -h|--help) sed -n '2,28p' "${BASH_SOURCE[0]}"; exit 0 ;;
+    *) echo "unknown option: $1" >&2; exit 1 ;;
+  esac
+done
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
@@ -69,6 +92,22 @@ fi
 echo "" | tee -a "$LOG"
 "$PY" pipeline/integrate_roster.py 2>&1 | tee -a "$LOG"
 
+# 3c. (opt-in) rescore publications. Off by default so the monthly cron stays a
+#     fast roster-only job; --with-publications turns this into the full
+#     overnight run that also picks up new papers for existing faculty.
+if [[ "$WITH_PUBS" -eq 1 ]]; then
+  echo "" | tee -a "$LOG"
+  echo "Fetching publications (re-fetch anything older than ${MAX_AGE}d)…" | tee -a "$LOG"
+  set +e
+  "$PY" pipeline/fetch_publications.py --max-age "$MAX_AGE" 2>&1 | tee -a "$LOG"
+  FETCH_RC=${PIPESTATUS[0]}
+  set -e
+  if [[ "$FETCH_RC" -ne 0 ]]; then
+    echo "ERROR: fetch_publications exited $FETCH_RC — see $LOG" | tee -a "$LOG" >&2
+    exit 1
+  fi
+fi
+
 # 4. read the review status the resolver just wrote
 read -r ROSTER FLAGGED UNTRIAGED < <("$PY" - "$REVIEW_JSON" <<'PYEOF'
 import json, os, sys
@@ -90,6 +129,11 @@ echo ""
 echo "──────────────────────────────────────────────"
 echo "  roster faculty : $ROSTER"
 echo "  flagged        : $FLAGGED  (untriaged: $UNTRIAGED)"
+if [[ "$WITH_PUBS" -eq 1 ]]; then
+  echo "  publications   : rescored (max-age ${MAX_AGE}d) → data/rankings.json"
+else
+  echo "  publications   : not rescored (pass --with-publications)"
+fi
 echo "  run log        : $LOG"
 echo "  review file    : $REVIEW_MD"
 echo "  act here       : $CSV_OVERRIDES"
