@@ -3,6 +3,7 @@ import math
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from django.db.models import Sum, F, Case, When, Value, FloatField, Q
 from django.db.models.functions import Coalesce
 from django.shortcuts import get_object_or_404
@@ -43,19 +44,42 @@ SCORE_WEIGHT_EXPR = Case(
 )
 
 
+def _parse_int_param(params, name, min_val=None, max_val=None):
+    """Parse a query param as an int, or raise a DRF ValidationError (HTTP 400).
+
+    Returns None when the param is absent/empty. Raising (rather than casting
+    inline with int()) is what turns malformed input — 'abc', "2020'", '2015.5',
+    an out-of-range year — into a clean 400 JSON body instead of an unhandled
+    ValueError, which under DEBUG surfaced as a 500 debug page. DRF's exception
+    handler renders the raised error automatically, so callers need no changes.
+    """
+    raw = params.get(name)
+    if raw is None or raw == '':
+        return None
+    try:
+        val = int(raw)
+    except (TypeError, ValueError):
+        raise ValidationError({name: "Must be a valid integer."})
+    if min_val is not None and val < min_val:
+        raise ValidationError({name: f"Must be greater than or equal to {min_val}."})
+    if max_val is not None and val > max_val:
+        raise ValidationError({name: f"Must be less than or equal to {max_val}."})
+    return val
+
+
 def _build_authorship_filters(params):
     """Build Q filters for authorships from query params."""
     # Start by excluding workshop papers globally from all authorship calculations
     filters = Q(publication__is_workshop=False)
-    
-    start_year = params.get('start_year')
-    end_year = params.get('end_year')
+
+    start_year = _parse_int_param(params, 'start_year', min_val=1900, max_val=2100)
+    end_year = _parse_int_param(params, 'end_year', min_val=1900, max_val=2100)
     area = params.get('area')
 
-    if start_year:
-        filters &= Q(publication__year__gte=int(start_year))
-    if end_year:
-        filters &= Q(publication__year__lte=int(end_year))
+    if start_year is not None:
+        filters &= Q(publication__year__gte=start_year)
+    if end_year is not None:
+        filters &= Q(publication__year__lte=end_year)
     if area:
         areas = [a.strip() for a in area.split(',')]
         filters &= Q(publication__conference__area__in=areas)
@@ -318,8 +342,8 @@ class PublicationsView(APIView):
     def get(self, request):
         qs = Publication.objects.select_related('conference').filter(is_workshop=False)
 
-        institution_id = request.query_params.get('institution')
-        if institution_id:
+        institution_id = _parse_int_param(request.query_params, 'institution', min_val=1)
+        if institution_id is not None:
             qs = qs.filter(authorships__faculty__institution_id=institution_id).distinct()
 
         pubs = []

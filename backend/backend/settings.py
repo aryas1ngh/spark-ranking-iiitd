@@ -10,22 +10,35 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# Security-critical settings read from the environment so the same file is safe
+# in dev and production. Defaults are chosen so a bare `git pull` on the server
+# boots correctly with DEBUG off — no server-side config is required, but each
+# can be overridden via an env var for hardening.
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l6yq--grc80khrts8h#*wnvzg%s-x$sp&m09bm*j&m%1*@2%&1'
+# The fallback below is the historical (already-committed, so compromised) key.
+# Set DJANGO_SECRET_KEY to a freshly generated value on the server to rotate it.
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-l6yq--grc80khrts8h#*wnvzg%s-x$sp&m09bm*j&m%1*@2%&1',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Defaults to False so the server never leaks debug pages after a plain pull;
+# set DJANGO_DEBUG=True locally for development.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+# Comma-separated list; default covers the known deployment host + loopback.
+ALLOWED_HOSTS = os.environ.get(
+    'DJANGO_ALLOWED_HOSTS', '192.168.3.173,localhost,127.0.0.1'
+).split(',')
 
 
 # Application definition

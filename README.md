@@ -101,6 +101,18 @@ npm run dev
 # → Open http://localhost:5173
 ```
 
+### 4. Production Configuration
+
+The three security-critical settings read from the environment, with defaults chosen so a bare deploy (`git pull` on the server) boots safely with **`DEBUG` off** and no extra config:
+
+| Env var | Default | Notes |
+| --- | --- | --- |
+| `DJANGO_DEBUG` | `False` | Set to `True` only for local development. |
+| `DJANGO_ALLOWED_HOSTS` | `192.168.3.173,localhost,127.0.0.1` | Comma-separated. |
+| `DJANGO_SECRET_KEY` | historical committed key | **Rotate in production** — set a freshly generated key; the fallback is already public in git history. |
+
+Query parameters are validated before use: `start_year`, `end_year` (range 1900–2100) and `institution` must parse as integers, and malformed input returns a clean **HTTP 400** instead of a 500.
+
 ---
 
 ## Architecture

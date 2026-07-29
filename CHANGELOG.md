@@ -2,7 +2,7 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
-## Unreleased
+## v1.8.0 — 2026-07-29
 
 ### Five non-IIT institutions added to `pipeline/institutions.py` (25 → 30)
 Config only — the roster and rankings update on the next pipeline run.
@@ -20,6 +20,13 @@ Config only — the roster and rankings update on the next pipeline run.
 - **The two BITS entries deliberately share broad keywords**, which the substring rule in the module docstring would normally forbid (`bits pilani` nests inside a Goa-campus note). The cost is inverted here: tiering sends anyone *with* a DBLP affiliation note that fails the keyword check to `REVIEW`, not `MEDIUM`, so a campus-specific keyword would push most of both rosters out of the roster and into manual triage. Rosters are selected by exact affiliation string, so the keyword only verifies an already-correct selection.
 - `CMI`'s affiliation is the bare acronym. Safe as an affiliation (rows are matched exactly), far too short as a keyword — only the expanded name confirms identity.
 - Scoring note recorded next to the research institutes: `geo_mean_score` is a geometric mean over the areas a department publishes in, so a one- or two-area institute is scored on those alone while a broad department is pulled toward its weaker areas. IIT Bhubaneswar already shows the effect — 2 faculty, `total_score` 1.65, `geo_mean_score` **2.51**.
+
+### API security & input-validation hardening
+Closes the Fail and Needs-Improvement findings from the July 2026 API penetration test.
+
+- **Unvalidated integer query params no longer crash the API.** `_build_authorship_filters` cast `start_year`/`end_year` with a bare `int()`, so any non-integer (`abc`, `2020'`, `2015.5`) raised a `ValueError` → HTTP 500. A new `_parse_int_param` helper raises DRF `ValidationError` (clean HTTP 400 JSON) and range-checks years to 1900–2100 (also rejecting negative years). The helper is shared, so the same bug on `/api/faculty/` and the `institution` param of `/api/publications/` — which the black-box test never exercised — is fixed in the same change.
+- **`DEBUG`, `SECRET_KEY`, and `ALLOWED_HOSTS` now read from the environment**, defaulting so a bare `git pull` on the server boots with `DEBUG=False` and the correct host list — no server-side config required. With debug off, Django serves minimal 404/500 pages instead of the interactive traceback that previously leaked file paths, the URL map, and source lines.
+- **Not fixed here (still recommended):** the fallback `SECRET_KEY` is the historical committed key and must be rotated by setting `DJANGO_SECRET_KEY` on the server; transport hardening (HTTPS/HSTS), the `runserver` banner, and frontend CSP live at the proxy / in the separate frontend repo.
 
 ## v1.7.0 — 2026-07-28
 
