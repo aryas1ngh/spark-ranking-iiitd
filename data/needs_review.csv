@@ -1,4 +1,8 @@
 institution,csrankings_name,dblp_pid,action,note,confidence,reason,acknowledged,dblp_url,homepage
+BITSG,Amitava Das 0001,75/5002-1,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/75/5002-1,https://www.bits-pilani.ac.in/goa/amitava-das
+BITSG,Harikrishnan Nellippallil Balakrishnan,250/2790,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/250/2790,https://sites.google.com/site/harikrishnannb8/home
+BITSG,Kunal Korgaonkar,60/10106,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/60/10106,https://www.bits-pilani.ac.in/goa/kunalk/profile
+BITSP,Navneet Goyal,17/1557,,,REVIEW,"aliases resolved to multiple PIDs: ['17/1557', '96/25']",,https://dblp.org/pid/17/1557,http://universe.bits-pilani.ac.in/pilani/goel/profile
 IIITD,Pankaj Jalote,j/PankajJalote,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/j/PankajJalote,https://www.iiitd.edu.in/~jalote
 IIITH,Deepak Gangadharan,98/7452,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/98/7452,https://www.iiit.ac.in/faculty/deepak-gangadharan
 IIITH,Govindarajulu Regeti,27/8325,,,REVIEW,no publications since 2015,,https://dblp.org/pid/27/8325,https://iiit.ac.in/people/faculty/gregeti
@@ -52,3 +56,6 @@ IITRPR,Jung Hyun Jun,,,,REVIEW,no exact DBLP author-name match,,,http://www.iitr
 IITRPR,S. R. S. Iyengar,,,,REVIEW,no exact DBLP author-name match,,,http://sudarshaniyengar.com
 IITTP,Ajin George Joseph,,,,REVIEW,no exact DBLP author-name match,,,https://iittp.ac.in/dr-ajin-george-joseph
 IITTP,Ajin Joseph 0001,171/3116,,,REVIEW,DBLP affiliation does not mention this institution,,https://dblp.org/pid/171/3116,https://iittp.ac.in/dr-ajin-george-joseph
+ISI,Bimal Kumar Roy,,,,REVIEW,no exact DBLP author-name match,,,https://www.isical.ac.in/~bimal
+ISI,Srimanta Pal,63/1160,,,REVIEW,no publications since 2015,,https://dblp.org/pid/63/1160,https://www.isical.ac.in/srimanta-pal
+TIFR,Raghuvansh Saxena,,,,REVIEW,no exact DBLP author-name match,,,https://www.tcs.tifr.res.in/web/people/faculty

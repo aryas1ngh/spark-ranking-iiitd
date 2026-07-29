@@ -1,8 +1,8 @@
 # SPARK — Faculty PIDs needing review
 
-Generated: 2026-07-21T20:47:35Z  |  Source: CSRankings CSV
+Generated: 2026-07-28T20:12:43Z  |  Source: CSRankings CSV
 
-**53** untriaged of **53** flagged, across 25 institutions.
+**60** untriaged of **60** flagged, across 30 institutions.
 
 ## How to resolve
 
@@ -21,6 +21,10 @@ IITB,Bernard Menezes,,ack,retired; no clean DBLP profile
 
 | Institution | Confidence | Name | DBLP PID | Reason | Ack |
 |---|---|---|---|---|---|
+| BITSG | REVIEW | Amitava Das | [75/5002-1](https://dblp.org/pid/75/5002-1) | DBLP affiliation does not mention this institution |  |
+| BITSG | REVIEW | Harikrishnan Nellippallil Balakrishnan | [250/2790](https://dblp.org/pid/250/2790) | DBLP affiliation does not mention this institution |  |
+| BITSG | REVIEW | Kunal Korgaonkar | [60/10106](https://dblp.org/pid/60/10106) | DBLP affiliation does not mention this institution |  |
+| BITSP | REVIEW | Navneet Goyal | [17/1557](https://dblp.org/pid/17/1557) | aliases resolved to multiple PIDs: ['17/1557', '96/25'] |  |
 | IIITD | REVIEW | Pankaj Jalote | [j/PankajJalote](https://dblp.org/pid/j/PankajJalote) | DBLP affiliation does not mention this institution |  |
 | IIITH | REVIEW | Deepak Gangadharan | [98/7452](https://dblp.org/pid/98/7452) | DBLP affiliation does not mention this institution |  |
 | IIITH | REVIEW | Govindarajulu Regeti | [27/8325](https://dblp.org/pid/27/8325) | no publications since 2015 |  |
@@ -74,3 +78,6 @@ IITB,Bernard Menezes,,ack,retired; no clean DBLP profile
 | IITRPR | REVIEW | S. R. S. Iyengar | — | no exact DBLP author-name match |  |
 | IITTP | REVIEW | Ajin George Joseph | — | no exact DBLP author-name match |  |
 | IITTP | REVIEW | Ajin Joseph | [171/3116](https://dblp.org/pid/171/3116) | DBLP affiliation does not mention this institution |  |
+| ISI | REVIEW | Bimal Kumar Roy | — | no exact DBLP author-name match |  |
+| ISI | REVIEW | Srimanta Pal | [63/1160](https://dblp.org/pid/63/1160) | no publications since 2015 |  |
+| TIFR | REVIEW | Raghuvansh Saxena | — | no exact DBLP author-name match |  |

@@ -53,3 +53,5 @@ frontend_ref/
 data/*_faculty_draft.json
 data/*_pid_report.json
 data/*_pid_review.md
+
+*.pdf

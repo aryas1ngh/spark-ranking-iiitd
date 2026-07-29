@@ -3737,6 +3737,818 @@
           "homepage": "https://iittp.ac.in/dr-venkata-ramana-badarla"
         }
       ]
+    },
+    {
+      "name": "TIFR Mumbai",
+      "short": "TIFR",
+      "country": "India",
+      "website": "https://www.tifr.res.in",
+      "state": "Maharashtra",
+      "city": "Mumbai",
+      "faculty": [
+        {
+          "name": "Abhishek Sinha",
+          "dblp_pid": "47/9175",
+          "role": "",
+          "homepage": "https://abhishek-sinha-tifr.github.io"
+        },
+        {
+          "name": "Arkadev Chattopadhyay",
+          "dblp_pid": "54/3615",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~arkadev"
+        },
+        {
+          "name": "Hariharan Narayanan",
+          "dblp_pid": "73/1013",
+          "role": "",
+          "homepage": "http://www.tifr.res.in/~hariharan.narayanan"
+        },
+        {
+          "name": "Jatin Batra",
+          "dblp_pid": "157/6041",
+          "role": "",
+          "homepage": "https://www.tcs.tifr.res.in/web/people/faculty"
+        },
+        {
+          "name": "Mrinal Kumar",
+          "dblp_pid": "40/9185-1",
+          "role": "",
+          "homepage": "https://mrinalkr.bitbucket.io"
+        },
+        {
+          "name": "N. Raja",
+          "dblp_pid": "69/3428",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~raja"
+        },
+        {
+          "name": "Piyush Srivastava",
+          "dblp_pid": "27/9075",
+          "role": "",
+          "homepage": "http://www.tifr.res.in/~piyush.srivastava"
+        },
+        {
+          "name": "Prahladh Harsha",
+          "dblp_pid": "87/4424",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~prahladh"
+        },
+        {
+          "name": "Pranab Sen",
+          "dblp_pid": "04/3930",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~pgdsen"
+        },
+        {
+          "name": "Raghuvansh R. Saxena",
+          "dblp_pid": "209/9985",
+          "role": "",
+          "homepage": "https://www.tcs.tifr.res.in/web/people/faculty"
+        },
+        {
+          "name": "Rahul Vaze",
+          "dblp_pid": "80/5048",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~vaze"
+        },
+        {
+          "name": "Ramprasad Saptharishi",
+          "dblp_pid": "38/3658",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~ramprasad"
+        },
+        {
+          "name": "Shibashis Guha",
+          "dblp_pid": "99/5560",
+          "role": "",
+          "homepage": "https://www.tcs.tifr.res.in/web/people/faculty"
+        },
+        {
+          "name": "Telikepalli Kavitha",
+          "dblp_pid": "76/3493",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~kavitha"
+        },
+        {
+          "name": "Umang Bhaskar",
+          "dblp_pid": "98/4060",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~umang"
+        },
+        {
+          "name": "Vinod M. Prabhakaran",
+          "dblp_pid": "20/5817",
+          "role": "",
+          "homepage": "http://www.tcs.tifr.res.in/~vinodmp"
+        }
+      ]
+    },
+    {
+      "name": "CMI Chennai",
+      "short": "CMI",
+      "country": "India",
+      "website": "https://www.cmi.ac.in",
+      "state": "Tamil Nadu",
+      "city": "Chennai",
+      "faculty": [
+        {
+          "name": "Aiswarya Cyriac",
+          "dblp_pid": "90/6616",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~aiswarya"
+        },
+        {
+          "name": "B. Srivathsan",
+          "dblp_pid": "86/8295",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~sri"
+        },
+        {
+          "name": "Geevarghese Philip",
+          "dblp_pid": "03/601",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~gphilip"
+        },
+        {
+          "name": "K. Narayan Kumar",
+          "dblp_pid": "54/203",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~kumar"
+        },
+        {
+          "name": "K. V. Subrahmanyam",
+          "dblp_pid": "44/6271",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~kv"
+        },
+        {
+          "name": "M. Praveen",
+          "dblp_pid": "43/2065",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~praveenm"
+        },
+        {
+          "name": "Madhavan Mukund",
+          "dblp_pid": "53/2323",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~madhavan"
+        },
+        {
+          "name": "Partha Mukhopadhyay",
+          "dblp_pid": "16/1565",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~suryajith"
+        },
+        {
+          "name": "Prajakta Nimbhorkar",
+          "dblp_pid": "05/2925",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~prajakta"
+        },
+        {
+          "name": "S. P. Suresh",
+          "dblp_pid": "34/6797",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~spsuresh"
+        },
+        {
+          "name": "Samir Datta",
+          "dblp_pid": "71/4016",
+          "role": "",
+          "homepage": "http://www.cmi.ac.in/~sdatta"
+        }
+      ]
+    },
+    {
+      "name": "ISI Kolkata",
+      "short": "ISI",
+      "country": "India",
+      "website": "https://www.isical.ac.in",
+      "state": "West Bengal",
+      "city": "Kolkata",
+      "faculty": [
+        {
+          "name": "Anisur Rahaman Molla",
+          "dblp_pid": "12/10827",
+          "role": "",
+          "homepage": "https://sites.google.com/site/mollaanisurrahaman"
+        },
+        {
+          "name": "Ansuman Banerjee",
+          "dblp_pid": "43/1989",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~ansuman"
+        },
+        {
+          "name": "Arijit Bishnu",
+          "dblp_pid": "10/718",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~arijit"
+        },
+        {
+          "name": "Arijit Ghosh",
+          "dblp_pid": "39/5366",
+          "role": "",
+          "homepage": "https://sites.google.com/site/homepagearijitghosh"
+        },
+        {
+          "name": "Ashish Ghosh",
+          "dblp_pid": "86/6753",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~ash"
+        },
+        {
+          "name": "B. Uma Shankar",
+          "dblp_pid": "s/BUmaShankar",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~uma"
+        },
+        {
+          "name": "Bhabatosh Chanda",
+          "dblp_pid": "79/2737",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~chanda"
+        },
+        {
+          "name": "Bimal K. Roy",
+          "dblp_pid": "65/7032",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~bimal"
+        },
+        {
+          "name": "Deba Prasad Mandal",
+          "dblp_pid": "80/6121",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/deba-prasad-mandal"
+        },
+        {
+          "name": "Debapriyo Majumdar",
+          "dblp_pid": "m/DebapriyoMajumdar",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~debapriyo"
+        },
+        {
+          "name": "Debrup Chakraborty",
+          "dblp_pid": "42/1889",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~debrup"
+        },
+        {
+          "name": "Dipti Prasad Mukherjee",
+          "dblp_pid": "06/486",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~dipti"
+        },
+        {
+          "name": "Goutam Paul",
+          "dblp_pid": "67/1220",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~goutam.paul"
+        },
+        {
+          "name": "Kishan Chand Gupta",
+          "dblp_pid": "32/5126",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~kishan"
+        },
+        {
+          "name": "Krishnendu Mukhopadhyaya",
+          "dblp_pid": "42/571",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~krishnendu"
+        },
+        {
+          "name": "Kuntal Ghosh",
+          "dblp_pid": "72/2253",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~kuntal"
+        },
+        {
+          "name": "Malay Bhattacharyya",
+          "dblp_pid": "65/1963",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~malaybhattacharyya"
+        },
+        {
+          "name": "Mandar Mitra",
+          "dblp_pid": "85/2002",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~mandar"
+        },
+        {
+          "name": "Mridul Nandi",
+          "dblp_pid": "06/2136",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~mridul"
+        },
+        {
+          "name": "Nabanita Das",
+          "dblp_pid": "49/3105",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~ndas"
+        },
+        {
+          "name": "Naqueeb Ahmad Warsi",
+          "dblp_pid": "15/10670",
+          "role": "",
+          "homepage": "https://acmu.isical.ac.in/naqueeb-ahmad-warsi"
+        },
+        {
+          "name": "Nikhil Ranjan Pal",
+          "dblp_pid": "p/NikhilRPal",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~nikhil"
+        },
+        {
+          "name": "Palash Sarkar",
+          "dblp_pid": "s/PalashSarkar",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~palash"
+        },
+        {
+          "name": "Pinakpani Pal",
+          "dblp_pid": "64/4664",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~pinak"
+        },
+        {
+          "name": "Pradipta Maji",
+          "dblp_pid": "18/1028",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~pmaji"
+        },
+        {
+          "name": "Rajat Kumar De",
+          "dblp_pid": "62/2543",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~rajat"
+        },
+        {
+          "name": "Sabyasachi Karati",
+          "dblp_pid": "115/7761",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~skarati"
+        },
+        {
+          "name": "Sandip Das",
+          "dblp_pid": "16/4689-1",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~sandipdas"
+        },
+        {
+          "name": "Sanghamitra Bandyopadhyay",
+          "dblp_pid": "b/SanghamitraBandyopadhyay",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~sanghami"
+        },
+        {
+          "name": "Sarbani Palit",
+          "dblp_pid": "92/1037",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~sarbanip"
+        },
+        {
+          "name": "Sasanka Roy",
+          "dblp_pid": "66/6187",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~sasanka"
+        },
+        {
+          "name": "Sasthi C. Ghosh",
+          "dblp_pid": "08/1005",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~sasthi"
+        },
+        {
+          "name": "Shubhra Sankar Ray",
+          "dblp_pid": "r/ShubhraSankarRay",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~shubhra"
+        },
+        {
+          "name": "Sourav Chakraborty",
+          "dblp_pid": "89/3488-1",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~sourav"
+        },
+        {
+          "name": "Subhamoy Maitra",
+          "dblp_pid": "35/4372",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~subho"
+        },
+        {
+          "name": "Subhas C. Nandy",
+          "dblp_pid": "n/SubhasCNandy",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~nandysc"
+        },
+        {
+          "name": "Sumana Ghosh",
+          "dblp_pid": "161/3087",
+          "role": "",
+          "homepage": "https://mail.isical.ac.in/~sumana"
+        },
+        {
+          "name": "Sushmita Mitra",
+          "dblp_pid": "07/6170",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~sushmita"
+        },
+        {
+          "name": "Susmita Sur-Kolay",
+          "dblp_pid": "68/6015",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~ssk"
+        },
+        {
+          "name": "Swagatam Das",
+          "dblp_pid": "00/3298",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~swagatam.das"
+        },
+        {
+          "name": "Umapada Pal",
+          "dblp_pid": "p/UmapadaPal",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~umapada"
+        },
+        {
+          "name": "Ujjwal Bhattacharya",
+          "dblp_pid": "b/UBhattacharya",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~ujjwal"
+        },
+        {
+          "name": "Utpal Garain",
+          "dblp_pid": "81/4230",
+          "role": "",
+          "homepage": "https://www.isical.ac.in/~utpal"
+        }
+      ]
+    },
+    {
+      "name": "BITS Pilani",
+      "short": "BITSP",
+      "country": "India",
+      "website": "https://www.bits-pilani.ac.in",
+      "state": "Rajasthan",
+      "city": "Pilani",
+      "faculty": [
+        {
+          "name": "Abhishek Mishra",
+          "dblp_pid": "74/9975",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/abhishekmisra/profile"
+        },
+        {
+          "name": "Amit Dua",
+          "dblp_pid": "139/4375",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/amitdua/profile"
+        },
+        {
+          "name": "Arun Chauhan",
+          "dblp_pid": "c/ArunChauhan2",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/arunchauhan/profile"
+        },
+        {
+          "name": "Ashutosh Bhatia",
+          "dblp_pid": "25/7495",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/ashutoshbhatia/profile"
+        },
+        {
+          "name": "Avinash Gautam",
+          "dblp_pid": "138/0032",
+          "role": "",
+          "homepage": "http://universe.bits-pilani.ac.in/pilani/avinash/profile"
+        },
+        {
+          "name": "Dhruv Kumar",
+          "dblp_pid": "159/9419-1",
+          "role": "",
+          "homepage": "https://kudhru.github.io"
+        },
+        {
+          "name": "K. Hari Babu",
+          "dblp_pid": "90/5291",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/khari/profile"
+        },
+        {
+          "name": "J. P. Misra",
+          "dblp_pid": "89/337",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/computerscience/Faculty"
+        },
+        {
+          "name": "Kamlesh Tiwari",
+          "dblp_pid": "38/10702",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/kamleshtiwari/profile"
+        },
+        {
+          "name": "Kuldeep Kumar",
+          "dblp_pid": "92/2849",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/kuldeep/profile"
+        },
+        {
+          "name": "Lavika Goel",
+          "dblp_pid": "88/10684",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/lavikagoel/profile"
+        },
+        {
+          "name": "Mukesh Kumar Rohil",
+          "dblp_pid": "117/9913",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/rohil/profile"
+        },
+        {
+          "name": "Prashant Trivedi",
+          "dblp_pid": "256/5007",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/pilani/prashant-trivedi"
+        },
+        {
+          "name": "Pratik Narang",
+          "dblp_pid": "132/9397",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/pilani/pratiknarang/profile"
+        },
+        {
+          "name": "Rahul Banerjee",
+          "dblp_pid": "34/7798",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/rahulbanerjee/profile"
+        },
+        {
+          "name": "Sudeept Mohan",
+          "dblp_pid": "73/4521",
+          "role": "",
+          "homepage": "http://universe.bits-pilani.ac.in/pilani/sudeeptm/profile"
+        },
+        {
+          "name": "Sundar Balasubramaniam",
+          "dblp_pid": "95/6586",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/sundarb/profile"
+        },
+        {
+          "name": "Sundaresan Raman",
+          "dblp_pid": "73/6476",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/sundaresanraman/profile"
+        },
+        {
+          "name": "Vandana Agarwal",
+          "dblp_pid": "172/9162",
+          "role": "",
+          "homepage": "http://universe.bits-pilani.ac.in/pilani/vandana/profile"
+        },
+        {
+          "name": "Vinti Agarwal",
+          "dblp_pid": "125/4070",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/pilani/vintiagarwal/Profile"
+        },
+        {
+          "name": "Virendra Singh Shekhawat",
+          "dblp_pid": "72/9554",
+          "role": "",
+          "homepage": "http://universe.bits-pilani.ac.in/pilani/vsshekhawat/profile"
+        },
+        {
+          "name": "Yash Sinha",
+          "dblp_pid": "180/2954",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/pilani/yash-sinha"
+        },
+        {
+          "name": "Yashvardhan Sharma",
+          "dblp_pid": "92/2489",
+          "role": "",
+          "homepage": "http://www.bits-pilani.ac.in/pilani/yash/profile"
+        }
+      ]
+    },
+    {
+      "name": "BITS Pilani Goa",
+      "short": "BITSG",
+      "country": "India",
+      "website": "https://www.bits-pilani.ac.in/goa",
+      "state": "Goa",
+      "city": "Zuarinagar",
+      "faculty": [
+        {
+          "name": "A. Baskar",
+          "dblp_pid": "168/3231",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/abaskar/profile"
+        },
+        {
+          "name": "Abhisek Chakrabarty",
+          "dblp_pid": "178/1265",
+          "role": "",
+          "homepage": "https://abhisek-chakrabarty.github.io"
+        },
+        {
+          "name": "Aditya Challa",
+          "dblp_pid": "189/3492",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/adityac/Profile"
+        },
+        {
+          "name": "Aniket Basu Roy",
+          "dblp_pid": "157/4803",
+          "role": "",
+          "homepage": "https://aniket-basu-roy.github.io"
+        },
+        {
+          "name": "Anirban Das",
+          "dblp_pid": "181/2617-5",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/anirban-das"
+        },
+        {
+          "name": "Arnab Kumar Paul",
+          "dblp_pid": "191/3093",
+          "role": "",
+          "homepage": "https://arnab.dashlab.in"
+        },
+        {
+          "name": "Ashwin Srinivasan",
+          "dblp_pid": "75/6930-1",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/ashwin/Profile"
+        },
+        {
+          "name": "Basabdatta Sen Bhattacharya",
+          "dblp_pid": "30/8580",
+          "role": "",
+          "homepage": "https://sites.google.com/site/bsenbhattacharya"
+        },
+        {
+          "name": "Bharat M. Deshpande",
+          "dblp_pid": "30/7741",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/bmd/Profile"
+        },
+        {
+          "name": "Biju K. Raveendran",
+          "dblp_pid": "50/2723",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/biju/profile"
+        },
+        {
+          "name": "Diptendu Chatterjee",
+          "dblp_pid": "302/4527",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/diptenduc/Profile"
+        },
+        {
+          "name": "Gargi Kabirdas Alavani",
+          "dblp_pid": "214/0400",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/gargi-sanket-prabhu"
+        },
+        {
+          "name": "Girija Limaye",
+          "dblp_pid": "75/8510",
+          "role": "",
+          "homepage": "https://sites.google.com/view/girijalimaye"
+        },
+        {
+          "name": "Hemant Rathore",
+          "dblp_pid": "224/4545",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/hemantr/profile"
+        },
+        {
+          "name": "Kanchan Manna",
+          "dblp_pid": "26/7685",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/kanchanm/Profile"
+        },
+        {
+          "name": "Neena Goveas",
+          "dblp_pid": "161/6691",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/neena/profile"
+        },
+        {
+          "name": "Rajesh Kumar",
+          "dblp_pid": "30/5688-12",
+          "role": "",
+          "homepage": "https://beta.bits-pilani.ac.in/faculty-overview/?faculty=rajesh-kumar-3"
+        },
+        {
+          "name": "Ramprasad S. Joshi",
+          "dblp_pid": "214/7089",
+          "role": "",
+          "homepage": "https://universe.bits-pilani.ac.in/goa/rsj/profile"
+        },
+        {
+          "name": "Raunak Manekar",
+          "dblp_pid": "230/2337",
+          "role": "",
+          "homepage": "https://raunakmanekar.github.io"
+        },
+        {
+          "name": "Sandesh Kamath",
+          "dblp_pid": "259/2875",
+          "role": "",
+          "homepage": "https://ksandeshk.github.io"
+        },
+        {
+          "name": "Sanjay Kumar Sahay",
+          "dblp_pid": "215/5263",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/ssahay/profile"
+        },
+        {
+          "name": "Santonu Sarkar",
+          "dblp_pid": "00/1826",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/santonus/profile"
+        },
+        {
+          "name": "Shubhangi K. Gawali",
+          "dblp_pid": "188/5098",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/shubhangi/profile"
+        },
+        {
+          "name": "Siddharth Gupta",
+          "dblp_pid": "45/7178-2",
+          "role": "",
+          "homepage": "https://guptasid.bitbucket.io"
+        },
+        {
+          "name": "Snehanshu Saha",
+          "dblp_pid": "130/3938",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/snehanshus/profile"
+        },
+        {
+          "name": "Sougata Sen",
+          "dblp_pid": "150/9980",
+          "role": "",
+          "homepage": "http://www.sougata-sen.com"
+        },
+        {
+          "name": "Sravan Danda",
+          "dblp_pid": "189/3118",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/dandas/profile"
+        },
+        {
+          "name": "Sujith Thomas",
+          "dblp_pid": "81/835",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/sujitht/profile"
+        },
+        {
+          "name": "Surjya Ghosh",
+          "dblp_pid": "27/10262",
+          "role": "",
+          "homepage": "https://surjya-ghosh.github.io"
+        },
+        {
+          "name": "Swaroop Joshi",
+          "dblp_pid": "159/0188",
+          "role": "",
+          "homepage": "https://swaroopjoshi.in"
+        },
+        {
+          "name": "Tanmay Tulsidas Verlekar",
+          "dblp_pid": "178/5047",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/tanmayv/profile"
+        },
+        {
+          "name": "Tirtharaj Dash",
+          "dblp_pid": "131/6724",
+          "role": "",
+          "homepage": "https://tirtharajdash.github.io"
+        },
+        {
+          "name": "Veeky Baths",
+          "dblp_pid": "155/4496",
+          "role": "",
+          "homepage": "https://www.bits-pilani.ac.in/goa/veeky-baths"
+        },
+        {
+          "name": "Vinayak S. Naik",
+          "dblp_pid": "29/3269",
+          "role": "",
+          "homepage": "https://www.vinayaknaik.info"
+        }
+      ]
     }
   ]
 }

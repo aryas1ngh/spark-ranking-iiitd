@@ -184,4 +184,64 @@ INSTITUTIONS = {
         "state": "Andhra Pradesh", "city": "Tirupati",
         "affiliation_keywords": ["indian institute of technology tirupati", "iit tirupati"],
     },
+
+    # ── Research institutes ──────────────────────────────────────────────
+    # Narrower and more theory-concentrated than the IITs. Worth remembering
+    # when reading their rank: geo_mean_score is a geometric mean over the
+    # areas a department publishes in, so an institute active in one or two
+    # areas is scored on those alone while a broad department is pulled toward
+    # its weaker ones.
+    "TIFR": {
+        "name": "TIFR Mumbai", "affiliation": "Tata Inst. of Fundamental Research",
+        "country": "India", "website": "https://www.tifr.res.in",
+        "state": "Maharashtra", "city": "Mumbai",
+        "affiliation_keywords": ["tata institute of fundamental research", "tifr"],
+    },
+    # CSRankings spells this one as the bare acronym "CMI". That is safe as an
+    # affiliation (rows are matched exactly, not by substring) but far too
+    # short to use as a keyword, so only the expanded name confirms identity.
+    "CMI": {
+        "name": "CMI Chennai", "affiliation": "CMI",
+        "country": "India", "website": "https://www.cmi.ac.in",
+        "state": "Tamil Nadu", "city": "Chennai",
+        "affiliation_keywords": ["chennai mathematical institute"],
+    },
+    # Only ISI's Kolkata centre appears in CSRankings; the keyword is left
+    # centre-agnostic because DBLP notes rarely name one.
+    "ISI": {
+        "name": "ISI Kolkata", "affiliation": "ISI Kolkata",
+        "country": "India", "website": "https://www.isical.ac.in",
+        "state": "West Bengal", "city": "Kolkata",
+        "affiliation_keywords": ["indian statistical institute"],
+    },
+
+    # ── BITS Pilani: two campuses, one name ──────────────────────────────
+    # These two deliberately share broad keywords, which the substring rule at
+    # the top of this file would normally forbid ("bits pilani" nests inside a
+    # Goa-campus note). The rule is relaxed here because the cost is inverted:
+    # tiering sends anyone WITH a DBLP affiliation note that fails the keyword
+    # check to REVIEW rather than MEDIUM, so a campus-specific keyword would
+    # push most of both rosters out of the roster and into manual triage. The
+    # residual risk — confirming a homonym from the sibling campus — is small,
+    # since rosters are selected by exact CSRankings affiliation (cleanly split:
+    # Pilani homepages sit under /pilani, Goa under /goa) and the keyword only
+    # verifies a selection that is already correct.
+    # Only Pilani and Goa are in CSRankings; the Hyderabad and Dubai campuses
+    # have no rows at all, under any spelling.
+    "BITSP": {
+        "name": "BITS Pilani", "affiliation": "BITS Pilani",
+        "country": "India", "website": "https://www.bits-pilani.ac.in",
+        "state": "Rajasthan", "city": "Pilani",
+        "affiliation_keywords": ["bits pilani", "birla institute of technology and science"],
+    },
+    # NOTE the hyphen: the CSRankings string is "BITS Pilani-Goa", not a space.
+    "BITSG": {
+        "name": "BITS Pilani Goa", "affiliation": "BITS Pilani-Goa",
+        "country": "India", "website": "https://www.bits-pilani.ac.in/goa",
+        "state": "Goa", "city": "Zuarinagar",
+        "affiliation_keywords": [
+            "bits pilani", "birla institute of technology and science",
+            "goa campus", "bits goa",
+        ],
+    },
 }

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-21T20:47:35Z",
-  "count": 53,
-  "untriaged": 53,
+  "generated_at": "2026-07-28T20:12:43Z",
+  "count": 60,
+  "untriaged": 60,
   "results": [
     {
       "institution": "IIT Delhi",
@@ -1528,6 +1528,213 @@
         ],
         "recent_pubs": 22,
         "total_pubs": 22,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "TIFR Mumbai",
+      "short": "TIFR",
+      "name": "Raghuvansh Saxena",
+      "csrankings_name": "Raghuvansh Saxena",
+      "aliases": [
+        "Raghuvansh Saxena"
+      ],
+      "homepage": "https://www.tcs.tifr.res.in/web/people/faculty",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "ISI Kolkata",
+      "short": "ISI",
+      "name": "Bimal Kumar Roy",
+      "csrankings_name": "Bimal Kumar Roy",
+      "aliases": [
+        "Bimal Kumar Roy"
+      ],
+      "homepage": "https://www.isical.ac.in/~bimal",
+      "dblp_pid": null,
+      "dblp_match_name": null,
+      "confidence": "REVIEW",
+      "reason": "no exact DBLP author-name match",
+      "acknowledged": false,
+      "dblp_url": null,
+      "signals": {
+        "exact_name": false,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 0,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "ISI Kolkata",
+      "short": "ISI",
+      "name": "Srimanta Pal",
+      "csrankings_name": "Srimanta Pal",
+      "aliases": [
+        "Srimanta Pal"
+      ],
+      "homepage": "https://www.isical.ac.in/srimanta-pal",
+      "dblp_pid": "63/1160",
+      "dblp_match_name": "Srimanta Pal",
+      "confidence": "REVIEW",
+      "reason": "no publications since 2015",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/63/1160",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 0,
+        "total_pubs": 22,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "BITS Pilani",
+      "short": "BITSP",
+      "name": "Navneet Goyal",
+      "csrankings_name": "Navneet Goyal",
+      "aliases": [
+        "Navneet Goyal",
+        "Poonam Goyal"
+      ],
+      "homepage": "http://universe.bits-pilani.ac.in/pilani/goel/profile",
+      "dblp_pid": "17/1557",
+      "dblp_match_name": "Navneet Goyal",
+      "confidence": "REVIEW",
+      "reason": "aliases resolved to multiple PIDs: ['17/1557', '96/25']",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/17/1557",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": null,
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [],
+        "recent_pubs": 64,
+        "total_pubs": 71,
+        "alias_pid_conflict": true
+      }
+    },
+    {
+      "institution": "BITS Pilani Goa",
+      "short": "BITSG",
+      "name": "Amitava Das",
+      "csrankings_name": "Amitava Das 0001",
+      "aliases": [
+        "Amitava Das 0001"
+      ],
+      "homepage": "https://www.bits-pilani.ac.in/goa/amitava-das",
+      "dblp_pid": "75/5002-1",
+      "dblp_match_name": "Amitava Das 0001",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/75/5002-1",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0003-3418-463X",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "University of South Carolina, Artificial Intelligence Institute, Columbia, SC, USA",
+          "Wipro AI Lab, Bangalore, India",
+          "Indian Institute of Information Technology, Department of Computer Science and Engineering, Sri City, India",
+          "Jadavpur University, Department of Computer Science, Jadvapur, India"
+        ],
+        "recent_pubs": 162,
+        "total_pubs": 187,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "BITS Pilani Goa",
+      "short": "BITSG",
+      "name": "Harikrishnan Nellippallil Balakrishnan",
+      "csrankings_name": "Harikrishnan Nellippallil Balakrishnan",
+      "aliases": [
+        "Harikrishnan Nellippallil Balakrishnan",
+        "Harikrishnan N. B."
+      ],
+      "homepage": "https://sites.google.com/site/harikrishnannb8/home",
+      "dblp_pid": "250/2790",
+      "dblp_match_name": "Harikrishnan Nellippallil Balakrishnan",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/250/2790",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0002-4575-3968",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "Indian Institute of Science, National Institute of Advanced Studies, Bengaluru, India"
+        ],
+        "recent_pubs": 13,
+        "total_pubs": 13,
+        "alias_pid_conflict": false
+      }
+    },
+    {
+      "institution": "BITS Pilani Goa",
+      "short": "BITSG",
+      "name": "Kunal Korgaonkar",
+      "csrankings_name": "Kunal Korgaonkar",
+      "aliases": [
+        "Kunal Korgaonkar"
+      ],
+      "homepage": "https://www.bits-pilani.ac.in/goa/kunalk/profile",
+      "dblp_pid": "60/10106",
+      "dblp_match_name": "Kunal Korgaonkar",
+      "confidence": "REVIEW",
+      "reason": "DBLP affiliation does not mention this institution",
+      "acknowledged": false,
+      "dblp_url": "https://dblp.org/pid/60/10106",
+      "signals": {
+        "exact_name": true,
+        "orcid_csv": null,
+        "orcid_dblp": "0000-0002-9078-2944",
+        "orcid_match": false,
+        "homepage_match": false,
+        "affiliation_match": false,
+        "affiliations": [
+          "University of California San Diego"
+        ],
+        "recent_pubs": 13,
+        "total_pubs": 16,
         "alias_pid_conflict": false
       }
     }

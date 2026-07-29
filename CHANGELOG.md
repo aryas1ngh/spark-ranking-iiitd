@@ -2,6 +2,25 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## Unreleased
+
+### Five non-IIT institutions added to `pipeline/institutions.py` (25 → 30)
+Config only — the roster and rankings update on the next pipeline run.
+
+| Code | CSRankings affiliation | Rows | People |
+|---|---|---:|---:|
+| `TIFR` | `Tata Inst. of Fundamental Research` | 18 | 17 |
+| `CMI` | `CMI` | 14 | 11 |
+| `ISI` | `ISI Kolkata` | 49 | 45 |
+| `BITSP` | `BITS Pilani` | 28 | 24 |
+| `BITSG` | `BITS Pilani-Goa` | 46 | 37 |
+
+- **+134 people** over the current 592-person roster. ISI Kolkata (45) would be the 5th-largest tracked department; BITS Goa (37) is larger in the roster than BITS Pilani itself (24).
+- **Only two BITS campuses exist in CSRankings.** Hyderabad and Dubai have no rows under any spelling, and no BITS homepage URL in the CSV points at either. Pilani and Goa are cleanly separated — 27 Pilani rows sit under `bits-pilani.ac.in/pilani/`, 27 Goa rows under `/goa/` — so the two rosters don't overlap.
+- **The two BITS entries deliberately share broad keywords**, which the substring rule in the module docstring would normally forbid (`bits pilani` nests inside a Goa-campus note). The cost is inverted here: tiering sends anyone *with* a DBLP affiliation note that fails the keyword check to `REVIEW`, not `MEDIUM`, so a campus-specific keyword would push most of both rosters out of the roster and into manual triage. Rosters are selected by exact affiliation string, so the keyword only verifies an already-correct selection.
+- `CMI`'s affiliation is the bare acronym. Safe as an affiliation (rows are matched exactly), far too short as a keyword — only the expanded name confirms identity.
+- Scoring note recorded next to the research institutes: `geo_mean_score` is a geometric mean over the areas a department publishes in, so a one- or two-area institute is scored on those alone while a broad department is pulled toward its weaker areas. IIT Bhubaneswar already shows the effect — 2 faculty, `total_score` 1.65, `geo_mean_score` **2.51**.
+
 ## v1.7.0 — 2026-07-28
 
 ### 1. Adding a college no longer re-runs the pipeline for everybody
