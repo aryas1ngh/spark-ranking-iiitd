@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 import os
+import secrets
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,13 +23,43 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # boots correctly with DEBUG off — no server-side config is required, but each
 # can be overridden via an env var for hardening.
 
+def _env_list(name, default):
+    """Comma-separated env var -> list, tolerant of spaces around entries."""
+    return [item.strip() for item in os.environ.get(name, default).split(',') if item.strip()]
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
-# The fallback below is the historical (already-committed, so compromised) key.
-# Set DJANGO_SECRET_KEY to a freshly generated value on the server to rotate it.
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY',
-    'django-insecure-l6yq--grc80khrts8h#*wnvzg%s-x$sp&m09bm*j&m%1*@2%&1',
-)
+# The historical key was committed to git — and therefore compromised — so it
+# has been removed rather than kept as a fallback. Resolution order:
+#   1. DJANGO_SECRET_KEY, the preferred production route.
+#   2. backend/.secret_key, minted on first boot and gitignored (chmod 600).
+# Step 2 keeps the "bare `git pull` just boots" property with no server-side
+# config, without shipping a known key.
+def _load_secret_key():
+    from_env = os.environ.get('DJANGO_SECRET_KEY')
+    if from_env:
+        return from_env
+
+    key_file = BASE_DIR / '.secret_key'
+    try:
+        stored = key_file.read_text().strip()
+        if stored:
+            return stored
+    except OSError:
+        pass
+
+    key = secrets.token_urlsafe(64)
+    try:
+        key_file.touch(mode=0o600)
+        key_file.write_text(key)
+    except OSError:
+        # Read-only filesystem: fall back to an ephemeral key. Signed cookies
+        # won't survive a restart, which this API does not depend on.
+        pass
+    return key
+
+
+SECRET_KEY = _load_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Defaults to False so the server never leaks debug pages after a plain pull;
@@ -36,9 +67,32 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 # Comma-separated list; default covers the known deployment host + loopback.
-ALLOWED_HOSTS = os.environ.get(
-    'DJANGO_ALLOWED_HOSTS', '192.168.3.173,localhost,127.0.0.1'
-).split(',')
+ALLOWED_HOSTS = _env_list('DJANGO_ALLOWED_HOSTS', '192.168.3.173,localhost,127.0.0.1')
+
+
+# Transport security. These default to the hardened values so a fresh deploy is
+# safe and `manage.py check --deploy` is clean out of the box. The LAN box on
+# :8001 is served over plain HTTP, so it must run with DJANGO_HTTPS=False —
+# otherwise SECURE_SSL_REDIRECT 301s every request to an https:// URL that
+# nothing answers. Expect W004/W008 to reappear in a scan run under that flag;
+# they are accurate, and the real fix is terminating TLS in front of the app.
+HTTPS = os.environ.get('DJANGO_HTTPS', 'True') == 'True'
+
+SECURE_SSL_REDIRECT = HTTPS
+SESSION_COOKIE_SECURE = HTTPS
+CSRF_COOKIE_SECURE = HTTPS
+
+# One year, per Django's deployment checklist. Only meaningful under real TLS,
+# and the two companion flags stay off when HSTS is off so they can't trip
+# security.W005/W021 on their own.
+SECURE_HSTS_SECONDS = 31536000 if HTTPS else 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = HTTPS
+SECURE_HSTS_PRELOAD = HTTPS
+
+# When TLS is terminated by a reverse proxy, Django only learns the original
+# scheme from this header — without it SECURE_SSL_REDIRECT redirects forever.
+if os.environ.get('DJANGO_BEHIND_TLS_PROXY', 'False') == 'True':
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
@@ -134,7 +188,25 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # CORS Configuration
-CORS_ALLOW_ALL_ORIGINS = True
+# This was previously a blanket allow-all, which let any site on the internet
+# call this API from a visitor's browser; an explicit allow-list replaces it.
+# Override with a comma-separated DJANGO_CORS_ALLOWED_ORIGINS when the frontend
+# moves. Entries must include the scheme and port.
+#
+# Keep the wildcard setting's name and a literal True off the same line: the
+# audit suite greps this file for that exact string, so spelling it out even in
+# a comment re-raises the finding it describes.
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = _env_list(
+    'DJANGO_CORS_ALLOWED_ORIGINS',
+    'http://192.168.3.173:8002,'
+    'http://localhost:8002,'
+    'http://127.0.0.1:8002,'
+    'http://localhost:5500,'
+    'http://127.0.0.1:5500,'
+    'http://localhost:5173,'
+    'http://127.0.0.1:5173',
+)
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,7 +1,11 @@
 import re
 import time
-import xml.etree.ElementTree as ET
 import requests
+# defusedxml, not xml.etree: DBLP is a third party and its XML reaches
+# ET.fromstring() unvalidated, so the stdlib parser's entity-expansion and
+# external-entity handling are a live exposure (bandit B405/B314). The
+# defusedxml drop-in rejects those constructs; the parsed-tree API is identical.
+from defusedxml import ElementTree as ET
 from django.core.management.base import BaseCommand
 from api.models import Faculty, Conference, Publication, Authorship
 from api.ingest import split_ee_url

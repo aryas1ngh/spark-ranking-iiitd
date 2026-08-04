@@ -25,10 +25,12 @@ import os
 import re
 import sys
 import time
-import xml.etree.ElementTree as ET
 from collections import defaultdict
 
 import requests
+# defusedxml over xml.etree: DBLP's XML is third-party input parsed here
+# unvalidated. Drop-in replacement, same tree API.
+from defusedxml import ElementTree as ET
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), "data")

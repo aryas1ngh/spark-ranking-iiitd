@@ -2,30 +2,34 @@
 
 from django.db import migrations, models
 
-# Columns converted from "nullable text" to "NOT NULL, defaults to ''".
+# Fields converted from "nullable text" to "NOT NULL, defaults to ''".
 # Existing NULLs have to become '' before the NOT NULL alteration runs, or the
 # table rebuild rejects them.
-NULLABLE_TEXT_COLUMNS = [
-    ('api_conference', 'dblp_key'),
-    ('api_faculty', 'dblp_pid'),
-    ('api_faculty', 'designation'),
-    ('api_faculty', 'homepage'),
-    ('api_faculty', 'irins_id'),
-    ('api_faculty', 'orcid'),
-    ('api_institution', 'city'),
-    ('api_institution', 'state'),
-    ('api_institution', 'website'),
-    ('api_publication', 'dblp_key'),
-    ('api_publication', 'doi'),
+#
+# Addressed through the historical ORM rather than raw `UPDATE "{table}"` SQL:
+# the identifiers were always constants, never user input, but interpolating
+# them into a query string is a pattern static analysers flag (bandit B608,
+# semgrep sqlalchemy-execute-raw-query) and it is not worth the noise.
+NULLABLE_TEXT_FIELDS = [
+    ('Conference', 'dblp_key'),
+    ('Faculty', 'dblp_pid'),
+    ('Faculty', 'designation'),
+    ('Faculty', 'homepage'),
+    ('Faculty', 'irins_id'),
+    ('Faculty', 'orcid'),
+    ('Institution', 'city'),
+    ('Institution', 'state'),
+    ('Institution', 'website'),
+    ('Publication', 'dblp_key'),
+    ('Publication', 'doi'),
 ]
 
 
 def blank_out_nulls(apps, schema_editor):
-    with schema_editor.connection.cursor() as cursor:
-        for table, column in NULLABLE_TEXT_COLUMNS:
-            cursor.execute(
-                f'UPDATE "{table}" SET "{column}" = %s WHERE "{column}" IS NULL', ['']
-            )
+    db = schema_editor.connection.alias
+    for model_name, field in NULLABLE_TEXT_FIELDS:
+        model = apps.get_model('api', model_name)
+        model.objects.using(db).filter(**{f'{field}__isnull': True}).update(**{field: ''})
 
 
 def restore_nulls(apps, schema_editor):
@@ -38,9 +42,10 @@ def restore_nulls(apps, schema_editor):
     '' cannot be recovered — that ambiguity is exactly what this migration
     removed — so every empty string goes back to NULL.
     """
-    with schema_editor.connection.cursor() as cursor:
-        for table, column in NULLABLE_TEXT_COLUMNS:
-            cursor.execute(f'UPDATE "{table}" SET "{column}" = NULL WHERE "{column}" = %s', [''])
+    db = schema_editor.connection.alias
+    for model_name, field in NULLABLE_TEXT_FIELDS:
+        model = apps.get_model('api', model_name)
+        model.objects.using(db).filter(**{field: ''}).update(**{field: None})
 
 
 class Migration(migrations.Migration):

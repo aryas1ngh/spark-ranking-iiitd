@@ -16,7 +16,7 @@ regenerated golden is a changed contract, which means a frontend change too.
 import json
 import os
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from . import dataset
 
@@ -28,6 +28,12 @@ def canonical(payload):
     return json.dumps(payload, indent=2, sort_keys=True) + '\n'
 
 
+# SECURE_SSL_REDIRECT defaults to True (see settings.py), which would turn every
+# request below into a 301 to https://testserver and make each golden file a
+# record of the redirect rather than of the API. These tests assert on response
+# bodies, so they opt out of the redirect rather than speak TLS to a test client
+# that has no TLS. The setting itself is still exercised by test_ssl_redirect.
+@override_settings(SECURE_SSL_REDIRECT=False)
 class ContractTestCase(TestCase):
     """Base class providing the dataset and the golden-comparison helper."""
 
@@ -193,3 +199,23 @@ class MalformedInputTests(ContractTestCase):
 
     def test_empty_params_ignored(self):
         self.assertMatchesGolden('empty_params', '/api/rankings/?start_year=&end_year=&area=')
+
+
+class TransportSecurityTests(TestCase):
+    """The HTTPS hardening is env-gated, so pin both sides of the gate.
+
+    Every other test in this file runs with the redirect suppressed; without
+    these two, a regression that silently dropped SECURE_SSL_REDIRECT would go
+    unnoticed until a scanner caught it.
+    """
+
+    @override_settings(SECURE_SSL_REDIRECT=True)
+    def test_plain_http_is_redirected_when_enabled(self):
+        response = self.client.get('/api/stats/')
+        self.assertEqual(response.status_code, 301)
+        self.assertTrue(response['Location'].startswith('https://'))
+
+    @override_settings(SECURE_SSL_REDIRECT=False)
+    def test_plain_http_is_served_when_disabled(self):
+        """DJANGO_HTTPS=False is what keeps the HTTP-only LAN deployment usable."""
+        self.assertEqual(self.client.get('/api/stats/').status_code, 200)

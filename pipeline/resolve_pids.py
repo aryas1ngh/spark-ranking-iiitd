@@ -41,10 +41,12 @@ import os
 import re
 import sys
 import time
-import xml.etree.ElementTree as ET
 from collections import OrderedDict
 
 import requests
+# defusedxml over xml.etree: DBLP's XML is third-party input parsed here
+# unvalidated. Drop-in replacement, same tree API.
+from defusedxml import ElementTree as ET
 
 # ──────────────────────────────────────────────────────────────────
 # Configuration

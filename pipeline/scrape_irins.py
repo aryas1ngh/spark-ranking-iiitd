@@ -20,7 +20,6 @@ import os
 import re
 import sys
 import time
-import xml.etree.ElementTree as ET
 from collections import defaultdict
 
 import requests

@@ -29,6 +29,9 @@ TODO
 # Django
 backend_venv/
 backend/db.sqlite3
+# Per-machine SECRET_KEY, minted on first boot by backend/settings.py. Never
+# commit this — a shared secret key is a forgeable-signature bug.
+backend/.secret_key
 
 # Data checkpoints
 data/irins_checkpoint.json
@@ -47,6 +50,7 @@ data/review_log.md
 
 # Reference repos
 frontend_ref/
+spark-ranking-iiitd-SA/
 
 # Per-institution resolver debug outputs (--institution mode); the committed
 # combined outputs (resolved_faculty.json + needs_review.*) supersede these.
