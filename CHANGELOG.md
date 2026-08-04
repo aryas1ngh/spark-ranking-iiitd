@@ -2,6 +2,21 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.9.1 — 2026-08-04
+
+### Security audit remediation
+A static-analysis audit (Django deployment checks, Bandit, Semgrep, `pip-audit`) was run against the backend. Every code-level finding is resolved; the deployment-side items are configuration, not code, and are covered by the environment variables in the README.
+
+- **Cross-origin policy is now an allow-list.** The API previously accepted requests from any origin, which let any site a user visited read API responses using that user's browser. Replaced with an explicit origin list, overridable via `DJANGO_CORS_ALLOWED_ORIGINS`.
+- **No secret key ships in the repository.** `SECRET_KEY` resolves from `DJANGO_SECRET_KEY`, and failing that from a gitignored `backend/.secret_key` generated on first boot. This closes the rotation item left open in v1.8.0 — a bare `git pull` still boots with no server-side config, but every deployment now signs with a key of its own.
+- **External XML is parsed with `defusedxml`.** DBLP responses reached the standard-library parser directly; that parser expands entities, which is unsafe for input from a third party. Applied to the `fetch_dblp` management command and to the three `pipeline/` scripts with the same exposure. Added to both requirements files.
+- **Migration `0004` no longer composes SQL from strings.** Both data functions used f-strings to interpolate table and column names into `UPDATE` statements. The identifiers were hardcoded constants, so nothing was injectable, but the shape is one edit away from a real problem and reads identically to the unsafe form. Rewritten against the historical ORM; driven forward → reverse → forward on a scratch database to confirm the empty-string/NULL round-trip is unchanged.
+- **Transport security is explicit and gated.** HTTPS redirect, HSTS and secure session/CSRF cookies default to their hardened values behind a single `DJANGO_HTTPS` switch, so a deployment declares its transport once rather than in four places. `SECURE_PROXY_SSL_HEADER` is available behind `DJANGO_BEHIND_TLS_PROXY` for TLS-terminating reverse proxies, which otherwise cause a redirect loop.
+- **Dependencies patched.** Django `6.0.6` → `6.0.7`, a security release; `defusedxml` added. `pip-audit` reports no known vulnerabilities across the pinned set.
+- **Tests: 77 → 79.** The contract suite opts out of the HTTPS redirect — otherwise every golden file would record a 301 rather than an API response — and a new pair asserts the redirect behaviour on both sides of the `DJANGO_HTTPS` gate, so dropping the setting fails a test rather than waiting for the next audit.
+
+Requires `pip install -r backend/requirements.txt` after pulling.
+
 ## v1.9.0 — 2026-08-04
 
 ### Database schema normalised, API responses unchanged

@@ -103,15 +103,27 @@ npm run dev
 
 ### 4. Production Configuration
 
-The three security-critical settings read from the environment, with defaults chosen so a bare deploy (`git pull` on the server) boots safely with **`DEBUG` off** and no extra config:
+Security-critical settings read from the environment, with defaults chosen so a bare deploy (`git pull` on the server) boots safely with **`DEBUG` off** and no extra config:
 
 | Env var | Default | Notes |
 | --- | --- | --- |
 | `DJANGO_DEBUG` | `False` | Set to `True` only for local development. |
-| `DJANGO_ALLOWED_HOSTS` | `192.168.3.173,localhost,127.0.0.1` | Comma-separated. |
-| `DJANGO_SECRET_KEY` | historical committed key | **Rotate in production** — set a freshly generated key; the fallback is already public in git history. |
+| `DJANGO_ALLOWED_HOSTS` | deployment host + loopback | Comma-separated. |
+| `DJANGO_SECRET_KEY` | generated per deployment | Falls back to `backend/.secret_key`, created on first boot and gitignored. Set explicitly to share one key across instances or to rotate. |
+| `DJANGO_HTTPS` | `True` | Gates the HTTPS redirect, HSTS and secure-cookie settings together. |
+| `DJANGO_BEHIND_TLS_PROXY` | `False` | Set `True` when TLS terminates at a reverse proxy, so the original scheme is read from `X-Forwarded-Proto`. |
+| `DJANGO_CORS_ALLOWED_ORIGINS` | frontend origin + local dev ports | Comma-separated; each entry needs scheme and port. |
 
 Query parameters are validated before use: `start_year`, `end_year` (range 1900–2100) and `institution` must parse as integers, and malformed input returns a clean **HTTP 400** instead of a 500.
+
+**Applied hardening**
+
+- No secret key is committed to the repository; each deployment gets its own.
+- Cross-origin access is an explicit allow-list rather than a wildcard.
+- HTTPS redirect, HSTS and secure cookies default on, gated together so a deployment declares its transport once.
+- External XML (DBLP responses) is parsed with `defusedxml`, which rejects the entity constructs the standard-library parser expands.
+- Data migrations use the ORM rather than composing SQL from strings.
+- Dependencies are pinned and audited with `pip-audit`; the backend is covered by Bandit and Semgrep.
 
 ---
 

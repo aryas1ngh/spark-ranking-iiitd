@@ -29,12 +29,11 @@ def _env_list(name, default):
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# The historical key was committed to git — and therefore compromised — so it
-# has been removed rather than kept as a fallback. Resolution order:
+# No key is committed to the repository. Resolution order:
 #   1. DJANGO_SECRET_KEY, the preferred production route.
 #   2. backend/.secret_key, minted on first boot and gitignored (chmod 600).
 # Step 2 keeps the "bare `git pull` just boots" property with no server-side
-# config, without shipping a known key.
+# config, while giving every deployment a key of its own.
 def _load_secret_key():
     from_env = os.environ.get('DJANGO_SECRET_KEY')
     if from_env:
@@ -71,11 +70,10 @@ ALLOWED_HOSTS = _env_list('DJANGO_ALLOWED_HOSTS', '192.168.3.173,localhost,127.0
 
 
 # Transport security. These default to the hardened values so a fresh deploy is
-# safe and `manage.py check --deploy` is clean out of the box. The LAN box on
-# :8001 is served over plain HTTP, so it must run with DJANGO_HTTPS=False —
-# otherwise SECURE_SSL_REDIRECT 301s every request to an https:// URL that
-# nothing answers. Expect W004/W008 to reappear in a scan run under that flag;
-# they are accurate, and the real fix is terminating TLS in front of the app.
+# safe and `manage.py check --deploy` is clean out of the box. A deployment that
+# terminates no TLS has to set DJANGO_HTTPS=False, or SECURE_SSL_REDIRECT 301s
+# every request to an https:// URL nothing answers. Treat that as a temporary
+# state: terminating TLS in front of the app is the fix, not relaxing the flag.
 HTTPS = os.environ.get('DJANGO_HTTPS', 'True') == 'True'
 
 SECURE_SSL_REDIRECT = HTTPS
