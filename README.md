@@ -123,12 +123,17 @@ SPARK uses a **Django REST Framework** backend that handles the heavy lifting of
 spark/
 ├── backend/                     # Django REST Backend
 │   ├── api/                     # DRF Models, Views, Serializers
+│   │   ├── reference_data.py    # FoR code names, CORE rank weights
+│   │   ├── ingest.py            # shared loader helpers
+│   │   ├── tests/               # golden API contract + schema integrity tests
+│   │   │   └── golden/          # frozen responses — changing one is a contract change
 │   │   └── management/commands/ # DB loaders
 │   │       ├── load_seed_data.py    # faculty.json + conferences → DB
 │   │       ├── load_rankings.py     # rankings.json → DB (fast path)
 │   │       ├── load_irins.py
 │   │       └── fetch_dblp.py
 │   ├── backend/                 # Project Settings, URLs
+│   ├── tools/api_snapshot.py    # capture every API response for before/after diffing
 │   ├── db.sqlite3               # Auto-generated SQLite Database (gitignored)
 │   └── requirements.txt         # Python dependencies
 │
@@ -190,7 +195,7 @@ The backend serves 10 RESTful endpoints. All return JSON and are CORS-enabled. V
 SPARK uses **adjusted counts**, calculating scores on the fly directly in the database.
 
 1. **For each paper** published at an ICORE A\*/A conference, base credit is distributed by: `1.0 / number_of_coauthors`
-2. **Conference Weighting**: The fractional credit is then multiplied by the venue's tier:
+2. **Conference Weighting**: The fractional credit is then multiplied by the venue's tier, read from the `RankTier` table rather than hardcoded:
    - **A\*** = 4.0 multiplier
    - **A** = 2.0 multiplier
    - **Default** = 1.0 multiplier

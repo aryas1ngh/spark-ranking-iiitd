@@ -4,11 +4,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
-from django.db.models import Sum, F, Case, When, Value, FloatField, Q
+from django.db.models import Sum, F, Value, Q
 from django.db.models.functions import Coalesce
 from django.shortcuts import get_object_or_404
 
-from .models import Institution, Faculty, Conference, Publication, Authorship
+from .models import Institution, Faculty, Conference, Publication, Authorship, ResearchArea
 from .serializers import (
     StatsSerializer, AreaSerializer, RankingResultSerializer,
     InstitutionProfileSerializer, InstitutionTrendSerializer,
@@ -18,30 +18,9 @@ from .serializers import (
     AuthorshipNestedSerializer, InstitutionMiniSerializer,
 )
 
-# FoR code → human-readable name mapping
-FOR_DESCRIPTIONS = {
-    '4601': 'Applied Computing',
-    '4602': 'Artificial Intelligence',
-    '4603': 'Computer Vision & Multimedia',
-    '4604': 'Cybersecurity and Privacy',
-    '4605': 'Data Management and Data Science',
-    '4606': 'Distributed Computing',
-    '4607': 'Graphics, Augmented Reality and Games',
-    '4608': 'Human-Centred Computing',
-    '4609': 'Information Systems',
-    '4610': 'Library and Information Studies',
-    '4611': 'Machine Learning',
-    '4612': 'Software Engineering',
-    '4613': 'Theory of Computation',
-}
-
-# Weighted scoring: A*=4.0, A=2.0, else=1.0
-SCORE_WEIGHT_EXPR = Case(
-    When(publication__conference__core_rank='A*', then=Value(4.0)),
-    When(publication__conference__core_rank='A', then=Value(2.0)),
-    default=Value(1.0),
-    output_field=FloatField(),
-)
+# Score weight for an authorship, read from the venue's rank tier rather than
+# hardcoded here. RankTier holds the A*=4.0 / A=2.0 / Journal=1.0 scheme.
+SCORE_WEIGHT_EXPR = F('publication__conference__core_rank__weight')
 
 
 def _parse_int_param(params, name, min_val=None, max_val=None):
@@ -91,12 +70,7 @@ def _compute_faculty_score(faculty_id, extra_filters=Q()):
     return Authorship.objects.filter(
         faculty_id=faculty_id
     ).filter(extra_filters).annotate(
-        weighted=F('credit') * Case(
-            When(publication__conference__core_rank='A*', then=Value(4.0)),
-            When(publication__conference__core_rank='A', then=Value(2.0)),
-            default=Value(1.0),
-            output_field=FloatField(),
-        )
+        weighted=F('credit') * F('publication__conference__core_rank__weight')
     ).aggregate(total=Coalesce(Sum('weighted'), Value(0.0)))['total']
 
 
@@ -123,7 +97,7 @@ def _compute_institution_geo_mean(authorships_qs):
     """
     area_scores = {}  # area_code -> total weighted score
     for a in authorships_qs:
-        area = a.publication.conference.area or 'other'
+        area = a.publication.conference.area_id or 'other'
         area_scores[area] = area_scores.get(area, 0.0) + a.weighted
 
     geo_score = _geo_mean(list(area_scores.values()))
@@ -140,20 +114,15 @@ def _compute_all_institution_geo_means():
         publication__is_workshop=False
     ).select_related(
         'faculty__institution', 'publication__conference'
-    ).annotate(
-        weighted=F('credit') * Case(
-            When(publication__conference__core_rank='A*', then=Value(4.0)),
-            When(publication__conference__core_rank='A', then=Value(2.0)),
-            default=Value(1.0),
-            output_field=FloatField(),
-        )
+    ).order_by('id').annotate(
+        weighted=F('credit') * F('publication__conference__core_rank__weight')
     )
 
     # inst_id -> {area -> score}
     inst_area_scores = {}
     for a in auths:
         iid = a.faculty.institution_id
-        area = a.publication.conference.area or 'other'
+        area = a.publication.conference.area_id or 'other'
         if iid not in inst_area_scores:
             inst_area_scores[iid] = {}
         inst_area_scores[iid][area] = inst_area_scores[iid].get(area, 0.0) + a.weighted
@@ -178,19 +147,17 @@ class StatsView(APIView):
 
 class AreasView(APIView):
     def get(self, request):
-        # Get distinct area codes from conferences
-        area_codes = Conference.objects.exclude(
-            area__isnull=True
-        ).exclude(
-            area=''
-        ).values_list('area', flat=True).distinct().order_by('area')
+        # Only areas that actually have venues attached — an area with no
+        # venues can never appear in a ranking, and this endpoint has always
+        # listed just the ones in use.
+        codes_in_use = Conference.objects.filter(
+            area__isnull=False
+        ).values_list('area', flat=True).distinct()
 
-        areas = []
-        for code in area_codes:
-            name = FOR_DESCRIPTIONS.get(code, code)
-            area_id = name.lower().replace(' ', '_').replace('&', 'and').replace(',', '')
-            areas.append({'id': area_id, 'code': code, 'name': name})
-
+        areas = [
+            {'id': area.slug, 'code': area.code, 'name': area.name}
+            for area in ResearchArea.objects.filter(code__in=codes_in_use).order_by('code')
+        ]
         serializer = AreaSerializer(areas, many=True)
         return Response(serializer.data)
 
@@ -204,13 +171,8 @@ class RankingsView(APIView):
         # Get all authorships matching filters, annotate with weight
         authorships = Authorship.objects.filter(filters).select_related(
             'faculty', 'faculty__institution', 'publication__conference'
-        ).annotate(
-            weighted=F('credit') * Case(
-                When(publication__conference__core_rank='A*', then=Value(4.0)),
-                When(publication__conference__core_rank='A', then=Value(2.0)),
-                default=Value(1.0),
-                output_field=FloatField(),
-            )
+        ).order_by('id').annotate(
+            weighted=F('credit') * F('publication__conference__core_rank__weight')
         )
 
         # Accumulate per-area scores per institution, and per-faculty scores
@@ -226,7 +188,7 @@ class RankingsView(APIView):
             entry = inst_map[inst.id]
 
             # Accumulate per-area score
-            area = a.publication.conference.area or 'other'
+            area = a.publication.conference.area_id or 'other'
             entry['area_scores'][area] = entry['area_scores'].get(area, 0.0) + a.weighted
 
             fac = a.faculty
@@ -266,13 +228,8 @@ class InstitutionDetailView(APIView):
         authorships = Authorship.objects.filter(
             faculty__institution=inst,
             publication__is_workshop=False
-        ).select_related('publication__conference', 'faculty').annotate(
-            weighted=F('credit') * Case(
-                When(publication__conference__core_rank='A*', then=Value(4.0)),
-                When(publication__conference__core_rank='A', then=Value(2.0)),
-                default=Value(1.0),
-                output_field=FloatField(),
-            )
+        ).select_related('publication__conference', 'faculty').order_by('id').annotate(
+            weighted=F('credit') * F('publication__conference__core_rank__weight')
         )
 
         geo_score, area_scores = _compute_institution_geo_mean(authorships)
@@ -323,12 +280,7 @@ class InstitutionTrendsView(APIView):
             faculty__institution_id=pk,
             publication__is_workshop=False
         ).values('publication__year').annotate(
-            score=Sum(F('credit') * Case(
-                When(publication__conference__core_rank='A*', then=Value(4.0)),
-                When(publication__conference__core_rank='A', then=Value(2.0)),
-                default=Value(1.0),
-                output_field=FloatField(),
-            ))
+            score=Sum(F('credit') * F('publication__conference__core_rank__weight'))
         ).order_by('publication__year')
 
         data = [{'year': row['publication__year'], 'score': round(row['score'], 2)} for row in year_scores]
@@ -347,14 +299,17 @@ class PublicationsView(APIView):
             qs = qs.filter(authorships__faculty__institution_id=institution_id).distinct()
 
         pubs = []
-        for pub in qs.order_by('-year')[:500]:
+        # `id` breaks year ties. Without it the 500-row slice is taken from an
+        # arbitrarily ordered result, so the set of publications returned could
+        # change whenever the query plan did.
+        for pub in qs.order_by('-year', 'id')[:500]:
             pubs.append({
                 'id': pub.id,
                 'title': pub.title,
                 'year': pub.year,
                 'conference': pub.conference,
-                'core_rank': pub.conference.core_rank,
-                'area': pub.conference.area,
+                'core_rank': pub.conference.core_rank_id,
+                'area': pub.conference.area_id,
             })
 
         serializer = PublicationResultSerializer(pubs, many=True)
@@ -366,7 +321,7 @@ class PublicationsView(APIView):
 class InstitutionSearchView(APIView):
     def get(self, request):
         search = request.query_params.get('search', '')
-        qs = Institution.objects.all()
+        qs = Institution.objects.order_by('id')
         if search:
             qs = qs.filter(name__icontains=search)
 
@@ -375,12 +330,7 @@ class InstitutionSearchView(APIView):
             faculty__institution__in=qs,
             publication__is_workshop=False
         ).values('faculty__institution_id').annotate(
-            total=Sum(F('credit') * Case(
-                When(publication__conference__core_rank='A*', then=Value(4.0)),
-                When(publication__conference__core_rank='A', then=Value(2.0)),
-                default=Value(1.0),
-                output_field=FloatField(),
-            ))
+            total=Sum(F('credit') * F('publication__conference__core_rank__weight'))
         )
         score_map = {row['faculty__institution_id']: row['total'] for row in inst_scores}
 
@@ -406,7 +356,7 @@ class FacultyDetailView(APIView):
         authorships = Authorship.objects.filter(
             faculty=fac,
             publication__is_workshop=False
-        ).select_related('publication', 'publication__conference')
+        ).select_related('publication', 'publication__conference').order_by('id')
 
         total_score = 0.0
         a_star_score = 0.0
@@ -417,22 +367,22 @@ class FacultyDetailView(APIView):
 
         for a in authorships:
             conf = a.publication.conference
-            weight = 4.0 if conf.core_rank == 'A*' else (2.0 if conf.core_rank == 'A' else 1.0)
+            weight = conf.core_rank.weight
             weighted = a.credit * weight
             total_score += weighted
-            if conf.core_rank == 'A*':
+            if conf.core_rank_id == 'A*':
                 a_star_score += weighted
-            elif conf.core_rank == 'A':
+            elif conf.core_rank_id == 'A':
                 a_score += weighted
 
-            if conf.area:
-                areas_set.add(conf.area)
+            if conf.area_id:
+                areas_set.add(conf.area_id)
 
             pubs.append({
                 'title': a.publication.title,
                 'year': a.publication.year,
                 'conference': conf,
-                'core_rank': conf.core_rank,
+                'core_rank': conf.core_rank_id,
             })
             # Also remove `pubs` from the response payload
             authorship_data.append(a)
@@ -467,7 +417,7 @@ class FacultyListView(APIView):
         search = request.query_params.get('search', '')
 
         # Start with all faculty (optionally filtered by name)
-        fac_qs = Faculty.objects.select_related('institution', 'department').all()
+        fac_qs = Faculty.objects.select_related('institution', 'department').order_by('id')
         if search:
             fac_qs = fac_qs.filter(name__icontains=search)
 
@@ -492,13 +442,8 @@ class FacultyListView(APIView):
         # Get authorships with filters
         auths = Authorship.objects.filter(filters).select_related(
             'faculty', 'faculty__institution'
-        ).annotate(
-            weighted=F('credit') * Case(
-                When(publication__conference__core_rank='A*', then=Value(4.0)),
-                When(publication__conference__core_rank='A', then=Value(2.0)),
-                default=Value(1.0),
-                output_field=FloatField(),
-            )
+        ).order_by('id').annotate(
+            weighted=F('credit') * F('publication__conference__core_rank__weight')
         )
 
         # Accumulate scores per faculty

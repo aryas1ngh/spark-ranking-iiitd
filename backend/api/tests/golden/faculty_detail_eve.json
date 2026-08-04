@@ -1,0 +1,43 @@
+{
+  "body": {
+    "a_score": 1.0,
+    "a_star_score": 0.0,
+    "areas": [
+      "4613"
+    ],
+    "authorships": [
+      {
+        "id": 11,
+        "publication": {
+          "core_rank": "A",
+          "id": 8,
+          "title": "Approximation Schemes For Packing",
+          "venue": "THCONF",
+          "year": 2022
+        }
+      },
+      {
+        "id": 12,
+        "publication": {
+          "core_rank": "Journal",
+          "id": 9,
+          "title": "A Survey Of Everything",
+          "venue": "TJOUR",
+          "year": 2021
+        }
+      }
+    ],
+    "bio": "Professor",
+    "dblp_url": null,
+    "id": 5,
+    "institution": {
+      "id": 3,
+      "name": "Gamma University"
+    },
+    "name": "Eve Analyst",
+    "scholar_url": null,
+    "score": 2.0
+  },
+  "status": 200,
+  "url": "/api/faculty/5/"
+}

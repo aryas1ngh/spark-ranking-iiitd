@@ -1,0 +1,54 @@
+{
+  "body": {
+    "a_score": 0.0,
+    "a_star_score": 7.0,
+    "areas": [
+      "4602",
+      "4611"
+    ],
+    "authorships": [
+      {
+        "id": 1,
+        "publication": {
+          "core_rank": "A*",
+          "id": 1,
+          "title": "Attention Over Graphs",
+          "venue": "AICONF",
+          "year": 2020
+        }
+      },
+      {
+        "id": 2,
+        "publication": {
+          "core_rank": "A*",
+          "id": 2,
+          "title": "Neural Program Repair",
+          "venue": "MLCONF",
+          "year": 2021
+        }
+      },
+      {
+        "id": 3,
+        "publication": {
+          "core_rank": "A*",
+          "id": 3,
+          "title": "Federated Optimisation At Scale",
+          "venue": "AICONF",
+          "year": 2022
+        }
+      }
+    ],
+    "bio": "Professor",
+    "dblp_url": "https://dblp.org/pid/111/1111",
+    "id": 1,
+    "institution": {
+      "id": 1,
+      "name": "Alpha Institute of Technology"
+    },
+    "name": "Ada Researcher",
+    "scholar_url": null,
+    "score": 7.0
+  },
+  "status": 200,
+  "url": "/api/faculty/1/"
+}

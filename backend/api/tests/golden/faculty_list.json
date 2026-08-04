@@ -1,0 +1,125 @@
+{
+  "body": [
+    {
+      "authorships": [
+        1,
+        2,
+        3
+      ],
+      "dblp_pid": "111/1111",
+      "department": "Computer Science and Engineering",
+      "designation": "Professor",
+      "homepage": "https://alpha.example.edu/~ada",
+      "id": 1,
+      "institution": {
+        "id": 1,
+        "name": "Alpha Institute of Technology"
+      },
+      "institution_rank": 1,
+      "irins_id": null,
+      "name": "Ada Researcher",
+      "orcid": null,
+      "score": 7.0
+    },
+    {
+      "authorships": [
+        4,
+        6,
+        8
+      ],
+      "dblp_pid": "333/3333",
+      "department": null,
+      "designation": "Associate Professor",
+      "homepage": "https://beta.example.edu/~cleo",
+      "id": 3,
+      "institution": {
+        "id": 2,
+        "name": "Beta Institute of Science"
+      },
+      "institution_rank": 2,
+      "irins_id": null,
+      "name": "Cleo Engineer",
+      "orcid": null,
+      "score": 4.33
+    },
+    {
+      "authorships": [
+        9,
+        10
+      ],
+      "dblp_pid": "444/4444",
+      "department": null,
+      "designation": "Assistant Professor",
+      "homepage": "",
+      "id": 4,
+      "institution": {
+        "id": 2,
+        "name": "Beta Institute of Science"
+      },
+      "institution_rank": 2,
+      "irins_id": null,
+      "name": "Dev Theorist",
+      "orcid": null,
+      "score": 3.0
+    },
+    {
+      "authorships": [
+        5,
+        7
+      ],
+      "dblp_pid": "222/2222",
+      "department": null,
+      "designation": "",
+      "homepage": "",
+      "id": 2,
+      "institution": {
+        "id": 1,
+        "name": "Alpha Institute of Technology"
+      },
+      "institution_rank": 1,
+      "irins_id": null,
+      "name": "Bob Scientist",
+      "orcid": null,
+      "score": 2.33
+    },
+    {
+      "authorships": [
+        11,
+        12
+      ],
+      "dblp_pid": "",
+      "department": null,
+      "designation": "Professor",
+      "homepage": "",
+      "id": 5,
+      "institution": {
+        "id": 3,
+        "name": "Gamma University"
+      },
+      "institution_rank": 3,
+      "irins_id": null,
+      "name": "Eve Analyst",
+      "orcid": null,
+      "score": 2.0
+    },
+    {
+      "authorships": [],
+      "dblp_pid": "555/5555",
+      "department": null,
+      "designation": "Lecturer",
+      "homepage": "",
+      "id": 6,
+      "institution": {
+        "id": 3,
+        "name": "Gamma University"
+      },
+      "institution_rank": 3,
+      "irins_id": null,
+      "name": "Frank Nopubs",
+      "orcid": null,
+      "score": 0.0
+    }
+  ],
+  "status": 200,
+  "url": "/api/faculty/"
+}

@@ -1,0 +1,12 @@
+{
+  "body": {
+    "faculty": 6,
+    "faculty_count": 6,
+    "institution_count": 3,
+    "institutions": 3,
+    "publication_count": 10,
+    "publications": 10
+  },
+  "status": 200,
+  "url": "/api/stats/"
+}

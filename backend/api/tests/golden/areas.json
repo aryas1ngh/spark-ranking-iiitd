@@ -1,0 +1,26 @@
+{
+  "body": [
+    {
+      "code": "4602",
+      "id": "artificial_intelligence",
+      "name": "Artificial Intelligence"
+    },
+    {
+      "code": "4611",
+      "id": "machine_learning",
+      "name": "Machine Learning"
+    },
+    {
+      "code": "4612",
+      "id": "software_engineering",
+      "name": "Software Engineering"
+    },
+    {
+      "code": "4613",
+      "id": "theory_of_computation",
+      "name": "Theory of Computation"
+    }
+  ],
+  "status": 200,
+  "url": "/api/areas/"
+}

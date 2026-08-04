@@ -1,0 +1,38 @@
+{
+  "body": {
+    "results": [
+      {
+        "institution": {
+          "id": 2,
+          "name": "Beta Institute of Science"
+        },
+        "rank": 1,
+        "score": 3.0,
+        "top_faculty": [
+          {
+            "id": 4,
+            "name": "Dev Theorist",
+            "score": 3.0
+          }
+        ]
+      },
+      {
+        "institution": {
+          "id": 3,
+          "name": "Gamma University"
+        },
+        "rank": 2,
+        "score": 1.0,
+        "top_faculty": [
+          {
+            "id": 5,
+            "name": "Eve Analyst",
+            "score": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  "status": 200,
+  "url": "/api/rankings/?start_year=2018&end_year=2024&area=4613"
+}

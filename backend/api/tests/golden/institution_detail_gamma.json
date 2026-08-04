@@ -1,0 +1,23 @@
+{
+  "body": {
+    "area_breakdown": {
+      "4613": 1.0,
+      "other": 1.0
+    },
+    "id": 3,
+    "name": "Gamma University",
+    "rank": 3,
+    "score": 1.0,
+    "summary": null,
+    "top_faculty": [
+      {
+        "id": 5,
+        "name": "Eve Analyst",
+        "score": 2.0
+      }
+    ],
+    "website": "https://gamma.example.edu"
+  },
+  "status": 200,
+  "url": "/api/institutions/3/"
+}

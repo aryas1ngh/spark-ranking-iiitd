@@ -1,0 +1,20 @@
+{
+  "body": {
+    "a_score": 0.0,
+    "a_star_score": 0.0,
+    "areas": [],
+    "authorships": [],
+    "bio": "Lecturer",
+    "dblp_url": "https://dblp.org/pid/555/5555",
+    "id": 6,
+    "institution": {
+      "id": 3,
+      "name": "Gamma University"
+    },
+    "name": "Frank Nopubs",
+    "scholar_url": null,
+    "score": 0.0
+  },
+  "status": 200,
+  "url": "/api/faculty/6/"
+}

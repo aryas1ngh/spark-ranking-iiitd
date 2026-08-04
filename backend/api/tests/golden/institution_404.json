@@ -1,0 +1,7 @@
+{
+  "body": {
+    "detail": "No Institution matches the given query."
+  },
+  "status": 404,
+  "url": "/api/institutions/999999/"
+}

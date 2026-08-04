@@ -1,0 +1,63 @@
+{
+  "body": {
+    "results": [
+      {
+        "institution": {
+          "id": 1,
+          "name": "Alpha Institute of Technology"
+        },
+        "rank": 1,
+        "score": 2.55,
+        "top_faculty": [
+          {
+            "id": 1,
+            "name": "Ada Researcher",
+            "score": 7.0
+          },
+          {
+            "id": 2,
+            "name": "Bob Scientist",
+            "score": 2.33
+          }
+        ]
+      },
+      {
+        "institution": {
+          "id": 2,
+          "name": "Beta Institute of Science"
+        },
+        "rank": 2,
+        "score": 1.68,
+        "top_faculty": [
+          {
+            "id": 3,
+            "name": "Cleo Engineer",
+            "score": 4.33
+          },
+          {
+            "id": 4,
+            "name": "Dev Theorist",
+            "score": 3.0
+          }
+        ]
+      },
+      {
+        "institution": {
+          "id": 3,
+          "name": "Gamma University"
+        },
+        "rank": 3,
+        "score": 1.0,
+        "top_faculty": [
+          {
+            "id": 5,
+            "name": "Eve Analyst",
+            "score": 2.0
+          }
+        ]
+      }
+    ]
+  },
+  "status": 200,
+  "url": "/api/rankings/?start_year=&end_year=&area="
+}

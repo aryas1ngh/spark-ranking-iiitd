@@ -1,0 +1,16 @@
+{
+  "body": [
+    {
+      "id": 1,
+      "name": "Alpha Institute of Technology",
+      "score": 9.33
+    },
+    {
+      "id": 2,
+      "name": "Beta Institute of Science",
+      "score": 7.33
+    }
+  ],
+  "status": 200,
+  "url": "/api/institutions/?search=institute"
+}

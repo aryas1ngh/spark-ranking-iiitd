@@ -2,6 +2,7 @@ import json
 import os
 from django.core.management.base import BaseCommand
 from api.models import Institution, Faculty, Conference
+from api.ingest import get_rank_tier, get_research_area, venue_type_for
 
 class Command(BaseCommand):
     help = 'Load seed data into the database'
@@ -19,8 +20,9 @@ class Command(BaseCommand):
                     defaults={
                         'full_name': conf['title'],
                         'dblp_key': conf.get('dblp_key', ''),
-                        'core_rank': conf['rank'],
-                        'area': conf.get('for_code', '')
+                        'core_rank': get_rank_tier(conf['rank']),
+                        'area': get_research_area(conf.get('for_code', '')),
+                        'venue_type': venue_type_for(conf['rank']),
                     }
                 )
         self.stdout.write(self.style.SUCCESS(f"Loaded {Conference.objects.count()} conferences"))
@@ -35,7 +37,8 @@ class Command(BaseCommand):
                         acronym=journal['acronym'],
                         defaults={
                             'full_name': journal['title'],
-                            'core_rank': 'Journal'
+                            'core_rank': get_rank_tier('Journal'),
+                            'venue_type': Conference.VenueType.JOURNAL,
                         }
                     )
             self.stdout.write(self.style.SUCCESS("Loaded journals"))

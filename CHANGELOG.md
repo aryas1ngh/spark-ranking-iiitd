@@ -2,6 +2,43 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v1.9.0 — 2026-08-04
+
+### Database schema normalised, API responses unchanged
+Four migrations (`0003`–`0006`) put the rules the loaders enforced in Python into the schema itself. Every endpoint returns byte-identical JSON, verified by diffing all 71 API responses against a pre-migration capture; the one intentional exception is noted below.
+
+**Keys that existed only as convention are now declared.** Each `get_or_create` in the loaders was an undeclared candidate key: `Institution.name`, `Conference.acronym`, `(Department.institution, name)`, `(Faculty.institution, name)`, `(Publication.title, year, conference)`, and `(Authorship.faculty, publication)` are now `UNIQUE`. `Faculty.dblp_pid` and both `dblp_key` columns get *partial* unique constraints, which is what the data actually requires — a PID identifies one person globally, but any number of unresolved roster entries have no PID at all.
+
+- **The one `UNIQUE` that existed was enforcing nothing.** `Publication.dblp_key` was declared unique while NULL on all 3325 rows, and multiple NULLs never collide. Real de-duplication was happening on `(title, year, conference)` with no constraint behind it.
+- Surrogate `id` columns stay the primary key everywhere. They are part of the public API — `/api/institutions/{id}/`, `/api/faculty/{id}/`, and the authorship ids in `/api/faculty/` — so the natural keys are declared as candidate keys alongside them rather than replacing them.
+
+**`Authorship.credit` no longer hides a transitive dependency.** `credit` is `1/num_authors`, a property of the *publication*, identical for every author of a paper — verified across all 4003 rows. `Publication.num_authors` now records it, backfilled by inverting the stored credit. `credit` itself is deliberately kept as a stored copy: the pipeline rounds it to four decimal places, so recomputing it exactly would move every published score by 0.001–0.012 and could reorder near-ties. The denormalisation is documented at the field and asserted by tests instead of being silently assumed.
+
+**Reference data moved out of application code.**
+- `ResearchArea` replaces the `FOR_DESCRIPTIONS` dict in `views.py`. `Conference.area` is a foreign key to it, storing the code in the same column, so serialising still costs no join.
+- `RankTier` holds the A\*=4.0 / A=2.0 / Journal=1.0 weights, replacing eight copies of the same hardcoded `Case/When` block. Scoring now reads the weight by join.
+- `Conference.venue_type` separates *what a venue is* from *how it ranks*. `core_rank` had the domain `{A*, A, Journal}`, where `Journal` is not a rank.
+
+**Optional text columns have one empty value instead of two.** They were nullable while the loaders wrote `''`, so `orcid` was NULL on all 378 rows while `designation` was `''` on 263 — the same "no value" spelled two ways, which every query had to test for twice. They are now `NOT NULL DEFAULT ''`. `orcid` and `irins_id` still serialise as `null` via a compatibility field so the wire format is unchanged. NULL keeps its meaning for foreign keys, where it means "no related row".
+
+**`doi` held 672 URLs.** The column was filled from DBLP's `<ee>` element, which is a DOI link for some venues and an ACL Anthology or publisher link for others. Split into `doi` (bare DOI, 2704 rows) and `ee_url` (the link, 3320 rows), with a `CHECK` that refuses a URL in the DOI column.
+
+**Check constraints and indexes.** Year range, positive page and author counts, `0 < credit <= 1`, and indexes on the columns every scoring query filters and groups by (`Publication.year`, `(is_workshop, year)`, `Conference.area`, `Conference.core_rank`).
+
+### `/api/publications/?institution=` returned an arbitrary result set
+The one intentional response change, found by the migration diff. The query ordered by `-year` with no tiebreak and then took the first 500 rows, so *which* publications came back depended on the query plan — adding an index changed the set for 3 of 8 institutions. Now ordered by `(-year, id)`. Several other endpoints had the same latent instability in list ordering (`authorships` arrays, tied `top_faculty`) and are now deterministic too.
+
+### Test suite: 77 tests where there were none
+- **Golden contract tests** freeze the full JSON of all 10 endpoints plus filter and error cases. Regenerating a golden is deliberate (`UPDATE_GOLDEN=1`) and means the frontend contract changed.
+- **Schema integrity tests** prove each new constraint actually rejects what it claims to.
+- **Loader tests** rebuild the database from `faculty.json` + `rankings.json` in full (30 institutions, 719 faculty, 4458 publications) and assert referential integrity and idempotency — the real test of a schema change, since publications and authorships are a materialised view over the pipeline's JSON.
+- **`backend/tools/api_snapshot.py`** captures every endpoint against the live database for before/after diffing.
+
+### Found, not fixed
+- **A department name leaked into the FoR code column.** One venue has `area = 'CSE'`, which is not a Field of Research code. The reference table forced it into the open; it now has a `ResearchArea` row named after itself so the foreign key holds. The upstream scraper needs a look.
+- **`load_irins.py` processes only the last file it reads.** Its faculty loop sits outside the per-file loop, so `irins_data` and the faculty lookup leak from the final iteration. Untouched here beyond schema compatibility.
+- **`Faculty` conflates a person with an affiliation**, so it cannot represent someone moving institutions. The textbook fix is a `Person`/`Affiliation` split; likewise a `VenueRanking` table would capture that CORE ranks change per edition year. Both are invisible to the API if the serializers absorb them, and both are larger than this pass.
+
 ## v1.8.0 — 2026-07-29
 
 ### Five non-IIT institutions added to `pipeline/institutions.py` (25 → 30)

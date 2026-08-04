@@ -1,0 +1,38 @@
+{
+  "body": {
+    "results": [
+      {
+        "institution": {
+          "id": 1,
+          "name": "Alpha Institute of Technology"
+        },
+        "rank": 1,
+        "score": 5.0,
+        "top_faculty": [
+          {
+            "id": 1,
+            "name": "Ada Researcher",
+            "score": 5.0
+          }
+        ]
+      },
+      {
+        "institution": {
+          "id": 2,
+          "name": "Beta Institute of Science"
+        },
+        "rank": 2,
+        "score": 1.0,
+        "top_faculty": [
+          {
+            "id": 3,
+            "name": "Cleo Engineer",
+            "score": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  "status": 200,
+  "url": "/api/rankings/?area=4602"
+}

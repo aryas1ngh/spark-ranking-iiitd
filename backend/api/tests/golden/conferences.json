@@ -1,0 +1,36 @@
+{
+  "body": [
+    {
+      "acronym": "SECONF",
+      "area": "4612",
+      "core_rank": "A",
+      "name": "Conference on Software Engineering"
+    },
+    {
+      "acronym": "THCONF",
+      "area": "4613",
+      "core_rank": "A",
+      "name": "Conference on Theory of Computation"
+    },
+    {
+      "acronym": "AICONF",
+      "area": "4602",
+      "core_rank": "A*",
+      "name": "Conference on Artificial Intelligence"
+    },
+    {
+      "acronym": "MLCONF",
+      "area": "4611",
+      "core_rank": "A*",
+      "name": "Conference on Machine Learning"
+    },
+    {
+      "acronym": "TJOUR",
+      "area": null,
+      "core_rank": "Journal",
+      "name": "Transactions on Computing"
+    }
+  ],
+  "status": 200,
+  "url": "/api/conferences/"
+}

@@ -3,6 +3,7 @@ import os
 import re
 from django.core.management.base import BaseCommand
 from api.models import Institution, Faculty, Conference, Publication, Authorship
+from api.ingest import get_rank_tier, split_ee_url, venue_type_for
 
 class Command(BaseCommand):
     help = 'Load IRINS data into the database from irins_publications.json'
@@ -113,15 +114,25 @@ class Command(BaseCommand):
                     conference = Conference.objects.create(
                         acronym=venue_acronym or venue_full[:10],
                         full_name=venue_full or venue_acronym,
-                        core_rank=rank,
+                        # 'Unknown' is created on demand with weight 1.0, which
+                        # is what an unrecognised rank has always scored.
+                        core_rank=get_rank_tier(rank),
+                        venue_type=venue_type_for(rank),
                     )
-                
+
+                doi, ee_url = split_ee_url(pub.get('doi', ''))
+                # Year and venue join the lookup because (title, year, venue) is
+                # the publication's natural key — matching on title alone could
+                # attach this authorship to a same-named paper from another
+                # venue, and would collide with the constraint on insert.
                 publication, created = Publication.objects.get_or_create(
                     title=pub['title'],
+                    year=pub['year'],
+                    conference=conference,
                     defaults={
-                        'year': pub['year'],
-                        'conference': conference,
-                        'doi': pub.get('doi', '')
+                        'doi': doi,
+                        'ee_url': ee_url,
+                        'num_authors': pub.get('num_authors'),
                     }
                 )
                 

@@ -2,6 +2,24 @@ from rest_framework import serializers
 from .models import Institution, Department, Faculty, Conference, Publication, Authorship
 
 
+# ── Wire-compatibility fields ───────────────────────────────
+
+class BlankAsNullCharField(serializers.CharField):
+    """Serialises an empty string as null.
+
+    These columns used to be nullable and the API has always emitted null for
+    them. The schema now stores '' instead of NULL so there is a single empty
+    state, but the responses must not change — this field bridges the two.
+    Applied only to fields that actually rendered as null before; fields that
+    already emitted "" keep emitting "".
+    """
+
+    def to_representation(self, value):
+        if value is None or value == '':
+            return None
+        return super().to_representation(value)
+
+
 # ── Lightweight / Nested Serializers ────────────────────────
 
 class InstitutionMiniSerializer(serializers.ModelSerializer):
@@ -106,7 +124,9 @@ class AuthorshipNestedSerializer(serializers.Serializer):
             'title': obj.publication.title,
             'year': obj.publication.year,
             'venue': obj.publication.conference.acronym,
-            'core_rank': obj.publication.conference.core_rank,
+            # `core_rank_id` is the rank code itself — the foreign key column
+            # stores 'A*'/'A'/'Journal', so this needs no extra query.
+            'core_rank': obj.publication.conference.core_rank_id,
         }
 
 
@@ -142,9 +162,9 @@ class FacultyLeaderboardSerializer(serializers.Serializer):
     score = serializers.FloatField()
     name = serializers.CharField()
     designation = serializers.CharField(allow_null=True)
-    orcid = serializers.CharField(allow_null=True)
+    orcid = BlankAsNullCharField(allow_null=True)
     dblp_pid = serializers.CharField(allow_null=True)
-    irins_id = serializers.CharField(allow_null=True)
+    irins_id = BlankAsNullCharField(allow_null=True)
     homepage = serializers.CharField(allow_null=True)
     institution_rank = serializers.IntegerField(allow_null=True, default=None)
 

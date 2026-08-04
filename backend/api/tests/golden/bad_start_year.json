@@ -1,0 +1,7 @@
+{
+  "body": {
+    "start_year": "Must be a valid integer."
+  },
+  "status": 400,
+  "url": "/api/rankings/?start_year=abc"
+}

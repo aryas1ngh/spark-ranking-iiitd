@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 import requests
 from django.core.management.base import BaseCommand
 from api.models import Faculty, Conference, Publication, Authorship
+from api.ingest import split_ee_url
 
 DBLP_BASE = "https://dblp.uni-trier.de"
 MAX_RETRIES = 4
@@ -38,13 +39,16 @@ class Command(BaseCommand):
                     continue
                 
                 # Save Publication
+                doi, ee_url = split_ee_url(pub['url'])
                 publication, created = Publication.objects.get_or_create(
                     dblp_key=pub['dblp_key'],
                     defaults={
                         'title': pub['title'],
                         'year': pub['year'],
-                        'doi': pub['url'] if pub['url'] and 'doi.org' in pub['url'] else '',
+                        'doi': doi,
+                        'ee_url': ee_url,
                         'conference': conference,
+                        'num_authors': pub['num_authors'],
                         'page_count': pub['page_count'],
                         'is_workshop': pub['is_workshop'],
                     }

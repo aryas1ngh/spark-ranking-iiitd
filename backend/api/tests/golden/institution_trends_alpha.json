@@ -1,0 +1,26 @@
+{
+  "body": [
+    {
+      "score": 1.0,
+      "year": 2019
+    },
+    {
+      "score": 4.0,
+      "year": 2020
+    },
+    {
+      "score": 2.0,
+      "year": 2021
+    },
+    {
+      "score": 1.0,
+      "year": 2022
+    },
+    {
+      "score": 1.33,
+      "year": 2023
+    }
+  ],
+  "status": 200,
+  "url": "/api/institutions/1/trends/"
+}

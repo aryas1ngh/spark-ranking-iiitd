@@ -1,0 +1,29 @@
+{
+  "body": {
+    "area_breakdown": {
+      "4602": 5.0,
+      "4611": 3.33,
+      "4612": 1.0
+    },
+    "id": 1,
+    "name": "Alpha Institute of Technology",
+    "rank": 1,
+    "score": 2.55,
+    "summary": null,
+    "top_faculty": [
+      {
+        "id": 1,
+        "name": "Ada Researcher",
+        "score": 7.0
+      },
+      {
+        "id": 2,
+        "name": "Bob Scientist",
+        "score": 2.33
+      }
+    ],
+    "website": "https://alpha.example.edu"
+  },
+  "status": 200,
+  "url": "/api/institutions/1/"
+}

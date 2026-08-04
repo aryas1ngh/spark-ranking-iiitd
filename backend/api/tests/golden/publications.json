@@ -1,0 +1,107 @@
+{
+  "body": {
+    "results": [
+      {
+        "area": "4612",
+        "conference": {
+          "acronym": "SECONF",
+          "core_rank": "A"
+        },
+        "core_rank": "A",
+        "id": 6,
+        "title": "Type Inference For Dynamic Languages",
+        "year": 2024
+      },
+      {
+        "area": "4611",
+        "conference": {
+          "acronym": "MLCONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 4,
+        "title": "Contrastive Pretraining Revisited",
+        "year": 2023
+      },
+      {
+        "area": "4602",
+        "conference": {
+          "acronym": "AICONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 3,
+        "title": "Federated Optimisation At Scale",
+        "year": 2022
+      },
+      {
+        "area": "4613",
+        "conference": {
+          "acronym": "THCONF",
+          "core_rank": "A"
+        },
+        "core_rank": "A",
+        "id": 8,
+        "title": "Approximation Schemes For Packing",
+        "year": 2022
+      },
+      {
+        "area": "4611",
+        "conference": {
+          "acronym": "MLCONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 2,
+        "title": "Neural Program Repair",
+        "year": 2021
+      },
+      {
+        "area": null,
+        "conference": {
+          "acronym": "TJOUR",
+          "core_rank": "Journal"
+        },
+        "core_rank": "Journal",
+        "id": 9,
+        "title": "A Survey Of Everything",
+        "year": 2021
+      },
+      {
+        "area": "4602",
+        "conference": {
+          "acronym": "AICONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 1,
+        "title": "Attention Over Graphs",
+        "year": 2020
+      },
+      {
+        "area": "4612",
+        "conference": {
+          "acronym": "SECONF",
+          "core_rank": "A"
+        },
+        "core_rank": "A",
+        "id": 5,
+        "title": "Refactoring Legacy Monoliths",
+        "year": 2019
+      },
+      {
+        "area": "4613",
+        "conference": {
+          "acronym": "THCONF",
+          "core_rank": "A"
+        },
+        "core_rank": "A",
+        "id": 7,
+        "title": "Lower Bounds For Streaming",
+        "year": 2018
+      }
+    ]
+  },
+  "status": 200,
+  "url": "/api/publications/"
+}

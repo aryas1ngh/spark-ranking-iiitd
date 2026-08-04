@@ -1,0 +1,13 @@
+{
+  "body": {
+    "areas": "http://testserver/api/areas/",
+    "conferences": "http://testserver/api/conferences/",
+    "faculty": "http://testserver/api/faculty/",
+    "institutions": "http://testserver/api/institutions/",
+    "publications": "http://testserver/api/publications/",
+    "rankings": "http://testserver/api/rankings/",
+    "stats": "http://testserver/api/stats/"
+  },
+  "status": 200,
+  "url": "/api/"
+}

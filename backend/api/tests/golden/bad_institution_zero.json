@@ -1,0 +1,7 @@
+{
+  "body": {
+    "institution": "Must be greater than or equal to 1."
+  },
+  "status": 400,
+  "url": "/api/publications/?institution=0"
+}

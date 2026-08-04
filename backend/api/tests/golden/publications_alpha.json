@@ -1,0 +1,63 @@
+{
+  "body": {
+    "results": [
+      {
+        "area": "4611",
+        "conference": {
+          "acronym": "MLCONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 4,
+        "title": "Contrastive Pretraining Revisited",
+        "year": 2023
+      },
+      {
+        "area": "4602",
+        "conference": {
+          "acronym": "AICONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 3,
+        "title": "Federated Optimisation At Scale",
+        "year": 2022
+      },
+      {
+        "area": "4611",
+        "conference": {
+          "acronym": "MLCONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 2,
+        "title": "Neural Program Repair",
+        "year": 2021
+      },
+      {
+        "area": "4602",
+        "conference": {
+          "acronym": "AICONF",
+          "core_rank": "A*"
+        },
+        "core_rank": "A*",
+        "id": 1,
+        "title": "Attention Over Graphs",
+        "year": 2020
+      },
+      {
+        "area": "4612",
+        "conference": {
+          "acronym": "SECONF",
+          "core_rank": "A"
+        },
+        "core_rank": "A",
+        "id": 5,
+        "title": "Refactoring Legacy Monoliths",
+        "year": 2019
+      }
+    ]
+  },
+  "status": 200,
+  "url": "/api/publications/?institution=1"
+}

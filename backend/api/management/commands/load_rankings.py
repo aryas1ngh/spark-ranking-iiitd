@@ -2,6 +2,7 @@ import json
 import os
 from django.core.management.base import BaseCommand
 from api.models import Institution, Faculty, Conference, Publication, Authorship
+from api.ingest import get_rank_tier, get_research_area, split_ee_url, venue_type_for
 
 class Command(BaseCommand):
     help = 'Load publications from rankings.json into DB'
@@ -40,17 +41,24 @@ class Command(BaseCommand):
                         conf = Conference.objects.create(
                             acronym=pub['venue'],
                             full_name=pub['venue_full'],
-                            core_rank=pub['venue_rank'],
-                            area=pub.get('for_code', '')
+                            core_rank=get_rank_tier(pub['venue_rank']),
+                            area=get_research_area(pub.get('for_code', '')),
+                            venue_type=venue_type_for(pub['venue_rank']),
                         )
-                    
+
+                    # DBLP's link is a DOI for some venues and a publisher URL
+                    # for others; each half goes in its own column.
+                    doi, ee_url = split_ee_url(pub.get('url'))
+
                     # Create or get publication
                     publication, created = Publication.objects.get_or_create(
                         title=pub['title'],
                         year=pub['year'],
                         conference=conf,
                         defaults={
-                            'doi': pub.get('url', '').replace('https://doi.org/', '') if pub.get('url') else None,
+                            'doi': doi,
+                            'ee_url': ee_url,
+                            'num_authors': pub.get('num_authors'),
                             'is_workshop': False  # rankings.json already filters them
                         }
                     )

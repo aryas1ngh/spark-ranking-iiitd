@@ -1,0 +1,7 @@
+{
+  "body": {
+    "detail": "No Faculty matches the given query."
+  },
+  "status": 404,
+  "url": "/api/faculty/999999/"
+}
