@@ -26,9 +26,16 @@ __pycache__/
 *.sw?
 TODO
 
-# Django
+# Django & Database
 backend_venv/
 backend/db.sqlite3
+backend/db.sqlite3.bak
+*.sqlite3.bak
+*.bak
+*.backup
+backend/staticfiles/
+staticfiles/
+
 # Per-machine SECRET_KEY, minted on first boot by backend/settings.py. Never
 # commit this — a shared secret key is a forgeable-signature bug.
 backend/.secret_key
