@@ -1,5 +1,7 @@
 import math
 
+from django.core.cache import cache
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -104,12 +106,30 @@ def _compute_institution_geo_mean(authorships_qs):
     return geo_score, area_scores
 
 
+# Cache TTL for all ranking-related data.  Rankings only change when the
+# data pipeline re-runs (typically weekly/monthly), so 24 h is safe.
+_CACHE_TTL = 86400  # seconds
+
+# Cache key constants — centralised so the management command can clear them
+# without duplicating strings.
+CACHE_KEY_ALL_GEO = 'spark:all_inst_geo_means'
+CACHE_KEY_RANKINGS_PREFIX = 'spark:rankings:'
+
+
 def _compute_all_institution_geo_means():
     """Compute geo-mean scores for ALL institutions at once.
-    
+
     Returns dict: {institution_id: geo_mean_score}
     Used for computing institution ranks across the system.
+
+    Result is cached for _CACHE_TTL seconds. Call
+    ``cache.delete(CACHE_KEY_ALL_GEO)`` (or the clear_rankings_cache
+    management command) after a pipeline re-ingest to invalidate.
     """
+    cached = cache.get(CACHE_KEY_ALL_GEO)
+    if cached is not None:
+        return cached
+
     auths = Authorship.objects.filter(
         publication__is_workshop=False
     ).select_related(
@@ -127,7 +147,9 @@ def _compute_all_institution_geo_means():
             inst_area_scores[iid] = {}
         inst_area_scores[iid][area] = inst_area_scores[iid].get(area, 0.0) + a.weighted
 
-    return {iid: _geo_mean(list(areas.values())) for iid, areas in inst_area_scores.items()}
+    result = {iid: _geo_mean(list(areas.values())) for iid, areas in inst_area_scores.items()}
+    cache.set(CACHE_KEY_ALL_GEO, result, timeout=_CACHE_TTL)
+    return result
 
 
 # ── 1. GET /api/stats/ ─────────────────────────────────────
@@ -159,13 +181,25 @@ class AreasView(APIView):
             for area in ResearchArea.objects.filter(code__in=codes_in_use).order_by('code')
         ]
         serializer = AreaSerializer(areas, many=True)
-        return Response(serializer.data)
+        response = Response(serializer.data)
+        response['Cache-Control'] = f'public, max-age={_CACHE_TTL}'
+        return response
 
 
 # ── 3. GET /api/rankings/ ──────────────────────────────────
 
 class RankingsView(APIView):
     def get(self, request):
+        # Serve from cache when available — the full Authorship scan is the
+        # single most expensive operation in the app.  Each unique filter
+        # combination gets its own cache key so filtered views are also cached.
+        cache_key = CACHE_KEY_RANKINGS_PREFIX + request.query_params.urlencode()
+        cached = cache.get(cache_key)
+        if cached is not None:
+            response = Response(cached)
+            response['Cache-Control'] = f'public, max-age={_CACHE_TTL}'
+            return response
+
         filters = _build_authorship_filters(request.query_params)
 
         # Get all authorships matching filters, annotate with weight
@@ -215,7 +249,12 @@ class RankingsView(APIView):
             })
 
         serializer = RankingResultSerializer(results, many=True)
-        return Response({'results': serializer.data})
+        payload = {'results': serializer.data}
+        cache.set(cache_key, payload, timeout=_CACHE_TTL)
+
+        response = Response(payload)
+        response['Cache-Control'] = f'public, max-age={_CACHE_TTL}'
+        return response
 
 
 # ── 4. GET /api/institutions/{id}/ ─────────────────────────
@@ -476,4 +515,6 @@ class ConferencesView(APIView):
     def get(self, request):
         confs = Conference.objects.all().order_by('core_rank', 'acronym')
         serializer = ConferenceListSerializer(confs, many=True)
-        return Response(serializer.data)
+        response = Response(serializer.data)
+        response['Cache-Control'] = f'public, max-age={_CACHE_TTL}'
+        return response
