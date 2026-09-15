@@ -80,6 +80,10 @@ python manage.py load_seed_data
 # This safely bypasses DBLP API rate limits by loading the pre-merged JSON data
 python manage.py load_rankings
 
+# Step 4: Precompute Single-Area Geo-Mean Cache
+# Pre-warms the cache for all active research areas for instant filtered responses
+python manage.py precompute_area_scores
+
 # (Optional) If you want to slowly fetch fresh data instead:
 # python manage.py load_irins
 # python manage.py fetch_dblp
@@ -114,7 +118,7 @@ Security-critical settings read from the environment, with defaults chosen so a 
 | `DJANGO_BEHIND_TLS_PROXY` | `False` | Set `True` when TLS terminates at a reverse proxy, so the original scheme is read from `X-Forwarded-Proto`. |
 | `DJANGO_CORS_ALLOWED_ORIGINS` | frontend origin + local dev ports | Comma-separated; each entry needs scheme and port. |
 
-Query parameters are validated before use: `start_year`, `end_year` (range 1900–2100) and `institution` must parse as integers, and malformed input returns a clean **HTTP 400** instead of a 500.
+Query parameters are validated before use: `start_year`, `end_year` (range 1900–2100) and `institution` must parse as integers, `rank` must be one of `{'A*', 'A', 'Journal', 'all'}`, and malformed input returns a clean **HTTP 400** instead of a 500.
 
 **Applied hardening**
 
@@ -139,9 +143,11 @@ spark/
 │   │   ├── ingest.py            # shared loader helpers
 │   │   ├── tests/               # golden API contract + schema integrity tests
 │   │   │   └── golden/          # frozen responses — changing one is a contract change
-│   │   └── management/commands/ # DB loaders
-│   │       ├── load_seed_data.py    # faculty.json + conferences → DB
-│   │       ├── load_rankings.py     # rankings.json → DB (fast path)
+│   │   └── management/commands/ # DB loaders & cache managers
+│   │       ├── load_seed_data.py         # faculty.json + conferences → DB
+│   │       ├── load_rankings.py          # rankings.json → DB (fast path)
+│   │       ├── precompute_area_scores.py # pre-warm per-area geo-mean cache
+│   │       ├── clear_rankings_cache.py   # invalidate rankings & geo caches
 │   │       ├── load_irins.py
 │   │       └── fetch_dblp.py
 │   ├── backend/                 # Project Settings, URLs
@@ -188,7 +194,7 @@ The backend serves 10 RESTful endpoints. All return JSON and are CORS-enabled. V
 | 6 | `GET /api/publications/` | Publications list, filterable by institution |
 | 7 | `GET /api/institutions/?search=` | Institution typeahead search |
 | 8 | `GET /api/faculty/{id}/` | Faculty profile with all publications |
-| 8b | `GET /api/faculty/?search=` | Faculty leaderboard with search & filters |
+| 8b | `GET /api/faculty/?search=` | Faculty leaderboard with search & dynamic filters |
 | 9 | `GET /api/conferences/` | All tracked ICORE A\*/A conferences |
 
 ### Filter Parameters (Endpoints 3, 8b)
@@ -197,7 +203,8 @@ The backend serves 10 RESTful endpoints. All return JSON and are CORS-enabled. V
 |---|---|---|---|
 | `start_year` | int | `2020` | Include publications from this year onwards |
 | `end_year` | int | `2026` | Include publications up to this year |
-| `area` | string | `4602,4611` | Comma-separated FoR codes |
+| `area` | string | `4602` or `4602,4611` | Comma-separated FoR codes |
+| `rank` | string | `A*`, `A`, `Journal`, `all` | Filter publications by CORE rank tier |
 | `search` | string | `Arani` | Faculty name filter (endpoint 8b only) |
 
 ---

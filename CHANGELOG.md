@@ -2,6 +2,22 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v2.0.0 — 2026-09-15
+
+### Dynamic area-filtered scoring & CORE rank tier filtering
+Enables dynamic, area-aware and rank-aware scoring across the platform without compromising static-like response times:
+
+- **CORE rank filtering (`?rank=`) now active on rankings and faculty endpoints.** `_build_authorship_filters` accepts `rank` (`'A*'`, `'A'`, `'Journal'`, or `'all'`), adding `Q(publication__conference__core_rank=rank)` to authorship queries. Invalid rank values return a validated HTTP 400 Bad Request (`{"rank": "Must be one of: A*, A, Journal or 'all'."}`).
+- **Area-aware institution rank on faculty leaderboard.** When filtering `/api/faculty/` by a single research area (`?area=<code>`), each faculty member's `institution_rank` dynamically reflects their institution's rank within that specific research area (computed from precomputed per-area weighted scores). Queries with multiple or no area filters fall back to the global all-area geometric mean rank.
+- **Single-area geo-mean cache precomputation.** Added `_compute_area_institution_geo_means(area_code)` and a new management command:
+  ```bash
+  python manage.py precompute_area_scores
+  ```
+  Iterates all active FoR codes and warms the cache under `spark:area_inst_geo:<area_code>`. Responses for filtered requests are served directly from cache.
+- **Automated precomputation in Docker.** Updated `backend/entrypoint.sh` to run `precompute_area_scores` immediately after `load_rankings` on container boot.
+- **Centralized cache invalidation.** `clear_rankings_cache.py` sweeps all rankings query variants as well as per-area geo-mean keys.
+- **Test suite expansion (79 → 87 tests).** Added `test_dynamic_scoring.py` covering rank filtering, invalid parameter validation, single-area leaderboard rankings, cache warming, and invalidation. Updated the `faculty_filtered` golden contract snapshot. All 87 tests passing (`87/87 OK`).
+
 ## v1.9.1 — 2026-08-04
 
 ### Security audit remediation
