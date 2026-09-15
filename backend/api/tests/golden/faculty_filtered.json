@@ -83,7 +83,7 @@
         "id": 3,
         "name": "Gamma University"
       },
-      "institution_rank": 3,
+      "institution_rank": null,
       "irins_id": null,
       "name": "Eve Analyst",
       "orcid": null,
@@ -100,7 +100,7 @@
         "id": 3,
         "name": "Gamma University"
       },
-      "institution_rank": 3,
+      "institution_rank": null,
       "irins_id": null,
       "name": "Frank Nopubs",
       "orcid": null,

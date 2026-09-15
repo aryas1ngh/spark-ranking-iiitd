@@ -48,14 +48,27 @@ def _parse_int_param(params, name, min_val=None, max_val=None):
     return val
 
 
+# Valid CORE rank tier codes accepted by the ?rank= param.
+_VALID_RANK_CODES = {'A*', 'A', 'Journal'}
+
+
 def _build_authorship_filters(params):
-    """Build Q filters for authorships from query params."""
+    """Build Q filters for authorships from query params.
+
+    Accepted params
+    ---------------
+    start_year  int   Filter to publications from this year onward.
+    end_year    int   Filter to publications up to this year.
+    area        str   Comma-separated ResearchArea code(s) (e.g. '4602' or '4602,4611').
+    rank        str   CORE rank tier: 'A*', 'A', or 'Journal'.  'all' / absent = no filter.
+    """
     # Start by excluding workshop papers globally from all authorship calculations
     filters = Q(publication__is_workshop=False)
 
     start_year = _parse_int_param(params, 'start_year', min_val=1900, max_val=2100)
     end_year = _parse_int_param(params, 'end_year', min_val=1900, max_val=2100)
     area = params.get('area')
+    rank = params.get('rank')
 
     if start_year is not None:
         filters &= Q(publication__year__gte=start_year)
@@ -64,6 +77,12 @@ def _build_authorship_filters(params):
     if area:
         areas = [a.strip() for a in area.split(',')]
         filters &= Q(publication__conference__area__in=areas)
+    if rank and rank != 'all':
+        if rank not in _VALID_RANK_CODES:
+            raise ValidationError(
+                {'rank': f"Must be one of: {', '.join(sorted(_VALID_RANK_CODES))} or 'all'."}
+            )
+        filters &= Q(publication__conference__core_rank=rank)
     return filters
 
 
@@ -114,6 +133,8 @@ _CACHE_TTL = 86400  # seconds
 # without duplicating strings.
 CACHE_KEY_ALL_GEO = 'spark:all_inst_geo_means'
 CACHE_KEY_RANKINGS_PREFIX = 'spark:rankings:'
+# Per-area geo-mean cache: key = prefix + area_code (e.g. 'spark:area_inst_geo:4602')
+CACHE_KEY_AREA_GEO_PREFIX = 'spark:area_inst_geo:'
 
 
 def _compute_all_institution_geo_means():
@@ -150,6 +171,46 @@ def _compute_all_institution_geo_means():
     result = {iid: _geo_mean(list(areas.values())) for iid, areas in inst_area_scores.items()}
     cache.set(CACHE_KEY_ALL_GEO, result, timeout=_CACHE_TTL)
     return result
+
+
+def _compute_area_institution_geo_means(area_code):
+    """Compute geo-mean scores for ALL institutions within a single research area.
+
+    Restricts authorships to publications whose conference belongs to `area_code`
+    (a ResearchArea.code, e.g. '4602').  Because every matched publication falls
+    in the same area, the per-institution score is necessarily a single-element
+    geo-mean — which equals the raw weighted sum.  The result is returned as
+    a plain {institution_id: score} dict, structurally identical to what
+    ``_compute_all_institution_geo_means`` returns, so callers can treat them
+    interchangeably.
+
+    Result is cached for _CACHE_TTL seconds under
+    ``CACHE_KEY_AREA_GEO_PREFIX + area_code``.  Invalidated by
+    ``clear_rankings_cache`` (its ``cache.clear()`` sweep covers all spark: keys)
+    and re-warmed by the ``precompute_area_scores`` management command.
+    """
+    cache_key = CACHE_KEY_AREA_GEO_PREFIX + area_code
+    cached = cache.get(cache_key)
+    if cached is not None:
+        return cached
+
+    auths = Authorship.objects.filter(
+        publication__is_workshop=False,
+        publication__conference__area=area_code,
+    ).select_related(
+        'faculty__institution', 'publication__conference'
+    ).order_by('id').annotate(
+        weighted=F('credit') * F('publication__conference__core_rank__weight')
+    )
+
+    # Single area → one geo-mean component per institution → score = raw sum.
+    inst_scores = {}
+    for a in auths:
+        iid = a.faculty.institution_id
+        inst_scores[iid] = inst_scores.get(iid, 0.0) + a.weighted
+
+    cache.set(cache_key, inst_scores, timeout=_CACHE_TTL)
+    return inst_scores
 
 
 # ── 1. GET /api/stats/ ─────────────────────────────────────
@@ -492,9 +553,21 @@ class FacultyListView(APIView):
                 fac_map[fid]['score'] += a.weighted
                 fac_map[fid]['authorships'].append(a.id)
 
-        # Compute institution ranks using geometric mean of per-area scores
-        all_inst_geo = _compute_all_institution_geo_means()
-        sorted_insts = sorted(all_inst_geo.items(), key=lambda x: x[1], reverse=True)
+        # Compute institution ranks.
+        # When exactly one area is selected we use the per-area precomputed
+        # scores so the rank reflects performance within that area rather than
+        # the global (all-areas) geo-mean.  Multiple areas or no area filter
+        # both fall back to the global geo-mean — multi-area precomputation is
+        # a planned future phase.
+        area_param = request.query_params.get('area', '')
+        active_areas = [a.strip() for a in area_param.split(',') if a.strip()]
+
+        if len(active_areas) == 1:
+            inst_scores = _compute_area_institution_geo_means(active_areas[0])
+        else:
+            inst_scores = _compute_all_institution_geo_means()
+
+        sorted_insts = sorted(inst_scores.items(), key=lambda x: x[1], reverse=True)
         inst_rank_map = {iid: idx + 1 for idx, (iid, _) in enumerate(sorted_insts)}
 
         # Build result

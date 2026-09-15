@@ -14,7 +14,7 @@ The command exits 0 on success, 1 if the cache backend raises an error.
 from django.core.cache import cache
 from django.core.management.base import BaseCommand
 
-from api.views import CACHE_KEY_ALL_GEO, CACHE_KEY_RANKINGS_PREFIX
+from api.views import CACHE_KEY_ALL_GEO, CACHE_KEY_RANKINGS_PREFIX, CACHE_KEY_AREA_GEO_PREFIX
 
 
 class Command(BaseCommand):
@@ -52,13 +52,21 @@ class Command(BaseCommand):
         except Exception as exc:  # noqa: BLE001
             errors.append(f"{rankings_default_key}: {exc}")
 
-        # Flush remaining filtered ranking entries.  LocMemCache has no
-        # prefix-scan, so we clear the entire cache.  This is safe: the only
-        # long-lived entries in the default cache are the spark: keys added by
-        # views.py; clearing them all is the intended effect.
+        # Flush remaining filtered ranking entries *and* all per-area geo-mean
+        # entries (spark:area_inst_geo:<code>).  LocMemCache has no prefix-scan,
+        # so we clear the entire cache.  This is safe: the only long-lived
+        # entries in the default cache are the spark: keys added by views.py;
+        # clearing them all is the intended effect.
+        #
+        # If you switch to Redis, replace cache.clear() with:
+        #   SCAN + DEL on pattern  f"{CACHE_KEY_RANKINGS_PREFIX}*"
+        #   SCAN + DEL on pattern  f"{CACHE_KEY_AREA_GEO_PREFIX}*"
         try:
             cache.clear()
-            self.stdout.write("  Cleared all cache entries (includes any filtered-ranking variants).")
+            self.stdout.write(
+                "  Cleared all cache entries "
+                "(filtered-ranking variants + per-area geo-means)."
+            )
         except Exception as exc:  # noqa: BLE001
             errors.append(f"cache.clear(): {exc}")
 

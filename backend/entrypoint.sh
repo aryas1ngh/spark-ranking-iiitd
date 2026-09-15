@@ -13,5 +13,8 @@ python manage.py load_seed_data
 echo "[*] Loading pre-scraped rankings data..."
 python manage.py load_rankings
 
+echo "[*] Precomputing area scores..."
+python manage.py precompute_area_scores
+
 echo "[*] Starting Gunicorn WSGI server on port 8001..."
 exec gunicorn --workers 3 --bind 0.0.0.0:8001 backend.wsgi:application
