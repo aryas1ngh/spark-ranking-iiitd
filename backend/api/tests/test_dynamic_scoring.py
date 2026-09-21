@@ -122,3 +122,54 @@ class DynamicScoringTests(TestCase):
         call_command('clear_rankings_cache')
         self.assertIsNone(cache.get(CACHE_KEY_ALL_GEO))
         self.assertIsNone(cache.get(CACHE_KEY_AREA_GEO_PREFIX + '4602'))
+
+    def test_faculty_detail_filters_by_rank(self):
+        """Faculty detail page should recompute scores and publications based on ?rank filter."""
+        # Unfiltered Ada
+        resp_all = self.client.get(f'/api/faculty/{self.ada.id}/')
+        self.assertEqual(resp_all.status_code, 200)
+        data_all = json.loads(resp_all.content)
+
+        # Filtered to Journal only (Ada only has conference papers in dataset)
+        resp_j = self.client.get(f'/api/faculty/{self.ada.id}/?rank=Journal')
+        self.assertEqual(resp_j.status_code, 200)
+        data_j = json.loads(resp_j.content)
+        self.assertEqual(data_j['score'], 0.0)
+        self.assertEqual(len(data_j['authorships']), 0)
+
+        # Eve has a Journal publication in dataset
+        eve = self.objects['faculty']['eve']
+        resp_eve_j = self.client.get(f'/api/faculty/{eve.id}/?rank=Journal')
+        self.assertEqual(resp_eve_j.status_code, 200)
+        data_eve_j = json.loads(resp_eve_j.content)
+        self.assertGreater(data_eve_j['score'], 0.0)
+        self.assertEqual(len(data_eve_j['authorships']), 1)
+
+    def test_faculty_detail_filters_by_year_and_area(self):
+        """Faculty detail page should filter by start_year, end_year, and area."""
+        # Filter by impossible year range
+        resp_past = self.client.get(f'/api/faculty/{self.ada.id}/?start_year=1990&end_year=1995')
+        self.assertEqual(resp_past.status_code, 200)
+        data_past = json.loads(resp_past.content)
+        self.assertEqual(data_past['score'], 0.0)
+        self.assertEqual(len(data_past['authorships']), 0)
+
+        # Filter by area where Ada has publications (4602) vs area where Ada has none (4612)
+        resp_ai = self.client.get(f'/api/faculty/{self.ada.id}/?area=4602')
+        self.assertEqual(resp_ai.status_code, 200)
+        data_ai = json.loads(resp_ai.content)
+        self.assertGreater(data_ai['score'], 0.0)
+
+        resp_se = self.client.get(f'/api/faculty/{self.ada.id}/?area=4612')
+        self.assertEqual(resp_se.status_code, 200)
+        data_se = json.loads(resp_se.content)
+        self.assertEqual(data_se['score'], 0.0)
+        self.assertEqual(len(data_se['authorships']), 0)
+
+    def test_faculty_list_filter_by_institution(self):
+        """Faculty leaderboard with ?institution=<id> should only return faculty from that institution."""
+        resp = self.client.get(f'/api/faculty/?institution={self.alpha.id}')
+        self.assertEqual(resp.status_code, 200)
+        data = json.loads(resp.content)
+        for f in data:
+            self.assertEqual(f['institution']['id'], self.alpha.id)

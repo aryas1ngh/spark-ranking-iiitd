@@ -116,6 +116,7 @@ class InstitutionSearchSerializer(serializers.Serializer):
 class AuthorshipNestedSerializer(serializers.Serializer):
     """Authorship with nested publication detail (Django through-model format)."""
     id = serializers.IntegerField()
+    credit = serializers.FloatField()
     publication = serializers.SerializerMethodField()
 
     def get_publication(self, obj):
@@ -127,6 +128,7 @@ class AuthorshipNestedSerializer(serializers.Serializer):
             # `core_rank_id` is the rank code itself — the foreign key column
             # stores 'A*'/'A'/'Journal', so this needs no extra query.
             'core_rank': obj.publication.conference.core_rank_id,
+            'area': obj.publication.conference.area_id,
         }
 
 
@@ -159,6 +161,7 @@ class FacultyLeaderboardSerializer(serializers.Serializer):
     institution = InstitutionMiniSerializer()
     department = serializers.CharField(allow_null=True)
     authorships = serializers.ListField(child=serializers.IntegerField())
+    areas = serializers.ListField(child=serializers.CharField(), default=list)
     score = serializers.FloatField()
     name = serializers.CharField()
     designation = serializers.CharField(allow_null=True)

@@ -19,6 +19,7 @@ Two ways to run it:
 """
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -41,11 +42,8 @@ IRINS_DIR = DATA_DIR  # Per-institution IRINS files: irins_{short}.json
 JOURNALS_FILE = os.path.join(DATA_DIR, "ieee_acm_journals.json")
 OUTPUT_FILE = os.path.join(DATA_DIR, "rankings.json")
 
-DBLP_BASE = "https://dblp.uni-trier.de"
-# Polite gap between DBLP calls. Matches resolve_pids.py: at 3s a bulk run over
-# hundreds of faculty slides into a 503 spiral where nearly every call burns the
-# retry ladder, which is slower overall than simply asking less often.
-DELAY_SECONDS = 8.0
+DBLP_BASE = "https://dblp.org"
+DELAY_SECONDS = 2.0
 MAX_RETRIES = 4
 RETRY_BASE_DELAY = 5  # seconds, doubles each retry
 
@@ -76,6 +74,20 @@ def load_icore_conferences():
         if key:
             lookup[key.lower()] = conf
     
+    return lookup
+
+
+def load_journals():
+    """Load curated IEEE/ACM journal data and build a lookup by DBLP key."""
+    if not os.path.exists(JOURNALS_FILE):
+        return {}
+    with open(JOURNALS_FILE, "r") as f:
+        data = json.load(f)
+    lookup = {}
+    for journal in data.get("journals", []):
+        key = journal.get("dblp_key")
+        if key:
+            lookup[key.lower()] = journal
     return lookup
 
 
@@ -171,6 +183,52 @@ def cache_lookup(cache, pid, max_age_days=None):
     return entry
 
 
+def solve_anubis_challenge(resp, session, target_url):
+    """Solve DBLP's Anubis proof-of-work bot challenge if encountered."""
+    if "anubis_challenge" not in resp.text:
+        return resp
+    print("      🔒 Solving DBLP Anubis proof-of-work challenge...")
+    m = re.search(r'<script id="anubis_challenge" type="application/json">(.*?)</script>', resp.text, re.DOTALL)
+    if not m:
+        return resp
+    try:
+        data = json.loads(m.group(1))
+        challenge = data["challenge"]
+        rules = data["rules"]
+        random_data = challenge["randomData"]
+        difficulty = rules["difficulty"]
+        c_id = challenge["id"]
+    except Exception as e:
+        print(f"      ⚠ Failed to parse Anubis challenge: {e}")
+        return resp
+
+    p = difficulty // 2
+    u = (difficulty % 2) != 0
+
+    t0 = time.time()
+    nonce = 0
+    while True:
+        candidate = f"{random_data}{nonce}".encode("utf-8")
+        digest = hashlib.sha256(candidate).digest()
+        if all(b == 0 for b in digest[:p]):
+            if not u or (digest[p] >> 4 == 0):
+                found_hash = digest.hex()
+                break
+        nonce += 1
+    elapsed = time.time() - t0
+    print(f"      🔓 Challenge solved in {elapsed:.2f}s (nonce: {nonce}). Submitting to DBLP...")
+    pass_url = "https://dblp.org/.within.website/x/cmd/anubis/api/pass-challenge"
+    params = {
+        "id": c_id,
+        "response": found_hash,
+        "nonce": nonce,
+        "redir": target_url,
+        "elapsedTime": int(elapsed * 1000),
+    }
+    pass_resp = session.get(pass_url, params=params, allow_redirects=True, timeout=30)
+    return pass_resp
+
+
 def fetch_author_publications(pid, session):
     """Fetch all publications for an author from DBLP using their PID.
 
@@ -182,8 +240,16 @@ def fetch_author_publications(pid, session):
     for attempt in range(MAX_RETRIES):
         try:
             resp = session.get(url, timeout=30)
+            if "anubis_challenge" in resp.text:
+                resp = solve_anubis_challenge(resp, session, url)
             resp.raise_for_status()
-            break
+            if "<r>" in resp.text or "<dblp>" in resp.text:
+                break
+            elif "anubis_challenge" in resp.text:
+                print("      ⚠ Challenge re-prompted, re-solving...")
+                resp = solve_anubis_challenge(resp, session, url)
+                if "<r>" in resp.text or "<dblp>" in resp.text:
+                    break
         except requests.exceptions.RequestException as e:
             # Handle specific HTTP errors if response exists
             if getattr(e, 'response', None) is not None:
@@ -205,7 +271,7 @@ def fetch_author_publications(pid, session):
             raise
     else:
         print(f"      ✗ Failed after {MAX_RETRIES} retries for PID: {pid}")
-        return []
+        return [], []
     
     # Parse XML
     root = ET.fromstring(resp.content)
@@ -215,10 +281,10 @@ def fetch_author_publications(pid, session):
     # DBLP XML has <r> elements containing <inproceedings>, <article>, etc.
     for r_elem in root.findall(".//r"):
         for pub_elem in r_elem:
-            pub_type = pub_elem.tag  # inproceedings, article, etc.
+            pub_type_tag = pub_elem.tag  # inproceedings, article, etc.
             
-            # We only care about conference papers (inproceedings)
-            if pub_type != "inproceedings":
+            # We care about conference papers (inproceedings) and journal articles (article)
+            if pub_type_tag not in ("inproceedings", "article"):
                 continue
             
             # Extract key (contains venue info)
@@ -235,21 +301,24 @@ def fetch_author_publications(pid, session):
             year_elem = pub_elem.find("year")
             year = int(year_elem.text) if year_elem is not None and year_elem.text else 0
             
-            # Extract venue/booktitle
-            booktitle_elem = pub_elem.find("booktitle")
-            booktitle = booktitle_elem.text if booktitle_elem is not None else ""
+            # Extract venue / booktitle / journal
+            if pub_type_tag == "inproceedings":
+                booktitle_elem = pub_elem.find("booktitle")
+                venue_name = booktitle_elem.text if booktitle_elem is not None else ""
+                key_match = re.match(r'(?:db/)?conf/([^/]+)/', pub_key)
+                venue_key = key_match.group(1) if key_match else None
+                pub_type = "conference"
+            else:
+                journal_elem = pub_elem.find("journal")
+                venue_name = journal_elem.text if journal_elem is not None else ""
+                key_match = re.match(r'(?:db/)?journals/([^/]+)/', pub_key)
+                venue_key = key_match.group(1) if key_match else None
+                pub_type = "journal"
             
             # Extract all authors
             authors = []
             for author_elem in pub_elem.findall("author"):
                 authors.append("".join(author_elem.itertext()).strip())
-            
-            # Extract DBLP venue key from the publication key
-            # Format: conf/VENUE/... e.g., conf/aaai/SmithJ23
-            venue_key = None
-            key_match = re.match(r'conf/([^/]+)/', pub_key)
-            if key_match:
-                venue_key = key_match.group(1)
             
             # Extract URL
             url_elem = pub_elem.find("ee")
@@ -262,22 +331,23 @@ def fetch_author_publications(pid, session):
             pub_data = {
                 "title": title,
                 "year": year,
-                "booktitle": booktitle,
+                "booktitle": venue_name,
                 "venue_key": venue_key,
                 "num_authors": len(authors),
                 "authors": authors,
                 "dblp_key": pub_key,
                 "url": pub_url,
                 "pages": pages_str,
+                "pub_type": pub_type,
             }
             
             # Filter out co-located workshop papers (e.g., ARMS-CC@PODC)
-            if "@" in booktitle:
+            if "@" in venue_name:
                 skipped_publications.append(pub_data)
                 continue
             
             # Filter out short/workshop papers
-            if is_short_or_workshop_paper(title, pages_str, booktitle):
+            if is_short_or_workshop_paper(title, pages_str, venue_name):
                 skipped_publications.append(pub_data)
                 continue
             
@@ -286,8 +356,8 @@ def fetch_author_publications(pid, session):
     return publications, skipped_publications
 
 
-def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None, max_age_days=None):
-    """Process a single faculty member: fetch pubs, match against ICORE, compute score.
+def process_faculty_member(faculty, icore_lookup, journal_lookup, session, fetch_cache=None, max_age_days=None):
+    """Process a single faculty member: fetch pubs, match against ICORE & journals, compute score.
 
     `fetch_cache` (pid → raw DBLP result) makes the network step resumable; pass
     None to always hit DBLP. `max_age_days` expires stale entries (see
@@ -307,17 +377,18 @@ def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None, max
             fetch_cache[pid] = {"pubs": pubs, "skipped": skipped_pubs,
                                 "fetched_at": time.time()}
             save_fetch_cache(fetch_cache)
-        print(f"      Found {len(pubs)} conference papers total (skipped {len(skipped_pubs)} short/workshop)")
+        print(f"      Found {len(pubs)} papers total (skipped {len(skipped_pubs)} short/workshop)")
     
     # Filter by year range
     pubs = [p for p in pubs if YEAR_START <= p["year"] <= YEAR_END]
     print(f"      {len(pubs)} in year range {YEAR_START}-{YEAR_END}")
     
-    # Match against ICORE conferences
+    # Match against ICORE conferences and IEEE/ACM journals
     matched_pubs = []
     total_score = 0.0
     papers_astar = 0
     papers_a = 0
+    papers_journal = 0
     
     for pub in pubs:
         venue_key = pub.get("venue_key")
@@ -331,6 +402,7 @@ def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None, max
         if "@" in booktitle:
             continue
         
+        # Check ICORE conference
         conf = icore_lookup.get(venue_key.lower())
         if conf:
             adjusted_count = 1.0 / max(pub["num_authors"], 1)
@@ -352,12 +424,37 @@ def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None, max
                 "adjusted_count": round(adjusted_count, 4),
                 "url": pub.get("url"),
                 "for_code": conf.get("for_code", ""),
+                "source": "dblp",
+                "pub_type": "conference",
+            })
+            continue
+
+        # Check IEEE/ACM Journal
+        journal = journal_lookup.get(venue_key.lower())
+        if journal:
+            adjusted_count = 1.0 / max(pub["num_authors"], 1)
+            total_score += adjusted_count
+            papers_journal += 1
+            
+            matched_pubs.append({
+                "title": pub["title"],
+                "venue": journal["acronym"],
+                "venue_full": journal["title"],
+                "venue_rank": "Journal",
+                "publisher": journal.get("publisher", ""),
+                "year": pub["year"],
+                "num_authors": pub["num_authors"],
+                "adjusted_count": round(adjusted_count, 4),
+                "url": pub.get("url"),
+                "for_code": journal.get("for_code", ""),
+                "source": "dblp",
+                "pub_type": "journal",
             })
     
     # Sort by year descending
     matched_pubs.sort(key=lambda p: (-p["year"], p["venue"]))
     
-    print(f"      Matched: {len(matched_pubs)} papers ({papers_astar} A*, {papers_a} A)")
+    print(f"      Matched: {len(matched_pubs)} papers ({papers_astar} A*, {papers_a} A, {papers_journal} Journal)")
     print(f"      Score: {total_score:.2f}")
     
     return {
@@ -368,7 +465,7 @@ def process_faculty_member(faculty, icore_lookup, session, fetch_cache=None, max
         "score": round(total_score, 4),
         "papers_astar": papers_astar,
         "papers_a": papers_a,
-        "papers_journal": 0,
+        "papers_journal": papers_journal,
         "total_matched": len(matched_pubs),
         "publications": matched_pubs,
         "skipped_publications": skipped_pubs,
@@ -717,6 +814,11 @@ def main():
     icore_lookup = load_icore_conferences()
     print(f"  Loaded {len(icore_lookup)} conferences with DBLP keys")
 
+    # Load IEEE/ACM Journals
+    print(f"\nLoading IEEE/ACM journals from {JOURNALS_FILE}...")
+    journal_lookup = load_journals()
+    print(f"  Loaded {len(journal_lookup)} journals with DBLP keys")
+
     # Load faculty
     print(f"\nLoading faculty from {FACULTY_FILE}...")
     faculty_data = load_faculty()
@@ -744,7 +846,9 @@ def main():
 
     session = requests.Session()
     session.headers.update({
-        "User-Agent": "SPARK-Academic-Ranking-Tool/1.0 (academic research project)"
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
     })
 
     fetch_cache = load_fetch_cache()
@@ -765,7 +869,7 @@ def main():
         for i, fac in enumerate(institution["faculty"]):
             was_cached = cache_lookup(fetch_cache, fac["dblp_pid"], max_age_days) is not None
             result = process_faculty_member(
-                fac, icore_lookup, session, fetch_cache, max_age_days)
+                fac, icore_lookup, journal_lookup, session, fetch_cache, max_age_days)
             faculty_results.append(result)
 
             # Only pace ourselves when we actually called DBLP; replaying the
@@ -780,6 +884,7 @@ def main():
         total_score = sum(f["score"] for f in faculty_results)
         total_astar = sum(f["papers_astar"] for f in faculty_results)
         total_a = sum(f["papers_a"] for f in faculty_results)
+        total_journal = sum(f.get("papers_journal", 0) for f in faculty_results)
         total_papers = sum(f["total_matched"] for f in faculty_results)
         
         # Compute area breakdown
@@ -796,6 +901,7 @@ def main():
             "total_papers": total_papers,
             "total_papers_astar": total_astar,
             "total_papers_a": total_a,
+            "total_papers_journal": total_journal,
             "faculty_count": len(faculty_results),
             "updated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "area_breakdown": area_breakdown,
@@ -808,6 +914,7 @@ def main():
         print(f"    Total score:    {total_score:.2f}")
         print(f"    A* papers:      {total_astar}")
         print(f"    A papers:       {total_a}")
+        print(f"    Journal papers: {total_journal}")
         print(f"    Total matched:  {total_papers}")
     
     # Try to merge IRINS data (per-institution)

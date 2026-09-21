@@ -149,6 +149,30 @@ DATABASES = {
 }
 
 
+# Cache
+# Django's default LocMemCache is per-process: with Gunicorn's multi-worker
+# model each worker holds a completely independent in-memory cache.  If workers
+# are born at different times (e.g. one before and one after a data migration)
+# they cache different DB snapshots and serve inconsistent responses forever
+# until their individual TTLs expire.
+#
+# FileBasedCache writes to a shared directory on disk that every Gunicorn
+# worker reads and writes, ensuring a single authoritative copy of each cached
+# key.  No extra dependency is required — it ships with Django.
+#
+# To upgrade to Redis later, replace only this block; no view code changes.
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/tmp/spark_cache",
+        "TIMEOUT": 86400,          # 24 h — matches _CACHE_TTL in views.py
+        "OPTIONS": {
+            "MAX_ENTRIES": 1000,   # generous for the number of ranking keys
+        },
+    }
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 

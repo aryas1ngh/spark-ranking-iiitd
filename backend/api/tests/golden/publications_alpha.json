@@ -1,5 +1,8 @@
 {
   "body": {
+    "count": 5,
+    "page": 1,
+    "page_size": 500,
     "results": [
       {
         "area": "4611",
@@ -56,7 +59,8 @@
         "title": "Refactoring Legacy Monoliths",
         "year": 2019
       }
-    ]
+    ],
+    "total_pages": 1
   },
   "status": 200,
   "url": "/api/publications/?institution=1"

@@ -3,17 +3,17 @@
     {
       "id": 1,
       "name": "Alpha Institute of Technology",
-      "score": 9.33
+      "score": 2.55
     },
     {
       "id": 2,
       "name": "Beta Institute of Science",
-      "score": 7.33
+      "score": 1.68
     },
     {
       "id": 3,
       "name": "Gamma University",
-      "score": 2.0
+      "score": 1.0
     }
   ],
   "status": 200,

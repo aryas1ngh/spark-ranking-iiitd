@@ -8,6 +8,7 @@ from .views import (
     PublicationsView,
     FacultyListView, FacultyDetailView,
     ConferencesView,
+    CompareView, TrendsView,
 )
 
 
@@ -21,6 +22,8 @@ def api_root(request):
         'publications': reverse('publications', request=request),
         'faculty': reverse('faculty-list', request=request),
         'conferences': reverse('conferences', request=request),
+        'compare': reverse('compare', request=request),
+        'trends': reverse('trends', request=request),
     })
 
 urlpatterns = [
@@ -56,4 +59,10 @@ urlpatterns = [
 
     # 9. Conferences listing
     path('conferences/', ConferencesView.as_view(), name='conferences'),
+
+    # 10. Multi-entity comparison
+    path('compare/', CompareView.as_view(), name='compare'),
+
+    # 11. Multi-institution / global trends
+    path('trends/', TrendsView.as_view(), name='trends'),
 ]

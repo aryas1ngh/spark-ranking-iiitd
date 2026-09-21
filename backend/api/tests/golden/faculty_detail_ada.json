@@ -8,8 +8,10 @@
     ],
     "authorships": [
       {
+        "credit": 1.0,
         "id": 1,
         "publication": {
+          "area": "4602",
           "core_rank": "A*",
           "id": 1,
           "title": "Attention Over Graphs",
@@ -18,8 +20,10 @@
         }
       },
       {
+        "credit": 0.5,
         "id": 2,
         "publication": {
+          "area": "4611",
           "core_rank": "A*",
           "id": 2,
           "title": "Neural Program Repair",
@@ -28,8 +32,10 @@
         }
       },
       {
+        "credit": 0.25,
         "id": 3,
         "publication": {
+          "area": "4602",
           "core_rank": "A*",
           "id": 3,
           "title": "Federated Optimisation At Scale",

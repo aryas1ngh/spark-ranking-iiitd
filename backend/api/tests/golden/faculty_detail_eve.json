@@ -7,8 +7,10 @@
     ],
     "authorships": [
       {
+        "credit": 0.5,
         "id": 11,
         "publication": {
+          "area": "4613",
           "core_rank": "A",
           "id": 8,
           "title": "Approximation Schemes For Packing",
@@ -17,8 +19,10 @@
         }
       },
       {
+        "credit": 1.0,
         "id": 12,
         "publication": {
+          "area": null,
           "core_rank": "Journal",
           "id": 9,
           "title": "A Survey Of Everything",

@@ -1,5 +1,8 @@
 {
   "body": {
+    "count": 9,
+    "page": 1,
+    "page_size": 500,
     "results": [
       {
         "area": "4612",
@@ -100,7 +103,8 @@
         "title": "Lower Bounds For Streaming",
         "year": 2018
       }
-    ]
+    ],
+    "total_pages": 1
   },
   "status": 200,
   "url": "/api/publications/"

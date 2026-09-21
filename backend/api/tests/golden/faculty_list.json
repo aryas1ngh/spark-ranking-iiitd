@@ -1,6 +1,10 @@
 {
   "body": [
     {
+      "areas": [
+        "4602",
+        "4611"
+      ],
       "authorships": [
         1,
         2,
@@ -22,6 +26,11 @@
       "score": 7.0
     },
     {
+      "areas": [
+        "4602",
+        "4611",
+        "4612"
+      ],
       "authorships": [
         4,
         6,
@@ -43,6 +52,9 @@
       "score": 4.33
     },
     {
+      "areas": [
+        "4613"
+      ],
       "authorships": [
         9,
         10
@@ -63,6 +75,10 @@
       "score": 3.0
     },
     {
+      "areas": [
+        "4611",
+        "4612"
+      ],
       "authorships": [
         5,
         7
@@ -83,6 +99,9 @@
       "score": 2.33
     },
     {
+      "areas": [
+        "4613"
+      ],
       "authorships": [
         11,
         12
@@ -103,6 +122,7 @@
       "score": 2.0
     },
     {
+      "areas": [],
       "authorships": [],
       "dblp_pid": "555/5555",
       "department": null,

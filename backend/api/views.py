@@ -1,4 +1,5 @@
 import math
+from collections import defaultdict
 
 from django.core.cache import cache
 
@@ -6,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
-from django.db.models import Sum, F, Value, Q
+from django.db.models import Sum, Count, F, Value, Q
 from django.db.models.functions import Coalesce
 from django.shortcuts import get_object_or_404
 
@@ -258,7 +259,10 @@ class RankingsView(APIView):
         cached = cache.get(cache_key)
         if cached is not None:
             response = Response(cached)
-            response['Cache-Control'] = f'public, max-age={_CACHE_TTL}'
+            # Rankings are dynamic and served from a shared server-side cache;
+            # client/proxy caching adds no benefit and risks locking browsers
+            # onto a stale per-worker response for the full TTL duration.
+            response['Cache-Control'] = 'no-store'
             return response
 
         filters = _build_authorship_filters(request.query_params)
@@ -314,7 +318,7 @@ class RankingsView(APIView):
         cache.set(cache_key, payload, timeout=_CACHE_TTL)
 
         response = Response(payload)
-        response['Cache-Control'] = f'public, max-age={_CACHE_TTL}'
+        response['Cache-Control'] = 'no-store'
         return response
 
 
@@ -323,11 +327,12 @@ class RankingsView(APIView):
 class InstitutionDetailView(APIView):
     def get(self, request, pk):
         inst = get_object_or_404(Institution, pk=pk)
+        filters = _build_authorship_filters(request.query_params)
 
         # Compute total score + area breakdown
         authorships = Authorship.objects.filter(
+            filters,
             faculty__institution=inst,
-            publication__is_workshop=False
         ).select_related('publication__conference', 'faculty').order_by('id').annotate(
             weighted=F('credit') * F('publication__conference__core_rank__weight')
         )
@@ -394,15 +399,50 @@ class PublicationsView(APIView):
     def get(self, request):
         qs = Publication.objects.select_related('conference').filter(is_workshop=False)
 
+        start_year = _parse_int_param(request.query_params, 'start_year', min_val=1900, max_val=2100)
+        end_year = _parse_int_param(request.query_params, 'end_year', min_val=1900, max_val=2100)
+        area = request.query_params.get('area')
+        rank = request.query_params.get('rank')
+        search = request.query_params.get('search')
         institution_id = _parse_int_param(request.query_params, 'institution', min_val=1)
+
+        if start_year is not None:
+            qs = qs.filter(year__gte=start_year)
+        if end_year is not None:
+            qs = qs.filter(year__lte=end_year)
+        if area:
+            areas = [a.strip() for a in area.split(',') if a.strip()]
+            qs = qs.filter(conference__area__in=areas)
+        if rank and rank != 'all':
+            if rank not in _VALID_RANK_CODES:
+                raise ValidationError(
+                    {'rank': f"Must be one of: {', '.join(sorted(_VALID_RANK_CODES))} or 'all'."}
+                )
+            qs = qs.filter(conference__core_rank_id=rank)
         if institution_id is not None:
-            qs = qs.filter(authorships__faculty__institution_id=institution_id).distinct()
+            qs = qs.filter(authorships__faculty__institution_id=institution_id)
+        if search:
+            qs = qs.filter(Q(title__icontains=search) | Q(conference__acronym__icontains=search))
+
+        qs = qs.distinct().order_by('-year', 'id')
+        total_count = qs.count()
+
+        # Pagination support (defaults to page 1, 50 per page, max 500)
+        page = _parse_int_param(request.query_params, 'page', min_val=1) or 1
+        page_size = _parse_int_param(request.query_params, 'page_size', min_val=1, max_val=500)
+        if page_size is None:
+            page_size = _parse_int_param(request.query_params, 'limit', min_val=1, max_val=500)
+        
+        # If no explicit pagination params passed, keep legacy 500-slice capacity
+        if 'page' not in request.query_params and 'page_size' not in request.query_params and 'limit' not in request.query_params:
+            page_size = 500
+
+        start_idx = (page - 1) * page_size
+        end_idx = start_idx + page_size
+        page_qs = qs[start_idx:end_idx]
 
         pubs = []
-        # `id` breaks year ties. Without it the 500-row slice is taken from an
-        # arbitrarily ordered result, so the set of publications returned could
-        # change whenever the query plan did.
-        for pub in qs.order_by('-year', 'id')[:500]:
+        for pub in page_qs:
             pubs.append({
                 'id': pub.id,
                 'title': pub.title,
@@ -413,7 +453,13 @@ class PublicationsView(APIView):
             })
 
         serializer = PublicationResultSerializer(pubs, many=True)
-        return Response({'results': serializer.data})
+        return Response({
+            'count': total_count,
+            'page': page,
+            'page_size': page_size,
+            'total_pages': math.ceil(total_count / page_size) if page_size else 1,
+            'results': serializer.data,
+        })
 
 
 # ── 7. GET /api/institutions/?search= ──────────────────────
@@ -425,21 +471,21 @@ class InstitutionSearchView(APIView):
         if search:
             qs = qs.filter(name__icontains=search)
 
-        # Compute scores for each matching institution
-        inst_scores = Authorship.objects.filter(
-            faculty__institution__in=qs,
-            publication__is_workshop=False
-        ).values('faculty__institution_id').annotate(
-            total=Sum(F('credit') * F('publication__conference__core_rank__weight'))
-        )
-        score_map = {row['faculty__institution_id']: row['total'] for row in inst_scores}
+        # Benchmark geometric mean from rankings
+        area_param = request.query_params.get('area', '')
+        active_areas = [a.strip() for a in area_param.split(',') if a.strip()]
+
+        if len(active_areas) == 1:
+            inst_scores = _compute_area_institution_geo_means(active_areas[0])
+        else:
+            inst_scores = _compute_all_institution_geo_means()
 
         results = []
         for inst in qs:
             results.append({
                 'id': inst.id,
                 'name': inst.name,
-                'score': round(score_map.get(inst.id, 0.0), 2),
+                'score': round(inst_scores.get(inst.id, 0.0), 2),
             })
 
         results.sort(key=lambda x: x['score'], reverse=True)
@@ -452,10 +498,11 @@ class InstitutionSearchView(APIView):
 class FacultyDetailView(APIView):
     def get(self, request, pk):
         fac = get_object_or_404(Faculty, pk=pk)
+        filters = _build_authorship_filters(request.query_params)
 
         authorships = Authorship.objects.filter(
+            filters,
             faculty=fac,
-            publication__is_workshop=False
         ).select_related('publication', 'publication__conference').order_by('id')
 
         total_score = 0.0
@@ -484,7 +531,6 @@ class FacultyDetailView(APIView):
                 'conference': conf,
                 'core_rank': conf.core_rank_id,
             })
-            # Also remove `pubs` from the response payload
             authorship_data.append(a)
 
         pubs.sort(key=lambda p: p['year'], reverse=True)
@@ -515,11 +561,14 @@ class FacultyListView(APIView):
     def get(self, request):
         filters = _build_authorship_filters(request.query_params)
         search = request.query_params.get('search', '')
+        institution_id = _parse_int_param(request.query_params, 'institution', min_val=1)
 
-        # Start with all faculty (optionally filtered by name)
+        # Start with all faculty (optionally filtered by name/institution)
         fac_qs = Faculty.objects.select_related('institution', 'department').order_by('id')
         if search:
             fac_qs = fac_qs.filter(name__icontains=search)
+        if institution_id is not None:
+            fac_qs = fac_qs.filter(institution_id=institution_id)
 
         # Initialize map with all matching faculty
         fac_map = {}
@@ -546,12 +595,15 @@ class FacultyListView(APIView):
             weighted=F('credit') * F('publication__conference__core_rank__weight')
         )
 
-        # Accumulate scores per faculty
+        # Accumulate scores and distinct areas per faculty
+        fac_areas = defaultdict(set)
         for a in auths:
             fid = a.faculty.id
             if fid in fac_map:
                 fac_map[fid]['score'] += a.weighted
                 fac_map[fid]['authorships'].append(a.id)
+                if a.publication.conference.area_id:
+                    fac_areas[fid].add(a.publication.conference.area_id)
 
         # Compute institution ranks.
         # When exactly one area is selected we use the per-area precomputed
@@ -574,6 +626,7 @@ class FacultyListView(APIView):
         results = []
         for f in fac_map.values():
             f['score'] = round(f['score'], 2)
+            f['areas'] = sorted(fac_areas.get(f['id'], []))
             f['institution_rank'] = inst_rank_map.get(f['institution'].id)
             results.append(f)
 
@@ -591,3 +644,162 @@ class ConferencesView(APIView):
         response = Response(serializer.data)
         response['Cache-Control'] = f'public, max-age={_CACHE_TTL}'
         return response
+
+
+# ── 10. GET /api/compare/ ─────────────────────────────────
+
+class CompareView(APIView):
+    """Side-by-side comparison of institutions or faculty members with query filters."""
+    def get(self, request):
+        filters = _build_authorship_filters(request.query_params)
+        inst_param = request.query_params.get('institutions') or request.query_params.get('ids')
+        fac_param = request.query_params.get('faculty')
+
+        if fac_param:
+            # Faculty comparison
+            try:
+                fac_ids = [int(x.strip()) for x in fac_param.split(',') if x.strip()]
+            except ValueError:
+                raise ValidationError({'faculty': "Must be a comma-separated list of integer IDs."})
+
+            faculty_members = Faculty.objects.filter(id__in=fac_ids).select_related('institution', 'department')
+            results = []
+            for fac in faculty_members:
+                auths = Authorship.objects.filter(filters, faculty=fac).select_related('publication__conference')
+                total_score = 0.0
+                a_star_score = 0.0
+                a_score = 0.0
+                areas_set = set()
+                yearly_map = defaultdict(float)
+
+                for a in auths:
+                    conf = a.publication.conference
+                    weight = conf.core_rank.weight
+                    weighted = a.credit * weight
+                    total_score += weighted
+                    if conf.core_rank_id == 'A*':
+                        a_star_score += weighted
+                    elif conf.core_rank_id == 'A':
+                        a_score += weighted
+                    if conf.area_id:
+                        areas_set.add(conf.area_id)
+                    yearly_map[a.publication.year] += weighted
+
+                yearly_trends = [{'year': yr, 'score': round(sc, 2)} for yr, sc in sorted(yearly_map.items())]
+
+                results.append({
+                    'id': fac.id,
+                    'name': fac.name,
+                    'institution': {'id': fac.institution.id, 'name': fac.institution.name},
+                    'designation': fac.designation,
+                    'score': round(total_score, 2),
+                    'a_star_score': round(a_star_score, 2),
+                    'a_score': round(a_score, 2),
+                    'areas': sorted(areas_set),
+                    'yearly_trends': yearly_trends,
+                    'authorships_count': auths.count(),
+                })
+
+            results.sort(key=lambda x: x['score'], reverse=True)
+            return Response({'type': 'faculty', 'results': results})
+
+        # Institution comparison (default or explicit ?institutions=)
+        if inst_param:
+            try:
+                inst_ids = [int(x.strip()) for x in inst_param.split(',') if x.strip()]
+            except ValueError:
+                raise ValidationError({'institutions': "Must be a comma-separated list of integer IDs."})
+            institutions = Institution.objects.filter(id__in=inst_ids)
+        else:
+            institutions = Institution.objects.all()[:10]
+
+        all_inst_geo = _compute_all_institution_geo_means()
+        sorted_insts = sorted(all_inst_geo.items(), key=lambda x: x[1], reverse=True)
+        global_ranks = {iid: idx + 1 for idx, (iid, _) in enumerate(sorted_insts)}
+
+        results = []
+        for inst in institutions:
+            auths = Authorship.objects.filter(
+                filters,
+                faculty__institution=inst,
+            ).select_related('publication__conference', 'faculty').order_by('id').annotate(
+                weighted=F('credit') * F('publication__conference__core_rank__weight')
+            )
+
+            geo_score, area_scores = _compute_institution_geo_mean(auths)
+            area_breakdown = {k: round(v, 2) for k, v in area_scores.items()}
+
+            faculty_scores = defaultdict(float)
+            yearly_scores = defaultdict(float)
+            for a in auths:
+                faculty_scores[a.faculty.name] += a.weighted
+                yearly_scores[a.publication.year] += a.weighted
+
+            top_fac = [{'name': name, 'score': round(sc, 2)} for name, sc in sorted(faculty_scores.items(), key=lambda x: x[1], reverse=True)[:5]]
+            yearly_trends = [{'year': yr, 'score': round(sc, 2)} for yr, sc in sorted(yearly_scores.items())]
+
+            results.append({
+                'id': inst.id,
+                'name': inst.name,
+                'website': inst.website,
+                'rank': global_ranks.get(inst.id, 0),
+                'score': round(geo_score, 2),
+                'area_breakdown': area_breakdown,
+                'yearly_trends': yearly_trends,
+                'faculty_count': inst.faculty.count(),
+                'publication_count': auths.count(),
+                'top_faculty': top_fac,
+            })
+
+        results.sort(key=lambda x: x['score'], reverse=True)
+        return Response({'type': 'institutions', 'results': results})
+
+
+# ── 11. GET /api/trends/ ──────────────────────────────────
+
+class TrendsView(APIView):
+    """Aggregate or multi-institution year-by-year publication and score trends."""
+    def get(self, request):
+        filters = _build_authorship_filters(request.query_params)
+        inst_param = request.query_params.get('institutions') or request.query_params.get('institution')
+
+        auths = Authorship.objects.filter(filters).select_related('faculty__institution', 'publication__conference')
+
+        if inst_param:
+            try:
+                inst_ids = [int(x.strip()) for x in inst_param.split(',') if x.strip()]
+                auths = auths.filter(faculty__institution_id__in=inst_ids)
+            except ValueError:
+                raise ValidationError({'institutions': "Must be a comma-separated list of integer IDs."})
+
+        auths = auths.annotate(weighted=F('credit') * F('publication__conference__core_rank__weight'))
+
+        overall_yearly = defaultdict(lambda: {'score': 0.0, 'publications': 0})
+        inst_yearly = defaultdict(lambda: defaultdict(float))
+        inst_names = {}
+
+        for a in auths:
+            yr = a.publication.year
+            iid = a.faculty.institution_id
+            inst_names[iid] = a.faculty.institution.name
+            overall_yearly[yr]['score'] += a.weighted
+            overall_yearly[yr]['publications'] += 1
+            inst_yearly[iid][yr] += a.weighted
+
+        results = [
+            {'year': yr, 'score': round(data['score'], 2), 'publications': data['publications']}
+            for yr, data in sorted(overall_yearly.items())
+        ]
+
+        institutions_data = []
+        for iid, yr_map in inst_yearly.items():
+            institutions_data.append({
+                'id': iid,
+                'name': inst_names[iid],
+                'yearly_scores': [{'year': yr, 'score': round(sc, 2)} for yr, sc in sorted(yr_map.items())]
+            })
+
+        return Response({
+            'results': results,
+            'institutions': institutions_data,
+        })
