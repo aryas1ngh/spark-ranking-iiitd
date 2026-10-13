@@ -2,6 +2,33 @@
 
 This document systematically tracks the major improvements and architectural changes implemented in the backend and data pipeline.
 
+## v2.0.1 — 2026-10-13
+
+### Faculty endpoints: N+1 queries removed, leaderboard cached
+The faculty leaderboard was the slowest endpoint in the API and wasn't cached. Every endpoint returns byte-identical JSON, verified by diffing all 146 production-data responses from `tools/api_snapshot.py` (plus compare and filtered-faculty URLs) before and after.
+
+Measured against the production database, uncached:
+
+| Endpoint | Queries | Time |
+|---|---:|---:|
+| `/api/faculty/` | 15,735 → **3** | 4.95 s → **0.36 s** |
+| `/api/faculty/{id}/` (faculty member with the most papers) | 176 → **2** | 0.05 s → 0.01 s |
+| `/api/compare/?faculty={id}` | 175 → **2** | 0.04 s → 0.01 s |
+
+A repeat `/api/faculty/` request is now served from cache with zero queries.
+
+- **`/api/faculty/` issued two queries per authorship.** Its loop read `a.publication.conference.area_id` on model instances fetched without `select_related` for that path, so each of ~7,900 authorships cost a publication and a conference lookup. It now reads the four columns it needs (`id`, `faculty_id`, area, weighted score) with `values_list` in one joined query. `?search=` and `?institution=` now also narrow the authorship scan; previously they filtered only the faculty list and still read every authorship in the database.
+- **`/api/faculty/{id}/` and `/api/compare/?faculty=` issued one query per paper.** Reading `conf.core_rank.weight` fetched the rank tier row each time. Both now `select_related` the rank tier (and the institution). `CompareView` also counts authorships in its existing loop instead of running a separate `COUNT`.
+- **The leaderboard is cached for 24 h** under `spark:faculty:<filters>`. The key is built from the validated filters (`start_year`, `end_year`, sorted area codes, rank with `all` treated the same as no rank), not the raw query string the `/rankings/` cache uses. Unknown or reordered params share one entry rather than each creating a new one. Name searches, single-institution views and unrecognised area codes are not cached: their input is unbounded, and after this fix they're cheap enough to compute. `clear_rankings_cache` already evicts these entries through `cache.clear()`.
+
+### Tests: 90 → 98
+- **`test_query_counts.py`** asserts that each faculty endpoint's query count doesn't grow when publications are added — the property the N+1 broke — rather than pinning exact counts that any harmless refactor would break. It also covers cache hits, key normalisation, uncached searches and eviction.
+- **These tests use a private `LocMemCache`.** On the shared file cache in `settings.py`, the inflated scores they compute from an extended dataset outlived the test transaction, and on the next run the golden contract tests (which read the cache without clearing it) failed with those leaked values.
+
+### Found, not fixed
+- **The test suite uses the real file cache at `/tmp/spark_cache`**, the same directory a local `runserver` or Gunicorn uses. Any test that fills the cache can leak into the next run, and tests that call `cache.clear()` wipe a local server's cache. A test-only `CACHES` setting would isolate the whole suite; this release isolates only the new tests.
+- **The frontend fetches faculty one at a time.** `InstitutionProfile.js` makes one `/api/faculty/{id}/` request per faculty member, and it and `FacultyProfile.js` fetch the full unfiltered leaderboard. That rules out paginating `/api/faculty/` for now and belongs in the frontend repo.
+
 ## v2.0.0 — 2026-09-15
 
 ### Dynamic area-filtered scoring & CORE rank tier filtering

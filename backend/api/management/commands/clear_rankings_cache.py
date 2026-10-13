@@ -52,8 +52,9 @@ class Command(BaseCommand):
         except Exception as exc:  # noqa: BLE001
             errors.append(f"{rankings_default_key}: {exc}")
 
-        # Flush remaining filtered ranking entries *and* all per-area geo-mean
-        # entries (spark:area_inst_geo:<code>).  LocMemCache has no prefix-scan,
+        # Flush remaining filtered ranking entries, all per-area geo-mean
+        # entries (spark:area_inst_geo:<code>) and the faculty leaderboard
+        # entries (spark:faculty:<filters>).  LocMemCache has no prefix-scan,
         # so we clear the entire cache.  This is safe: the only long-lived
         # entries in the default cache are the spark: keys added by views.py;
         # clearing them all is the intended effect.
@@ -61,11 +62,12 @@ class Command(BaseCommand):
         # If you switch to Redis, replace cache.clear() with:
         #   SCAN + DEL on pattern  f"{CACHE_KEY_RANKINGS_PREFIX}*"
         #   SCAN + DEL on pattern  f"{CACHE_KEY_AREA_GEO_PREFIX}*"
+        #   SCAN + DEL on pattern  f"{CACHE_KEY_FACULTY_PREFIX}*"
         try:
             cache.clear()
             self.stdout.write(
                 "  Cleared all cache entries "
-                "(filtered-ranking variants + per-area geo-means)."
+                "(filtered-ranking variants, per-area geo-means, faculty leaderboard)."
             )
         except Exception as exc:  # noqa: BLE001
             errors.append(f"cache.clear(): {exc}")

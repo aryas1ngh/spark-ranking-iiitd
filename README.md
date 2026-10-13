@@ -141,13 +141,13 @@ spark/
 │   ├── api/                     # DRF Models, Views, Serializers
 │   │   ├── reference_data.py    # FoR code names, CORE rank weights
 │   │   ├── ingest.py            # shared loader helpers
-│   │   ├── tests/               # golden API contract + schema integrity tests
+│   │   ├── tests/               # golden API contract, schema integrity + query-count tests
 │   │   │   └── golden/          # frozen responses — changing one is a contract change
 │   │   └── management/commands/ # DB loaders & cache managers
 │   │       ├── load_seed_data.py         # faculty.json + conferences → DB
 │   │       ├── load_rankings.py          # rankings.json → DB (fast path)
 │   │       ├── precompute_area_scores.py # pre-warm per-area geo-mean cache
-│   │       ├── clear_rankings_cache.py   # invalidate rankings & geo caches
+│   │       ├── clear_rankings_cache.py   # invalidate rankings, geo & faculty caches
 │   │       ├── load_irins.py
 │   │       └── fetch_dblp.py
 │   ├── backend/                 # Project Settings, URLs
@@ -206,6 +206,22 @@ The backend serves 10 RESTful endpoints. All return JSON and are CORS-enabled. V
 | `area` | string | `4602` or `4602,4611` | Comma-separated FoR codes |
 | `rank` | string | `A*`, `A`, `Journal`, `all` | Filter publications by CORE rank tier |
 | `search` | string | `Arani` | Faculty name filter (endpoint 8b only) |
+| `institution` | int | `5` | Restrict to one institution's faculty (endpoint 8b only) |
+
+### Caching
+
+Scoring is computed from the database on each request, so the expensive results are cached for 24 hours in a file-based cache shared by all Gunicorn workers:
+
+| Cache key | Holds | Not cached |
+|---|---|---|
+| `spark:rankings:<query>` | `/api/rankings/` responses | — |
+| `spark:faculty:<filters>` | `/api/faculty/` responses | `?search=`, `?institution=`, unknown area codes |
+| `spark:all_inst_geo_means` | every institution's geo-mean score, used for ranks | — |
+| `spark:area_inst_geo:<code>` | per-area institution scores | — |
+
+The faculty key is built from the validated filters, not the raw query string, so unknown params and reordered params share one entry. Searches and unrecognised area codes skip the cache so arbitrary input can't fill it.
+
+After reloading data, run `clear_rankings_cache` and then `precompute_area_scores`.
 
 ---
 

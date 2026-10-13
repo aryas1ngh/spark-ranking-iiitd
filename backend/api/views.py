@@ -136,6 +136,9 @@ CACHE_KEY_ALL_GEO = 'spark:all_inst_geo_means'
 CACHE_KEY_RANKINGS_PREFIX = 'spark:rankings:'
 # Per-area geo-mean cache: key = prefix + area_code (e.g. 'spark:area_inst_geo:4602')
 CACHE_KEY_AREA_GEO_PREFIX = 'spark:area_inst_geo:'
+# Faculty leaderboard cache: key = prefix + normalised filters (see
+# _faculty_leaderboard_cache_key).
+CACHE_KEY_FACULTY_PREFIX = 'spark:faculty:'
 
 
 def _compute_all_institution_geo_means():
@@ -497,13 +500,14 @@ class InstitutionSearchView(APIView):
 
 class FacultyDetailView(APIView):
     def get(self, request, pk):
-        fac = get_object_or_404(Faculty, pk=pk)
+        fac = get_object_or_404(Faculty.objects.select_related('institution'), pk=pk)
         filters = _build_authorship_filters(request.query_params)
 
+        # core_rank is joined so reading its weight below costs no query per paper.
         authorships = Authorship.objects.filter(
             filters,
             faculty=fac,
-        ).select_related('publication', 'publication__conference').order_by('id')
+        ).select_related('publication__conference__core_rank').order_by('id')
 
         total_score = 0.0
         a_star_score = 0.0
@@ -557,18 +561,58 @@ class FacultyDetailView(APIView):
 
 # ── 8b. GET /api/faculty/ (leaderboard) ───────────────────
 
+def _faculty_leaderboard_cache_key(params):
+    """Cache key for a /api/faculty/ request, or None if it should not be cached.
+
+    Built from the validated filters rather than the raw query string, so
+    unknown params, param order and 'rank=all' vs no rank all map to one entry
+    instead of each minting a new one. Call only after the params have been
+    validated by _build_authorship_filters.
+
+    Name searches and single-institution views are not cached: search strings
+    are unbounded (a typeahead would fill the cache), and both are narrow
+    enough to be cheap to compute. Area codes are checked against
+    ResearchArea for the same reason — an arbitrary string must not get an
+    entry of its own.
+    """
+    if params.get('search') or params.get('institution'):
+        return None
+
+    areas = sorted({a.strip() for a in params.get('area', '').split(',') if a.strip()})
+    if areas and ResearchArea.objects.filter(code__in=areas).count() != len(areas):
+        return None
+
+    rank = params.get('rank') or 'all'
+    start_year = _parse_int_param(params, 'start_year') or ''
+    end_year = _parse_int_param(params, 'end_year') or ''
+    return f"{CACHE_KEY_FACULTY_PREFIX}{start_year}|{end_year}|{','.join(areas)}|{rank}"
+
+
 class FacultyListView(APIView):
     def get(self, request):
         filters = _build_authorship_filters(request.query_params)
         search = request.query_params.get('search', '')
         institution_id = _parse_int_param(request.query_params, 'institution', min_val=1)
 
-        # Start with all faculty (optionally filtered by name/institution)
+        cache_key = _faculty_leaderboard_cache_key(request.query_params)
+        if cache_key is not None:
+            cached = cache.get(cache_key)
+            if cached is not None:
+                response = Response(cached)
+                response['Cache-Control'] = 'no-store'
+                return response
+
+        # Start with all faculty (optionally filtered by name/institution).
+        # The authorship scan gets the same narrowing, so a search or a
+        # single-institution view does not read every authorship in the DB.
         fac_qs = Faculty.objects.select_related('institution', 'department').order_by('id')
+        auth_qs = Authorship.objects.filter(filters)
         if search:
             fac_qs = fac_qs.filter(name__icontains=search)
+            auth_qs = auth_qs.filter(faculty__name__icontains=search)
         if institution_id is not None:
             fac_qs = fac_qs.filter(institution_id=institution_id)
+            auth_qs = auth_qs.filter(faculty__institution_id=institution_id)
 
         # Initialize map with all matching faculty
         fac_map = {}
@@ -588,22 +632,23 @@ class FacultyListView(APIView):
                 'authorships': [],
             }
 
-        # Get authorships with filters
-        auths = Authorship.objects.filter(filters).select_related(
-            'faculty', 'faculty__institution'
-        ).order_by('id').annotate(
+        # Read only the four columns the loop uses, in one joined query. This
+        # loop previously touched a.publication.conference on model instances
+        # without select_related, costing two queries per authorship.
+        auth_rows = auth_qs.annotate(
             weighted=F('credit') * F('publication__conference__core_rank__weight')
+        ).order_by('id').values_list(
+            'id', 'faculty_id', 'publication__conference__area_id', 'weighted'
         )
 
         # Accumulate scores and distinct areas per faculty
         fac_areas = defaultdict(set)
-        for a in auths:
-            fid = a.faculty.id
+        for auth_id, fid, area_id, weighted in auth_rows:
             if fid in fac_map:
-                fac_map[fid]['score'] += a.weighted
-                fac_map[fid]['authorships'].append(a.id)
-                if a.publication.conference.area_id:
-                    fac_areas[fid].add(a.publication.conference.area_id)
+                fac_map[fid]['score'] += weighted
+                fac_map[fid]['authorships'].append(auth_id)
+                if area_id:
+                    fac_areas[fid].add(area_id)
 
         # Compute institution ranks.
         # When exactly one area is selected we use the per-area precomputed
@@ -632,7 +677,14 @@ class FacultyListView(APIView):
 
         results.sort(key=lambda x: x['score'], reverse=True)
         serializer = FacultyLeaderboardSerializer(results, many=True)
-        return Response(serializer.data)
+        payload = serializer.data
+        if cache_key is not None:
+            cache.set(cache_key, payload, timeout=_CACHE_TTL)
+
+        # Same policy as /rankings/: the server-side cache is authoritative.
+        response = Response(payload)
+        response['Cache-Control'] = 'no-store'
+        return response
 
 
 # ── 9. GET /api/conferences/ ──────────────────────────────
@@ -665,14 +717,18 @@ class CompareView(APIView):
             faculty_members = Faculty.objects.filter(id__in=fac_ids).select_related('institution', 'department')
             results = []
             for fac in faculty_members:
-                auths = Authorship.objects.filter(filters, faculty=fac).select_related('publication__conference')
+                auths = Authorship.objects.filter(filters, faculty=fac).select_related(
+                    'publication__conference__core_rank'
+                ).order_by('id')
                 total_score = 0.0
                 a_star_score = 0.0
                 a_score = 0.0
                 areas_set = set()
                 yearly_map = defaultdict(float)
+                authorships_count = 0
 
                 for a in auths:
+                    authorships_count += 1
                     conf = a.publication.conference
                     weight = conf.core_rank.weight
                     weighted = a.credit * weight
@@ -697,7 +753,7 @@ class CompareView(APIView):
                     'a_score': round(a_score, 2),
                     'areas': sorted(areas_set),
                     'yearly_trends': yearly_trends,
-                    'authorships_count': auths.count(),
+                    'authorships_count': authorships_count,
                 })
 
             results.sort(key=lambda x: x['score'], reverse=True)
